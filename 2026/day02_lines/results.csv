@@ -1,0 +1,816 @@
+name,cnt,pop,lon,lat,port,hours,km
+Galway,Ireland,73625.4237,-9.04743,53.27011,Felixstowe,12.11,850.1
+Derry/Londonderry,United Kingdom,70080.19886,-7.31895,54.9992,Felixstowe,12.69,867.9
+Brest,France,127488.8141,-4.48897,48.39619,Antwerp-Bruges,9.87,894.9
+St. Helier,Jersey,58332.71829,-2.10751,49.18634,Felixstowe,7.78,500.2
+Ostend,Belgium,82243.27412,2.93373,51.22841,Antwerp-Bruges,1.48,126.0
+Maasvlakte,Netherlands,53774.57522,4.04412,51.96335,Rotterdam,0.14,5.8
+Bergen,Norway,138237.0852,5.31503,60.40643,Hamburg,19.64,1528.6
+Aachen,Germany,218507.0053,6.0979,50.78568,Antwerp-Bruges,1.82,158.4
+Luxembourg,Luxembourg,161302.506,6.14266,49.62838,Antwerp-Bruges,3.06,274.4
+Geneva,Switzerland,433727.0321,6.15535,46.20542,Barcelona,8.41,796.1
+Turin,Italy,1243448.069,7.61978,45.06689,Barcelona,9.56,875.1
+Aalborg,Denmark,101028.5999,9.92122,57.03985,Hamburg,4.69,453.5
+Bregenz,Austria,51519.49397,9.71363,47.48865,Hamburg,7.85,807.2
+Gothenburg,Sweden,599675.2527,11.98362,57.72228,Hamburg,8.52,783.1
+Pilsen,Czechia,146255.3815,13.3706,49.73793,Hamburg,7.01,674.1
+Szczecin,Poland,311037.1241,14.5325,53.43694,Hamburg,4.33,420.5
+Ljubljana,Slovenia,252735.8561,14.52132,46.06611,Hamburg,11.75,1183.9
+Rijeka,Croatia,115636.247,14.39144,45.34379,Hamburg,13.13,1287.5
+Valletta,Malta,366065.5113,14.49163,35.89414,Gioia Tauro,6.26,385.5
+Sopron,Hungary,55594.443,16.57376,47.68095,Hamburg,10.75,1037.4
+Bratislava,Slovakia,310203.9225,17.12032,48.16051,Hamburg,9.66,967.1
+Banja Luka,Bosnia and Herzegovina,90139.76976,17.21048,44.8089,Hamburg,14.73,1447.2
+Turku,Finland,104248.0551,22.27773,60.45901,Hamburg,35.51,2920.5
+Klaipėda,Lithuania,103209.9429,21.14689,55.69845,Hamburg,14.65,1472.4
+Subotica,Serbia,79457.42584,19.66349,46.08932,Hamburg,13.67,1364.9
+Nikšić,Montenegro,52874.53621,18.95511,42.76451,Piraeus,13.26,884.2
+Tallinn,Estonia,449860.9731,24.74346,59.42339,Hamburg,20.84,1826.0
+Shkoder,Albania,77144.26737,19.5146,42.07058,Piraeus,10.87,772.6
+Riga,Latvia,516896.7559,24.10165,56.96881,Hamburg,16.38,1524.6
+Pejë,Kosovo,58701.69806,20.29409,42.66001,Piraeus,10.5,866.0
+Arad,Romania,120148.544,21.30677,46.17291,Hamburg,14.1,1419.8
+Gostivar,North Macedonia,50728.96139,20.89988,41.79923,Piraeus,9.23,780.7
+Ioannina,Greece,94899.50257,20.85337,39.66125,Piraeus,4.67,406.3
+Sofia,Bulgaria,1068056.502,23.31939,42.68272,Piraeus,9.56,801.7
+Bălți,Moldova,53610.23357,27.91373,47.76076,Piraeus,21.72,1681.9
+Lisbon,Portugal,1974573.68,-9.16147,38.79705,Algeciras,7.09,644.6
+Cork,Ireland,137272.0917,-8.45824,51.89547,Felixstowe,12.65,901.3
+Belfast,United Kingdom,437125.4131,-5.91326,54.62148,Felixstowe,11.54,799.8
+Lorient,France,72374.07392,-3.36722,47.74667,Antwerp-Bruges,9.27,856.5
+Roeselare,Belgium,50561.9207,3.12874,50.94431,Antwerp-Bruges,1.54,111.8
+Rotterdam [The Hague],Netherlands,2173754.285,4.20673,51.97305,Rotterdam,0.53,36.9
+Lagunen,Norway,51870.92455,5.31187,60.30134,Hamburg,19.71,1527.4
+Mönchengladbach,Germany,225599.8294,6.45043,51.17058,Antwerp-Bruges,2.22,190.2
+Lausanne,Switzerland,288887.6495,6.60674,46.53099,Antwerp-Bruges,8.76,701.1
+Savona,Italy,65461.31904,8.47855,44.30337,Barcelona,9.0,820.9
+Aarhus,Denmark,252649.2805,10.17148,56.16045,Hamburg,3.64,343.0
+Borås,Sweden,50459.41512,12.95946,57.72228,Hamburg,9.0,796.4
+Innsbruck,Austria,144226.3775,11.40341,47.26852,Hamburg,9.32,914.6
+Ústí nad Labem,Czechia,59096.5796,14.02247,50.68004,Hamburg,5.38,549.8
+Stargard,Poland,59566.37509,15.02893,53.34368,Hamburg,4.69,450.4
+Maribor,Slovenia,80272.12593,15.64793,46.54961,Hamburg,11.63,1154.1
+Zadar,Croatia,68048.00058,15.24311,44.11536,Hamburg,15.76,1534.1
+Szombathely,Hungary,56105.90584,16.61358,47.24044,Hamburg,11.35,1128.3
+Trnava,Slovakia,56412.20562,17.57823,48.37732,Hamburg,10.18,1024.6
+Zenica,Bosnia and Herzegovina,65296.33387,17.91642,44.21163,Piraeus,16.42,1423.1
+Oulu,Finland,84384.04068,25.50115,65.01968,Hamburg,26.94,2275.0
+Novi Sad,Serbia,286752.5482,19.83519,45.26067,Piraeus,13.25,1197.0
+Podgorica,Montenegro,152731.3553,19.2562,42.44667,Piraeus,12.31,834.2
+Durrës,Albania,131865.3928,19.46202,41.32088,Piraeus,9.29,678.4
+Kaunas,Lithuania,236910.4903,23.95008,54.88973,Hamburg,12.71,1264.8
+Timișoara,Romania,335524.6954,21.23104,45.75546,Hamburg,14.74,1472.5
+Gjakova,Kosovo,51450.14651,20.43147,42.38771,Piraeus,10.52,869.7
+Tetovo,North Macedonia,71259.16002,20.97352,42.01175,Piraeus,8.87,757.6
+Tartu,Estonia,74087.18365,26.72979,58.37341,Hamburg,20.08,1764.1
+Daugavpils,Latvia,51342.07978,26.54015,55.879,Hamburg,15.97,1477.4
+Patras,Greece,146127.6819,21.74492,38.26002,Piraeus,2.42,204.4
+Plovdiv,Bulgaria,331577.8798,24.75733,42.14754,Piraeus,11.03,935.6
+Rybnitsa,Moldova,68168.67131,29.0131,47.77955,Piraeus,22.96,1721.4
+Almada,Portugal,219476.9746,-9.17264,38.646,Algeciras,6.92,633.1
+Dublin,Ireland,1124519.535,-6.32794,53.32406,Felixstowe,9.88,641.2
+Bangor,United Kingdom,62100.89597,-5.67053,54.65621,Felixstowe,11.82,818.2
+Saint-Brieuc,France,56275.81064,-2.7607,48.51891,Antwerp-Bruges,8.16,751.7
+Bruges,Belgium,67047.28449,3.22067,51.21877,Antwerp-Bruges,1.13,86.5
+Bergen op Zoom,Netherlands,59650.08572,4.2801,51.50833,Antwerp-Bruges,0.42,32.1
+Stavanger,Norway,205533.3369,5.73234,58.90988,Hamburg,18.92,1484.0
+Krefeld,Germany,219356.9998,6.59883,51.33452,Antwerp-Bruges,2.29,195.9
+Neuchâtel,Switzerland,51771.99185,6.94045,46.99734,Antwerp-Bruges,8.14,667.3
+Novara,Italy,92131.18989,8.62845,45.44545,Barcelona,10.54,969.9
+Odense,Denmark,147088.0736,10.38807,55.40322,Hamburg,3.42,315.3
+Helsingborg,Sweden,106339.2243,12.71601,56.03974,Hamburg,6.16,573.8
+Salzburg,Austria,143451.6847,13.04822,47.79364,Hamburg,8.95,918.4
+Kladno,Czechia,63246.62655,14.1022,50.15314,Hamburg,6.35,633.0
+Gorzów Wielkopolski,Poland,96212.12341,15.23805,52.74178,Hamburg,5.18,504.1
+Zagreb,Croatia,643961.8886,15.98396,45.80642,Hamburg,12.89,1267.0
+Gyor,Hungary,88497.91885,17.6611,47.69034,Hamburg,10.43,1043.6
+Nitra,Slovakia,55298.95885,18.08501,48.3113,Hamburg,10.53,1060.6
+Tampere,Finland,153566.9399,23.80585,61.48544,Hamburg,33.51,2762.4
+Sarajevo,Bosnia and Herzegovina,235739.1356,18.37551,43.85893,Piraeus,16.24,1297.0
+Zrenjanin,Serbia,61394.75543,20.39415,45.37151,Piraeus,13.69,1173.1
+Vlora,Albania,74501.23133,19.47517,40.45775,Piraeus,8.38,616.5
+Panevėžys,Lithuania,69937.74778,24.3594,55.72852,Hamburg,14.04,1365.6
+Mitrovica,Kosovo,61316.77513,20.86752,42.88727,Piraeus,10.0,832.0
+Oradea,Romania,164898.7173,21.9211,47.06275,Hamburg,14.81,1470.4
+Skopje,North Macedonia,402733.2785,21.40969,42.0027,Piraeus,8.43,708.6
+Larissa,Greece,118892.1119,22.41502,39.63446,Piraeus,4.27,362.0
+Ruse,Bulgaria,83022.21805,25.96656,43.8452,Piraeus,13.78,1114.3
+Chișinău,Moldova,450580.9625,28.82408,47.03004,Piraeus,21.37,1619.3
+Amora,Portugal,100347.4849,-9.10108,38.62379,Algeciras,6.84,627.8
+Blanchardstown,Ireland,110590.5383,-6.41069,53.39766,Felixstowe,9.97,653.9
+Plymouth,United Kingdom,252927.7312,-4.15595,50.38759,Felixstowe,5.94,509.7
+Saint-Nazaire,France,56336.98575,-2.20469,47.27788,Antwerp-Bruges,8.52,792.2
+Kortrijk,Belgium,87309.76063,3.26385,50.83854,Antwerp-Bruges,1.3,112.3
+Leiden,Netherlands,268630.5109,4.47623,52.17691,Rotterdam,0.92,67.0
+Bocholt,Germany,51607.3797,6.61818,51.83732,Rotterdam,2.63,206.3
+Montreux,Switzerland,75089.02771,6.87163,46.45651,Antwerp-Bruges,8.69,800.4
+Trondheim,Norway,142103.7318,10.43047,63.42901,Hamburg,19.41,1553.8
+Alessandria,Italy,63954.91742,8.62094,44.9102,Barcelona,10.05,915.2
+Greve Strand,Denmark,80684.72245,12.33232,55.59828,Hamburg,4.8,456.0
+Malmo,Sweden,339006.7437,13.02629,55.60829,Hamburg,5.55,517.9
+Prague,Czechia,1201277.711,14.43674,50.07668,Hamburg,6.29,638.6
+Wels,Austria,54304.2776,14.03309,48.16993,Hamburg,8.68,894.9
+Zielona Góra,Poland,159472.47,15.49711,51.94395,Hamburg,5.28,514.2
+Split,Croatia,215967.8401,16.47118,43.52526,Hamburg,16.89,1656.5
+Žilina,Slovakia,66636.18648,18.74136,49.21956,Hamburg,10.32,994.0
+Székesfehérvár,Hungary,75062.63089,18.44301,47.18431,Hamburg,11.66,1128.8
+Tuzla,Bosnia and Herzegovina,55005.6624,18.68038,44.53295,Piraeus,14.96,1305.8
+Helsinki,Finland,1001124.665,24.93125,60.23835,Hamburg,34.54,2876.3
+Belgrade,Serbia,1200546.585,20.46191,44.79049,Piraeus,12.3,1101.6
+Fier,Albania,55279.44284,19.55479,40.73152,Piraeus,8.15,599.6
+Prizren,Kosovo,111237.2335,20.73413,42.22001,Piraeus,10.06,809.0
+Satu Mare,Romania,79654.91942,22.87303,47.78894,Hamburg,15.26,1490.4
+Vilnius,Lithuania,339420.3462,25.26054,54.69096,Hamburg,13.7,1364.4
+Drachevo,North Macedonia,53691.13911,21.51533,41.93485,Piraeus,8.31,697.0
+Thessaloniki,Greece,783449.5859,22.91908,40.63722,Piraeus,5.89,507.8
+Stara Zagora,Bulgaria,77341.65251,25.62809,42.42853,Piraeus,11.66,933.6
+Bender,Moldova,65117.84226,29.46403,46.82928,Piraeus,21.71,1652.4
+Barreiro,Portugal,143986.5122,-9.03375,38.65488,Algeciras,6.9,629.1
+Swords,Ireland,75048.59864,-6.20934,53.45658,Felixstowe,9.86,646.8
+Glasgow,United Kingdom,992058.6034,-4.27626,55.85892,Felixstowe,7.77,680.5
+Rennes,France,251923.8291,-1.65604,48.12284,Antwerp-Bruges,7.43,701.4
+Ghent,Belgium,250379.4357,3.7273,51.06462,Antwerp-Bruges,0.82,58.0
+Roosendaal,Netherlands,64767.75132,4.46944,51.53249,Antwerp-Bruges,0.54,41.4
+Essen,Germany,2718996.316,6.98181,51.48901,Antwerp-Bruges,2.52,220.0
+Freiburg im Üechtland,Switzerland,68281.89298,7.14563,46.80129,Antwerp-Bruges,8.15,750.5
+Drammen,Norway,51726.02123,10.20367,59.74642,Hamburg,12.4,1087.7
+Gallarate,Italy,140409.3578,8.80673,45.67674,Antwerp-Bruges,10.57,934.8
+Copenhagen,Denmark,1258201.641,12.50137,55.69344,Hamburg,5.05,474.5
+Lund,Sweden,93090.59345,13.20359,55.70346,Hamburg,5.67,529.6
+Linz,Austria,243242.7563,14.29703,48.28301,Hamburg,8.98,922.5
+České Budějovice,Czechia,83563.75967,14.47438,48.98245,Hamburg,7.95,784.5
+Koszalin,Poland,94410.528,16.19191,54.19065,Hamburg,6.11,587.3
+Pécs,Hungary,123328.5093,18.21936,46.0754,Hamburg,13.68,1347.2
+Banská Bystrica,Slovakia,60512.77016,19.15105,48.73629,Hamburg,11.68,1179.0
+Osijek,Croatia,69144.38196,18.68597,45.55642,Hamburg,13.99,1398.8
+Brčko,Bosnia and Herzegovina,66145.84629,18.80512,44.87336,Piraeus,14.21,1259.9
+Jyväskylä,Finland,56662.50918,25.74295,62.24454,Hamburg,31.39,2612.3
+Tirana,Albania,995788.7711,19.81714,41.33891,Piraeus,9.16,677.1
+Borca,Serbia,75301.18819,20.46598,44.86415,Piraeus,12.56,1110.8
+Pristina,Kosovo,218970.5803,21.16384,42.66001,Piraeus,9.49,798.4
+Bitola,North Macedonia,59415.74433,21.32257,41.0327,Piraeus,6.75,557.6
+Drobeta-Turnu Severin,Romania,81559.51373,22.64576,44.62948,Piraeus,14.0,1095.9
+Volos,Greece,99655.65514,22.94153,39.37125,Piraeus,4.07,336.1
+Burgas,Bulgaria,102154.1037,27.46308,42.50565,Piraeus,13.0,1085.2
+Tiraspol,Moldova,92114.09473,29.62542,46.85728,Piraeus,22.0,1664.3
+Setúbal,Portugal,99295.06672,-8.88452,38.53057,Algeciras,6.65,609.0
+Swansea,United Kingdom,150621.2539,-3.94538,51.64369,Felixstowe,5.38,467.1
+Nantes,France,472261.9187,-1.58099,47.22173,Antwerp-Bruges,7.94,739.5
+Frameries,Belgium,69134.21966,3.86035,50.42111,Antwerp-Bruges,1.74,139.1
+Heemskerk,Netherlands,127828.846,4.65945,52.48823,Rotterdam,1.43,107.9
+Dusseldorf,Germany,921668.7577,6.76651,51.19467,Antwerp-Bruges,2.38,212.1
+Biel/Bienne,Switzerland,71459.40867,7.25641,47.13754,Antwerp-Bruges,7.74,711.8
+Oslo,Norway,889573.2617,10.77634,59.88222,Hamburg,12.01,1066.4
+Varese,Italy,96728.39667,8.81612,45.83422,Antwerp-Bruges,10.27,918.5
+Jönköping,Sweden,64999.35474,14.19942,57.77339,Hamburg,8.66,806.5
+Liberec,Czechia,86840.96848,15.0615,50.76647,Hamburg,6.33,639.8
+Klagenfurt,Austria,80260.80954,14.31221,46.62414,Hamburg,11.11,1124.9
+Lubin,Poland,69044.04608,16.192,51.40691,Hamburg,6.08,591.6
+Érd,Hungary,59237.36602,18.91452,47.39025,Hamburg,11.52,1158.7
+Lahti,Finland,57173.54045,25.64105,60.9866,Hamburg,33.57,2781.4
+Prešov,Slovakia,77202.53577,21.25152,48.99666,Hamburg,12.12,1135.1
+Čačak,Serbia,70621.69312,20.35041,43.88638,Piraeus,12.08,1055.3
+Elbasan,Albania,68429.24606,20.08293,41.1092,Piraeus,8.41,636.0
+Ferizaj,Kosovo,64848.42028,21.15934,42.38317,Piraeus,9.09,763.0
+Kumanovo,North Macedonia,70030.96108,21.72779,42.14302,Piraeus,8.4,714.5
+Baia Mare,Romania,100934.428,23.56299,47.65279,Hamburg,16.39,1548.8
+Athens,Greece,3166757.394,23.71143,37.98101,Piraeus,0.28,11.8
+Varna,Bulgaria,286140.3099,27.92893,43.21507,Piraeus,15.01,1228.5
+Póvoa de Varzim,Portugal,58087.73114,-8.75501,41.37497,Algeciras,9.56,813.4
+Vigo,Spain,291791.9252,-8.71979,42.22454,Valencia,10.72,957.1
+East Kilbride,United Kingdom,72626.31114,-4.19061,55.7586,Felixstowe,7.69,666.7
+Cherbourg-en-Cotentin,France,57244.48617,-1.64912,49.65695,Antwerp-Bruges,7.16,647.3
+Temse,Belgium,76827.37589,4.16564,51.15131,Antwerp-Bruges,0.45,25.5
+Haarlem,Netherlands,207592.2142,4.63839,52.37626,Rotterdam,1.31,99.2
+Trier,Germany,88553.38469,6.63658,49.74269,Antwerp-Bruges,3.36,290.6
+Bern,Switzerland,193473.7685,7.44255,46.94597,Antwerp-Bruges,7.82,720.3
+Busto Arsizio,Italy,303076.7748,8.88759,45.61194,Antwerp-Bruges,10.56,950.4
+Fredrikstad,Norway,52113.60916,10.94505,59.21558,Hamburg,11.1,989.7
+Örebro,Sweden,94012.38017,15.19635,59.28826,Hamburg,11.29,1016.8
+Pardubice,Czechia,66878.03896,15.77115,50.03847,Hamburg,7.33,742.6
+Legnica,Poland,77540.35721,16.17469,51.20913,Hamburg,6.05,597.9
+Graz,Austria,306742.2013,15.43622,47.05341,Hamburg,10.88,1088.1
+Budapest,Hungary,1743875.314,19.09289,47.50271,Hamburg,11.67,1167.1
+Košice,Slovakia,223173.369,21.24157,48.71737,Hamburg,12.5,1169.1
+Pančevo,Serbia,63595.37687,20.65863,44.86875,Piraeus,12.57,1094.6
+Prilep,North Macedonia,52540.12378,21.55297,41.34341,Piraeus,7.73,599.7
+Cluj-Napoca,Romania,321094.5322,23.59622,46.77331,Hamburg,17.7,1626.7
+Chania,Greece,66402.82523,24.01014,35.50902,Piraeus,16.0,490.8
+Porto,Portugal,1060250.077,-8.59108,41.12271,Algeciras,9.11,780.1
+A Coruña,Spain,271212.3439,-8.4124,43.35184,Valencia,10.58,957.9
+Blantyre,United Kingdom,71547.49367,-4.07037,55.77866,Felixstowe,7.56,661.9
+Bayonne,France,89011.86906,-1.51066,43.48874,Barcelona,6.67,537.5
+Antwerp,Belgium,767652.2233,4.44925,51.20431,Antwerp-Bruges,0.33,23.9
+Hoofddorp,Netherlands,58173.25024,4.66133,52.31302,Rotterdam,1.21,90.2
+Dormagen,Germany,57035.82719,6.83584,51.07906,Antwerp-Bruges,2.47,220.9
+Basel,Switzerland,285822.942,7.5896,47.52615,Antwerp-Bruges,6.78,625.3
+Genoa,Italy,523194.2257,8.85851,44.42271,Barcelona,9.45,859.4
+Tromsø,Norway,53615.03084,18.94099,69.66558,Hamburg,33.37,2688.1
+Linköping,Sweden,84827.98002,15.60377,58.40942,Hamburg,10.03,928.7
+Hradec Králové,Czechia,68043.53386,15.83792,50.20096,Hamburg,7.25,738.1
+Słupsk,Poland,82929.61885,17.02618,54.47273,Hamburg,6.84,652.7
+Vienna,Austria,2056564.784,16.36729,48.18406,Hamburg,9.97,972.5
+Szőlőhegy,Hungary,80826.28595,19.24783,47.48396,Hamburg,11.97,1180.2
+Novi Pazar,Serbia,93109.80952,20.50918,43.14217,Piraeus,11.23,901.8
+Târgu Jiu,Romania,63417.42998,23.27235,45.03462,Piraeus,15.77,1176.3
+Heraklion,Greece,159048.8994,25.11542,35.3342,Piraeus,18.42,634.5
+Braga,Portugal,93375.88154,-8.41743,41.55086,Algeciras,9.8,836.1
+Ferrol,Spain,58665.84322,-8.21724,43.48874,Valencia,10.74,968.5
+Wishaw,United Kingdom,133413.8589,-3.97151,55.79872,Felixstowe,7.6,663.6
+La Rochelle,France,84390.78169,-1.16645,46.15897,Barcelona,8.73,825.6
+La Louvière,Belgium,86085.72549,4.19434,50.4834,Antwerp-Bruges,1.44,113.5
+Dordrecht,Netherlands,252511.7677,4.69615,51.81795,Rotterdam,0.87,63.3
+Cologne,Germany,1156303.314,7.00717,50.98761,Antwerp-Bruges,2.63,240.0
+Thun,Switzerland,70905.0996,7.61657,46.76864,Antwerp-Bruges,8.02,740.6
+Vigevano,Italy,58332.4758,8.85878,45.3207,Barcelona,10.81,974.6
+Norrköping,Sweden,90148.85433,16.18796,58.5897,Hamburg,10.49,967.3
+Pila,Poland,62698.8816,16.74354,53.1476,Hamburg,6.77,589.9
+Brno,Czechia,313581.6171,16.62444,49.21007,Hamburg,8.45,846.5
+Kecskemét,Hungary,73079.5978,19.69151,46.90395,Hamburg,12.43,1244.7
+Kraljevo,Serbia,69753.80236,20.68062,43.71715,Piraeus,11.51,1015.2
+Bistrița,Romania,52236.36867,24.49672,47.13754,Hamburg,18.95,1679.8
+Ourense,Spain,90571.00994,-7.86304,42.34237,Valencia,9.67,868.4
+Coatbridge,United Kingdom,91000.45383,-3.99724,55.86394,Felixstowe,7.67,669.2
+Bordeaux,France,642755.5421,-0.59328,44.84573,Barcelona,6.91,645.9
+Brussels,Belgium,1468753.608,4.36236,50.86738,Antwerp-Bruges,0.84,60.1
+Alphen aan den Rijn,Netherlands,65329.92683,4.65586,52.12834,Rotterdam,0.98,72.2
+Wuppertal,Germany,650877.1736,7.06088,51.19949,Antwerp-Bruges,2.65,236.4
+Olten,Switzerland,70493.57456,7.90871,47.32937,Antwerp-Bruges,7.27,671.9
+Sassari,Italy,90912.9384,8.55337,40.73152,Barcelona,20.98,1204.6
+Västerås,Sweden,104147.4109,16.55491,59.62124,Hamburg,12.34,1108.9
+Leszno,Poland,57191.97282,16.57467,51.84701,Hamburg,6.21,612.7
+Olomouc,Czechia,82848.4228,17.26158,49.5903,Hamburg,8.88,869.9
+Szeged,Hungary,122060.1833,20.15422,46.26118,Hamburg,13.21,1328.7
+Kragujevac,Serbia,140855.9267,20.9027,44.00541,Piraeus,11.59,1019.0
+Sibiu,Romania,134213.1395,24.1527,45.80179,Hamburg,17.54,1718.7
+Huelva,Spain,126786.7354,-6.93856,37.26535,Algeciras,3.13,273.2
+Torquay,United Kingdom,111322.811,-3.53826,50.45944,Felixstowe,5.58,473.2
+Angers,France,162720.0414,-0.5604,47.4699,Antwerp-Bruges,6.92,649.7
+Charleroi,Belgium,222465.2314,4.46159,50.41632,Antwerp-Bruges,1.55,123.5
+Alkmaar,Netherlands,171003.0002,4.80049,52.65883,Rotterdam,1.67,129.5
+Bonn,Germany,756475.1022,7.14079,50.78568,Antwerp-Bruges,2.83,252.2
+Aarau,Switzerland,56541.05907,8.06078,47.39025,Antwerp-Bruges,7.39,675.6
+Como,Italy,151878.2609,9.12471,45.79715,Antwerp-Bruges,10.29,918.8
+Eskilstuna,Sweden,51932.95688,16.51345,59.3662,Hamburg,12.0,1077.0
+Poznan,Poland,531735.5492,16.92956,52.40059,Hamburg,5.68,563.9
+Ostrava,Czechia,150765.9702,18.25612,49.81419,Hamburg,8.93,888.4
+Miskolc,Hungary,115425.4702,20.75107,48.09459,Hamburg,13.45,1259.5
+Kruševac,Serbia,60867.22507,21.33188,43.57093,Piraeus,10.92,959.4
+Craiova,Romania,260150.1607,23.80606,44.32172,Piraeus,13.78,1063.3
+Badajoz,Spain,105441.7768,-6.97037,38.87262,Algeciras,4.67,392.3
+Bridgend,United Kingdom,54428.53393,-3.57666,51.52766,Felixstowe,4.89,428.9
+Pau,France,95976.04812,-0.37699,43.31536,Barcelona,5.91,429.8
+Mechelen,Belgium,64350.95407,4.47812,51.02129,Antwerp-Bruges,0.64,48.8
+Gouda,Netherlands,76076.71928,4.71028,52.03126,Rotterdam,0.89,62.4
+Marl,Germany,61466.91178,7.10773,51.67756,Antwerp-Bruges,2.74,242.4
+Wettingen,Switzerland,68353.1392,8.31092,47.47459,Antwerp-Bruges,7.43,685.0
+Milan,Italy,3135553.23,9.1935,45.55642,Antwerp-Bruges,10.66,954.0
+Uppsala,Sweden,133611.1352,17.64229,59.85087,Hamburg,13.24,1190.6
+Świdnica,Poland,51057.9381,16.48649,50.84334,Hamburg,6.71,639.6
+Havířov,Czechia,59522.78276,18.43827,49.78082,Hamburg,9.14,903.3
+Nyíregyháza,Hungary,78595.11406,21.73379,47.95344,Hamburg,14.09,1395.5
+Niš,Serbia,219094.5821,21.90479,43.32904,Piraeus,10.17,882.9
+Târgu Mureș,Romania,127546.1826,24.57165,46.5403,Hamburg,18.13,1794.3
+Cádiz,Spain,114581.8572,-6.27917,36.51708,Algeciras,1.34,106.8
+Exeter,United Kingdom,110291.544,-3.5112,50.72805,Felixstowe,5.2,439.4
+Caen,France,149421.6112,-0.37077,49.18634,Antwerp-Bruges,5.61,522.6
+Amsterdam,Netherlands,1223406.697,4.88932,52.37139,Rotterdam,1.46,102.0
+Leuven,Belgium,77291.93647,4.70969,50.89141,Antwerp-Bruges,1.0,82.6
+Saarbruecken,Germany,125455.5146,7.00283,49.22905,Antwerp-Bruges,4.11,371.7
+Lucerne,Switzerland,146604.0658,8.28887,47.05808,Antwerp-Bruges,7.75,717.8
+Pavia,Italy,73236.36891,9.16823,45.18682,Barcelona,10.68,974.5
+Södertälje,Sweden,68810.42418,17.61462,59.19482,Hamburg,11.92,1092.9
+Wrocław,Poland,531844.8448,17.02075,51.11277,Hamburg,6.86,663.5
+Debrecen,Hungary,139470.7908,21.62935,47.53084,Hamburg,14.06,1394.1
+Leskovac,Serbia,51941.16765,21.94426,42.99191,Piraeus,9.74,834.7
+Râmnicu Vâlcea,Romania,59490.73328,24.36841,45.10378,Piraeus,15.82,1171.1
+El Puerto de Santa María,Spain,61146.4122,-6.24843,36.58739,Algeciras,1.42,112.1
+Falkirk,United Kingdom,59625.69381,-3.79855,56.00958,Felixstowe,7.97,697.6
+Le Havre,France,168168.8656,0.16977,49.48562,Antwerp-Bruges,4.84,448.3
+Breda,Netherlands,177734.4773,4.76921,51.60017,Antwerp-Bruges,0.77,65.7
+Namur,Belgium,63217.47165,4.85498,50.46902,Antwerp-Bruges,1.46,122.5
+Remscheid,Germany,73507.64444,7.21262,51.18022,Antwerp-Bruges,2.82,258.0
+Zurich,Switzerland,689208.0731,8.54636,47.3481,Antwerp-Bruges,7.78,708.4
+Lecco,Italy,92030.59649,9.40344,45.83422,Antwerp-Bruges,10.77,943.2
+Stockholm,Sweden,1543891.723,18.01632,59.3506,Hamburg,12.39,1125.3
+Gniezno,Poland,59444.47694,17.60262,52.53695,Hamburg,6.22,617.3
+Slatina,Romania,57761.46059,24.37065,44.43649,Piraeus,14.19,1093.3
+San Fernando,Spain,78622.61821,-6.20204,36.45998,Algeciras,1.42,109.1
+Livingston,United Kingdom,59218.81536,-3.51872,55.88903,Felixstowe,7.83,671.8
+Angoulême,France,54288.90306,0.15588,45.64897,Barcelona,8.14,757.4
+Purmerend,Netherlands,84537.59006,4.97409,52.51259,Rotterdam,1.63,123.0
+Liège,Belgium,373661.8985,5.55642,50.65125,Antwerp-Bruges,1.52,135.2
+Dortmund,Germany,709614.9434,7.44136,51.52283,Antwerp-Bruges,2.92,256.5
+Winterthur,Switzerland,102238.4452,8.74693,47.50271,Antwerp-Bruges,7.8,741.1
+Bergamo,Italy,448363.9401,9.65074,45.69526,Antwerp-Bruges,11.14,1000.9
+Ekerö,Sweden,53867.69606,17.79821,59.26749,Hamburg,12.33,1112.3
+Wejherowo,Poland,55702.02448,18.22855,54.61155,Hamburg,7.79,742.9
+Pitești,Romania,147708.8116,24.86082,44.86415,Piraeus,15.13,1164.2
+Jerez,Spain,194300.7864,-6.12725,36.67971,Algeciras,1.24,100.1
+Barry,United Kingdom,50986.97233,-3.26252,51.40691,Felixstowe,4.9,421.9
+Le Mans,France,140413.8239,0.19865,47.98636,Antwerp-Bruges,6.15,564.7
+Hoorn,Netherlands,72423.03982,5.07289,52.65395,Rotterdam,1.8,139.2
+Verviers,Belgium,52176.46957,5.87015,50.59368,Antwerp-Bruges,1.81,161.7
+Hagen,Germany,155456.7793,7.47283,51.37312,Antwerp-Bruges,3.08,272.4
+Lugano,Switzerland,91994.79803,8.95316,46.01507,Antwerp-Bruges,9.75,882.7
+Cagliari,Italy,257467.8674,9.13183,39.2242,Barcelona,23.31,1408.7
+Handen,Sweden,134312.3524,18.17768,59.22077,Hamburg,12.57,1134.8
+Bydgoszcz,Poland,269010.5501,17.9827,53.13291,Hamburg,7.01,692.1
+Brasov,Romania,230437.8081,25.60763,45.64897,Piraeus,17.71,1348.7
+Mairena del Aljarafe,Spain,141830.3921,-6.05905,37.38003,Algeciras,2.25,190.4
+Cardiff,United Kingdom,388459.7329,-3.17904,51.48901,Felixstowe,4.7,404.1
+Poitiers,France,93031.67173,0.3529,46.58221,Antwerp-Bruges,7.5,693.0
+Utrecht,Netherlands,519237.0763,5.08546,52.07979,Rotterdam,1.17,88.9
+Neuwied,Germany,60145.42993,7.4308,50.43069,Antwerp-Bruges,3.1,290.9
+St. Gallen,Switzerland,69371.3974,9.38194,47.42773,Antwerp-Bruges,8.16,760.5
+Piacenza,Italy,95643.25433,9.71072,45.03923,Barcelona,10.93,997.0
+Umeå,Sweden,64854.02958,20.28094,63.82774,Hamburg,20.23,1757.1
+Rumia,Poland,50531.26526,18.38855,54.58179,Hamburg,8.07,765.9
+Suceava,Romania,89152.46813,26.26562,47.66218,Piraeus,20.74,1623.8
+Seville,Spain,696192.6227,-5.95591,37.38886,Algeciras,2.19,188.0
+Dunfermline,United Kingdom,56093.80521,-3.42714,56.04476,Felixstowe,8.18,702.6
+Tours,France,223833.9563,0.71256,47.39025,Antwerp-Bruges,6.38,593.4
+Tilburg,Netherlands,206798.0867,5.07513,51.55666,Antwerp-Bruges,0.97,79.5
+Münster,Germany,269164.0206,7.62758,51.9488,Bremerhaven,2.66,248.9
+La Spezia,Italy,87708.69059,9.84119,44.11536,Barcelona,10.78,967.7
+Gdynia,Poland,216994.2913,18.544,54.51238,Hamburg,8.11,770.9
+Târgoviște,Romania,65785.58882,25.4474,44.92863,Piraeus,15.63,1188.9
+Dos Hermanas,Spain,97843.81987,-5.92236,37.29181,Algeciras,1.97,172.4
+Taunton,United Kingdom,57938.58549,-3.09849,51.01648,Felixstowe,4.73,405.5
+Rouen,France,309210.4024,1.08313,49.42856,Antwerp-Bruges,4.28,391.5
+Bussum,Netherlands,54330.61409,5.14878,52.29843,Rotterdam,1.55,118.4
+Unna,Germany,60887.29576,7.67879,51.54699,Bremerhaven,3.04,285.9
+Cremona,Italy,50804.2183,10.02485,45.13607,Barcelona,11.26,1033.0
+Ostrów Wielkopolski,Poland,63175.87382,17.81375,51.65337,Hamburg,7.37,681.0
+Piatra Neamț,Romania,70378.26867,26.37999,46.93196,Piraeus,19.59,1559.5
+Avilés,Spain,64412.02217,-5.9131,43.56179,Valencia,9.48,846.2
+Edinburgh,United Kingdom,530165.3007,-3.1707,55.94929,Felixstowe,7.89,676.1
+Limoges,France,105730.001,1.26837,45.83422,Barcelona,7.34,690.2
+Hilversum,Netherlands,84040.57923,5.17731,52.22551,Rotterdam,1.51,112.6
+Lüdenscheid,Germany,58684.3931,7.62503,51.22841,Antwerp-Bruges,3.36,284.2
+Brescia,Italy,243287.4191,10.19526,45.54717,Antwerp-Bruges,11.53,1043.8
+Gdansk,Poland,398019.1673,18.62317,54.37367,Hamburg,8.22,781.5
+Botoșani,Romania,98974.89452,26.66303,47.74667,Piraeus,20.8,1630.8
+Oviedo / Uviéu,Spain,219998.8177,-5.85268,43.37009,Valencia,9.17,815.2
+Liverpool,United Kingdom,1243205.803,-2.95116,53.4173,Felixstowe,4.75,415.2
+Toulouse,France,712881.9928,1.42741,43.62574,Barcelona,4.48,411.2
+Houten,Netherlands,50661.97543,5.16342,52.03611,Rotterdam,1.31,95.7
+Iserlohn,Germany,55295.30409,7.68813,51.38277,Antwerp-Bruges,3.21,278.6
+Massa,Italy,101572.4905,10.08424,44.03747,Gioia Tauro,10.78,1015.2
+Inowrocław,Poland,65095.33336,18.26045,52.78572,Hamburg,7.26,679.1
+Ploiești,Romania,187350.1738,26.04028,44.94705,Piraeus,16.05,1220.7
+Algeciras,Spain,125868.1777,-5.43938,36.12643,Algeciras,0.06,1.5
+Newport,United Kingdom,118959.1841,-2.97512,51.58566,Felixstowe,4.37,382.5
+Chartres,France,66598.60088,1.48852,48.43866,Antwerp-Bruges,4.93,445.3
+Almere,Netherlands,185506.1528,5.23638,52.38113,Rotterdam,1.7,129.7
+Koblenz,Germany,133939.2029,7.58124,50.34928,Antwerp-Bruges,3.22,305.8
+Parma,Italy,148518.4509,10.32824,44.80429,Gioia Tauro,11.34,1079.9
+Kalisz,Poland,82184.77645,18.09364,51.75015,Hamburg,7.27,699.6
+Bucharest,Romania,1971350.247,26.09211,44.43189,Piraeus,15.05,1159.2
+Salamanca,Spain,143061.8538,-5.66684,40.95623,Valencia,6.59,579.3
+Weston-super-Mare,United Kingdom,81615.13352,-2.95888,51.35382,Felixstowe,4.43,386.7
+Boulogne-sur-Mer,France,66341.86985,1.59278,50.71845,Antwerp-Bruges,2.79,242.6
+'s-Hertogenbosch,Netherlands,144846.1183,5.32191,51.71627,Antwerp-Bruges,1.36,110.4
+Hamm,Germany,74181.11156,7.79415,51.68239,Bremerhaven,3.02,280.1
+Livorno,Italy,149982.7892,10.31244,43.54353,Gioia Tauro,10.77,1015.5
+Tczew,Poland,57324.57494,18.77959,54.09184,Hamburg,8.47,835.3
+Bacău,Romania,129974.0602,26.90947,46.56358,Piraeus,18.28,1476.2
+La Línea de la Concepción,Spain,52861.23534,-5.36151,36.17029,Algeciras,0.4,20.7
+Blackpool,United Kingdom,189729.8781,-3.02546,53.84027,Felixstowe,5.33,462.8
+Mantes-la-Ville,France,73436.69125,1.71949,48.99192,Antwerp-Bruges,4.44,401.1
+Amersfoort,Netherlands,186755.789,5.38932,52.16234,Rotterdam,1.6,119.5
+Osnabrück,Germany,118523.462,8.04939,52.27412,Bremerhaven,2.16,190.2
+Pisa,Italy,65763.653,10.40392,43.71258,Gioia Tauro,10.62,1002.9
+Opole,Poland,91438.19024,17.93918,50.66564,Hamburg,7.67,744.9
+Buzău,Romania,93986.71489,26.82383,45.14991,Piraeus,16.38,1284.1
+Gijón,Spain,258570.821,-5.66209,43.54353,Valencia,9.36,834.4
+Southport,United Kingdom,79444.07476,-2.99596,53.64826,Felixstowe,5.03,431.0
+Calais,France,72072.05079,1.85098,50.95874,Antwerp-Bruges,2.42,210.1
+Lelystad,Netherlands,69984.59441,5.46363,52.50772,Rotterdam,2.0,152.9
+Kaiserslautern,Germany,80640.89438,7.76648,49.44758,Antwerp-Bruges,4.26,403.7
+Lucca,Italy,52201.25167,10.52337,43.85435,Gioia Tauro,10.35,975.3
+Toruń,Poland,176295.9391,18.63294,53.02522,Hamburg,7.82,744.3
+Iași,Romania,304851.3096,27.60151,47.14689,Piraeus,20.38,1604.2
+Ceuta,Spain,78996.42033,-5.31,35.89414,Algeciras,0.24,10.3
+Ellesmere Port,United Kingdom,57467.65294,-2.90428,53.28973,Felixstowe,4.63,409.8
+Orléans,France,219331.6641,1.90752,47.89702,Antwerp-Bruges,5.39,488.6
+Eindhoven,Netherlands,293437.7853,5.46278,51.44554,Antwerp-Bruges,1.28,104.1
+Oldenburg,Germany,147302.1995,8.20754,53.1525,Bremerhaven,1.11,73.4
+Reggio nell'Emilia,Italy,119756.1171,10.61923,44.70306,Gioia Tauro,11.1,1053.1
+Grudziądz,Poland,74167.06916,18.75633,53.47131,Hamburg,7.9,775.2
+Focșani,Romania,70272.73859,27.18678,45.69526,Piraeus,17.18,1365.3
+León,Spain,145843.6144,-5.57781,42.60551,Valencia,7.96,705.3
+Chester,United Kingdom,80812.90396,-2.89362,53.20149,Felixstowe,4.57,381.6
+Maurepas,France,197578.2656,2.01267,48.78359,Antwerp-Bruges,4.43,384.5
+Oss,Netherlands,60726.34526,5.54133,51.76952,Antwerp-Bruges,1.59,123.3
+Siegen,Germany,87402.46892,8.0291,50.89141,Antwerp-Bruges,3.37,317.8
+Verona,Italy,216582.4882,10.98393,45.42696,Gioia Tauro,11.83,1125.0
+Elbląg,Poland,110758.2311,19.40759,54.16594,Hamburg,8.84,845.2
+Galați,Romania,232216.8185,28.02537,45.44545,Piraeus,18.08,1407.6
+Marbella,Spain,169907.7197,-4.96971,36.49072,Algeciras,1.02,74.2
+Carlisle,United Kingdom,74910.8524,-2.94133,54.89968,Felixstowe,6.08,527.5
+Cergy,France,232576.1772,2.07074,49.0251,Antwerp-Bruges,4.06,365.8
+Veenendaal,Netherlands,65075.3121,5.56102,52.02155,Rotterdam,1.66,124.4
+Freiburg im Breisgau,Germany,238077.8324,7.83334,48.01459,Antwerp-Bruges,6.24,571.6
+Carpi,Italy,53090.24004,10.88818,44.78588,Gioia Tauro,11.1,1048.5
+Włocławek,Poland,72909.54997,19.06425,52.65395,Hamburg,7.96,753.1
+Brăila,Romania,162040.7598,27.9598,45.27452,Piraeus,17.72,1383.2
+Córdoba,Spain,239915.6164,-4.77935,37.89694,Algeciras,3.45,294.1
+Dundee,United Kingdom,158327.4084,-2.93059,56.47295,Felixstowe,9.03,768.8
+Poissy,France,77129.40658,2.02948,48.93507,Antwerp-Bruges,4.34,376.5
+Ede,Netherlands,60472.54898,5.65041,52.04096,Rotterdam,1.74,130.9
+Bremerhaven,Germany,136384.015,8.5752,53.55976,Bremerhaven,0.14,5.1
+Modena,Italy,155015.1524,10.92122,44.64787,Gioia Tauro,10.95,1026.6
+Rybnik,Poland,65621.97923,18.53656,50.10535,Hamburg,8.53,834.0
+Constanța,Romania,273012.0947,28.63593,44.2208,Piraeus,17.35,1394.8
+Talavera de la Reina,Spain,57079.33347,-4.8261,39.96512,Valencia,5.37,458.5
+Lancaster,United Kingdom,94359.06772,-2.84748,54.05728,Felixstowe,5.37,474.5
+Paris,France,9328384.716,2.38226,48.80725,Antwerp-Bruges,3.99,360.8
+Helmond,Netherlands,91836.7953,5.66613,51.47452,Antwerp-Bruges,1.47,122.9
+Gütersloh,Germany,56912.67964,8.39193,51.90517,Hamburg,2.74,266.4
+Trento,Italy,91889.88983,11.12827,46.08468,Hamburg,11.27,1084.2
+Jastrzębie-Zdrój,Poland,55581.83397,18.60024,49.96208,Hamburg,8.67,862.8
+Fuengirola,Spain,88166.42568,-4.62894,36.54345,Algeciras,1.45,113.8
+Shrewsbury,United Kingdom,70622.11963,-2.76379,52.7125,Felixstowe,3.87,338.5
+Dunkirk,France,129033.1166,2.32584,51.02611,Antwerp-Bruges,2.0,173.4
+Leeuwarden,Netherlands,92943.521,5.80785,53.20149,Rotterdam,2.99,234.8
+Wiesbaden,Germany,416574.2254,8.24626,50.02892,Antwerp-Bruges,4.16,393.2
+Bolzano - Bozen,Italy,107197.2602,11.33114,46.48909,Hamburg,10.75,1033.2
+Gliwice,Poland,97806.8056,18.66928,50.29663,Hamburg,8.15,809.4
+Valladolid,Spain,309896.4594,-4.74095,41.62759,Valencia,6.57,555.4
+Hereford,United Kingdom,55483.21617,-2.71781,52.06038,Felixstowe,4.26,356.0
+Amiens,France,102612.0191,2.29756,49.89527,Antwerp-Bruges,3.1,274.6
+Nijmegen,Netherlands,190473.0072,5.81539,51.82763,Antwerp-Bruges,1.89,148.6
+Ritterhude,Germany,72629.22893,8.62337,53.18189,Bremerhaven,0.73,54.2
+Florence,Italy,711105.1703,11.16326,43.83605,Gioia Tauro,9.64,910.4
+Katowice,Poland,879406.2828,18.92425,50.28706,Hamburg,8.42,833.9
+Torremolinos,Spain,123789.4912,-4.49498,36.63135,Algeciras,1.62,127.9
+Bristol,United Kingdom,680809.3614,-2.58849,51.47935,Felixstowe,4.02,350.6
+Creil,France,79264.26204,2.47432,49.26703,Antwerp-Bruges,3.44,310.4
+Maastricht,Netherlands,124921.4978,5.69789,50.85296,Antwerp-Bruges,1.55,125.5
+Delmenhorst,Germany,60918.47723,8.64151,53.05458,Bremerhaven,1.14,82.6
+Bologna,Italy,456780.0897,11.34159,44.50538,Gioia Tauro,10.7,1000.4
+Częstochowa,Poland,163595.1619,19.10491,50.81451,Hamburg,8.69,893.1
+Málaga,Spain,522826.643,-4.42379,36.71928,Algeciras,1.76,139.8
+Runcorn,United Kingdom,115857.2332,-2.73501,53.3584,Felixstowe,4.5,398.8
+Bourges,France,53519.6783,2.39633,47.09079,Antwerp-Bruges,6.54,603.0
+Arnhem,Netherlands,194293.4087,5.88687,51.9585,Rotterdam,1.92,148.7
+Bielefeld,Germany,238107.4825,8.55496,52.02641,Hamburg,2.6,245.4
+Grosseto,Italy,52134.16841,11.10754,42.76905,Gioia Tauro,9.46,825.3
+Pabianice,Poland,61019.8848,19.35574,51.66304,Hamburg,7.59,769.0
+Palencia,Spain,57573.45775,-4.52456,42.00723,Valencia,7.08,599.7
+Preston,United Kingdom,235599.3088,-2.70224,53.74177,Felixstowe,4.88,429.3
+Le Mée-sur-Seine,France,87033.18016,2.65781,48.52835,Antwerp-Bruges,4.47,397.7
+Geleen,Netherlands,54936.87826,5.80042,50.97317,Antwerp-Bruges,1.42,126.3
+Bremen,Germany,425974.1066,8.82491,53.09374,Bremerhaven,0.88,69.0
+Vicenza,Italy,121637.2315,11.54674,45.54717,Gioia Tauro,12.21,1150.6
+Lodz,Poland,582587.3155,19.46537,51.76952,Hamburg,7.66,758.8
+Collado Villalba,Spain,76422.34947,-4.00344,40.63722,Valencia,4.7,407.0
+Wigan,United Kingdom,111295.956,-2.64591,53.54501,Felixstowe,4.63,404.4
+Lens,France,147144.7399,2.80969,50.43069,Antwerp-Bruges,2.09,173.9
+Apeldoorn,Netherlands,133570.3391,5.97654,52.22065,Rotterdam,2.16,161.9
+Rüsselsheim am Main,Germany,99119.41342,8.42511,49.98117,Antwerp-Bruges,4.22,411.9
+Ferrara,Italy,91054.87544,11.59594,44.86415,Gioia Tauro,11.15,1047.3
+Tychy,Poland,104630.7147,18.98656,50.11491,Hamburg,8.68,859.8
+Ciudad Real,Spain,54362.22398,-3.93228,38.9927,Valencia,4.08,364.6
+Warrington,United Kingdom,146241.5713,-2.59855,53.39276,Felixstowe,4.46,386.6
+Montévrain,France,193867.4997,2.7401,48.85931,Antwerp-Bruges,3.99,363.5
+Zwolle,Netherlands,120061.3355,6.09641,52.50772,Rotterdam,2.38,183.7
+Karlsruhe,Germany,299990.2123,8.39829,49.01088,Antwerp-Bruges,5.18,498.2
+Bassano del Grappa,Italy,53996.09343,11.75786,45.77862,Gioia Tauro,12.58,1161.2
+Sosnowiec,Poland,326519.9637,19.1486,50.28706,Hamburg,8.6,857.0
+Madrid,Spain,5680136.544,-3.68153,40.40394,Valencia,4.12,362.3
+Manchester,United Kingdom,2539906.697,-2.20874,53.48605,Felixstowe,4.65,374.1
+Arras,France,60902.50835,2.77793,50.28706,Antwerp-Bruges,2.17,186.3
+Heerlen,Netherlands,160134.6723,5.98768,50.90103,Antwerp-Bruges,1.66,143.0
+Mannheim,Germany,456548.837,8.46792,49.47611,Antwerp-Bruges,4.59,439.7
+Padua,Italy,244498.4849,11.9231,45.42696,Gioia Tauro,11.75,1121.8
+Płock,Poland,71015.82028,19.72233,52.5467,Hamburg,8.43,782.6
+Jaén,Spain,88442.72918,-3.78771,37.7908,Algeciras,3.92,336.4
+Telford,United Kingdom,135269.9919,-2.46249,52.68322,Felixstowe,3.56,314.2
+Meaux,France,52428.75032,2.8992,48.95876,Antwerp-Bruges,3.93,342.7
+Deventer,Netherlands,82272.58968,6.18368,52.26439,Rotterdam,2.35,178.2
+Frankfurt,Germany,916259.4734,8.67967,50.1388,Antwerp-Bruges,4.29,417.5
+Arezzo,Italy,51670.7977,11.86867,43.46135,Gioia Tauro,9.04,840.4
+Bełchatów,Poland,52131.23342,19.3759,51.36347,Hamburg,8.26,804.1
+Granada,Spain,362800.4477,-3.59574,37.16836,Algeciras,3.24,262.1
+Blackburn,United Kingdom,143625.3182,-2.4807,53.74669,Felixstowe,4.99,431.5
+Lille,France,907122.8382,3.13044,50.67044,Antwerp-Bruges,1.56,132.2
+Groningen,Netherlands,167781.9239,6.57363,53.2309,Bremerhaven,2.41,187.7
+Paderborn,Germany,100503.7056,8.76728,51.72111,Hamburg,2.96,284.8
+Mestre,Italy,160523.5272,12.24039,45.47319,Gioia Tauro,12.04,1143.6
+Bielsko-Biała,Poland,137192.2282,19.04657,49.8285,Hamburg,9.22,895.0
+Santander,Spain,206301.7725,-3.84182,43.44309,Barcelona,7.67,701.1
+Crewe,United Kingdom,68538.88402,-2.44984,53.09374,Felixstowe,4.01,351.6
+Douai,France,62395.99097,3.07877,50.3828,Antwerp-Bruges,2.03,171.6
+Almelo,Netherlands,74875.18968,6.63315,52.3568,Rotterdam,2.83,217.0
+Gießen,Germany,61143.28584,8.67934,50.59368,Antwerp-Bruges,4.09,386.4
+Forlì,Italy,92392.81612,12.04367,44.2208,Gioia Tauro,10.76,955.4
+Piotrków Trybunalski,Poland,50882.47537,19.6836,51.41174,Hamburg,8.02,818.5
+Valdemoro,Spain,67177.80025,-3.6863,40.19783,Valencia,4.17,366.4
+Bath,United Kingdom,83938.31967,-2.37727,51.37795,Felixstowe,4.1,346.7
+Perpignan,France,124596.3603,2.8884,42.70544,Barcelona,2.44,203.7
+Hengelo,Netherlands,91380.46031,6.80116,52.26925,Rotterdam,2.87,221.7
+Minden,Germany,54081.28783,8.91987,52.29357,Hamburg,2.23,212.6
+Treviso,Italy,85654.36922,12.24272,45.67211,Gioia Tauro,12.38,1166.5
+Olsztyn,Poland,148646.8853,20.48769,53.76146,Hamburg,10.14,952.1
+Burgos,Spain,151942.098,-3.67898,42.35144,Barcelona,6.66,599.6
+Oswaldtwistle,United Kingdom,63002.14171,-2.37765,53.77131,Felixstowe,4.91,434.4
+Clermont-Ferrand,France,203170.3359,3.09697,45.77399,Barcelona,6.79,629.0
+Enschede,Netherlands,129372.0396,6.88406,52.21579,Rotterdam,2.99,231.7
+Darmstadt,Germany,119982.1515,8.64431,49.88573,Antwerp-Bruges,4.4,430.2
+Venice,Italy,61950.69069,12.32992,45.44545,Gioia Tauro,12.15,1150.0
+Tomaszów Mazowiecki,Poland,53049.97661,20.01317,51.53733,Hamburg,8.29,842.2
+Rivas-Vaciamadrid,Spain,87129.51928,-3.52612,40.35015,Valencia,3.98,349.5
+Gloucester,United Kingdom,145717.5489,-2.2179,51.8567,Felixstowe,3.83,314.4
+Valenciennes,France,103438.6988,3.52009,50.35407,Antwerp-Bruges,2.03,168.9
+Heidelberg,Germany,178005.4855,8.67929,49.38103,Antwerp-Bruges,4.85,463.2
+Ravenna,Italy,90308.69948,12.1977,44.41353,Gioia Tauro,10.97,964.3
+Krakow,Poland,723413.2294,19.98155,50.04325,Hamburg,9.28,928.0
+Torrejón de Ardoz,Spain,155231.1962,-3.46462,40.45775,Valencia,4.18,363.3
+Kidderminster,United Kingdom,53096.01663,-2.2482,52.38599,Felixstowe,3.55,302.9
+Béziers,France,69194.29326,3.22399,43.35641,Barcelona,3.35,294.2
+Flensburg,Germany,75425.73314,9.43551,54.7903,Hamburg,1.84,165.1
+Pordenone,Italy,75038.12653,12.64672,45.96868,Hamburg,12.81,1250.4
+Warsaw,Poland,1999985.522,21.02194,52.20607,Hamburg,8.51,866.3
+Arganda del Rey,Spain,52549.05962,-3.45986,40.30982,Valencia,3.9,339.3
+Burnley,United Kingdom,139523.4493,-2.21986,53.82056,Felixstowe,4.93,401.5
+Reims,France,190718.1834,4.03029,49.26228,Antwerp-Bruges,3.53,290.8
+Pforzheim,Germany,90108.20447,8.70276,48.88772,Antwerp-Bruges,5.44,525.9
+Perugia,Italy,55989.22037,12.384,43.11028,Gioia Tauro,8.86,795.7
+Legionowo,Poland,75563.29943,20.93097,52.40059,Hamburg,8.69,878.7
+Alcalá de Henares,Spain,170471.6354,-3.37706,40.49363,Valencia,4.26,367.4
+Worcester,United Kingdom,101123.2585,-2.21503,52.19635,Felixstowe,3.57,309.6
+Montpellier,France,337380.5398,3.86133,43.62574,Barcelona,3.99,354.8
+Hanau,Germany,73158.92101,8.92109,50.11969,Antwerp-Bruges,4.44,438.0
+Rimini,Italy,126272.5112,12.55198,44.07412,Gioia Tauro,10.38,910.9
+Kielce,Poland,167459.9066,20.62281,50.87218,Hamburg,9.86,917.1
+Guadalajara,Spain,68272.12931,-3.1684,40.63722,Valencia,4.51,391.7
+Stoke-on-Trent,United Kingdom,329687.9011,-2.18671,53.02033,Felixstowe,3.8,332.5
+Troyes,France,101937.2899,4.06536,48.29716,Antwerp-Bruges,4.76,410.2
+Aschaffenburg,Germany,56227.72668,9.13372,49.97162,Antwerp-Bruges,4.59,451.7
+Lido di Ostia,Italy,82404.34994,12.26885,41.73597,Gioia Tauro,7.47,665.9
+Wołomin,Poland,64128.49512,21.24904,52.35193,Hamburg,8.68,888.6
+Roquetas de Mar,Spain,201233.2804,-2.80522,36.76327,Algeciras,3.73,308.4
+Birmingham,United Kingdom,2617210.513,-1.95983,52.51746,Felixstowe,3.15,270.5
+Saint-Étienne,France,180472.3108,4.39244,45.45469,Barcelona,7.16,668.7
+Sindelfingen,Germany,79745.47391,9.0048,48.69373,Antwerp-Bruges,5.87,569.0
+Acilia,Italy,133434.6426,12.33849,41.7676,Gioia Tauro,7.37,659.4
+Radom,Poland,176099.092,21.14272,51.40691,Hamburg,9.32,917.7
+Melilla,Spain,70883.93046,-2.94244,35.29051,Algeciras,3.87,316.0
+Cheltenham,United Kingdom,116045.7329,-2.08435,51.90032,Felixstowe,3.68,303.2
+Nimes,France,131979.3475,4.35303,43.84062,Barcelona,4.39,400.6
+Gerlingen,Germany,53949.09439,9.10232,48.81198,Antwerp-Bruges,5.71,562.3
+Rome,Italy,2476089.431,12.54937,41.87607,Gioia Tauro,7.11,637.9
+Nowy Sącz,Poland,71560.85833,20.70465,49.60458,Hamburg,10.69,1027.4
+Bilbao,Spain,729221.8602,-2.99709,43.29712,Barcelona,6.68,613.4
+Stafford,United Kingdom,67942.82828,-2.11152,52.80525,Felixstowe,3.5,304.0
+Lyon,France,1194741.478,4.81852,45.74157,Barcelona,6.88,646.6
+Tübingen,Germany,64930.01078,9.06364,48.52835,Antwerp-Bruges,6.22,590.2
+Terni,Italy,92462.94548,12.64204,42.56919,Gioia Tauro,7.98,727.0
+Tarnów,Poland,71927.47614,20.99706,50.02892,Hamburg,9.97,1007.5
+Vitoria-Gasteiz,Spain,252151.3009,-2.6811,42.85998,Barcelona,6.16,565.6
+Bournemouth,United Kingdom,382597.4271,-1.91183,50.73766,Felixstowe,3.95,338.3
+Avignon,France,78051.31654,4.83573,43.95504,Barcelona,4.95,445.0
+Stuttgart,Germany,909231.6837,9.21293,48.81672,Antwerp-Bruges,5.81,564.3
+Udine,Italy,101453.7458,13.23222,46.0754,Hamburg,12.06,1217.2
+Łomża,Poland,65067.82504,22.06026,53.1721,Hamburg,9.92,1001.9
+Almeria,Spain,176307.2141,-2.40637,36.86006,Algeciras,4.27,354.2
+Aberdeen,United Kingdom,193154.9967,-2.10754,57.13633,Felixstowe,10.15,891.9
+Dijon,France,219337.1238,5.05335,47.31533,Antwerp-Bruges,6.39,582.6
+Hanover,Germany,663997.3352,9.75827,52.37139,Hamburg,1.71,155.3
+Pesaro,Italy,58186.82703,12.90945,43.90926,Gioia Tauro,10.1,882.6
+Elk,Poland,57063.87574,22.35818,53.82056,Hamburg,10.82,1087.6
+Logroño,Spain,167010.1967,-2.44137,42.46482,Barcelona,5.22,475.0
+Cannock,United Kingdom,86018.16661,-2.01257,52.69298,Felixstowe,3.28,287.1
+Valence,France,71750.94016,4.89327,44.93784,Barcelona,5.8,549.1
+Kassel,Germany,238930.6166,9.48748,51.31522,Hamburg,3.15,308.9
+Anzio,Italy,86677.86908,12.61489,41.48319,Gioia Tauro,7.7,646.3
+Mielec,Poland,52872.33797,21.44097,50.29663,Hamburg,10.76,1050.8
+Donostia / San Sebastián,Spain,226983.4594,-1.95173,43.3108,Barcelona,6.3,514.2
+Redditch,United Kingdom,77018.16955,-1.92669,52.30329,Felixstowe,3.25,284.5
+Marignane,France,71452.07492,5.24727,43.42484,Barcelona,5.42,497.2
+Heilbronn,Germany,127946.5417,9.22361,49.18634,Antwerp-Bruges,5.23,514.4
+Albano Laziale,Italy,53226.83387,12.66274,41.72694,Gioia Tauro,7.26,638.3
+Siedlce,Poland,75112.92494,22.2765,52.1672,Hamburg,9.37,956.0
+Albacete,Spain,137537.8041,-1.86127,39.0016,Valencia,2.3,191.7
+Keighley,United Kingdom,58091.9112,-1.91592,53.86491,Felixstowe,4.51,379.5
+Marseille,France,911933.9794,5.41766,43.31536,Barcelona,5.76,519.8
+Hamburg,Germany,1733897.731,9.98158,53.58433,Hamburg,0.45,17.7
+Tivoli,Italy,54729.3495,12.78189,41.96199,Gioia Tauro,7.12,635.3
+Suwałki,Poland,67937.35359,22.93635,54.10666,Hamburg,11.37,1143.0
+Pamplona,Spain,302466.0817,-1.64542,42.81451,Barcelona,5.3,427.4
+Elland,United Kingdom,109356.9116,-1.87715,53.72207,Felixstowe,4.25,367.1
+Aix-en-Provence,France,81548.28777,5.44164,43.52526,Barcelona,5.43,498.8
+Reutlingen,Germany,111423.0539,9.20124,48.49058,Antwerp-Bruges,6.24,600.8
+Latina,Italy,82137.14956,12.89921,41.46515,Gioia Tauro,7.15,616.8
+Stalowa Wola,Poland,54024.58698,22.06087,50.5649,Hamburg,11.44,1138.3
+Swindon,United Kingdom,192422.1844,-1.78617,51.57599,Felixstowe,3.4,293.0
+Murcia,Spain,341431.024,-1.14509,37.98101,Valencia,2.67,220.1
+Grenoble,France,348043.2818,5.7441,45.18682,Barcelona,6.86,644.7
+Neumünster,Germany,64451.19596,9.98113,54.0869,Hamburg,0.97,79.1
+Trapani,Italy,68122.28301,12.5313,38.02527,Gioia Tauro,5.79,401.9
+Rzeszów,Poland,197420.1945,22.00976,50.02892,Hamburg,10.74,1086.0
+Huddersfield,United Kingdom,158949.0653,-1.79218,53.65318,Felixstowe,4.24,371.1
+Cartagena,Spain,111591.5806,-1.00328,37.62727,Valencia,3.15,266.1
+Besançon,France,98833.7836,6.00782,47.24044,Antwerp-Bruges,7.06,593.0
+Constance,Germany,63309.62607,9.18069,47.68095,Antwerp-Bruges,7.44,720.3
+Trieste,Italy,178655.4552,13.77747,45.63508,Hamburg,12.71,1277.4
+Białystok,Poland,299385.8308,23.14779,53.13781,Hamburg,10.44,1052.2
+Leeds,United Kingdom,1053955.19,-1.62961,53.79593,Felixstowe,4.07,353.5
+Zaragoza,Spain,624270.7076,-0.89103,41.65468,Barcelona,3.47,308.5
+Metz,France,139826.9955,6.18108,49.12466,Antwerp-Bruges,3.66,331.7
+Kiel,Germany,231582.1665,10.15034,54.32418,Hamburg,1.24,104.2
+Ancona,Italy,77488.2833,13.5071,43.59377,Gioia Tauro,9.43,809.7
+Lublin,Poland,304641.189,22.55732,51.23806,Hamburg,10.29,1032.8
+Fazeley,United Kingdom,77040.53584,-1.68355,52.62957,Felixstowe,3.07,258.1
+Elda,Spain,67604.50675,-0.78989,38.47732,Valencia,1.79,141.9
+Chambéry,France,83363.66576,5.89475,45.59343,Barcelona,7.49,703.1
+Fulda,Germany,53457.57154,9.69468,50.55531,Hamburg,4.05,404.4
+Palermo,Italy,666321.3296,13.33702,38.1404,Gioia Tauro,4.44,300.2
+Przemyśl,Poland,54621.57138,22.76717,49.79035,Hamburg,11.41,1162.9
+Wakefield,United Kingdom,307083.2724,-1.65501,53.70239,Felixstowe,4.08,352.1
+Elx / Elche,Spain,148322.5422,-0.70153,38.27332,Valencia,2.11,174.7
+Nancy,France,217202.5256,6.17843,48.67482,Antwerp-Bruges,4.45,388.3
+Hildesheim,Germany,89238.32689,9.9445,52.15263,Hamburg,1.85,177.5
+Bagheria,Italy,54616.1658,13.52198,38.08725,Gioia Tauro,4.18,280.8
+Zamość,Poland,58690.87446,23.25757,50.72805,Hamburg,11.57,1124.4
+Newcastle upon Tyne,United Kingdom,770369.1144,-1.55397,54.98925,Felixstowe,5.61,491.1
+Torrevieja,Spain,64071.7291,-0.67669,37.98986,Valencia,2.66,216.9
+Toulon,France,290434.0594,5.88586,43.11484,Barcelona,6.25,577.3
+Reinbek,Germany,107758.4204,10.22681,53.51553,Hamburg,0.62,26.4
+Pescara,Italy,212590.4343,14.20279,42.46935,Gioia Tauro,7.94,655.8
+Chełm,Poland,51035.57797,23.46868,51.14167,Hamburg,11.29,1106.9
+Burton-on-Trent,United Kingdom,66654.0737,-1.61963,52.81013,Felixstowe,3.37,275.5
+Alicante,Spain,400711.1455,-0.45839,38.36642,Valencia,2.14,177.4
+Annecy,France,123116.1264,6.11019,45.91766,Barcelona,7.95,758.7
+Göttingen,Germany,110420.3022,9.91934,51.53733,Hamburg,2.7,262.8
+Naples,Italy,2885079.239,14.27786,40.85283,Gioia Tauro,5.25,440.7
+Warwick,United Kingdom,93272.28875,-1.55324,52.2887,Felixstowe,2.95,253.5
+Valencia,Spain,1404208.285,-0.38078,39.45151,Valencia,0.3,9.2
+Annemasse,France,68464.00017,6.2488,46.19613,Barcelona,8.42,805.1
+Göppingen,Germany,74966.67288,9.62061,48.70792,Antwerp-Bruges,6.32,608.2
+Caserta,Italy,256085.8646,14.31185,41.0597,Gioia Tauro,5.33,458.9
+Coventry,United Kingdom,437237.4302,-1.50201,52.4298,Felixstowe,2.74,238.6
+Alcoi / Alcoy,Spain,53019.13978,-0.47718,38.69929,Valencia,1.51,111.6
+Montbéliard,France,54295.86861,6.83419,47.48396,Antwerp-Bruges,6.62,580.2
+Ravensburg,Germany,50771.10689,9.63542,47.80303,Hamburg,7.73,771.6
+San Giuseppe Vesuviano,Italy,79612.05163,14.4962,40.84384,Gioia Tauro,5.02,425.6
+Southampton,United Kingdom,374412.9982,-1.39047,50.90103,Felixstowe,3.4,293.0
+Benidorm,Spain,67654.11814,-0.12784,38.53944,Valencia,1.79,141.4
+Belfort,France,61318.86497,6.84807,47.65279,Antwerp-Bruges,6.55,565.4
+Würzburg,Germany,120858.0145,9.93934,49.79989,Hamburg,5.02,508.6
+Nola,Italy,66018.98984,14.53477,40.95174,Gioia Tauro,5.12,437.5
+Chester-le-Street,United Kingdom,86307.22153,-1.53743,54.88973,Felixstowe,5.29,470.0
+Castelló de la Plana,Spain,159759.6055,-0.05298,39.98301,Valencia,1.13,78.3
+Mulhouse,France,187082.4467,7.34394,47.77485,Antwerp-Bruges,6.38,596.1
+Lüneburg,Germany,57130.25577,10.41432,53.25541,Hamburg,0.63,54.1
+Gela,Italy,61362.47027,14.25563,37.0626,Gioia Tauro,4.38,266.6
+Darlington,United Kingdom,86204.16179,-1.55703,54.53716,Felixstowe,4.89,428.9
+Lleida,Spain,138520.6654,0.63961,41.61405,Barcelona,1.97,154.3
+Colmar,France,64536.60295,7.36618,48.09459,Antwerp-Bruges,5.96,556.0
+Lübeck,Germany,175411.2098,10.67957,53.88462,Hamburg,1.05,76.8
+Avellino,Italy,70955.83421,14.79108,40.91576,Gioia Tauro,5.11,419.0
+Sheffield,United Kingdom,665294.4492,-1.45426,53.38785,Felixstowe,3.65,310.9
+Reus,Spain,87459.55068,1.10689,41.14972,Barcelona,1.4,104.2
+Cannes,France,212940.8053,7.0544,43.58006,Barcelona,7.06,650.5
+Ulm,Germany,115346.1753,9.99494,48.39148,Antwerp-Bruges,6.75,653.8
+Salerno,Italy,128967.0216,14.77037,40.68212,Gioia Tauro,4.55,388.7
+Derby,United Kingdom,271898.7841,-1.47843,52.91763,Felixstowe,3.27,283.8
+Tarragona,Spain,152943.8722,1.22549,41.1137,Barcelona,1.28,96.0
+Nice,France,393492.4329,7.24054,43.70343,Barcelona,7.34,673.8
+Brunswick,Germany,192852.6854,10.51705,52.26925,Hamburg,2.06,197.3
+Battipaglia,Italy,59462.91972,14.96765,40.61029,Gioia Tauro,4.37,368.7
+Harrogate,United Kingdom,65245.69059,-1.53027,53.99805,Felixstowe,4.24,364.8
+Ibiza,Spain,53269.84918,1.43421,38.91264,Valencia,4.3,227.2
+Strasbourg,France,419245.0208,7.72638,48.57558,Antwerp-Bruges,5.28,491.1
+Schweinfurt,Germany,50947.1129,10.22162,50.04802,Hamburg,4.89,486.1
+Foggia,Italy,126645.0393,15.54813,41.45613,Gioia Tauro,5.89,466.0
+Nuneaton,United Kingdom,82632.75862,-1.47668,52.51746,Felixstowe,2.79,241.7
+Igualada,Spain,56924.3291,1.62544,41.58245,Barcelona,1.0,64.2
+Ajaccio,France,57574.6666,8.74885,41.93485,Barcelona,17.26,1060.9
+Wolfsburg,Germany,70340.39578,10.75042,52.42006,Hamburg,2.28,220.4
+Catania,Italy,455595.1543,15.07156,37.53011,Gioia Tauro,2.87,163.5
+Barnsley,United Kingdom,100382.288,-1.47861,53.55484,Felixstowe,3.72,323.3
+Vilanova i la Geltrú,Spain,64594.7362,1.72706,41.22627,Barcelona,0.74,43.9
+Kempten (Allgäu),Germany,61827.04329,10.31598,47.7232,Hamburg,7.43,767.8
+Acireale,Italy,73897.79794,15.13814,37.60077,Gioia Tauro,2.77,154.6
+Chesterfield,United Kingdom,90040.73898,-1.41691,53.2505,Felixstowe,3.62,293.4
+Manresa,Spain,63541.62288,1.83119,41.72694,Barcelona,1.0,66.2
+Schwerin,Germany,50235.93414,11.38797,53.64335,Hamburg,1.67,124.9
+Syracuse,Italy,95712.13148,15.27475,37.08904,Gioia Tauro,3.7,229.8
+Hoyland,United Kingdom,90420.12099,-1.37396,53.5057,Felixstowe,3.63,317.3
+Sant Andreu de la Barca,Spain,55405.96623,1.96929,41.43809,Barcelona,0.55,25.2
+Erfurt,Germany,174627.6362,11.03696,50.98761,Hamburg,4.15,390.0
+Messina,Italy,178836.2622,15.55054,38.19356,Gioia Tauro,1.76,73.8
+Eastleigh,United Kingdom,82105.42462,-1.37195,50.97798,Felixstowe,3.21,282.4
+Castelldefels,Spain,74153.16134,1.98426,41.28483,Barcelona,0.42,20.1
+Bamberg,Germany,72467.31076,10.8918,49.90481,Hamburg,5.39,545.1
+Reggio Calabria,Italy,128269.8638,15.6615,38.11382,Gioia Tauro,1.12,72.5
+Sunderland,United Kingdom,180833.2133,-1.40387,54.90963,Felixstowe,5.42,472.5
+Terrassa,Spain,261365.7794,2.01334,41.55538,Barcelona,0.64,36.6
+Nuremberg,Germany,645852.529,11.03556,49.44283,Hamburg,5.94,605.1
+Barletta,Italy,92130.52382,16.27895,41.32088,Gioia Tauro,5.75,444.7
+Pontefract,United Kingdom,89280.78382,-1.3713,53.71223,Felixstowe,3.79,330.4
+Sant Vicenç dels Horts,Spain,67478.02915,2.00439,41.40202,Barcelona,0.4,19.2
+Erlangen,Germany,113281.6764,11.00426,49.5903,Hamburg,5.81,595.0
+Andria,Italy,96784.34591,16.30132,41.23528,Gioia Tauro,5.65,438.9
+Hinckley,United Kingdom,60467.94955,-1.35495,52.55644,Felixstowe,2.78,236.8
+Sant Boi de Llobregat,Spain,212194.9223,2.02685,41.32989,Barcelona,0.43,13.5
+Augsburg,Germany,338257.1073,10.8979,48.35374,Hamburg,7.27,743.3
+Trani,Italy,53666.0094,16.41037,41.28483,Gioia Tauro,5.64,433.2
+Nottingham,United Kingdom,650703.1974,-1.1508,52.97141,Felixstowe,3.08,255.6
+Barcelona,Spain,3908361.824,2.20818,41.44711,Barcelona,0.44,19.7
+Magdeburg,Germany,216131.3311,11.63288,52.12834,Hamburg,2.81,279.4
+Bisceglie,Italy,53132.35662,16.49404,41.24879,Gioia Tauro,5.61,425.2
+Middlesbrough,United Kingdom,351680.2514,-1.24209,54.57187,Felixstowe,4.87,430.0
+Granollers,Spain,101153.773,2.28926,41.60502,Barcelona,0.75,42.3
+Rostock,Germany,160700.3101,12.09192,54.12641,Hamburg,2.22,196.0
+Cosenza,Italy,84898.15251,16.23816,39.32668,Gioia Tauro,1.96,137.9
+Oxford,United Kingdom,168021.497,-1.25875,51.75015,Felixstowe,2.9,244.8
+Mataró,Spain,137625.3535,2.43709,41.53733,Barcelona,0.73,41.3
+Jena,Germany,82103.50289,11.59251,50.92026,Hamburg,4.54,465.4
+Molfetta,Italy,54998.66358,16.60006,41.20375,Gioia Tauro,5.45,415.6
+Rugby,United Kingdom,74134.36893,-1.27004,52.38113,Felixstowe,2.54,219.8
+Palma de Mallorca,Spain,467467.9937,2.65054,39.56305,Barcelona,7.58,270.5
+Bayreuth,Germany,61756.91488,11.58182,49.95253,Hamburg,5.42,561.0
+Altamura,Italy,58438.63723,16.54054,40.82586,Gioia Tauro,4.99,353.7
+Kirkby-in-Ashfield,United Kingdom,70993.8764,-1.27007,53.12312,Felixstowe,3.33,274.2
+Girona,Spain,122502.0998,2.81385,41.98913,Barcelona,1.53,114.1
+Ingolstadt,Germany,88782.30244,11.41388,48.7694,Hamburg,6.83,701.0
+Bari,Italy,311280.0539,16.84014,41.1047,Gioia Tauro,5.26,392.1
+Portsmouth,United Kingdom,480316.9241,-1.10353,50.84334,Felixstowe,3.24,275.7
+Halle (Saale),Germany,207111.9285,11.95508,51.46969,Hamburg,3.68,368.5
+Taranto,Italy,136105.0941,17.23137,40.47569,Gioia Tauro,4.52,334.1
+Loughborough,United Kingdom,63850.07876,-1.22257,52.77107,Felixstowe,2.95,257.7
+Munich,Germany,1827704.046,11.55643,48.14167,Hamburg,7.55,774.8
+Brindisi,Italy,73015.26948,17.95851,40.65069,Gioia Tauro,5.54,403.3
+Hartlepool,United Kingdom,87343.30678,-1.22312,54.68103,Felixstowe,5.11,446.1
+Gera,Germany,77224.54254,12.08294,50.86738,Hamburg,4.56,449.5
+Lecce,Italy,82977.08491,18.1681,40.35015,Gioia Tauro,5.93,437.6
+Mansfield,United Kingdom,86003.78525,-1.1882,53.1525,Felixstowe,3.3,275.8
+Leipzig,Germany,585334.7999,12.36696,51.32969,Hamburg,3.93,392.6
+Leicester,United Kingdom,527123.7445,-1.1248,52.63932,Felixstowe,2.7,220.7
+Regensburg,Germany,150501.7597,12.09193,49.01562,Hamburg,6.74,690.6
+Doncaster,United Kingdom,125304.7537,-1.13264,53.52535,Felixstowe,3.45,302.5
+Landshut,Germany,76205.77891,12.13717,48.54724,Hamburg,7.33,751.9
+Basingstoke,United Kingdom,109991.1523,-1.09655,51.26699,Felixstowe,2.8,245.1
+Zwickau,Germany,61730.44628,12.48017,50.69924,Hamburg,4.95,484.6
+York,United Kingdom,151629.2888,-1.09156,53.96845,Felixstowe,4.21,368.4
+Rosenheim,Germany,70132.97928,12.10462,47.85472,Hamburg,8.14,842.4
+Reading,United Kingdom,273286.6547,-0.9719,51.44554,Felixstowe,2.67,228.3
+Potsdam,Germany,173762.3615,13.07579,52.39086,Hamburg,3.23,296.0
+Northampton,United Kingdom,219781.2778,-0.90819,52.23523,Felixstowe,2.37,199.2
+Chemnitz,Germany,241511.2661,12.90166,50.83373,Hamburg,4.74,484.2
+Milton Keynes,United Kingdom,205060.0899,-0.7704,52.03126,Felixstowe,2.4,210.1
+Berlin,Germany,3549996.965,13.40581,52.51746,Hamburg,3.22,300.7
+Aylesbury,United Kingdom,70635.14729,-0.81526,51.81795,Felixstowe,2.3,195.2
+Hennigsdorf,Germany,52195.35533,13.20351,52.63444,Hamburg,2.9,278.0
+Camberley,United Kingdom,108987.7376,-0.74267,51.31522,Felixstowe,2.53,220.9
+Dresden,Germany,566233.1883,13.75386,51.05499,Hamburg,4.85,499.3
+Aldershot,United Kingdom,57655.8582,-0.72871,51.25734,Felixstowe,2.64,220.5
+Cottbus - Chóśebuz,Germany,72345.6289,14.33086,51.75015,Hamburg,4.5,445.8
+High Wycombe,United Kingdom,108857.5595,-0.74596,51.63402,Felixstowe,2.34,201.2
+Bracknell,United Kingdom,72829.05761,-0.75706,51.41174,Felixstowe,2.54,220.3
+Maidenhead,United Kingdom,58261.36522,-0.73139,51.52283,Felixstowe,2.4,201.4
+Bognor Regis,United Kingdom,63584.68961,-0.6709,50.78568,Felixstowe,3.06,253.1
+Burton Latimer,United Kingdom,64104.34607,-0.71322,52.39086,Felixstowe,2.09,177.4
+Corby,United Kingdom,57188.14939,-0.69386,52.49311,Felixstowe,2.16,182.0
+Scunthorpe,United Kingdom,81516.73783,-0.64281,53.57942,Felixstowe,3.62,308.5
+Slough,United Kingdom,167685.1294,-0.61057,51.518,Felixstowe,2.32,200.0
+Walton-on-Thames,United Kingdom,200166.0816,-0.48868,51.35382,Felixstowe,2.4,200.7
+Guildford,United Kingdom,72017.41856,-0.56819,51.2477,Felixstowe,2.38,205.5
+Lincoln,United Kingdom,115774.9864,-0.57064,53.22109,Felixstowe,3.09,262.9
+London,United Kingdom,10408332.24,-0.12752,51.53733,Felixstowe,1.99,137.9
+Littlehampton,United Kingdom,54010.60312,-0.51165,50.80971,Felixstowe,2.84,239.9
+Luton,United Kingdom,268352.5163,-0.45192,51.89547,Felixstowe,2.08,179.1
+Bedford,United Kingdom,107555.661,-0.46024,52.13806,Felixstowe,2.22,165.6
+Hemel Hempstead,United Kingdom,86406.14356,-0.47122,51.75499,Felixstowe,1.96,166.3
+Brighton,United Kingdom,456337.3137,-0.25923,50.83373,Felixstowe,2.68,228.9
+Hull,United Kingdom,321006.3242,-0.3466,53.77131,Felixstowe,4.09,342.4
+St Albans,United Kingdom,85971.13385,-0.31637,51.75015,Felixstowe,1.83,155.2
+Peterborough,United Kingdom,189937.2878,-0.252,52.57594,Felixstowe,2.06,175.4
+Crawley,United Kingdom,106963.9818,-0.18017,51.1224,Felixstowe,2.15,184.2
+Stevenage,United Kingdom,92863.88964,-0.18213,51.90032,Felixstowe,1.86,139.3
+Reigate,United Kingdom,60772.14614,-0.18712,51.22841,Felixstowe,2.11,176.0
+Grimsby,United Kingdom,126609.3913,-0.076,53.55484,Felixstowe,3.51,253.2
+Harlow,United Kingdom,80506.88479,0.101,51.76952,Felixstowe,1.49,114.5
+Cambridge,United Kingdom,136063.8615,0.1355,52.21093,Felixstowe,1.4,114.3
+Royal Tunbridge Wells,United Kingdom,64556.6889,0.26032,51.14167,Felixstowe,2.0,166.8
+Grays,United Kingdom,198471.3072,0.30843,51.46969,Felixstowe,1.48,122.9
+Polegate,United Kingdom,117257.4312,0.29896,50.79529,Felixstowe,2.8,220.0
+Basildon,United Kingdom,104556.051,0.4633,51.57116,Felixstowe,1.27,107.2
+Chelmsford,United Kingdom,106498.992,0.47779,51.73079,Felixstowe,1.01,82.9
+Gillingham,United Kingdom,247682.0877,0.55578,51.37312,Felixstowe,1.9,152.6
+Maidstone,United Kingdom,105233.4047,0.52153,51.26699,Felixstowe,1.93,161.0
+Hastings,United Kingdom,90625.53051,0.56525,50.86738,Felixstowe,2.6,211.7
+Southend-on-Sea,United Kingdom,265743.9698,0.6244,51.56633,Felixstowe,1.26,104.3
+Colchester,United Kingdom,120250.9589,0.89022,51.88578,Felixstowe,0.69,48.9
+Ashford,United Kingdom,73929.37105,0.86773,51.14167,Felixstowe,2.33,193.1
+Canterbury,United Kingdom,51596.01209,1.0834,51.28145,Felixstowe,2.32,196.3
+Ipswich,United Kingdom,171225.5657,1.19665,52.06038,Felixstowe,0.32,19.2
+Folkestone,United Kingdom,52312.787,1.16717,51.08387,Felixstowe,2.5,212.6
+Norwich,United Kingdom,188535.3058,1.2885,52.6442,Felixstowe,1.47,97.0
+Margate,United Kingdom,128755.5711,1.41269,51.36347,Felixstowe,2.65,223.5
+Great Yarmouth,United Kingdom,65392.04352,1.71678,52.59544,Felixstowe,1.49,94.4
+Lowestoft,United Kingdom,69920.40887,1.73418,52.47362,Felixstowe,1.25,79.9
