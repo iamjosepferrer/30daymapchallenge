@@ -4,6 +4,7 @@ One map a day about Europe, each built around a clear finding.
 
 - [Day 1, Points: half of Europe's city dwellers live in just 80 urban areas](#day-1-points)
 - [Day 2, Lines: Europe's biggest port is the nearest one for under 4% of city dwellers](#day-2-lines)
+- [Day 3, Polygons: half of Europe's tourist nights happen in just 102 of its 1,247 regions](#day-3-polygons)
 - [Data sources and licenses](#data-sources-and-licenses)
 - [How to recreate the maps](#how-to-recreate-the-maps)
 
@@ -100,6 +101,50 @@ TEU means twenty-foot equivalent unit, the standard measure of container volume.
 
 ---
 
+## Day 3: Polygons
+
+![Half of Europe's tourist nights happen in just 102 of its 1,247 regions](day03_polygons/day03_polygons.png)
+
+### What it shows
+
+Europe's registered tourist accommodation recorded 3.28 billion nights in 2025. Half of them happened in just 102 of 1,247 regions, which are home to 24% of residents. A quarter happened in only 28 regions. Tourism pressure is not a European problem but a very local one, and the map shows where.
+
+| Rank | Region | Nights in 2025 (million) |
+| ---: | --- | ---: |
+| 1 | Rome | 56.0 |
+| 2 | Mallorca | 55.0 |
+| 3 | Paris | 47.3 |
+| 4 | Barcelona | 41.3 |
+| 5 | Venice | 38.6 |
+| 6 | South Tyrol (Bolzano) | 38.2 |
+| 7 | Tenerife | 35.3 |
+| 8 | Alicante | 34.0 |
+| 9 | Madrid | 33.0 |
+| 10 | Málaga | 30.6 |
+
+Paris alone hosts more nights than the whole of Ireland (42 million), and Mallorca more than all of Belgium (46 million). Of the 28 regions that host a quarter of all nights, 9 are in Spain and 6 in Italy.
+
+### How it was made
+
+1. **Get nights spent** from Eurostat's `tour_occ_nin3` table for 2025: all guests in hotels, holiday and short-stay accommodation and campsites, for NUTS 3 regions.
+2. **Rank the regions** by nights and add up their shares until they reach a quarter and then half of the total.
+3. **Join to boundaries** from GISCO's NUTS 2024 file at 1:10 million. All 1,247 regions matched.
+4. **Draw the map** in EPSG:3035 at the same scale as Day 2, with the 28 quarter regions in blue (18.4 million nights or more), the next 74 in light blue (7.2 to 18.1 million), and every other region unfilled (under 7.2 million). Five regions are outlined and labelled with their nights: Rome, Mallorca, Paris, Barcelona and Venice. The city of Paris is only a few pixels wide at this scale, so it is also shown in a magnifying lens. The Canary Islands and Madeira are in insets at the same scale, because Tenerife and Gran Canaria rank in the top 28 and Madeira 71st. No other overseas region makes the top 102: the Azores rank 273rd and France's overseas regions 445th or lower.
+
+### Limitations
+
+- **Registered accommodation only:** unregistered rentals, and stays with friends and family, are missing, so real tourist numbers are higher in some places.
+- **All overnight guests count:** "tourists" includes domestic guests and business travellers, which is part of why Paris, Madrid and Berlin rank high.
+- **Regions differ in size:** NUTS 3 regions range from German districts to large Nordic areas. A big region can reach the top half with moderate pressure, and a small one needs intense pressure, so this map shows where nights concentrate, not how crowded a place feels. The earlier version of this map, in the repo's history, showed nights per resident instead.
+- **No data:** the UK, Turkey, Bosnia and Herzegovina, Kosovo, North Macedonia, Moldova, Ukraine, Belarus and Russia are not covered for 2025.
+- **Svalbard left out:** Svalbard and Jan Mayen (0.2 million nights) have no boundaries in the NUTS 2024 file, so the 1,247 regions exclude them. This changes no figure on the map.
+- **Not drawn:** the Azores, France's overseas regions, Madeira's uninhabited Savage Islands, Iceland and the far north are counted but not drawn.
+- **Region names:** NUTS 3 regions are provinces, islands or districts, so the labels say "province" where it matters: Barcelona, Rome and Venice mean their provinces, while Paris is the city itself.
+
+**Files:** [`day03_polygons.py`](day03_polygons/day03_polygons.py) does everything, and [`results.csv`](day03_polygons/results.csv) lists all 1,247 regions with their rank, share and group.
+
+---
+
 ## Data sources and licenses
 
 | Dataset | Used for | Where it comes from | License |
@@ -109,6 +154,8 @@ TEU means twenty-foot equivalent unit, the standard measure of container volume.
 | [Natural Earth](https://www.naturalearthdata.com/) | Land, country boundaries (Days 1, 2) | GitHub mirror of Natural Earth | Public domain |
 | [OSRM](https://project-osrm.org/) on [OpenStreetMap](https://www.openstreetmap.org/copyright) | Driving times and routes (Day 2) | OSRM's free demo server | Data: ODbL, © OpenStreetMap contributors |
 | [List of busiest ports in Europe](https://en.wikipedia.org/wiki/List_of_busiest_ports_in_Europe) | Top 10 ports and TEU (Day 2) | Wikipedia, read in November 2026 | CC BY-SA |
+| [Eurostat](https://ec.europa.eu/eurostat/data/database) `tour_occ_nin3`, `demo_r_pjanaggr3` | Nights spent and residents (Day 3) | Eurostat's statistics API | Free reuse with credit to Eurostat |
+| [GISCO NUTS 2024](https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units/territorial-units-statistics) | Regional boundaries (Day 3) | Eurostat's GISCO service | © EuroGeographics for the administrative boundaries. Free for non-commercial use |
 
 **Citations**
 
