@@ -1,4 +1,4 @@
-"""Day 1, Points: half of Europe's city dwellers live in just 80 cities."""
+"""Day 1, Points: half of Europe's city dwellers live in just 80 urban areas."""
 import sys
 from pathlib import Path
 
@@ -83,7 +83,7 @@ for name, side in LABELS.items():
 
 # Headline, dek and byline
 svg.append(text(60, 96, "Half of Europe's city dwellers", 58, 800))
-svg.append(text(60, 158, f"live in just {n_top} cities", 58, 800))
+svg.append(text(60, 158, f"live in just {n_top} urban areas", 58, 800))
 svg.append(text(60, 204, f"People living in urban centres, 2025. Blue marks the {n_top} largest, which hold", 26, 400, C["ink2"]))
 svg.append(text(60, 236, f"as many people as the other {len(cities) - n_top:,} centres combined.", 26, 400, C["ink2"]))
 svg.append(byline(272))
@@ -92,7 +92,7 @@ svg.append(byline(272))
 BAR_X, BAR_W, BAR_Y, BAR_H, GAP = 60, 960, 324, 30, 3
 svg.append(text(BAR_X, 314, f"Where Europe's roughly {round(europe_total / 1e8) * 100} million people live", 21, 700))
 segments = [
-    (top_pop, C["blue"], f"{n_top} largest cities"),
+    (top_pop, C["blue"], f"{n_top} largest urban areas"),
     (other_pop, C["ctx"], f"Other {len(cities) - n_top:,} urban centres"),
     (rest_pop, C["page"], "Everyone else: smaller towns, suburbs and villages"),
 ]
@@ -109,6 +109,20 @@ for key_x, population, label in [(92, 10e6, "10M"), (158, 1e6, "1M"), (204, 1e5,
     r = radius(population)
     svg.append(f'<circle cx="{key_x}" cy="{606 - r:.1f}" r="{r:.1f}" fill="none" stroke="{C["ink2"]}" stroke-width="1.3"/>')
     svg.append(text(key_x, 634, label, 20, 500, C["ink2"], "middle"))
+
+# One handwritten note, in the open space above the British Isles
+paris = cities[cities.name == "Paris"].iloc[0]
+note_x, note_y = 148, 488
+svg.append(
+    f'<text class="note" x="{note_x}" y="{note_y}" font-size="27" fill="{C["ink"]}">'
+    f'<tspan x="{note_x}">Paris here means its whole dense area,</tspan>'
+    f'<tspan x="{note_x}" dy="33">{paris["pop"] / 1e6:.1f}M people, not the city\'s 2.1M</tspan></text>'
+)
+# Arrow through the open North Sea, landing on the top of the Paris circle
+x0, y0 = note_x + 185, note_y + 46
+x1, y1 = paris.px + 1, paris.py - radius(paris["pop"]) - 4
+svg.append(f'<path d="M{x0} {y0} C {x0} {y0 + 160}, {x1 + 6} {y1 - 110}, {x1:.1f} {y1:.1f}" fill="none" stroke="{C["ink"]}" stroke-width="2" stroke-linecap="round"/>')
+svg.append(f'<path d="M{x1 - 7:.1f} {y1 - 11:.1f} L{x1:.1f} {y1:.1f} L{x1 + 7:.1f} {y1 - 11:.1f}" fill="none" stroke="{C["ink"]}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>')
 
 # Source
 svg.append(text(60, 1250, "Source: GHS-UCDB R2024A V1.2 and GHS-POP R2023A (European Commission, JRC), 2025 estimates.", 19, 400, C["muted"]))

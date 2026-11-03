@@ -2,7 +2,7 @@
 
 One map a day about Europe, each built around a clear finding.
 
-- [Day 1, Points: half of Europe's city dwellers live in just 80 cities](#day-1-points)
+- [Day 1, Points: half of Europe's city dwellers live in just 80 urban areas](#day-1-points)
 - [Day 2, Lines: Europe's biggest port is the nearest one for under 4% of city dwellers](#day-2-lines)
 - [Data sources and licenses](#data-sources-and-licenses)
 - [How to recreate the maps](#how-to-recreate-the-maps)
@@ -13,7 +13,7 @@ One map a day about Europe, each built around a clear finding.
 
 ## Day 1: Points
 
-![Half of Europe's city dwellers live in just 80 cities](day01_points/day01_points.png)
+![Half of Europe's city dwellers live in just 80 urban areas](day01_points/day01_points.png)
 
 ### What it shows
 
@@ -30,7 +30,7 @@ The map rounds these to "about 20%" and "about 60%", because the total depends o
 
 ### What counts as a city here
 
-The map uses urban centres as defined by the European Commission's Joint Research Centre (JRC): contiguous 1 km grid cells with at least 1,500 inhabitants per km² and at least 50,000 people in total. This follows where people actually live, not municipal borders. For example, Essen, Duisburg, Bochum and seven neighbouring Ruhr towns count as one urban centre of 2.7 million.
+The map uses urban centres as defined by the European Commission's Joint Research Centre (JRC): contiguous 1 km grid cells with at least 1,500 inhabitants per km² and at least 50,000 people in total. This follows where people actually live, not municipal borders. For example, Essen, Duisburg, Bochum and seven neighbouring Ruhr towns count as one urban centre of 2.7 million. In the same way, Paris on the map is its whole dense area of 9.3 million people, while the city of Paris itself has about 2.1 million.
 
 ### How it was made
 
