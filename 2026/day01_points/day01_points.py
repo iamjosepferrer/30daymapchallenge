@@ -69,10 +69,11 @@ for _, city in on_map[on_map.top].iterrows():
     svg.append(f'<circle cx="{city.px:.1f}" cy="{city.py:.1f}" r="{radius(city["pop"]):.2f}" fill="{C["blue"]}" stroke="{C["page"]}" stroke-width="1"/>')
 svg.append("</g>")
 
-# Direct labels with values
+# Direct labels with values, and a dark outline on each labelled circle
 for name, side in LABELS.items():
     city = cities[cities.name == name].iloc[0]
     r = radius(city["pop"])
+    svg.append(f'<circle cx="{city.px:.1f}" cy="{city.py:.1f}" r="{r:.2f}" fill="none" stroke="{C["ink"]}" stroke-width="2"/>')
     x, y, anchor = {
         "t": (city.px, city.py - r - 8, "middle"),
         "b": (city.px, city.py + r + 24, "middle"),
