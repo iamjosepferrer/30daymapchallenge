@@ -9,6 +9,7 @@ from pathlib import Path
 import geopandas as gpd
 import numpy as np
 import requests
+from PIL import ImageFont
 from playwright.async_api import async_playwright
 from shapely.geometry import box
 
@@ -152,6 +153,33 @@ def fade_defs():
 
 def byline(y):
     return text(60, y, "Map by Josep Ferrer, @iamjosepferrer on LinkedIn and X, databites.tech", 20, 600, C["ink2"])
+
+
+def footer(items, x, y, width, size, line_height):
+    """Footer notes: a bold label, then text wrapped to the given width."""
+    for name, url in FONT_URLS.items():
+        _download(url, FONT_DIR / name)
+    regular = ImageFont.truetype(str(FONT_DIR / "Gabarito.ttf"), size)
+    bold = ImageFont.truetype(str(FONT_DIR / "Gabarito.ttf"), size)
+    bold.set_variation_by_axes([700])
+    out = []
+    for label, body in items:
+        room = width - bold.getlength(label + " ")
+        line, lines = "", []
+        for word in body.split(" "):
+            candidate = f"{line} {word}".strip()
+            if regular.getlength(candidate) <= room:
+                line = candidate
+            else:
+                lines.append(line)
+                line, room = word, width
+        lines.append(line)
+        for row, words in enumerate(lines):
+            words = html.escape(words, quote=False)
+            first = f'<tspan font-weight="700" fill="{C["ink2"]}">{label}</tspan> ' if row == 0 else ""
+            out.append(f'<text x="{x}" y="{y}" font-size="{size}" fill="{C["muted"]}">{first}{words}</text>')
+            y += line_height
+    return out
 
 
 def page(body):

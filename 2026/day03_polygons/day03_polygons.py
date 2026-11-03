@@ -10,35 +10,8 @@ import requests
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parent / "common"))
 
-from style import C, DATA_DIR, FONT_DIR, FONT_URLS, Frame, _download, byline, countries, fade_defs, geom_path, page, save_png, text  # noqa: E402
-from PIL import ImageFont  # noqa: E402
+from style import C, DATA_DIR, Frame, byline, countries, fade_defs, footer, geom_path, page, save_png, text  # noqa: E402
 
-
-def footer(items, x, y, width, size, line_height):
-    """Footer notes: a bold label, then text wrapped to the given width."""
-    for name, url in FONT_URLS.items():
-        _download(url, FONT_DIR / name)
-    regular = ImageFont.truetype(str(FONT_DIR / "Gabarito.ttf"), size)
-    bold = ImageFont.truetype(str(FONT_DIR / "Gabarito.ttf"), size)
-    bold.set_variation_by_axes([700])
-    out = []
-    for label, body in items:
-        room = width - bold.getlength(label + " ")
-        line, lines = "", []
-        for word in body.split(" "):
-            candidate = f"{line} {word}".strip()
-            if regular.getlength(candidate) <= room:
-                line = candidate
-            else:
-                lines.append(line)
-                line, room = word, width
-        lines.append(line)
-        for row, words in enumerate(lines):
-            words = words.replace("&", "&amp;")
-            first = f'<tspan font-weight="700" fill="{C["ink2"]}">{label}</tspan> ' if row == 0 else ""
-            out.append(f'<text x="{x}" y="{y}" font-size="{size}" fill="{C["muted"]}">{first}{words}</text>')
-            y += line_height
-    return out
 
 YEAR = "2025"
 EUROSTAT = "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data"

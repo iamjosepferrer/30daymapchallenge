@@ -7,7 +7,7 @@ sys.path.insert(0, str(HERE.parent / "common"))
 
 import pandas as pd  # noqa: E402
 
-from style import C, Frame, byline, fade_defs, land_paths, load_urban_centres, page, save_png, text  # noqa: E402
+from style import C, Frame, byline, fade_defs, footer, land_paths, load_urban_centres, page, save_png, text  # noqa: E402
 
 LAND_WITH_DATA = {
     "United Kingdom", "Ireland", "France", "Spain", "Portugal", "Germany", "Netherlands",
@@ -124,10 +124,13 @@ x1, y1 = paris.px + 1, paris.py - radius(paris["pop"]) - 4
 svg.append(f'<path d="M{x0} {y0} C {x0} {y0 + 160}, {x1 + 6} {y1 - 110}, {x1:.1f} {y1:.1f}" fill="none" stroke="{C["ink"]}" stroke-width="2" stroke-linecap="round"/>')
 svg.append(f'<path d="M{x1 - 7:.1f} {y1 - 11:.1f} L{x1:.1f} {y1:.1f} L{x1 + 7:.1f} {y1 - 11:.1f}" fill="none" stroke="{C["ink"]}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>')
 
-# Source
-svg.append(text(60, 1250, "Source: GHS-UCDB R2024A V1.2 and GHS-POP R2023A (European Commission, JRC), 2025 estimates.", 19, 400, C["muted"]))
-svg.append(text(60, 1273, "Urban centres have 50,000+ people. Europe here means west of 60°E, without Turkey or Cyprus. The Canaries,", 19, 400, C["muted"]))
-svg.append(text(60, 1296, "Madeira and Russia's outer edges are counted but off the map. Base: Natural Earth.", 19, 400, C["muted"]))
+# Footer: method, source and comments
+FOOTER = [
+    ("Method:", f"rank Europe's {len(cities):,} urban centres by population and add them up from the top: the first {n_top} hold half of their people. An urban centre is a dense area of 50,000+ people, whatever the municipal borders."),
+    ("Source:", "GHS-UCDB R2024A V1.2 and GHS-POP R2023A (European Commission, JRC), 2025 estimates. Base: Natural Earth."),
+    ("Comments:", "the bar compares with all of Europe's roughly 700 million people. Europe means west of 60°E, without Turkey or Cyprus, which are not in the dataset. The Canaries, Madeira and Russia's outer edges are counted but off the map."),
+]
+svg += footer(FOOTER, x=60, y=1251, width=960, size=17, line_height=20)
 
 save_png(page("".join(svg)), HERE / "day01_points.png")
 cities[["rank", "name", "cnt", "pop", "lon", "lat", "cum_share", "top"]].to_csv(HERE / "results.csv", index=False)

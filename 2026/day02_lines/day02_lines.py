@@ -17,7 +17,7 @@ from shapely.prepared import prep
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parent / "common"))
 
-from style import C, Frame, byline, countries, fade_defs, land_paths, load_urban_centres, page, save_png, text  # noqa: E402
+from style import C, Frame, byline, countries, fade_defs, footer, land_paths, load_urban_centres, page, save_png, text  # noqa: E402
 
 CACHE = HERE / "cache"
 ROUTES = CACHE / "routes"
@@ -232,7 +232,7 @@ def pct(value):
 svg.append(text(CHART_X, 288, "Containers vs people", 21, 700))
 svg.append(text(CHART_X, 310, "Share across the top 10 ports", 15, 400, C["ink2"]))
 svg.append(text(CHART_X, 330, "Upper bar: containers (TEU)", 15, 400, C["ink2"]))
-svg.append(text(CHART_X, 349, "Lower bar: city dwellers nearest", 15, 400, C["ink2"]))
+svg.append(text(CHART_X, 349, "Lower bar: people nearest", 15, 400, C["ink2"]))
 for row, port_row in enumerate(ports.itertuples()):
     y = CHART_TOP + 22 + row * ROW_H
     svg.append(text(CHART_X, y, port_row.port, 16, 600))
@@ -264,10 +264,13 @@ x1, y1 = rx - 1, ry - 11
 svg.append(f'<path d="M{x0} {y0} C {x0 + 70} {y0 + 6}, {x1 + 8} {y1 - 90}, {x1:.1f} {y1:.1f}" fill="none" stroke="{C["ink"]}" stroke-width="2" stroke-linecap="round"/>')
 svg.append(f'<path d="M{x1 - 8:.1f} {y1 - 11:.1f} L{x1:.1f} {y1:.1f} L{x1 + 9:.1f} {y1 - 10:.1f}" fill="none" stroke="{C["ink"]}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>')
 
-# Source
-svg.append(text(60, 1250, "Source: GHS-UCDB R2024A V1.2 (JRC), 2025. Car routes: OSRM, © OpenStreetMap contributors. Ports: top 10", 19, 400, C["muted"]))
-svg.append(text(60, 1273, "by 2025 TEU (Wikipedia, from port authorities). Excludes Russia, Belarus, Ukraine and Atlantic", 19, 400, C["muted"]))
-svg.append(text(60, 1296, "islands. Turkey and Cyprus are not in the dataset. Base: Natural Earth.", 19, 400, C["muted"]))
+# Footer: method, source and comments
+FOOTER = [
+    ("Method:", f"each of {len(cities)} urban centres goes to the top-10 container port it reaches fastest by car, using OSRM driving times."),
+    ("Source:", "GHS-UCDB R2024A V1.2 (European Commission, JRC), 2025. Car routes: OSRM, ©\u00a0OpenStreetMap contributors. Ports: top 10 by 2025 TEU (Wikipedia, from port authorities). Base: Natural Earth."),
+    ("Comments:", "map percentages are shares of city dwellers, not containers; the bars compare both. Russia, Belarus, Ukraine and the Atlantic islands are left out. Turkey and Cyprus are not in the dataset."),
+]
+svg += footer(FOOTER, x=60, y=1251, width=960, size=17, line_height=20)
 
 save_png(page("".join(svg)), HERE / "day02_lines.png")
 cities[["name", "cnt", "pop", "lon", "lat", "port", "hours", "km"]].round(
