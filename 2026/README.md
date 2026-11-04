@@ -153,13 +153,13 @@ Paris alone hosts more nights than the whole of Ireland (42 million), and Mallor
 
 ### What it shows
 
-The 2021 census counted nobody in 57% of the land in the EU, Norway and Switzerland, measured in 1 km squares. That empty land is not scattered: most of it joins up into three huge patches, which together cover 34% of all land.
+The 2021 census counted nobody in 57% of the land in the EU, Norway and Switzerland, measured in 1 km squares. That empty land is not scattered: most of it joins up into three huge patches, which together cover 33% of all land.
 
 | Patch | Land (km²) | Main countries |
 | --- | ---: | --- |
-| Nordic | 658,000 | Sweden, Norway, Finland |
-| South-east | 410,000 | Romania, Bulgaria, Greece, Hungary, Slovakia |
+| Nordic | 619,000 | Sweden, Norway, Finland |
 | Iberian | 409,000 | Spain, Portugal, France |
+| South-east | 408,000 | Romania, Bulgaria, Greece, Hungary, Slovakia |
 
 The Iberian patch covers 72% of Spain and reaches from Portugal into France, so you could cross the peninsula without entering a single square kilometre where anyone lives. The fourth largest patch, in the Alps, is only 75,000 km².
 
@@ -174,7 +174,8 @@ The Iberian patch covers 72% of Spain and reaches from Portugal into France, so 
 
 - **Empty is not unused:** it means nobody lives there. The land can still be farmland, forest or mountain.
 - **Countries differ:** each national statistics office places residents on the grid in its own way, which partly explains sharp edges at some borders, such as the Pyrenees.
-- **Joining rule:** counting squares that only touch at a corner makes the patches bigger (the south-east one reaches about 670,000 km²), but the same three stay on top.
+- **Water:** lakes such as the IJsselmeer, and squares that are mostly water, count as water rather than empty land, so they neither join patches nor add to the land total.
+- **Joining rule:** counting squares that only touch at a corner makes the patches bigger (the south-east one reaches about 660,000 km²), but the same three stay on top.
 - **Residents not on the grid:** censuses could not place about 435,000 residents (0.1%) on a square, mostly in France, Italy, Finland and Bulgaria. Spain and Portugal have none, so the Iberian crossing holds. Every square in the three patches has zero residents.
 - **Coverage:** the grid covers the EU, Norway, Switzerland and Liechtenstein, so the UK, Iceland and the Balkans outside the EU are left out. The Canary Islands and other far-off islands are counted but off the map.
 

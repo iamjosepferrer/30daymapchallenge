@@ -5,17 +5,19 @@ import sys
 import zipfile
 from pathlib import Path
 
+import geopandas as gpd
 import numpy as np
 import pandas as pd
 import rasterio
 import requests
 from PIL import Image
+from rasterio.features import rasterize
 from scipy import ndimage
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parent / "common"))
 
-from style import C, DATA_DIR, Frame, byline, countries, fade_defs, footer, geom_path, page, save_png, text  # noqa: E402
+from style import C, DATA_DIR, Frame, _download, byline, countries, fade_defs, footer, geom_path, page, save_png, text  # noqa: E402
 
 GRID_URL = "https://gisco-services.ec.europa.eu/census/2021/Eurostat_Census-GRID_2021_V3.zip"
 GRID_TIFF = "ESTAT_Census_2021_V3.tiff"
@@ -53,8 +55,14 @@ with rasterio.open(grid_path) as source:
 with rasterio.open(land_path) as source:
     land = source.read(1)
 in_grid = populated != nodata
-empty = populated == 0
-land_km2 = np.where(in_grid & (land > 0), land, 0)  # coastal cells are only partly land
+# Lakes such as the IJsselmeer are water, not empty land: leave them out of the patches
+LAKES_URL = "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_lakes.geojson"
+lakes = gpd.read_file(_download(LAKES_URL, DATA_DIR / "ne_10m_lakes.geojson")).cx[-30:45, 34:72].to_crs(3035)
+lake = rasterize(((g, 1) for g in lakes.geometry), out_shape=populated.shape, transform=transform, dtype="uint8").astype(bool)
+# Squares that are mostly water (estuaries, lagoons) count as water too
+lake |= in_grid & (land < 0.2)
+empty = (populated == 0) & ~lake
+land_km2 = np.where(in_grid & (land > 0) & ~lake, land, 0)  # coastal cells are only partly land; water squares count as no land
 
 patches, _ = ndimage.label(empty)
 patch_km2 = ndimage.sum(land_km2, patches, index=np.arange(patches.max() + 1))
@@ -81,7 +89,7 @@ background = countries().to_crs(3035).geometry.buffer(0).intersection(frame.box(
 # The grid as one image: blue for the three largest patches, light blue for other empty cells, light for cells with people
 colours = np.zeros(populated.shape + (4,), dtype=np.uint8)
 hex_rgb = lambda value: tuple(int(value[i:i + 2], 16) for i in (1, 3, 5))
-colours[in_grid & ~empty] = (*hex_rgb(C["page"]), 255)
+colours[in_grid & ~empty & ~lake] = (*hex_rgb(C["page"]), 255)
 colours[empty] = (*hex_rgb(LIGHT_BLUE), 255)
 colours[np.isin(patches, largest)] = (*hex_rgb(C["blue"]), 255)
 col0 = int((frame.x0 - transform.c) // 1000)
@@ -98,6 +106,7 @@ image = base64.b64encode(png.getvalue()).decode()
 svg = [
     f'<clipPath id="map"><rect x="0" y="{MAP_TOP}" width="1080" height="{frame.ph:.0f}"/></clipPath>',
     f'<g clip-path="url(#map)"><path d="{geom_path(background, frame)}" fill="{C["quiet_land"]}"/>',
+    f'<path d="{geom_path(lakes.geometry.union_all().intersection(frame.box()), frame)}" fill="{C["card"]}"/>',
     f'<image href="data:image/png;base64,{image}" x="0" y="{MAP_TOP}" width="1080" height="{frame.ph:.1f}" preserveAspectRatio="none"/>',
     fade_defs(),
     f'<rect x="0" y="{MAP_TOP}" width="1080" height="24" fill="url(#fade-top)"/>',
