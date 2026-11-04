@@ -6,6 +6,7 @@ One map a day about Europe, each built around a clear finding.
 - [Day 2, Lines: Europe's biggest port is the nearest one for under 4% of city dwellers](#day-2-lines)
 - [Day 3, Polygons: half of Europe's tourist nights happen in just 102 of its 1,247 regions](#day-3-polygons)
 - [Day 4, Clusters: a third of the land in the EU, Norway and Switzerland is just three empty patches](#day-4-clusters)
+- [Day 5, Senses, Sight: Spain gets two total eclipses in a year, but nobody lives in both paths](#day-5-senses-sight)
 - [Data sources and licenses](#data-sources-and-licenses)
 - [How to recreate the maps](#how-to-recreate-the-maps)
 
@@ -181,18 +182,53 @@ The Iberian patch covers 72% of Spain and reaches from Portugal into France, so 
 
 ---
 
+## Day 5: Senses, Sight
+
+![Spain gets two total eclipses in a year, but nobody lives in both paths](day05_sight/day05_sight.png)
+
+### What it shows
+
+The moon's shadow crossed northern Spain on 12 August 2026 and will cross the far south on 2 August 2027: two total solar eclipses in under a year. Yet nobody lives inside both paths of totality: over land, they never come within 300 km of each other.
+
+| Eclipse | People in Spain in the path | Share of Spain's 47.4 million |
+| --- | ---: | ---: |
+| Total, 12 August 2026 | 13.9 million | 29% |
+| Total, 2 August 2027 | 3.2 million | 7% |
+
+The 2026 path covered cities such as A Coruña, Oviedo, Bilbao, Valladolid, Zaragoza, Valencia and Palma, but not Madrid or Barcelona. The 2027 path covers Cádiz, Málaga, Ceuta and Melilla, but not Seville. These match the city lists of Spain's Instituto Geográfico Nacional.
+
+### How it was made
+
+1. **Get the paths:** the northern and southern limits of each eclipse from NASA's eclipse site (Fred Espenak, GSFC), read from its interactive map pages. They list more points than the printed tables, including the end of the 2026 path at sunset over the Balearics.
+2. **Count the people:** Eurostat's Census 2021 population grid, the same file as Day 4. A 1 km square counts as inside a path when its centre lies between the two limits.
+3. **Measure the gap** between the closest points of the two paths over mainland Spain.
+4. **Frame the map** so both ends of the 2026 path run off its edges. The path really ends at sunset just east of the Balearics.
+5. **Draw the map:** every populated square in Spain, coloured blue or orange when it sits in a total eclipse path. Portugal is left grey because fewer than 20 of its residents live in either path.
+
+### Limitations
+
+- **Edges:** squares right at a path's edge can go either way, so the totals are rounded to 0.1 million. The path widths match NASA's tables (about 290 km over Spain in 2026, 240 km in 2027).
+- **Population is from 2021,** and it counts residents, not the visitors who travelled to see the eclipse.
+- **Seeing it:** being in the path is not the same as seeing totality. Clouds, and the sun being low in the sky in 2026, decide that.
+- **Coverage:** the grid covers the EU, so people in Morocco under the 2027 path are not counted.
+
+**Files:** [`day05_sight.py`](day05_sight/day05_sight.py) does everything, and [`results.csv`](day05_sight/results.csv) lists the people in each path.
+
+---
+
 ## Data sources and licenses
 
 | Dataset | Used for | Where it comes from | License |
 | --- | --- | --- | --- |
 | [GHS-UCDB R2024A V1.2](https://human-settlement.emergency.copernicus.eu/ghs_ucdb_2024.php) | Urban centres and population (Days 1, 2) | Downloaded from the JRC's open data site | CC BY 4.0 |
 | [GHS-POP R2023A](https://human-settlement.emergency.copernicus.eu/download.php) | Europe's total population (Day 1) | Downloaded from the JRC's open data site | CC BY 4.0 |
-| [Natural Earth](https://www.naturalearthdata.com/) | Land, country boundaries (Days 1 to 4) | GitHub mirror of Natural Earth | Public domain |
+| [Natural Earth](https://www.naturalearthdata.com/) | Land, country boundaries (Days 1 to 5) | GitHub mirror of Natural Earth | Public domain |
 | [OSRM](https://project-osrm.org/) on [OpenStreetMap](https://www.openstreetmap.org/copyright) | Driving times and routes (Day 2) | OSRM's free demo server | Data: ODbL, © OpenStreetMap contributors |
 | [List of busiest ports in Europe](https://en.wikipedia.org/wiki/List_of_busiest_ports_in_Europe) | Top 10 ports and TEU (Day 2) | Wikipedia, read in November 2026 | CC BY-SA |
 | [Eurostat](https://ec.europa.eu/eurostat/data/database) `tour_occ_nin3`, `demo_r_pjanaggr3` | Nights spent and residents (Day 3) | Eurostat's statistics API | Free reuse with credit to Eurostat |
 | [GISCO NUTS 2024](https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units/territorial-units-statistics) | Regional boundaries (Day 3) | Eurostat's GISCO service | © EuroGeographics for the administrative boundaries. Free for non-commercial use |
-| [Eurostat Census 2021 population grid](https://ec.europa.eu/eurostat/web/gisco/geodata/population-distribution/population-grids) | 1 km population grid (Day 4) | Eurostat's GISCO service | © European Union, free reuse with credit |
+| [Eurostat Census 2021 population grid](https://ec.europa.eu/eurostat/web/gisco/geodata/population-distribution/population-grids) | 1 km population grid (Days 4, 5) | Eurostat's GISCO service | © European Union, free reuse with credit |
+| [NASA eclipse paths](https://eclipse.gsfc.nasa.gov/solar.html) | Paths of the 2026 and 2027 total eclipses (Day 5) | NASA's eclipse site, by Fred Espenak (GSFC) | Free to use with credit to NASA |
 
 **Citations**
 
