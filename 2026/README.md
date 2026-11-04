@@ -5,6 +5,7 @@ One map a day about Europe, each built around a clear finding.
 - [Day 1, Points: half of Europe's city dwellers live in just 80 urban areas](#day-1-points)
 - [Day 2, Lines: Europe's biggest port is the nearest one for under 4% of city dwellers](#day-2-lines)
 - [Day 3, Polygons: half of Europe's tourist nights happen in just 102 of its 1,247 regions](#day-3-polygons)
+- [Day 4, Clusters: a third of the land in the EU, Norway and Switzerland is just three empty patches](#day-4-clusters)
 - [Data sources and licenses](#data-sources-and-licenses)
 - [How to recreate the maps](#how-to-recreate-the-maps)
 
@@ -145,17 +146,53 @@ Paris alone hosts more nights than the whole of Ireland (42 million), and Mallor
 
 ---
 
+## Day 4: Clusters
+
+![A third of the land in the EU, Norway and Switzerland is just three empty patches](day04_clusters/day04_clusters.png)
+
+### What it shows
+
+The 2021 census counted nobody in 57% of the land in the EU, Norway and Switzerland, measured in 1 km squares. That empty land is not scattered: most of it joins up into three huge patches, which together cover 34% of all land.
+
+| Patch | Land (km²) | Main countries |
+| --- | ---: | --- |
+| Nordic | 658,000 | Sweden, Norway, Finland |
+| South-east | 410,000 | Romania, Bulgaria, Greece, Hungary, Slovakia |
+| Iberian | 409,000 | Spain, Portugal, France |
+
+The Iberian patch covers 72% of Spain and reaches from Portugal into France, so you could cross the peninsula without entering a single square kilometre where anyone lives. The fourth largest patch, in the Alps, is only 75,000 km².
+
+### How it was made
+
+1. **Load the grid:** Eurostat's Census 2021 population grid, version 3, which flags every 1 km square as populated or not, by usual residents.
+2. **Join empty squares:** squares with nobody in them form one patch when they share a side.
+3. **Measure each patch** by its land area, since coastal squares are only partly land.
+4. **Draw the map** from the grid itself, with the three largest patches in blue.
+
+### Limitations
+
+- **Empty is not unused:** it means nobody lives there. The land can still be farmland, forest or mountain.
+- **Countries differ:** each national statistics office places residents on the grid in its own way, which partly explains sharp edges at some borders, such as the Pyrenees.
+- **Joining rule:** counting squares that only touch at a corner makes the patches bigger (the south-east one reaches about 670,000 km²), but the same three stay on top.
+- **Residents not on the grid:** censuses could not place about 435,000 residents (0.1%) on a square, mostly in France, Italy, Finland and Bulgaria. Spain and Portugal have none, so the Iberian crossing holds. Every square in the three patches has zero residents.
+- **Coverage:** the grid covers the EU, Norway, Switzerland and Liechtenstein, so the UK, Iceland and the Balkans outside the EU are left out. The Canary Islands and other far-off islands are counted but off the map.
+
+**Files:** [`day04_clusters.py`](day04_clusters/day04_clusters.py) does everything, and [`results.csv`](day04_clusters/results.csv) lists the three patches.
+
+---
+
 ## Data sources and licenses
 
 | Dataset | Used for | Where it comes from | License |
 | --- | --- | --- | --- |
 | [GHS-UCDB R2024A V1.2](https://human-settlement.emergency.copernicus.eu/ghs_ucdb_2024.php) | Urban centres and population (Days 1, 2) | Downloaded from the JRC's open data site | CC BY 4.0 |
 | [GHS-POP R2023A](https://human-settlement.emergency.copernicus.eu/download.php) | Europe's total population (Day 1) | Downloaded from the JRC's open data site | CC BY 4.0 |
-| [Natural Earth](https://www.naturalearthdata.com/) | Land, country boundaries (Days 1, 2) | GitHub mirror of Natural Earth | Public domain |
+| [Natural Earth](https://www.naturalearthdata.com/) | Land, country boundaries (Days 1 to 4) | GitHub mirror of Natural Earth | Public domain |
 | [OSRM](https://project-osrm.org/) on [OpenStreetMap](https://www.openstreetmap.org/copyright) | Driving times and routes (Day 2) | OSRM's free demo server | Data: ODbL, © OpenStreetMap contributors |
 | [List of busiest ports in Europe](https://en.wikipedia.org/wiki/List_of_busiest_ports_in_Europe) | Top 10 ports and TEU (Day 2) | Wikipedia, read in November 2026 | CC BY-SA |
 | [Eurostat](https://ec.europa.eu/eurostat/data/database) `tour_occ_nin3`, `demo_r_pjanaggr3` | Nights spent and residents (Day 3) | Eurostat's statistics API | Free reuse with credit to Eurostat |
 | [GISCO NUTS 2024](https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units/territorial-units-statistics) | Regional boundaries (Day 3) | Eurostat's GISCO service | © EuroGeographics for the administrative boundaries. Free for non-commercial use |
+| [Eurostat Census 2021 population grid](https://ec.europa.eu/eurostat/web/gisco/geodata/population-distribution/population-grids) | 1 km population grid (Day 4) | Eurostat's GISCO service | © European Union, free reuse with credit |
 
 **Citations**
 
