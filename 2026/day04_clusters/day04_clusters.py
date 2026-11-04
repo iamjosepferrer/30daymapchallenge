@@ -170,7 +170,7 @@ svg.append(text(60, 190, f"Nobody lives on {empty_km2 / total_km2:.0%} of that l
 svg.append(text(60, 220, "empty land joins up into three huge patches.", 25, 400, C["ink2"]))
 svg.append(byline(252))
 FOOTER = [
-    ("Method:", "1 km squares where the 2021 census counted no usual residents join into one patch when they share a side."),
+    ("Method:", "a 1 km square is empty when the 2021 census counted nobody living in it. Empty squares that touch side by side form one patch, and the three biggest patches are in dark blue."),
     ("Source:", "Eurostat, Census 2021 population grid (version 3), ©\u00a0European Union. Patches are own calculations. Base: Natural Earth."),
     ("Comments:", "empty means nobody lives there, not unused land. The grid covers the EU, Norway, Switzerland and Liechtenstein, and countries place residents on it slightly differently. 0.1% of residents could not be placed on the grid, none in Spain or Portugal."),
 ]
