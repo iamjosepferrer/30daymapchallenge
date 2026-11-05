@@ -6,7 +6,7 @@ One map a day about Europe, each built around a clear finding.
 - [Day 2, Lines: Europe's biggest port is the nearest one for under 4% of city dwellers](#day-2-lines)
 - [Day 3, Polygons: half of Europe's tourist nights happen in just 102 of its 1,247 regions](#day-3-polygons)
 - [Day 4, Clusters: a third of the land in the EU, Norway and Switzerland is just three empty patches](#day-4-clusters)
-- [Day 5, Senses, Sight: two total eclipses in a row in Spain, and nobody lives in both paths](#day-5-senses-sight)
+- [Day 5, Senses, Sight: Spain gets two total eclipses in a row, but Madrid and Barcelona miss both](#day-5-senses-sight)
 - [Data sources and licenses](#data-sources-and-licenses)
 - [How to recreate the maps](#how-to-recreate-the-maps)
 
@@ -185,7 +185,7 @@ The Iberian patch covers 72% of Spain and reaches from Portugal into France, so 
 
 ## Day 5: Senses, Sight
 
-![Two total eclipses in a row in Spain, and nobody lives in both paths](day05_sight/day05_sight.png)
+![Spain gets two total eclipses in a row, but Madrid and Barcelona miss both](day05_sight/day05_sight.png)
 
 ### What it shows
 

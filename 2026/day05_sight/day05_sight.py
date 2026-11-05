@@ -1,4 +1,4 @@
-"""Day 5, Senses, Sight: Spain gets two total solar eclipses in a year, but nobody lives in both paths."""
+"""Day 5, Senses, Sight: Spain gets two total eclipses in a row, but Madrid and Barcelona miss both."""
 import base64
 import io
 import re
@@ -198,8 +198,8 @@ for share, colour, label in segments:
     x += width
 
 # 8. Headline, dek, byline and footer
-svg.append(text(60, 90, "Two total eclipses in a row in Spain,", 50, 800))
-svg.append(text(60, 146, "and nobody lives in both paths", 50, 800))
+svg.append(text(60, 90, "Spain gets two total eclipses in a row,", 50, 800))
+svg.append(text(60, 146, "but Madrid and Barcelona miss both", 50, 800))
 svg.append(text(60, 190, "The total eclipse of August 2026 crossed the north. The one in August 2027 will", 25, 400, C["ink2"]))
 svg.append(text(60, 220, "cross the far south. Coloured squares are where people live in each path.", 25, 400, C["ink2"]))
 svg.append(byline(252))
