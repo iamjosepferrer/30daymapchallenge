@@ -6,7 +6,7 @@ One map a day about Europe, each built around a clear finding.
 - [Day 2, Lines: Europe's biggest port is the nearest one for under 4% of city dwellers](#day-2-lines)
 - [Day 3, Polygons: half of Europe's tourist nights happen in just 102 of its 1,247 regions](#day-3-polygons)
 - [Day 4, Clusters: a third of the land in the EU, Norway and Switzerland is just three empty patches](#day-4-clusters)
-- [Day 5, Senses, Sight: Spain gets two total eclipses in a year, but nobody lives in both paths](#day-5-senses-sight)
+- [Day 5, Senses, Sight: two total eclipses in a row in Spain, and nobody lives in both paths](#day-5-senses-sight)
 - [Data sources and licenses](#data-sources-and-licenses)
 - [How to recreate the maps](#how-to-recreate-the-maps)
 
@@ -185,11 +185,11 @@ The Iberian patch covers 72% of Spain and reaches from Portugal into France, so 
 
 ## Day 5: Senses, Sight
 
-![Spain gets two total eclipses in a year, but nobody lives in both paths](day05_sight/day05_sight.png)
+![Two total eclipses in a row in Spain, and nobody lives in both paths](day05_sight/day05_sight.png)
 
 ### What it shows
 
-The moon's shadow crossed northern Spain on 12 August 2026 and will cross the far south on 2 August 2027: two total solar eclipses in under a year. Yet nobody lives inside both paths of totality: over land, they never come within 300 km of each other.
+The total eclipse of 12 August 2026 crossed northern Spain, and the next total eclipse, on 2 August 2027, will cross the far south. Nobody in Spain lives inside both paths. Over land, the two paths never come closer than 300 km.
 
 | Eclipse | People in Spain in the path | Share of Spain's 47.4 million |
 | --- | ---: | ---: |
@@ -208,9 +208,9 @@ The 2026 path covered cities such as A Coruña, Oviedo, Bilbao, Valladolid, Zara
 
 ### Limitations
 
-- **Edges:** squares right at a path's edge can go either way, so the totals are rounded to 0.1 million. The path widths match NASA's tables (about 290 km over Spain in 2026, 240 km in 2027).
+- **Edges:** a square counts by its centre, so totals are rounded to 0.1 million. The path widths match NASA's tables (about 290 km over Spain in 2026, 240 km in 2027).
 - **Population is from 2021,** and it counts residents, not the visitors who travelled to see the eclipse.
-- **Seeing it:** being in the path is not the same as seeing totality. Clouds, and the sun being low in the sky in 2026, decide that.
+- **Seeing it:** being in the path is not the same as seeing totality. Clouds, and the low sun in 2026, decide that.
 - **Coverage:** the grid covers the EU, so people in Morocco under the 2027 path are not counted.
 
 **Files:** [`day05_sight.py`](day05_sight/day05_sight.py) does everything, and [`results.csv`](day05_sight/results.csv) lists the people in each path.
@@ -245,10 +245,12 @@ Follow the setup in the [main README](../README.md), then run:
 ```bash
 python 2026/day01_points/day01_points.py
 python 2026/day02_lines/day02_lines.py
+python 2026/day05_sight/day05_sight.py
 ```
 
 - **Day 1** takes about a minute and downloads about 50 MB. Recalculating Europe's total with `compute_europe_population.py` is optional and downloads about 475 MB.
 - **Day 2** sends about 830 requests to the OSRM demo server the first time, at no more than one per second, so it takes around 25 minutes. Results are saved in `cache/`, so you can stop and resume it. The demo server is for reasonable, non-commercial use, so client work needs its own OSRM instance.
+- **Day 5** uses the same census grid as Day 4 and three small NASA pages, and takes about a minute.
 
 ## License
 

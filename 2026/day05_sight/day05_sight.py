@@ -166,13 +166,13 @@ PATH_LABELS = {"2026": (30, 470, "start"), "2027": (34, 1108, "start")}
 for year, (x, y, anchor) in PATH_LABELS.items():
     total = {"2026": in_2026, "2027": in_2027}[year]
     svg.append(text(x, y, ECLIPSES[year][1], 18, 700, ECLIPSES[year][2], anchor))
-    svg.append(text(x, y + 21, f"{total / 1e6:.1f} million people in the path", 16, 400, C["ink"], anchor))
+    svg.append(text(x, y + 21, f"{total / 1e6:.1f} million people live in the path", 16, 400, C["ink"], anchor))
 
 # 6. One handwritten note in the Mediterranean, with a short arrow to the gap
 note_x, note_y = 762, 1030
 svg.append(
     f'<text class="note" x="{note_x}" y="{note_y}" font-size="22" fill="{C["ink"]}">'
-    f'<tspan x="{note_x}">The paths stay</tspan><tspan x="{note_x}" dy="26">{round(gap_km, -1):.0f} km apart</tspan><tspan x="{note_x}" dy="26">over land</tspan></text>'
+    f'<tspan x="{note_x}">{round(gap_km, -1):.0f} km of land</tspan><tspan x="{note_x}" dy="26">between the</tspan><tspan x="{note_x}" dy="26">two paths</tspan></text>'
 )
 x0, y0 = note_x - 8, note_y - 10
 x1, y1 = (gx0 + gx1) / 2 + 8, (gy0 + gy1) / 2 + 2
@@ -198,15 +198,15 @@ for share, colour, label in segments:
     x += width
 
 # 8. Headline, dek, byline and footer
-svg.append(text(60, 90, "Spain gets two total eclipses in a year,", 50, 800))
-svg.append(text(60, 146, "but nobody lives in both paths", 50, 800))
-svg.append(text(60, 190, "Paths of totality and the people living inside them. The shadow crossed the north", 25, 400, C["ink2"]))
-svg.append(text(60, 220, "in August 2026 and will cross the far south in August 2027.", 25, 400, C["ink2"]))
+svg.append(text(60, 90, "Two total eclipses in a row in Spain,", 50, 800))
+svg.append(text(60, 146, "and nobody lives in both paths", 50, 800))
+svg.append(text(60, 190, "The total eclipse of August 2026 crossed the north. The one in August 2027 will", 25, 400, C["ink2"]))
+svg.append(text(60, 220, "cross the far south. Coloured squares are where people live in each path.", 25, 400, C["ink2"]))
 svg.append(byline(252))
 FOOTER = [
     ("Method:", "a 1 km census square counts as inside a path when its centre lies between NASA's northern and southern limits."),
     ("Source:", "eclipse paths by Fred Espenak, NASA/GSFC. Population: Eurostat, Census 2021 population grid, © European Union. Base: Natural Earth."),
-    ("Comments:", "population is from the 2021 census, and clouds decide who actually sees it. Squares at a path's edge can go either way, so totals are rounded. Only Spain is counted: fewer than 20 people in Portugal live in either path."),
+    ("Comments:", "population from the 2021 census."),
 ]
 svg += footer(FOOTER, x=60, y=1251, width=960, size=17, line_height=20)
 
