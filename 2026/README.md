@@ -7,6 +7,7 @@ One map a day about Europe, each built around a clear finding.
 - [Day 3, Polygons: half of Europe's tourist nights happen in just 102 of its 1,247 regions](#day-3-polygons)
 - [Day 4, Clusters: a third of the land in the EU, Norway and Switzerland is just three empty patches](#day-4-clusters)
 - [Day 5, Senses, Sight: Spain gets two total eclipses in a row, but Madrid and Barcelona miss both](#day-5-senses-sight)
+- [Day 6, Vintage: half of Europe's people live on land Rome once ruled](#day-6-vintage)
 - [Data sources and licenses](#data-sources-and-licenses)
 - [How to recreate the maps](#how-to-recreate-the-maps)
 
@@ -217,19 +218,62 @@ The 2026 path covered cities such as A Coruña, Oviedo, Bilbao, Valladolid, Zara
 
 ---
 
+## Day 6: Vintage
+
+![Half of Europe's people live on land Rome once ruled](day06_vintage/day06_vintage.png)
+
+### What it shows
+
+The Roman Empire reached its greatest extent in AD 117. Laying those borders over today's population, 351.9 million of Europe's 703.5 million people (50%) live on land Rome once ruled.
+
+| Country | People in 2025 | Share inside the AD 117 borders |
+| --- | ---: | ---: |
+| France | 64.2 million | 99% |
+| Italy | 57.7 million | 98% |
+| Spain | 46.5 million | 91% |
+| United Kingdom | 67.4 million | 87% |
+| Germany | 83.2 million | 38% |
+| Poland | 39.7 million | 0% |
+| Russia, west of 60°E | 110.3 million | 0% |
+
+Every country is in [`results.csv`](day06_vintage/results.csv).
+
+### How it was made
+
+1. **Get the borders:** the Roman Empire's AD 117 extent from the Ancient World Mapping Center, derived from the Barrington Atlas.
+2. **Count the people:** GHS-POP's 2025 estimates at about 1 km, for the same Europe as Day 1: west of 60°E, without Turkey or Cyprus. A cell counts as inside when its centre lies within the borders.
+3. **Check the borders:** cities such as Cologne, Vienna and Barcelona fall inside, and Berlin and Warsaw outside. An earlier test with a coarser historical dataset placed Vienna outside the empire, so it was dropped.
+4. **Check the population:** for the EU, Norway and Switzerland, GHS-POP gives 60.9% inside and Eurostat's Census 2021 grid gives 61.1%.
+5. **Check the totals:** the 703.5 million is within about 1% of the UN's 2025 figure for Europe once Russia east of 60°E is removed. For the 33 countries with Eurostat 2025 figures, GHS-POP's total is 98% of the official one, although single countries differ (Norway -17%, Albania +19%). Using official figures where available gives 50.7%, and assuming only 30 million people in Ukraine gives 51.2%.
+6. **Draw the map:** people in small blocks, blue inside the empire and grey outside, darker where more people live. Blocks with fewer than 25 people are left out of the drawing, because GHS-POP spreads tiny modelled values over empty land. They still count in the totals.
+
+### Limitations
+
+- **Ancient frontiers are approximate.** Places close to the line can fall on the wrong side. Amsterdam, for example, lands inside, although the Rhine frontier ran south of it, so the Netherlands' share is likely too high.
+- **Greatest extent is a single moment.** Rome did not rule all of this land for long. Dacia, in today's Romania, was held for about 170 years.
+- **Scope drives the number.** Russia, Belarus and Ukraine add 156 million people, almost all outside the empire. Without them, the share is about 65%.
+- **Coasts:** some coastal cells fall outside the borders. Allowing 3 km around them gives 51.6%, so "half" holds.
+- **Population:** GHS-POP is a modelled 2025 estimate, projected from census data and spread across built-up areas. It is not a census count and has no single census year. Day 4 needs a real count of empty squares, so it uses Eurostat's Census 2021 grid instead.
+- **Who is left out:** Turkey's European side, Cyprus, the Caucasus and western Kazakhstan are not counted, the same as Day 1.
+
+**Files:** [`day06_vintage.py`](day06_vintage/day06_vintage.py) does everything, and [`results.csv`](day06_vintage/results.csv) lists every country.
+
+---
+
 ## Data sources and licenses
 
 | Dataset | Used for | Where it comes from | License |
 | --- | --- | --- | --- |
 | [GHS-UCDB R2024A V1.2](https://human-settlement.emergency.copernicus.eu/ghs_ucdb_2024.php) | Urban centres and population (Days 1, 2) | Downloaded from the JRC's open data site | CC BY 4.0 |
-| [GHS-POP R2023A](https://human-settlement.emergency.copernicus.eu/download.php) | Europe's total population (Day 1) | Downloaded from the JRC's open data site | CC BY 4.0 |
-| [Natural Earth](https://www.naturalearthdata.com/) | Land, country boundaries (Days 1 to 5) | GitHub mirror of Natural Earth | Public domain |
+| [GHS-POP R2023A](https://human-settlement.emergency.copernicus.eu/download.php) | Europe's total population (Day 1), people by location (Day 6) | Downloaded from the JRC's open data site | CC BY 4.0 |
+| [Natural Earth](https://www.naturalearthdata.com/) | Land, country boundaries (Days 1 to 6) | GitHub mirror of Natural Earth | Public domain |
 | [OSRM](https://project-osrm.org/) on [OpenStreetMap](https://www.openstreetmap.org/copyright) | Driving times and routes (Day 2) | OSRM's free demo server | Data: ODbL, © OpenStreetMap contributors |
 | [List of busiest ports in Europe](https://en.wikipedia.org/wiki/List_of_busiest_ports_in_Europe) | Top 10 ports and TEU (Day 2) | Wikipedia, read in November 2026 | CC BY-SA |
 | [Eurostat](https://ec.europa.eu/eurostat/data/database) `tour_occ_nin3`, `demo_r_pjanaggr3` | Nights spent and residents (Day 3) | Eurostat's statistics API | Free reuse with credit to Eurostat |
 | [GISCO NUTS 2024](https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units/territorial-units-statistics) | Regional boundaries (Day 3) | Eurostat's GISCO service | © EuroGeographics for the administrative boundaries. Free for non-commercial use |
 | [Eurostat Census 2021 population grid](https://ec.europa.eu/eurostat/web/gisco/geodata/population-distribution/population-grids) | 1 km population grid (Days 4, 5) | Eurostat's GISCO service | © European Union, free reuse with credit |
 | [NASA eclipse paths](https://eclipse.gsfc.nasa.gov/solar.html) | Paths of the 2026 and 2027 total eclipses (Day 5) | NASA's eclipse site, by Fred Espenak (GSFC) | Free to use with credit to NASA |
+| [AWMC geodata](https://github.com/AWMC/geodata) | Roman Empire at its greatest extent, AD 117 (Day 6) | GitHub, Ancient World Mapping Center, University of North Carolina | ODbL |
 
 **Citations**
 
