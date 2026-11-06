@@ -224,37 +224,39 @@ The 2026 path covered cities such as A Coruña, Oviedo, Bilbao, Valladolid, Zara
 
 ### What it shows
 
-The Roman Empire reached its greatest extent in AD 117. Laying those borders over today's population, 351.9 million of Europe's 703.5 million people (50%) live on land Rome once ruled.
+The Roman Empire reached its greatest extent in AD 117. Laying those borders over today's population, 366.9 million of Europe's 715.7 million people (51%) live on land Rome once ruled.
 
 | Country | People in 2025 | Share inside the AD 117 borders |
 | --- | ---: | ---: |
-| France | 64.2 million | 99% |
-| Italy | 57.7 million | 98% |
-| Spain | 46.5 million | 91% |
+| France | 64.2 million | 100% |
+| Italy | 57.7 million | 100% |
+| Turkey, European part | 10.7 million | 100% |
+| Spain | 46.5 million | 96% |
 | United Kingdom | 67.4 million | 87% |
+| Netherlands | 17.6 million | 47% |
 | Germany | 83.2 million | 38% |
 | Poland | 39.7 million | 0% |
 | Russia, west of 60°E | 110.3 million | 0% |
 
-Every country is in [`results.csv`](day06_vintage/results.csv).
+Spain and Portugal are below 100% only because the Canaries, Madeira and the Azores were never Roman. Every country is in [`results.csv`](day06_vintage/results.csv).
 
 ### How it was made
 
 1. **Get the borders:** the Roman Empire's AD 117 extent from the Ancient World Mapping Center, derived from the Barrington Atlas.
-2. **Count the people:** GHS-POP's 2025 estimates at about 1 km, for the same Europe as Day 1: west of 60°E, without Turkey or Cyprus. A cell counts as inside when its centre lies within the borders.
-3. **Check the borders:** cities such as Cologne, Vienna and Barcelona fall inside, and Berlin and Warsaw outside. An earlier test with a coarser historical dataset placed Vienna outside the empire, so it was dropped.
-4. **Check the population:** for the EU, Norway and Switzerland, GHS-POP gives 60.9% inside and Eurostat's Census 2021 grid gives 61.1%.
-5. **Check the totals:** the 703.5 million is within about 1% of the UN's 2025 figure for Europe once Russia east of 60°E is removed. For the 33 countries with Eurostat 2025 figures, GHS-POP's total is 98% of the official one, although single countries differ (Norway -17%, Albania +19%). Using official figures where available gives 50.7%, and assuming only 30 million people in Ukraine gives 51.2%.
-6. **Draw the map:** people in small blocks, blue inside the empire and grey outside, darker where more people live. Blocks with fewer than 25 people are left out of the drawing, because GHS-POP spreads tiny modelled values over empty land. They still count in the totals.
+2. **Check the borders** against 36 frontier towns. The main frontiers hold: in Britain the border runs from the Tyne to the Solway, so Edinburgh is outside; on the Rhine, Cologne is inside and Düsseldorf's east bank outside; on the German limes, Frankfurt and Stuttgart are inside and Giessen and Nuremberg outside; on the Danube, central Vienna is inside and its north bank outside; and Dacia covers Transylvania and Oltenia.
+3. **Fix three problems:** the simplified coastline left out coastal cells and small islands such as the Balearics and Malta, so countries wholly inside the empire count in full. The Dutch frontier follows the Old Rhine through Leiden and Utrecht, so Amsterdam is outside. Buda, the site of the legionary fortress of Aquincum, is inside.
+4. **Count the people:** GHS-POP's 2025 estimates at about 1 km, for geographic Europe: the same countries as Day 1, west of 60°E, plus Cyprus and Turkey west of the Bosphorus. A cell counts as inside when its centre lies within the borders.
+5. **Check the population:** for the EU, Norway and Switzerland, GHS-POP gives 61.2% inside and Eurostat's Census 2021 grid gives 61.7%.
+6. **Check the totals:** for the 33 countries with Eurostat 2025 figures, GHS-POP's total is 98% of the official one, although single countries differ (Norway -17%, Albania +19%). Assuming only 30 million people in Ukraine gives 51.7%.
+7. **Draw the map:** people in small blocks, blue inside the empire and grey outside, darker where more people live. Blocks with fewer than 25 people are left out of the drawing, because GHS-POP spreads tiny modelled values over empty land. They still count in the totals. Asian Turkey and Russia east of 60°E are drawn as land without people.
 
 ### Limitations
 
-- **Ancient frontiers are approximate.** Places close to the line can fall on the wrong side. Amsterdam, for example, lands inside, although the Rhine frontier ran south of it, so the Netherlands' share is likely too high.
+- **Ancient frontiers are approximate.** Places close to the line can fall on the wrong side. Muntenia, around Bucharest, and the Banat, around Timișoara, are outside: Trajan held Muntenia only until Hadrian gave it up in 117 and 118, and the Banat's status is debated. Counting both would give 52.3%.
 - **Greatest extent is a single moment.** Rome did not rule all of this land for long. Dacia, in today's Romania, was held for about 170 years.
-- **Scope drives the number.** Russia, Belarus and Ukraine add 156 million people, almost all outside the empire. Without them, the share is about 65%.
-- **Coasts:** some coastal cells fall outside the borders. Allowing 3 km around them gives 51.6%, so "half" holds.
+- **Scope drives the number.** Russia, Belarus and Ukraine add 156 million people, almost all outside the empire. Without them, the share is about 66%.
 - **Population:** GHS-POP is a modelled 2025 estimate, projected from census data and spread across built-up areas. It is not a census count and has no single census year. Day 4 needs a real count of empty squares, so it uses Eurostat's Census 2021 grid instead.
-- **Who is left out:** Turkey's European side, Cyprus, the Caucasus and western Kazakhstan are not counted, the same as Day 1.
+- **Who is left out:** Asian Turkey, the Caucasus, western Kazakhstan and Rome's lands in Africa and Asia are not counted.
 
 **Files:** [`day06_vintage.py`](day06_vintage/day06_vintage.py) does everything, and [`results.csv`](day06_vintage/results.csv) lists every country.
 

@@ -15,7 +15,8 @@ import rasterio.warp
 import requests
 from PIL import Image
 from pyproj import Transformer
-from shapely.geometry import box
+from shapely import segmentize, union_all
+from shapely.geometry import Point, Polygon, box
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parent / "common"))
@@ -28,7 +29,7 @@ COUNTRIES_10M = "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/
 POP_NAME = "GHS_POP_E2025_GLOBE_R2023A_4326_30ss_V1_0"  # the same file as compute_europe_population.py on Day 1
 POP_URL = ("https://jeodpp.jrc.ec.europa.eu/ftp/jrc-opendata/GHSL/GHS_POP_GLOBE_R2023A/"
            f"GHS_POP_E2025_GLOBE_R2023A_4326_30ss/V1-0/{POP_NAME}.zip")
-# The same Europe as Day 1: west of 60°E, without Turkey or Cyprus
+# Geographic Europe: the same countries as Day 1, west of 60°E, plus Cyprus and Turkey west of the Bosphorus
 SCOPE = {
     "United Kingdom", "Ireland", "France", "Spain", "Portugal", "Germany", "Netherlands",
     "Belgium", "Luxembourg", "Switzerland", "Austria", "Italy", "Denmark", "Norway", "Sweden",
@@ -37,7 +38,7 @@ SCOPE = {
     "Montenegro", "Kosovo", "North Macedonia", "Albania", "Greece", "Bulgaria", "Romania",
     "Moldova", "Ukraine", "Belarus", "Russia", "Malta", "Jersey", "Andorra", "Liechtenstein",
     "Monaco", "San Marino", "Vatican", "Guernsey", "Isle of Man", "Faroe Islands", "Aland",
-    "Gibraltar",
+    "Gibraltar", "Cyprus", "Northern Cyprus",
 }
 to_map = Transformer.from_crs(4326, 3035, always_xy=True)
 
@@ -49,10 +50,28 @@ if not raster.exists():
     response.raise_for_status()
     with zipfile.ZipFile(io.BytesIO(response.content)) as archive:
         archive.extract(raster.name, DATA_DIR)
-empire_4326 = gpd.read_file(_download(AWMC, DATA_DIR / "roman_empire_ce_117_extent.geojson")).to_crs(4326).buffer(0).union_all()
+world_full = gpd.read_file(_download(COUNTRIES_10M, DATA_DIR / "ne_10m_admin_0_countries.geojson"))[["ADMIN", "geometry"]]
+world_full["geometry"] = world_full.geometry.buffer(0)
+by_name = lambda *names: world_full[world_full.ADMIN.isin(names)].geometry.union_all()
+thrace = next(part for part in by_name("Turkey").geoms if part.contains(Point(27.5, 41.5)))  # Turkey west of the Bosphorus
+world_10m = world_full[world_full.ADMIN.isin(SCOPE)].reset_index(drop=True)
+world_10m = pd.concat([world_10m, gpd.GeoDataFrame({"ADMIN": ["Turkey, European part"], "geometry": [thrace]}, crs=4326)], ignore_index=True)
+
+# The AD 117 borders, with three fixes to the simplified outline (checked against 36 frontier towns):
+# countries wholly inside the empire count in full, so coastal cells and small islands are not lost;
+# in the Netherlands the frontier follows the Old Rhine through Leiden and Utrecht, so North Holland is outside;
+# and Buda, the site of the legionary fortress of Aquincum on the Danube's right bank, is inside
+WHOLLY_ROMAN = ["Portugal", "Spain", "France", "Monaco", "Andorra", "Italy", "San Marino", "Vatican", "Malta", "Greece",
+                "Belgium", "Luxembourg", "Switzerland", "Liechtenstein", "Slovenia", "Croatia", "Bosnia and Herzegovina",
+                "Montenegro", "Albania", "North Macedonia", "Kosovo", "Bulgaria", "Cyprus", "Northern Cyprus", "Gibraltar"]
+assert set(WHOLLY_ROMAN) <= set(world_full.ADMIN), set(WHOLLY_ROMAN) - set(world_full.ADMIN)
+wholly = union_all([by_name(*WHOLLY_ROMAN).intersection(box(-12, 34, 45, 60)), thrace])  # the box leaves out the Canaries, Madeira and the Azores
+north_of_old_rhine = Polygon([(3, 52.20), (4.40, 52.20), (5.12, 52.09), (5.34, 51.97), (6.10, 51.87),
+                              (7.30, 51.87), (7.30, 54), (3, 54)]).intersection(by_name("Netherlands"))
+buda = Polygon([(18.85, 47.40), (19.06, 47.40), (19.05, 47.48), (19.04, 47.56), (19.06, 47.62), (18.85, 47.62)])
+awmc = gpd.read_file(_download(AWMC, DATA_DIR / "roman_empire_ce_117_extent.geojson")).to_crs(4326).buffer(0).union_all()
+empire_4326 = union_all([awmc, wholly, buda]).difference(north_of_old_rhine)
 empire = gpd.GeoSeries([empire_4326], crs=4326).to_crs(3035).buffer(0).iloc[0]
-world_10m = gpd.read_file(_download(COUNTRIES_10M, DATA_DIR / "ne_10m_admin_0_countries.geojson"))[["ADMIN", "geometry"]]
-world_10m = world_10m[world_10m.ADMIN.isin(SCOPE)].reset_index(drop=True)
 world_10m["geometry"] = world_10m.geometry.buffer(0).intersection(box(-32, 27, 60, 82))
 with rasterio.open(raster) as source:
     window = source.window(-32, 27, 60, 82).round_offsets().round_lengths()
@@ -64,12 +83,11 @@ in_europe = rasterio.features.rasterize(
     [(world_10m.geometry.union_all(), 1)], out_shape=people.shape, transform=transform, fill=0, dtype="uint8", all_touched=True) == 1
 people[~in_europe] = 0
 inside = rasterio.features.rasterize([(empire_4326, 1)], out_shape=people.shape, transform=transform, fill=0, dtype="uint8") == 1
+# In countries wholly inside the empire, coastal cells count too, the same way they count for Europe
+inside |= rasterio.features.rasterize([(wholly, 1)], out_shape=people.shape, transform=transform, fill=0, dtype="uint8", all_touched=True) == 1
 total, in_rome = people.sum(), people[inside].sum()
 share = in_rome / total
 print(f"{total / 1e6:.1f}M people, {in_rome / 1e6:.1f}M inside ({share:.1%})")
-near_coast = rasterio.features.rasterize([(gpd.GeoSeries([empire], crs=3035).buffer(3000).to_crs(4326).buffer(0).iloc[0], 1)],
-                                         out_shape=people.shape, transform=transform, fill=0, dtype="uint8") == 1
-print(f"With 3 km around the borders: {people[near_coast].sum() / total:.1%}")
 
 labels = rasterio.features.rasterize(
     ((shape, i + 1) for i, shape in enumerate(world_10m.geometry)), out_shape=people.shape, transform=transform, fill=0, dtype="int32")
@@ -89,8 +107,11 @@ frame = Frame(2470000, 7300000, 1220000, 1220000 + (1232 - MAP_TOP) / 1080 * 483
 world = countries().to_crs(3035)
 world["geometry"] = world.geometry.buffer(0).intersection(frame.box().buffer(100000))
 world = world[~world.geometry.is_empty]
-in_scope = world[world.ADMIN.isin(SCOPE)].geometry.union_all()
-out_scope = world[~world.ADMIN.isin(SCOPE)].geometry.union_all()
+# Land outside the scope, including Asian Turkey and Russia east of 60°E, is drawn without people
+scope_box = gpd.GeoSeries([segmentize(box(-32, 27, 60, 82), 0.5)], crs=4326).to_crs(3035).iloc[0]
+thrace_3035 = gpd.GeoSeries([thrace], crs=4326).to_crs(3035).buffer(0).iloc[0]
+in_scope = union_all([world[world.ADMIN.isin(SCOPE)].geometry.union_all(), thrace_3035]).intersection(scope_box)
+out_scope = world.geometry.union_all().difference(in_scope)
 rome_shape = empire.intersection(frame.box().buffer(100000))
 
 # 3. People: blocks at the printed resolution, blue inside the empire and grey outside, darker where more people live
@@ -135,7 +156,7 @@ CITIES = {
     "London": (-0.12, 51.51, -8, 5, "end"), "Cologne": (6.96, 50.94, -8, 4, "end"), "Vienna": (16.37, 48.21, 8, -3, "start"),
     "Athens": (23.73, 37.98, 8, 5, "start"), "Lisbon": (-9.14, 38.72, 8, 5, "start"), "Berlin": (13.40, 52.52, 8, 5, "start"),
     "Warsaw": (21.01, 52.23, 8, 5, "start"), "Stockholm": (18.07, 59.33, 8, 5, "start"), "Kyiv": (30.52, 50.45, 8, 5, "start"),
-    "Moscow": (37.62, 55.75, 8, 5, "start"),
+    "Moscow": (37.62, 55.75, 8, 5, "start"), "Istanbul": (28.98, 41.01, 8, -6, "start"),
 }
 for name, (lon, lat, dx, dy, anchor) in CITIES.items():
     x, y = frame.xy(*to_map.transform(lon, lat))
@@ -143,21 +164,21 @@ for name, (lon, lat, dx, dy, anchor) in CITIES.items():
     svg.append(text(x + dx, y + dy, name, 15, 600, C["ink"], anchor, halo=C["page"]))
 
 # 6. Direct labels, as on Day 5
-svg.append(text(28, 898, "Roman Empire, AD 117", 18, 700, C["blue"]))
-svg.append(text(28, 919, f"{in_rome / 1e6:.0f} million people", 16, 400, C["ink"]))
-svg.append(text(28, 939, "live inside its borders", 16, 400, C["ink"]))
+svg.append(text(16, 895, "Roman Empire, AD 117", 17, 700, C["blue"]))
+svg.append(text(16, 914, f"{in_rome / 1e6:.0f} million people", 16, 400, C["ink"]))
+svg.append(text(16, 932, "in Europe live inside it", 16, 400, C["ink"]))
 
-# 7. One handwritten note on the frontier in Germany
-note_x, note_y = 742, 472
+# 7. One handwritten note in the sea west of Norway, with an arrow to the frontier in Germany
+note_x, note_y = 120, 478
 svg.append(
-    f'<text class="note" x="{note_x}" y="{note_y}" font-size="23" fill="{C["ink"]}">'
-    f'<tspan x="{note_x}">The old frontier cuts</tspan><tspan x="{note_x}" dy="28">Germany: {germany:.0%} of people</tspan><tspan x="{note_x}" dy="28">are on the Roman side</tspan></text>'
+    f'<text class="note" x="{note_x}" y="{note_y}" font-size="21" fill="{C["ink"]}">'
+    f'<tspan x="{note_x}">The old frontier cuts</tspan><tspan x="{note_x}" dy="25">Germany: {germany:.0%} of</tspan>'
+    f'<tspan x="{note_x}" dy="25">people are on the</tspan><tspan x="{note_x}" dy="25">Roman side</tspan></text>'
 )
-ax, ay = frame.xy(*to_map.transform(12.3, 49.0))
-ax, ay = ax + 2, ay - 4
-sx, sy = note_x + 40, note_y + 70
-svg.append(f'<path d="M{sx} {sy} C {sx - 60} {sy + 90}, {ax + 80} {ay - 110}, {ax:.1f} {ay:.1f}" fill="none" stroke="{C["ink"]}" stroke-width="2" stroke-linecap="round"/>')
-svg.append(f'<path d="M{ax + 1:.1f} {ay - 13:.1f} L{ax:.1f} {ay:.1f} L{ax + 13:.1f} {ay - 3:.1f}" fill="none" stroke="{C["ink"]}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>')
+sx, sy = note_x + 140, note_y + 92
+ax, ay = frame.xy(*to_map.transform(8.6, 50.4))
+svg.append(f'<path d="M{sx} {sy} C {sx + 40} {sy + 110}, {ax - 60} {ay - 120}, {ax:.1f} {ay:.1f}" fill="none" stroke="{C["ink"]}" stroke-width="2" stroke-linecap="round"/>')
+svg.append(f'<path d="M{ax - 11:.1f} {ay - 8:.1f} L{ax:.1f} {ay:.1f} L{ax + 2:.1f} {ay - 13:.1f}" fill="none" stroke="{C["ink"]}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>')
 
 # 8. Headline, dek, byline, bar and footer
 svg.append(text(60, 90, "Half of Europe's people live", 50, 800))
@@ -175,9 +196,9 @@ for i, (value, colour, label) in enumerate(((in_rome, C["blue"], "Inside Rome's 
     svg.append(text(x, BAR_Y + BAR_H + 44, label, 17, 400, C["ink2"]))
     x += width
 FOOTER = [
-    ("Method:", "a 1 km population cell counts as inside when its centre lies within the AD 117 borders."),
+    ("Method:", "a 1 km cell is inside when its centre lies within the AD 117 borders. Countries wholly inside the empire count in full."),
     ("Source:", "Roman Empire: Ancient World Mapping Center (UNC), ODbL. Population: GHS-POP R2023A (European Commission, JRC), 2025 estimates. Base: Natural Earth."),
-    ("Comments:", "Turkey and Cyprus are excluded. Overseas territories such as the Canaries are counted but off the map. Ancient Roman borders are approximate."),
+    ("Comments:", "Europe means Russia west of the Urals (60°E), Turkey west of the Bosphorus, and Cyprus. Rome's lands in Asia and Africa are not counted."),
 ]
 svg += footer(FOOTER, x=60, y=1251, width=960, size=17, line_height=20)
 
