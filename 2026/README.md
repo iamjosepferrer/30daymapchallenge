@@ -8,6 +8,7 @@ One map a day about Europe, each built around a clear finding.
 - [Day 4, Clusters: a third of the land in the EU, Norway and Switzerland is just three empty patches](#day-4-clusters)
 - [Day 5, Senses, Sight: Spain gets two total eclipses in a row, but Madrid and Barcelona miss both](#day-5-senses-sight)
 - [Day 6, Vintage: half of Europe's people live on land Rome once ruled](#day-6-vintage)
+- [Day 7, 10 minute map: the EU's farthest point from the sea is 660 km inland, in Slovakia](#day-7-10-minute-map)
 - [Data sources and licenses](#data-sources-and-licenses)
 - [How to recreate the maps](#how-to-recreate-the-maps)
 
@@ -262,18 +263,44 @@ Spain and Portugal are below 100% only because the Canaries, Madeira and the Azo
 
 ---
 
+## Day 7: 10 minute map
+
+![The EU's farthest point from the sea is 660 km inland, in Slovakia](day07_ten_minute/day07_ten_minute.png)
+
+### What it shows
+
+The theme asks for a map made in no more than ten minutes, so this one is a rough sketch: just the coastline, Slovakia and three lines. The point in the EU farthest from any sea lies near Trebišov, in eastern Slovakia. From there, the Adriatic is 662 km away, the Baltic 663 km and the Black Sea 666 km.
+
+### How it was made
+
+1. **Map the sea:** Natural Earth's ocean layer at 1:10 million, which includes the Baltic, the Mediterranean and the Black Sea but not lakes such as the Caspian.
+2. **Measure the distance** from every 1 km square of the EU, on Eurostat's Census 2021 grid, to the nearest sea, in EPSG:3035.
+3. **Check the farthest point:** measure its true distance to each of the three nearest seas from a projection centred on that point.
+4. **Sketch the map:** a simplified coastline with a slight wobble, Slovakia, and three straight lines to the seas.
+
+### Limitations
+
+- **Straight lines:** distances are as the crow flies, not by road.
+- **Coastline detail:** at 1:10 million, small bays and lagoons are simplified, which can shift distances by a kilometre or two.
+- **The sketch:** the coastline is simplified and small islands are left out of the drawing. The distances use the full coastline.
+- **Coverage:** the EU's 27 countries only.
+
+**Files:** [`day07_ten_minute.py`](day07_ten_minute/day07_ten_minute.py) does everything, and [`results.csv`](day07_ten_minute/results.csv) holds the point and the three distances.
+
+---
+
 ## Data sources and licenses
 
 | Dataset | Used for | Where it comes from | License |
 | --- | --- | --- | --- |
 | [GHS-UCDB R2024A V1.2](https://human-settlement.emergency.copernicus.eu/ghs_ucdb_2024.php) | Urban centres and population (Days 1, 2) | Downloaded from the JRC's open data site | CC BY 4.0 |
 | [GHS-POP R2023A](https://human-settlement.emergency.copernicus.eu/download.php) | Europe's total population (Day 1), people by location (Day 6) | Downloaded from the JRC's open data site | CC BY 4.0 |
-| [Natural Earth](https://www.naturalearthdata.com/) | Land, country boundaries (Days 1 to 6) | GitHub mirror of Natural Earth | Public domain |
+| [Natural Earth](https://www.naturalearthdata.com/) | Land, seas and country boundaries (Days 1 to 7) | GitHub mirror of Natural Earth | Public domain |
 | [OSRM](https://project-osrm.org/) on [OpenStreetMap](https://www.openstreetmap.org/copyright) | Driving times and routes (Day 2) | OSRM's free demo server | Data: ODbL, © OpenStreetMap contributors |
 | [List of busiest ports in Europe](https://en.wikipedia.org/wiki/List_of_busiest_ports_in_Europe) | Top 10 ports and TEU (Day 2) | Wikipedia, read in November 2026 | CC BY-SA |
 | [Eurostat](https://ec.europa.eu/eurostat/data/database) `tour_occ_nin3`, `demo_r_pjanaggr3` | Nights spent and residents (Day 3) | Eurostat's statistics API | Free reuse with credit to Eurostat |
 | [GISCO NUTS 2024](https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units/territorial-units-statistics) | Regional boundaries (Day 3) | Eurostat's GISCO service | © EuroGeographics for the administrative boundaries. Free for non-commercial use |
-| [Eurostat Census 2021 population grid](https://ec.europa.eu/eurostat/web/gisco/geodata/population-distribution/population-grids) | 1 km population grid (Days 4, 5) | Eurostat's GISCO service | © European Union, free reuse with credit |
+| [Eurostat Census 2021 population grid](https://ec.europa.eu/eurostat/web/gisco/geodata/population-distribution/population-grids) | 1 km population grid (Days 4, 5, 7) | Eurostat's GISCO service | © European Union, free reuse with credit |
 | [NASA eclipse paths](https://eclipse.gsfc.nasa.gov/solar.html) | Paths of the 2026 and 2027 total eclipses (Day 5) | NASA's eclipse site, by Fred Espenak (GSFC) | Free to use with credit to NASA |
 | [AWMC geodata](https://github.com/AWMC/geodata) | Roman Empire at its greatest extent, AD 117 (Day 6) | GitHub, Ancient World Mapping Center, University of North Carolina | ODbL |
 
@@ -291,12 +318,19 @@ Follow the setup in the [main README](../README.md), then run:
 ```bash
 python 2026/day01_points/day01_points.py
 python 2026/day02_lines/day02_lines.py
+python 2026/day03_polygons/day03_polygons.py
+python 2026/day04_clusters/day04_clusters.py
 python 2026/day05_sight/day05_sight.py
+python 2026/day06_vintage/day06_vintage.py
+python 2026/day07_ten_minute/day07_ten_minute.py
 ```
 
 - **Day 1** takes about a minute and downloads about 50 MB. Recalculating Europe's total with `compute_europe_population.py` is optional and downloads about 475 MB.
 - **Day 2** sends about 830 requests to the OSRM demo server the first time, at no more than one per second, so it takes around 25 minutes. Results are saved in `cache/`, so you can stop and resume it. The demo server is for reasonable, non-commercial use, so client work needs its own OSRM instance.
+- **Day 4** downloads the 566 MB census grid once, then takes about a minute.
 - **Day 5** uses the same census grid as Day 4 and three small NASA pages, and takes about a minute.
+- **Day 6** downloads the 461 MB GHS-POP grid once, then takes about a minute.
+- **Day 7** uses the same census grid as Day 4 and Natural Earth's ocean layer (10 MB), and takes about a minute.
 
 ## License
 
