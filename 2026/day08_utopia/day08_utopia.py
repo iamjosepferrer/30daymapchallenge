@@ -120,8 +120,8 @@ to_map = Transformer.from_crs(4326, 3035, always_xy=True)
 LX, LY = 34, 470
 svg.append(text(LX, LY, "Fine particles (PM2.5), yearly average 2024", 17, 700))
 for i, (colour, label) in enumerate(((C["blue"], f"{WHO} µg/m³ or less, WHO's guideline"),
-                                      (LIGHT_BLUE, f"{WHO} to {EU_2030}, within the EU's 2030 limit"),
-                                      (GREY, f"Above {EU_2030}"))):
+                                      (LIGHT_BLUE, f"{WHO} to {EU_2030} µg/m³, within the EU's 2030 limit"),
+                                      (GREY, f"Above {EU_2030} µg/m³"))):
     y = LY + 14 + i * 24
     svg.append(f'<rect x="{LX}" y="{y}" width="16" height="16" rx="2" fill="{colour}"/>')
     svg.append(text(LX + 24, y + 13, label, 15, 400, C["ink2"]))
@@ -159,8 +159,8 @@ svg.append(text(60, 220, f"particles average {WHO} µg/m³ or less over the year
 svg.append(byline(252, "30DayMapChallenge #8: Utopia"))
 FOOTER = [
     ("Method:", "the 2024 average of fine particles (PM2.5) in each 1 km square, matched with its residents in the 2021 census."),
-    ("Source:", "air: European Environment Agency, 2024 interpolated data (validated), CC BY 4.0. Residents: Eurostat, Census 2021 grid, © European Union. Base: Natural Earth."),
-    ("Comments:", "air values are EEA estimates for each square from stations, models and satellites, not measurements or a legal compliance check. The Canaries, Madeira and the Azores are outside the air map."),
+    ("Source:", "European Environment Agency, 2024 air data (CC BY 4.0). Eurostat, Census 2021 grid (© European Union). Natural Earth."),
+    ("Comments:", "air values are EEA estimates, not station readings. The Canaries, Madeira and the Azores aren't covered."),
 ]
 svg += footer(FOOTER, x=60, y=1251, width=960, size=17, line_height=20)
 save_png(page("".join(svg)), HERE / "day08_utopia.png")
