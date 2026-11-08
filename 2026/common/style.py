@@ -151,8 +151,12 @@ def fade_defs():
     )
 
 
-def byline(y):
-    return text(60, y, "Map by Josep Ferrer, @iamjosepferrer on LinkedIn and X, databites.tech", 20, 600, C["ink2"])
+def byline(y, series=None):
+    """The byline, optionally followed by the challenge day, such as "30DayMapChallenge #8: Utopia"."""
+    words = "Map by Josep Ferrer, @iamjosepferrer on LinkedIn and X, databites.tech"
+    if series:
+        words += f". {series}"
+    return text(60, y, words, 20, 600, C["ink2"])
 
 
 def footer(items, x, y, width, size, line_height):

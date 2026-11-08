@@ -9,6 +9,7 @@ One map a day about Europe, each built around a clear finding.
 - [Day 5, Senses, Sight: Spain gets two total eclipses in a row, but Madrid and Barcelona miss both](#day-5-senses-sight)
 - [Day 6, Vintage: half of Europe's people live on land Rome once ruled](#day-6-vintage)
 - [Day 7, 10 minute map: the EU's farthest point from the sea is 660 km inland, in Slovakia](#day-7-10-minute-map)
+- [Day 8, Utopia: only 3% of people in the EU already breathe the air of a cleaner future](#day-8-utopia)
 - [Data sources and licenses](#data-sources-and-licenses)
 - [How to recreate the maps](#how-to-recreate-the-maps)
 
@@ -289,20 +290,65 @@ The theme asks for a map made in no more than ten minutes, so this one is a roug
 
 ---
 
+## Day 8: Utopia
+
+![Only 3% of people in the EU already breathe the air of a cleaner future](day08_utopia/day08_utopia.png)
+
+### What it shows
+
+Air as clean as the World Health Organization recommends already exists in parts of the EU. In 2024, 3% of the EU's residents (13 million people) lived where fine particles (PM2.5) averaged 5 µg/m³ or less over the year, the WHO's guideline. Another 57% lived where they averaged between 5 and 10 µg/m³, within the EU's new limit for 2030, and 40% lived above 10.
+
+| Country | Residents with WHO-level air | Residents within the 2030 limit |
+| --- | ---: | ---: |
+| Finland | 58% | 100% |
+| Estonia | 49% | 100% |
+| Sweden | 42% | 100% |
+| Portugal | 12% | 91% |
+| Spain | 4% | 63% |
+| France | 2% | 99% |
+| Germany | 0.2% | 95% |
+| Italy | 0.3% | 18% |
+| Poland | 0% | 3% |
+
+Clean air is mostly where few people live: the north, the mountains and inland Iberia. Every country is in [`by_country.csv`](day08_utopia/by_country.csv).
+
+### How it was made
+
+1. **Get the air:** the European Environment Agency's map of PM2.5 for 2024 (validated data, June 2026), an annual average for every 1 km square. Squares the file marks as missing (-99) are skipped.
+2. **Get the residents:** Eurostat's Census 2021 population grid, on the same 1 km squares.
+3. **Match them:** each square's residents get that square's PM2.5 value, and EU countries come from Eurostat's NUTS 2021 borders.
+4. **Count the residents** in three groups: within WHO's guideline (5 µg/m³), within the EU's 2030 limit (10 µg/m³), and above it.
+
+### Limitations
+
+- **Modelled air:** the EEA combines monitoring stations, a chemical transport model and other data. Values are estimates for each square, not measurements.
+- **Different years:** the air is from 2024 and the residents from the 2021 census.
+- **Annual averages:** a square within the guideline can still have bad days.
+- **Close to the line:** many squares sit near 5 µg/m³, so the share moves with the threshold. Counting squares up to 5.5 µg/m³ gives 4.7%, and up to 4.5 gives 1.7%.
+- **Not a compliance check:** the EEA describes these maps as European-scale estimates, not for checking formal compliance with limit values. The 2030 limit is used here only as a reference level.
+- **Only fine particles:** clean PM2.5 does not mean clean air in every sense. Other pollutants, such as nitrogen dioxide and ozone, are not mapped.
+- **Coverage:** the Canaries, Madeira and the Azores (2.6 million residents) are outside the air map and not counted.
+
+**Files:** [`day08_utopia.py`](day08_utopia/day08_utopia.py) does everything, [`results.csv`](day08_utopia/results.csv) holds the EU shares, and [`by_country.csv`](day08_utopia/by_country.csv) the shares for each country.
+
+---
+
 ## Data sources and licenses
 
 | Dataset | Used for | Where it comes from | License |
 | --- | --- | --- | --- |
 | [GHS-UCDB R2024A V1.2](https://human-settlement.emergency.copernicus.eu/ghs_ucdb_2024.php) | Urban centres and population (Days 1, 2) | Downloaded from the JRC's open data site | CC BY 4.0 |
 | [GHS-POP R2023A](https://human-settlement.emergency.copernicus.eu/download.php) | Europe's total population (Day 1), people by location (Day 6) | Downloaded from the JRC's open data site | CC BY 4.0 |
-| [Natural Earth](https://www.naturalearthdata.com/) | Land, seas and country boundaries (Days 1 to 7) | GitHub mirror of Natural Earth | Public domain |
+| [Natural Earth](https://www.naturalearthdata.com/) | Land, seas and country boundaries (Days 1 to 8) | GitHub mirror of Natural Earth | Public domain |
 | [OSRM](https://project-osrm.org/) on [OpenStreetMap](https://www.openstreetmap.org/copyright) | Driving times and routes (Day 2) | OSRM's free demo server | Data: ODbL, © OpenStreetMap contributors |
 | [List of busiest ports in Europe](https://en.wikipedia.org/wiki/List_of_busiest_ports_in_Europe) | Top 10 ports and TEU (Day 2) | Wikipedia, read in November 2026 | CC BY-SA |
 | [Eurostat](https://ec.europa.eu/eurostat/data/database) `tour_occ_nin3`, `demo_r_pjanaggr3` | Nights spent and residents (Day 3) | Eurostat's statistics API | Free reuse with credit to Eurostat |
 | [GISCO NUTS 2024](https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units/territorial-units-statistics) | Regional boundaries (Day 3) | Eurostat's GISCO service | © EuroGeographics for the administrative boundaries. Free for non-commercial use |
-| [Eurostat Census 2021 population grid](https://ec.europa.eu/eurostat/web/gisco/geodata/population-distribution/population-grids) | 1 km population grid (Days 4, 5, 7) | Eurostat's GISCO service | © European Union, free reuse with credit |
+| [Eurostat Census 2021 population grid](https://ec.europa.eu/eurostat/web/gisco/geodata/population-distribution/population-grids) | 1 km population grid (Days 4, 5, 7, 8) | Eurostat's GISCO service | © European Union, free reuse with credit |
 | [NASA eclipse paths](https://eclipse.gsfc.nasa.gov/solar.html) | Paths of the 2026 and 2027 total eclipses (Day 5) | NASA's eclipse site, by Fred Espenak (GSFC) | Free to use with credit to NASA |
 | [AWMC geodata](https://github.com/AWMC/geodata) | Roman Empire at its greatest extent, AD 117 (Day 6) | GitHub, Ancient World Mapping Center, University of North Carolina | ODbL |
+| [EEA interpolated air quality data, PM2.5 2024](https://sdi.eea.europa.eu/catalogue/srv/api/records/c3db03e4-82e9-4a40-acb1-a5bd15f11f8c) | Annual PM2.5 on a 1 km grid (Day 8) | European Environment Agency | CC BY 4.0, © EEA |
+| [GISCO NUTS 2021](https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units/territorial-units-statistics) | EU country borders (Day 8) | Eurostat's GISCO service | © EuroGeographics for the administrative boundaries |
 
 **Citations**
 
@@ -323,6 +369,7 @@ python 2026/day04_clusters/day04_clusters.py
 python 2026/day05_sight/day05_sight.py
 python 2026/day06_vintage/day06_vintage.py
 python 2026/day07_ten_minute/day07_ten_minute.py
+python 2026/day08_utopia/day08_utopia.py
 ```
 
 - **Day 1** takes about a minute and downloads about 50 MB. Recalculating Europe's total with `compute_europe_population.py` is optional and downloads about 475 MB.
@@ -331,6 +378,7 @@ python 2026/day07_ten_minute/day07_ten_minute.py
 - **Day 5** uses the same census grid as Day 4 and three small NASA pages, and takes about a minute.
 - **Day 6** downloads the 461 MB GHS-POP grid once, then takes about a minute.
 - **Day 7** uses the same census grid as Day 4 and Natural Earth's ocean layer (10 MB), and takes about a minute.
+- **Day 8** uses the same census grid as Day 4 and downloads the EEA's 78 MB air quality map once, then takes about a minute.
 
 ## License
 
