@@ -1,0 +1,1166 @@
+NUTS_ID,country,region,type,2025,2050,change_pct
+AT111,AT,Mittelburgenland,rural,37745,34316,-9.08
+AT112,AT,Nordburgenland,rural,165805,174393,5.18
+AT113,AT,Südburgenland,rural,98241,90642,-7.74
+AT121,AT,Mostviertel-Eisenwurzen,rural,250791,251679,0.35
+AT122,AT,Niederösterreich-Süd,intermediate,268098,266419,-0.63
+AT123,AT,Sankt Pölten,rural,163041,171157,4.98
+AT124,AT,Waldviertel,rural,215138,198558,-7.71
+AT125,AT,Weinviertel,rural,127215,125485,-1.36
+AT126,AT,Wiener Umland/Nordteil,intermediate,346557,375429,8.33
+AT127,AT,Wiener Umland/Südteil,intermediate,356675,373311,4.66
+AT130,AT,Wien,urban,2028289,2201969,8.56
+AT211,AT,Klagenfurt-Villach,intermediate,298721,293831,-1.64
+AT212,AT,Oberkärnten,rural,123596,110987,-10.2
+AT213,AT,Unterkärnten,rural,147777,131895,-10.75
+AT221,AT,Graz,urban,469968,518302,10.28
+AT222,AT,Liezen,rural,79580,74300,-6.63
+AT223,AT,Östliche Obersteiermark,intermediate,156148,135217,-13.4
+AT224,AT,Oststeiermark,rural,267391,258293,-3.4
+AT225,AT,West- und Südsteiermark,rural,200216,192851,-3.68
+AT226,AT,Westliche Obersteiermark,rural,98414,84470,-14.17
+AT311,AT,Innviertel,rural,299332,316683,5.8
+AT312,AT,Linz-Wels,intermediate,617181,665470,7.82
+AT313,AT,Mühlviertel,rural,215016,217237,1.03
+AT314,AT,Steyr-Kirchdorf,rural,158848,158828,-0.01
+AT315,AT,Traunviertel,rural,245144,244796,-0.14
+AT321,AT,Lungau,rural,20461,18409,-10.03
+AT322,AT,Pinzgau-Pongau,rural,173404,171994,-0.81
+AT323,AT,Salzburg und Umgebung,intermediate,378980,394098,3.99
+AT331,AT,Außerfern,rural,33946,33577,-1.09
+AT332,AT,Innsbruck,urban,319242,332127,4.04
+AT333,AT,Osttirol,rural,49011,45150,-7.88
+AT334,AT,Tiroler Oberland,rural,107718,109608,1.75
+AT335,AT,Tiroler Unterland,intermediate,267744,278608,4.06
+AT341,AT,Bludenz-Bregenzer Wald,intermediate,95029,98123,3.26
+AT342,AT,Rheintal-Bodenseegebiet,urban,316755,338487,6.86
+BE100,BE,Arr. de Bruxelles-Capitale/Arr. Brussel-Hoofdstad,urban,1271709,1368563,7.62
+BE211,BE,Arr. Antwerpen,urban,1101688,1194508,8.43
+BE212,BE,Arr. Mechelen,urban,362480,396048,9.26
+BE213,BE,Arr. Turnhout,intermediate,483806,513964,6.23
+BE223,BE,Arr. Tongeren,intermediate,211654,214319,1.26
+BE224,BE,Arr. Hasselt,urban,436040,451537,3.55
+BE225,BE,Arr. Maaseik,intermediate,261761,263576,0.69
+BE231,BE,Arr. Aalst,urban,307873,333185,8.22
+BE232,BE,Arr. Dendermonde,urban,208652,218700,4.82
+BE233,BE,Arr. Eeklo,urban,89885,95169,5.88
+BE234,BE,Arr. Gent,urban,583607,644207,10.38
+BE235,BE,Arr. Oudenaarde,intermediate,128922,132600,2.85
+BE236,BE,Arr. Sint-Niklaas,urban,267495,298065,11.43
+BE241,BE,Arr. Halle-Vilvoorde,urban,674772,741331,9.86
+BE242,BE,Arr. Leuven,intermediate,530971,572105,7.75
+BE251,BE,Arr. Brugge,urban,288078,288919,0.29
+BE252,BE,Arr. Diksmuide,intermediate,52741,53753,1.92
+BE253,BE,Arr. Ieper,rural,109063,108603,-0.42
+BE254,BE,Arr. Kortrijk,urban,304883,322364,5.73
+BE255,BE,Arr. Oostende,urban,161286,165359,2.53
+BE256,BE,Arr. Roeselare,intermediate,160971,177883,10.51
+BE257,BE,Arr. Tielt,intermediate,96254,100416,4.32
+BE258,BE,Arr. Veurne,intermediate,61392,62327,1.52
+BE310,BE,Arr. Nivelles,intermediate,416504,449083,7.82
+BE323,BE,Arr. Mons,urban,262177,262091,-0.03
+BE328,BE,Arr. Tournai-Mouscron,intermediate,228421,239067,4.66
+BE329,BE,Arr. La Louvière,urban,142964,148784,4.07
+BE32A,BE,Arr. Ath,intermediate,130871,138745,6.02
+BE32B,BE,Arr. Charleroi,urban,403346,405502,0.53
+BE32C,BE,Arr. Soignies,urban,109221,119105,9.05
+BE32D,BE,Arr. Thuin,rural,92740,96808,4.39
+BE331,BE,Arr. Huy,rural,116479,122697,5.34
+BE332,BE,Arr. Liège,urban,637220,652909,2.46
+BE334,BE,Arr. Waremme,rural,84223,93252,10.72
+BE335,BE,Arr. Verviers — communes francophones,intermediate,213758,218438,2.19
+BE336,BE,Bezirk Verviers — Deutschsprachige Gemeinschaft,rural,80007,86578,8.21
+BE341,BE,Arr. Arlon,rural,66865,76536,14.46
+BE342,BE,Arr. Bastogne,rural,52244,61477,17.67
+BE343,BE,Arr. Marche-en-Famenne,rural,58824,62388,6.06
+BE344,BE,Arr. Neufchâteau,rural,66635,70194,5.34
+BE345,BE,Arr. Virton,rural,55244,58673,6.21
+BE351,BE,Arr. Dinant,rural,114775,124002,8.04
+BE352,BE,Arr. Namur,intermediate,326860,349044,6.79
+BE353,BE,Arr. Philippeville,rural,68136,70461,3.41
+BG311,BG,Vidin,rural,70542,45103,-36.06
+BG312,BG,Montana,intermediate,112737,81764,-27.47
+BG313,BG,Vratsa,intermediate,146001,109437,-25.04
+BG314,BG,Pleven,intermediate,215327,165340,-23.21
+BG315,BG,Lovech,rural,110824,78654,-29.03
+BG321,BG,Veliko Tarnovo,intermediate,200413,138250,-31.02
+BG322,BG,Gabrovo,intermediate,93817,59711,-36.35
+BG323,BG,Ruse,intermediate,186093,127043,-31.73
+BG324,BG,Razgrad,rural,99459,68818,-30.81
+BG325,BG,Silistra,rural,93550,63611,-32.0
+BG331,BG,Varna,intermediate,437522,377194,-13.79
+BG332,BG,Dobrich,intermediate,145206,86307,-40.56
+BG333,BG,Shumen,intermediate,149279,113155,-24.2
+BG334,BG,Targovishte,intermediate,94735,65963,-30.37
+BG341,BG,Burgas,intermediate,388918,337885,-13.12
+BG342,BG,Sliven,intermediate,169299,138500,-18.19
+BG343,BG,Yambol,intermediate,105431,77582,-26.41
+BG344,BG,Stara Zagora,intermediate,288736,240038,-16.87
+BG411,BG,Sofia (stolitsa),urban,1295930,1343086,3.64
+BG412,BG,Sofia,intermediate,224701,249338,10.96
+BG413,BG,Blagoevgrad,intermediate,286332,234287,-18.18
+BG414,BG,Pernik,intermediate,109886,78912,-28.19
+BG415,BG,Kyustendil,intermediate,106130,72567,-31.62
+BG421,BG,Plovdiv,intermediate,635630,563245,-11.39
+BG422,BG,Haskovo,intermediate,207356,165687,-20.1
+BG423,BG,Pazardzhik,intermediate,223494,141827,-36.54
+BG424,BG,Smolyan,rural,90533,50893,-43.79
+BG425,BG,Kardzhali,rural,149479,159371,6.62
+CY000,CY,Kýpros,intermediate,982966,1132643,15.23
+CZ010,CZ,Hlavní město Praha,urban,1397880,1471809,5.29
+CZ020,CZ,Středočeský kraj,intermediate,1466215,1654192,12.82
+CZ031,CZ,Jihočeský kraj,rural,653227,624828,-4.35
+CZ032,CZ,Plzeňský kraj,rural,614640,609095,-0.9
+CZ041,CZ,Karlovarský kraj,intermediate,293195,247889,-15.45
+CZ042,CZ,Ústecký kraj,intermediate,808356,726206,-10.16
+CZ051,CZ,Liberecký kraj,intermediate,449494,426611,-5.09
+CZ052,CZ,Královéhradecký kraj,rural,555923,516246,-7.14
+CZ053,CZ,Pardubický kraj,intermediate,530468,512057,-3.47
+CZ063,CZ,Kraj Vysočina,rural,517647,479362,-7.4
+CZ064,CZ,Jihomoravský kraj,intermediate,1229343,1209625,-1.6
+CZ071,CZ,Olomoucký kraj,intermediate,631500,570462,-9.67
+CZ072,CZ,Zlínský kraj,intermediate,578998,514450,-11.15
+CZ080,CZ,Moravskoslezský kraj,intermediate,1182613,998770,-15.55
+DE111,DE,"Stuttgart, Stadtkreis",urban,612662,633135,3.34
+DE112,DE,Böblingen,urban,395167,410164,3.8
+DE113,DE,Esslingen,urban,536601,538746,0.4
+DE114,DE,Göppingen,urban,258810,256518,-0.89
+DE115,DE,Ludwigsburg,urban,535373,548436,2.44
+DE116,DE,Rems-Murr-Kreis,urban,440696,436149,-1.03
+DE117,DE,"Heilbronn, Stadtkreis",intermediate,131986,128034,-2.99
+DE118,DE,"Heilbronn, Landkreis",intermediate,353876,358329,1.26
+DE119,DE,Hohenlohekreis,rural,115645,114703,-0.81
+DE11A,DE,Schwäbisch Hall,rural,200902,201848,0.47
+DE11B,DE,Main-Tauber-Kreis,rural,133170,122828,-7.77
+DE11C,DE,Heidenheim,intermediate,135235,132330,-2.15
+DE11D,DE,Ostalbkreis,intermediate,317427,279491,-11.95
+DE121,DE,"Baden-Baden, Stadtkreis",urban,56881,54309,-4.52
+DE122,DE,"Karlsruhe, Stadtkreis",urban,309050,290881,-5.88
+DE123,DE,"Karlsruhe, Landkreis",urban,456263,441865,-3.16
+DE124,DE,Rastatt,urban,230737,228081,-1.15
+DE125,DE,"Heidelberg, Stadtkreis",urban,155757,154086,-1.07
+DE126,DE,"Mannheim, Stadtkreis",urban,318036,288196,-9.38
+DE127,DE,Neckar-Odenwald-Kreis,rural,145263,134506,-7.41
+DE128,DE,Rhein-Neckar-Kreis,urban,558561,540610,-3.21
+DE129,DE,"Pforzheim, Stadtkreis",urban,134912,133466,-1.07
+DE12A,DE,Calw,intermediate,161252,163362,1.31
+DE12B,DE,Enzkreis,urban,199743,201627,0.94
+DE12C,DE,Freudenstadt,rural,121958,116758,-4.26
+DE131,DE,"Freiburg im Breisgau, Stadtkreis",intermediate,237461,238099,0.27
+DE132,DE,Breisgau-Hochschwarzwald,intermediate,272557,271857,-0.26
+DE133,DE,Emmendingen,intermediate,169786,171995,1.3
+DE134,DE,Ortenaukreis,intermediate,444859,443388,-0.33
+DE135,DE,Rottweil,intermediate,140236,138557,-1.2
+DE136,DE,Schwarzwald-Baar-Kreis,intermediate,214065,207965,-2.85
+DE137,DE,Tuttlingen,intermediate,145208,146502,0.89
+DE138,DE,Konstanz,intermediate,291841,294633,0.96
+DE139,DE,Lörrach,intermediate,238264,226242,-5.05
+DE13A,DE,Waldshut,intermediate,171579,167100,-2.61
+DE141,DE,Reutlingen,intermediate,293484,289687,-1.29
+DE142,DE,"Tübingen, Landkreis",urban,233545,240960,3.17
+DE143,DE,Zollernalbkreis,intermediate,193326,151418,-21.68
+DE144,DE,"Ulm, Stadtkreis",intermediate,129882,130403,0.4
+DE145,DE,Alb-Donau-Kreis,intermediate,202354,203632,0.63
+DE146,DE,Biberach,rural,207415,217327,4.78
+DE147,DE,Bodenseekreis,intermediate,220805,219356,-0.66
+DE148,DE,Ravensburg,intermediate,291102,292116,0.35
+DE149,DE,Sigmaringen,rural,132168,118981,-9.98
+DE211,DE,"Ingolstadt, Kreisfreie Stadt",intermediate,141184,144562,2.39
+DE212,DE,"München, Kreisfreie Stadt",urban,1505005,1475533,-1.96
+DE213,DE,"Rosenheim, Kreisfreie Stadt",intermediate,65273,64711,-0.86
+DE214,DE,Altötting,intermediate,113940,112760,-1.04
+DE215,DE,Berchtesgadener Land,intermediate,105292,102023,-3.1
+DE216,DE,Bad Tölz-Wolfratshausen,intermediate,130246,127336,-2.23
+DE217,DE,Dachau,intermediate,153597,161032,4.84
+DE218,DE,Ebersberg,intermediate,144225,151456,5.01
+DE219,DE,Eichstätt,intermediate,135667,136518,0.63
+DE21A,DE,Erding,rural,140128,141571,1.03
+DE21B,DE,Freising,intermediate,184564,184290,-0.15
+DE21C,DE,Fürstenfeldbruck,urban,218226,216887,-0.61
+DE21D,DE,Garmisch-Partenkirchen,intermediate,89296,86064,-3.62
+DE21E,DE,Landsberg am Lech,rural,122107,120715,-1.14
+DE21F,DE,Miesbach,intermediate,97152,96401,-0.77
+DE21G,DE,Mühldorf a. Inn,intermediate,122038,120801,-1.01
+DE21H,DE,"München, Landkreis",urban,354396,350317,-1.15
+DE21I,DE,Neuburg-Schrobenhausen,rural,99365,99362,-0.0
+DE21J,DE,Pfaffenhofen a. d. Ilm,intermediate,130782,133518,2.09
+DE21K,DE,"Rosenheim, Landkreis",intermediate,258637,257863,-0.3
+DE21L,DE,Starnberg,urban,139329,132514,-4.89
+DE21M,DE,Traunstein,rural,175144,172971,-1.24
+DE21N,DE,Weilheim-Schongau,intermediate,138957,136056,-2.09
+DE221,DE,"Landshut, Kreisfreie Stadt",intermediate,71862,77802,8.27
+DE222,DE,"Passau, Kreisfreie Stadt",rural,53039,54667,3.07
+DE223,DE,"Straubing, Kreisfreie Stadt",rural,49002,47102,-3.88
+DE224,DE,Deggendorf,intermediate,121844,114768,-5.81
+DE225,DE,Freyung-Grafenau,rural,78709,71082,-9.69
+DE226,DE,Kelheim,rural,126037,127337,1.03
+DE227,DE,"Landshut, Landkreis",intermediate,162170,167709,3.42
+DE228,DE,"Passau, Landkreis",rural,194699,192228,-1.27
+DE229,DE,Regen,rural,77267,71336,-7.68
+DE22A,DE,Rottal-Inn,rural,120496,118240,-1.87
+DE22B,DE,Straubing-Bogen,rural,103040,100851,-2.12
+DE22C,DE,Dingolfing-Landau,rural,101035,96946,-4.05
+DE231,DE,"Amberg, Kreisfreie Stadt",intermediate,42554,39914,-6.2
+DE232,DE,"Regensburg, Kreisfreie Stadt",intermediate,151388,160881,6.27
+DE233,DE,"Weiden i. d. Opf, Kreisfreie Stadt",rural,42444,41319,-2.65
+DE234,DE,Amberg-Sulzbach,intermediate,103983,95759,-7.91
+DE235,DE,Cham,rural,128533,120960,-5.89
+DE236,DE,Neumarkt i. d. OPf.,rural,138693,141863,2.29
+DE237,DE,Neustadt a. d. Waldnaab,rural,96049,87401,-9.0
+DE238,DE,"Regensburg, Landkreis",intermediate,196214,192675,-1.8
+DE239,DE,Schwandorf,intermediate,149314,148125,-0.8
+DE23A,DE,Tirschenreuth,rural,72209,62397,-13.59
+DE241,DE,"Bamberg, Kreisfreie Stadt",intermediate,77150,78607,1.89
+DE242,DE,"Bayreuth, Kreisfreie Stadt",intermediate,72940,74578,2.25
+DE243,DE,"Coburg, Kreisfreie Stadt",intermediate,41064,38087,-7.25
+DE244,DE,"Hof, Kreisfreie Stadt",intermediate,46778,44269,-5.36
+DE245,DE,"Bamberg, Landkreis",intermediate,147777,141206,-4.45
+DE246,DE,"Bayreuth, Landkreis",intermediate,103216,93838,-9.09
+DE247,DE,"Coburg, Landkreis",intermediate,84468,79072,-6.39
+DE248,DE,Forchheim,intermediate,116185,112674,-3.02
+DE249,DE,"Hof, Landkreis",intermediate,92191,81696,-11.38
+DE24A,DE,Kronach,rural,64545,55224,-14.44
+DE24B,DE,Kulmbach,rural,71517,62455,-12.67
+DE24C,DE,Lichtenfels,intermediate,67380,60989,-9.49
+DE24D,DE,Wunsiedel i. Fichtelgebirge,rural,70549,63179,-10.45
+DE251,DE,"Ansbach, Kreisfreie Stadt",rural,40741,41766,2.52
+DE252,DE,"Erlangen, Kreisfreie Stadt",urban,115929,114113,-1.57
+DE253,DE,"Fürth, Kreisfreie Stadt",urban,132035,131152,-0.67
+DE254,DE,"Nürnberg, Kreisfreie Stadt",urban,529508,511997,-3.31
+DE255,DE,"Schwabach, Kreisfreie Stadt",urban,40834,39386,-3.55
+DE256,DE,"Ansbach, Landkreis",rural,187633,181599,-3.22
+DE257,DE,Erlangen-Höchstadt,urban,138325,134673,-2.64
+DE258,DE,"Fürth, Landkreis",urban,117721,107309,-8.84
+DE259,DE,Nürnberger Land,intermediate,168814,166873,-1.15
+DE25A,DE,Neustadt a. d. Aisch-Bad Windsheim,rural,101043,99635,-1.39
+DE25B,DE,Roth,intermediate,128633,123005,-4.38
+DE25C,DE,Weißenburg-Gunzenhausen,rural,94696,91743,-3.12
+DE261,DE,"Aschaffenburg, Kreisfreie Stadt",urban,73090,70739,-3.22
+DE262,DE,"Schweinfurt, Kreisfreie Stadt",intermediate,54482,49195,-9.7
+DE263,DE,"Würzburg, Kreisfreie Stadt",intermediate,133258,126995,-4.7
+DE264,DE,"Aschaffenburg, Landkreis",urban,170947,162262,-5.08
+DE265,DE,Bad Kissingen,rural,103489,94244,-8.93
+DE266,DE,Rhön-Grabfeld,rural,79375,71448,-9.99
+DE267,DE,Haßberge,rural,83868,75671,-9.77
+DE268,DE,Kitzingen,rural,91288,88060,-3.54
+DE269,DE,Miltenberg,intermediate,127547,118130,-7.38
+DE26A,DE,Main-Spessart,rural,125282,112733,-10.02
+DE26B,DE,"Schweinfurt, Landkreis",intermediate,113977,108499,-4.81
+DE26C,DE,"Würzburg, Landkreis",intermediate,162216,156305,-3.64
+DE271,DE,"Augsburg, Kreisfreie Stadt",urban,301106,308914,2.59
+DE272,DE,"Kaufbeuren, Kreisfreie Stadt",intermediate,46193,46630,0.95
+DE273,DE,"Kempten (Allgäu), Kreisfreie Stadt",intermediate,67645,71092,5.1
+DE274,DE,"Memmingen, Kreisfreie Stadt",rural,44192,44160,-0.07
+DE275,DE,Aichach-Friedberg,intermediate,136803,137723,0.67
+DE276,DE,"Augsburg, Landkreis",urban,262812,264745,0.74
+DE277,DE,Dillingen a.d. Donau,rural,98899,97369,-1.55
+DE278,DE,Günzburg,intermediate,129847,129727,-0.09
+DE279,DE,Neu-Ulm,intermediate,183595,182274,-0.72
+DE27A,DE,Lindau (Bodensee),urban,82412,80128,-2.77
+DE27B,DE,Ostallgäu,intermediate,142047,144114,1.46
+DE27C,DE,Unterallgäu,rural,147256,151491,2.88
+DE27D,DE,Donau-Ries,rural,135098,124623,-7.75
+DE27E,DE,Oberallgäu,intermediate,155414,155347,-0.04
+DE300,DE,Berlin,urban,3685265,3831898,3.98
+DE401,DE,"Brandenburg an der Havel, Kreisfreie Stadt",intermediate,74113,70688,-4.62
+DE402,DE,"Cottbus, Kreisfreie Stadt",intermediate,95123,90624,-4.73
+DE403,DE,"Frankfurt (Oder), Kreisfreie Stadt",intermediate,57107,51050,-10.61
+DE404,DE,"Potsdam, Kreisfreie Stadt",intermediate,184755,212248,14.88
+DE405,DE,Barnim,intermediate,194168,200813,3.42
+DE406,DE,Dahme-Spreewald,intermediate,178795,181533,1.53
+DE407,DE,Elbe-Elster,rural,97966,81598,-16.71
+DE408,DE,Havelland,intermediate,170834,171193,0.21
+DE409,DE,Märkisch-Oderland,intermediate,197817,197452,-0.18
+DE40A,DE,Oberhavel,intermediate,217690,216323,-0.63
+DE40B,DE,Oberspreewald-Lausitz,rural,107794,87073,-19.22
+DE40C,DE,Oder-Spree,intermediate,179819,119163,-33.73
+DE40D,DE,Ostprignitz-Ruppin,rural,99151,87697,-11.55
+DE40E,DE,Potsdam-Mittelmark,intermediate,221268,217735,-1.6
+DE40F,DE,Prignitz,rural,75595,63420,-16.11
+DE40G,DE,Spree-Neiße,intermediate,109635,86651,-20.96
+DE40H,DE,Teltow-Fläming,intermediate,177687,180273,1.46
+DE40I,DE,Uckermark,intermediate,117431,99281,-15.46
+DE501,DE,"Bremen, Kreisfreie Stadt",urban,586271,561817,-4.17
+DE502,DE,"Bremerhaven, Kreisfreie Stadt",intermediate,118610,112077,-5.51
+DE600,DE,Hamburg,urban,1862565,1927122,3.47
+DE711,DE,"Darmstadt, Kreisfreie Stadt",urban,167029,164637,-1.43
+DE712,DE,"Frankfurt am Main, Kreisfreie Stadt",urban,756019,804897,6.47
+DE713,DE,"Offenbach am Main, Kreisfreie Stadt",urban,132746,134031,0.97
+DE714,DE,"Wiesbaden, Kreisfreie Stadt",urban,288852,265117,-8.22
+DE715,DE,Bergstraße,urban,274170,263477,-3.9
+DE716,DE,Darmstadt-Dieburg,urban,302021,293475,-2.83
+DE717,DE,Groß-Gerau,urban,268309,282927,5.45
+DE718,DE,Hochtaunuskreis,urban,241665,231542,-4.19
+DE719,DE,Main-Kinzig-Kreis,urban,420914,418211,-0.64
+DE71A,DE,Main-Taunus-Kreis,urban,238775,239612,0.35
+DE71B,DE,Odenwaldkreis,rural,93845,86397,-7.94
+DE71C,DE,"Offenbach, Landkreis",urban,358022,358317,0.08
+DE71D,DE,Rheingau-Taunus-Kreis,intermediate,185651,183686,-1.06
+DE71E,DE,Wetteraukreis,intermediate,311591,309849,-0.56
+DE721,DE,"Gießen, Landkreis",intermediate,268418,218453,-18.61
+DE722,DE,Lahn-Dill-Kreis,intermediate,254074,239736,-5.64
+DE723,DE,Limburg-Weilburg,intermediate,173831,161977,-6.82
+DE724,DE,Marburg-Biedenkopf,intermediate,242806,238749,-1.67
+DE725,DE,Vogelsbergkreis,rural,101164,95790,-5.31
+DE731,DE,"Kassel, Kreisfreie Stadt",intermediate,197231,199890,1.35
+DE732,DE,Fulda,intermediate,222282,223430,0.52
+DE733,DE,Hersfeld-Rotenburg,rural,117415,109669,-6.6
+DE734,DE,"Kassel, Landkreis",intermediate,231073,224897,-2.67
+DE735,DE,Schwalm-Eder-Kreis,rural,180071,165740,-7.96
+DE736,DE,Waldeck-Frankenberg,rural,155126,143307,-7.62
+DE737,DE,Werra-Meißner-Kreis,rural,97696,91657,-6.18
+DE803,DE,"Rostock, Kreisfreie Stadt",intermediate,205306,209324,1.96
+DE804,DE,"Schwerin, Kreisfreie Stadt",rural,98308,85776,-12.75
+DE80J,DE,Mecklenburgische Seenplatte,rural,246319,215078,-12.68
+DE80K,DE,Landkreis Rostock,rural,218721,203326,-7.04
+DE80L,DE,Vorpommern-Rügen,rural,215204,197333,-8.3
+DE80M,DE,Nordwestmecklenburg,rural,156692,146479,-6.52
+DE80N,DE,Vorpommern-Greifswald,intermediate,224956,203799,-9.4
+DE80O,DE,Ludwigslust-Parchim,rural,208092,153663,-26.16
+DE911,DE,"Braunschweig, Kreisfreie Stadt",intermediate,252961,215199,-14.93
+DE912,DE,"Salzgitter, Kreisfreie Stadt",intermediate,104971,109503,4.32
+DE913,DE,"Wolfsburg, Kreisfreie Stadt",intermediate,129561,118514,-8.53
+DE914,DE,Gifhorn,intermediate,175943,175024,-0.52
+DE916,DE,Goslar,intermediate,126774,115347,-9.01
+DE917,DE,Helmstedt,rural,90227,84787,-6.03
+DE918,DE,Northeim,rural,125622,115841,-7.79
+DE91A,DE,Peine,intermediate,137046,140184,2.29
+DE91B,DE,Wolfenbüttel,intermediate,118289,110631,-6.47
+DE91C,DE,Göttingen,intermediate,328028,234791,-28.42
+DE922,DE,Diepholz,intermediate,221202,218969,-1.01
+DE923,DE,Hameln-Pyrmont,intermediate,150204,140264,-6.62
+DE925,DE,Hildesheim,intermediate,267507,255910,-4.34
+DE926,DE,Holzminden,rural,65580,61478,-6.25
+DE927,DE,Nienburg (Weser),rural,121467,116517,-4.08
+DE928,DE,Schaumburg,intermediate,156842,150877,-3.8
+DE929,DE,Region Hannover,urban,1140890,1153666,1.12
+DE931,DE,Celle,intermediate,172449,169888,-1.49
+DE932,DE,Cuxhaven,intermediate,198843,187423,-5.74
+DE933,DE,Harburg,intermediate,265864,263626,-0.84
+DE934,DE,Lüchow-Dannenberg,rural,46503,41025,-11.78
+DE935,DE,"Lüneburg, Landkreis",intermediate,179448,185780,3.53
+DE936,DE,Osterholz,intermediate,113599,111799,-1.58
+DE937,DE,Rotenburg (Wümme),rural,165904,158522,-4.45
+DE938,DE,Heidekreis,intermediate,141320,112671,-20.27
+DE939,DE,Stade,intermediate,207700,211687,1.92
+DE93A,DE,Uelzen,rural,91639,84485,-7.81
+DE93B,DE,Verden,intermediate,138626,137161,-1.06
+DE941,DE,"Delmenhorst, Kreisfreie Stadt",urban,81407,78479,-3.6
+DE942,DE,"Emden, Kreisfreie Stadt",intermediate,49201,44963,-8.61
+DE943,DE,"Oldenburg (Oldenburg), Kreisfreie Stadt",urban,176615,176039,-0.33
+DE944,DE,"Osnabrück, Kreisfreie Stadt",intermediate,166057,169250,1.92
+DE945,DE,"Wilhelmshaven, Kreisfreie Stadt",intermediate,75745,71435,-5.69
+DE946,DE,Ammerland,urban,127751,129790,1.6
+DE947,DE,Aurich,intermediate,188816,177417,-6.04
+DE948,DE,Cloppenburg,intermediate,177024,182594,3.15
+DE949,DE,Emsland,intermediate,334539,336003,0.44
+DE94A,DE,Friesland (DE),intermediate,100410,97636,-2.76
+DE94B,DE,Grafschaft Bentheim,intermediate,144544,139852,-3.25
+DE94C,DE,Leer,intermediate,169101,172404,1.95
+DE94D,DE,"Oldenburg, Landkreis",intermediate,132007,128772,-2.45
+DE94E,DE,"Osnabrück, Landkreis",intermediate,354821,300765,-15.23
+DE94F,DE,Vechta,intermediate,146538,152359,3.97
+DE94G,DE,Wesermarsch,intermediate,88936,82209,-7.56
+DE94H,DE,Wittmund,rural,55969,52993,-5.32
+DEA11,DE,"Düsseldorf, Kreisfreie Stadt",urban,618685,620018,0.22
+DEA12,DE,"Duisburg, Kreisfreie Stadt",urban,502270,480326,-4.37
+DEA13,DE,"Essen, Kreisfreie Stadt",urban,574682,539225,-6.17
+DEA14,DE,"Krefeld, Kreisfreie Stadt",urban,231405,222930,-3.66
+DEA15,DE,"Mönchengladbach, Kreisfreie Stadt",urban,267211,241593,-9.59
+DEA16,DE,"Mülheim an der Ruhr, Kreisfreie Stadt",urban,173051,170210,-1.64
+DEA17,DE,"Oberhausen, Kreisfreie Stadt",urban,213646,200993,-5.92
+DEA18,DE,"Remscheid, Kreisfreie Stadt",urban,113827,110777,-2.68
+DEA19,DE,"Solingen, Kreisfreie Stadt",urban,165626,157185,-5.1
+DEA1A,DE,"Wuppertal, Kreisfreie Stadt",urban,358193,357692,-0.14
+DEA1B,DE,Kleve,intermediate,322018,293049,-9.0
+DEA1C,DE,Mettmann,urban,490910,473559,-3.53
+DEA1D,DE,Rhein-Kreis Neuss,urban,457079,436677,-4.46
+DEA1E,DE,Viersen,urban,297857,285251,-4.23
+DEA1F,DE,Wesel,urban,457916,434202,-5.18
+DEA22,DE,"Bonn, Kreisfreie Stadt",urban,323336,321766,-0.49
+DEA23,DE,"Köln, Kreisfreie Stadt",urban,1024621,1099462,7.3
+DEA24,DE,"Leverkusen, Kreisfreie Stadt",urban,168582,158923,-5.73
+DEA26,DE,Düren,intermediate,279285,262179,-6.12
+DEA27,DE,Rhein-Erft-Kreis,urban,477989,460412,-3.68
+DEA28,DE,Euskirchen,intermediate,202609,194959,-3.78
+DEA29,DE,Heinsberg,intermediate,263680,252912,-4.08
+DEA2A,DE,Oberbergischer Kreis,intermediate,274058,257505,-6.04
+DEA2B,DE,Rheinisch-Bergischer Kreis,urban,284273,276298,-2.81
+DEA2C,DE,Rhein-Sieg-Kreis,urban,605441,593510,-1.97
+DEA2D,DE,Städteregion Aachen,urban,582410,547577,-5.98
+DEA31,DE,"Bottrop, Kreisfreie Stadt",urban,118535,111689,-5.78
+DEA32,DE,"Gelsenkirchen, Kreisfreie Stadt",urban,267929,249925,-6.72
+DEA33,DE,"Münster, Kreisfreie Stadt",urban,308259,329431,6.87
+DEA34,DE,Borken,intermediate,380796,348960,-8.36
+DEA35,DE,Coesfeld,intermediate,227860,222966,-2.15
+DEA36,DE,Recklinghausen,urban,621305,572802,-7.81
+DEA37,DE,Steinfurt,intermediate,451712,448665,-0.67
+DEA38,DE,Warendorf,intermediate,282638,267104,-5.5
+DEA41,DE,"Bielefeld, Kreisfreie Stadt",urban,331606,314941,-5.03
+DEA42,DE,Gütersloh,intermediate,363982,357774,-1.71
+DEA43,DE,Herford,urban,254404,235897,-7.27
+DEA44,DE,Höxter,rural,139253,110715,-20.49
+DEA45,DE,Lippe,intermediate,347150,307192,-11.51
+DEA46,DE,Minden-Lübbecke,intermediate,320558,297247,-7.27
+DEA47,DE,Paderborn,intermediate,315911,316596,0.22
+DEA51,DE,"Bochum, Kreisfreie Stadt",urban,358675,344937,-3.83
+DEA52,DE,"Dortmund, Kreisfreie Stadt",urban,603462,574376,-4.82
+DEA53,DE,"Hagen, Kreisfreie Stadt",urban,190383,179828,-5.54
+DEA54,DE,"Hamm, Kreisfreie Stadt",urban,179969,169421,-5.86
+DEA55,DE,"Herne, Kreisfreie Stadt",urban,155851,148746,-4.56
+DEA56,DE,Ennepe-Ruhr-Kreis,urban,314168,303013,-3.55
+DEA57,DE,Hochsauerlandkreis,intermediate,260843,235470,-9.73
+DEA58,DE,Märkischer Kreis,urban,408045,352842,-13.53
+DEA59,DE,Olpe,intermediate,132346,118274,-10.63
+DEA5A,DE,Siegen-Wittgenstein,intermediate,274074,234625,-14.39
+DEA5B,DE,Soest,intermediate,300297,272624,-9.22
+DEA5C,DE,Unna,urban,393784,356668,-9.43
+DEB11,DE,"Koblenz, Kreisfreie Stadt",urban,113376,111856,-1.34
+DEB12,DE,Ahrweiler,intermediate,129353,129885,0.41
+DEB13,DE,Altenkirchen (Westerwald),rural,132125,123329,-6.66
+DEB14,DE,Bad Kreuznach,intermediate,164748,155107,-5.85
+DEB15,DE,Birkenfeld,rural,82611,74300,-10.06
+DEB17,DE,Mayen-Koblenz,urban,217227,211533,-2.62
+DEB18,DE,Neuwied,intermediate,189061,183488,-2.95
+DEB1A,DE,Rhein-Lahn-Kreis,intermediate,125588,112369,-10.53
+DEB1B,DE,Westerwaldkreis,rural,207804,197273,-5.07
+DEB1C,DE,Cochem-Zell,rural,61606,54896,-10.89
+DEB1D,DE,Rhein-Hunsrück-Kreis,rural,106705,99221,-7.01
+DEB21,DE,"Trier, Kreisfreie Stadt",intermediate,104342,94093,-9.82
+DEB22,DE,Bernkastel-Wittlich,rural,113187,106038,-6.32
+DEB23,DE,Eifelkreis Bitburg-Prüm,rural,99788,96269,-3.53
+DEB24,DE,Vulkaneifel,rural,59312,55202,-6.93
+DEB25,DE,Trier-Saarburg,intermediate,148954,144314,-3.12
+DEB31,DE,"Frankenthal (Pfalz), Kreisfreie Stadt",urban,48139,47275,-1.79
+DEB32,DE,"Kaiserslautern, Kreisfreie Stadt",intermediate,100426,97792,-2.62
+DEB33,DE,"Landau in der Pfalz, Kreisfreie Stadt",urban,48209,48764,1.15
+DEB34,DE,"Ludwigshafen am Rhein, Kreisfreie Stadt",urban,177222,176184,-0.59
+DEB35,DE,"Mainz, Kreisfreie Stadt",urban,224684,234193,4.23
+DEB36,DE,"Neustadt an der Weinstraße, Kreisfreie Stadt",urban,52945,51138,-3.41
+DEB37,DE,"Pirmasens, Kreisfreie Stadt",rural,39759,37321,-6.13
+DEB38,DE,"Speyer, Kreisfreie Stadt",urban,49564,46231,-6.72
+DEB39,DE,"Worms, Kreisfreie Stadt",urban,86753,82625,-4.76
+DEB3A,DE,"Zweibrücken, Kreisfreie Stadt",urban,33323,30933,-7.17
+DEB3B,DE,Alzey-Worms,rural,131239,129424,-1.38
+DEB3C,DE,Bad Dürkheim,urban,134329,126564,-5.78
+DEB3D,DE,Donnersbergkreis,rural,74782,70815,-5.3
+DEB3E,DE,Germersheim,urban,131383,127200,-3.18
+DEB3F,DE,"Kaiserslautern, Landkreis",intermediate,106343,105625,-0.68
+DEB3G,DE,Kusel,rural,69335,64246,-7.34
+DEB3H,DE,Südliche Weinstraße,intermediate,113031,105794,-6.4
+DEB3I,DE,Rhein-Pfalz-Kreis,urban,155882,154845,-0.67
+DEB3J,DE,Mainz-Bingen,intermediate,206455,197240,-4.46
+DEB3K,DE,Südwestpfalz,rural,89975,83514,-7.18
+DEC01,DE,Regionalverband Saarbrücken,urban,333147,311747,-6.42
+DEC02,DE,Merzig-Wadern,intermediate,108779,94834,-12.82
+DEC03,DE,Neunkirchen,intermediate,133178,117902,-11.47
+DEC04,DE,Saarlouis,urban,205128,155277,-24.3
+DEC05,DE,Saarpfalz-Kreis,urban,144092,129363,-10.22
+DEC06,DE,St. Wendel,intermediate,87812,77877,-11.31
+DED21,DE,"Dresden, Kreisfreie Stadt",urban,564904,567568,0.47
+DED2C,DE,Bautzen,rural,292609,241861,-17.34
+DED2D,DE,Görlitz,intermediate,243958,195587,-19.83
+DED2E,DE,Meißen,intermediate,239223,206072,-13.86
+DED2F,DE,Sächsische Schweiz-Osterzgebirge,urban,243996,215172,-11.81
+DED41,DE,"Chemnitz, Kreisfreie Stadt",intermediate,245620,197217,-19.71
+DED42,DE,Erzgebirgskreis,intermediate,318394,250271,-21.4
+DED43,DE,Mittelsachsen,intermediate,296431,245917,-17.04
+DED44,DE,Vogtlandkreis,intermediate,219100,177142,-19.15
+DED45,DE,Zwickau,intermediate,306793,248149,-19.12
+DED51,DE,"Leipzig, Kreisfreie Stadt",urban,611851,686611,12.22
+DED52,DE,Leipzig,urban,260128,234878,-9.71
+DED53,DE,Nordsachsen,rural,199423,175415,-12.04
+DEE01,DE,"Dessau-Roßlau, Kreisfreie Stadt",intermediate,75400,62315,-17.35
+DEE02,DE,"Halle (Saale), Kreisfreie Stadt",intermediate,226768,231401,2.04
+DEE03,DE,"Magdeburg, Kreisfreie Stadt",intermediate,244328,237667,-2.73
+DEE04,DE,Altmarkkreis Salzwedel,rural,79980,66332,-17.06
+DEE05,DE,Anhalt-Bitterfeld,intermediate,153034,121555,-20.57
+DEE06,DE,Jerichower Land,rural,88509,74951,-15.32
+DEE07,DE,Börde,intermediate,167924,147070,-12.42
+DEE08,DE,Burgenlandkreis,rural,173685,143117,-17.6
+DEE09,DE,Harz,intermediate,205484,128075,-37.67
+DEE0A,DE,Mansfeld-Südharz,rural,129029,99619,-22.79
+DEE0B,DE,Saalekreis,intermediate,182451,160211,-12.19
+DEE0C,DE,Salzlandkreis,intermediate,180771,147128,-18.61
+DEE0D,DE,Stendal,rural,106538,85673,-19.58
+DEE0E,DE,Wittenberg,rural,121694,100180,-17.68
+DEF01,DE,"Flensburg, Kreisfreie Stadt",intermediate,96327,92821,-3.64
+DEF02,DE,"Kiel, Kreisfreie Stadt",urban,252668,236474,-6.41
+DEF03,DE,"Lübeck, Kreisfreie Stadt",intermediate,216889,203379,-6.23
+DEF04,DE,"Neumünster, Kreisfreie Stadt",intermediate,79810,57881,-27.48
+DEF05,DE,Dithmarschen,rural,133460,122239,-8.41
+DEF06,DE,Herzogtum Lauenburg,intermediate,206235,204310,-0.93
+DEF07,DE,Nordfriesland,rural,170030,159076,-6.44
+DEF08,DE,Ostholstein,intermediate,201473,189858,-5.77
+DEF09,DE,Pinneberg,urban,325223,323908,-0.4
+DEF0A,DE,Plön,urban,130610,125067,-4.24
+DEF0B,DE,Rendsburg-Eckernförde,intermediate,278058,266361,-4.21
+DEF0C,DE,Schleswig-Flensburg,intermediate,205472,202084,-1.65
+DEF0D,DE,Segeberg,intermediate,283562,271260,-4.34
+DEF0E,DE,Steinburg,intermediate,132731,116938,-11.9
+DEF0F,DE,Stormarn,intermediate,246974,244624,-0.95
+DEG01,DE,"Erfurt, Kreisfreie Stadt",intermediate,218794,217546,-0.57
+DEG02,DE,"Gera, Kreisfreie Stadt",intermediate,95608,74746,-21.82
+DEG03,DE,"Jena, Kreisfreie Stadt",intermediate,109725,112518,2.55
+DEG05,DE,"Weimar, Kreisfreie Stadt",intermediate,65954,64001,-2.96
+DEG06,DE,Eichsfeld,rural,103694,87689,-15.43
+DEG07,DE,Nordhausen,rural,80762,69146,-14.38
+DEG09,DE,Unstrut-Hainich-Kreis,rural,94613,84119,-11.09
+DEG0A,DE,Kyffhäuserkreis,rural,71739,56879,-20.71
+DEG0C,DE,Gotha,rural,135839,117042,-13.84
+DEG0D,DE,Sömmerda,intermediate,67694,57018,-15.77
+DEG0E,DE,Hildburghausen,rural,59987,50554,-15.73
+DEG0G,DE,Weimarer Land,intermediate,82391,74781,-9.24
+DEG0J,DE,Saale-Holzland-Kreis,intermediate,83342,54273,-34.88
+DEG0K,DE,Saale-Orla-Kreis,rural,77341,62673,-18.97
+DEG0L,DE,Greiz,intermediate,93708,75058,-19.9
+DEG0M,DE,Altenburger Land,intermediate,87508,70508,-19.43
+DEG0Q,DE,Schmalkalden-Meiningen,intermediate,120215,106667,-11.27
+DEG0R,DE,Wartburgkreis,rural,154958,126128,-18.61
+DEG0S,DE,"Suhl, Kreisfreie Stadt",intermediate,34685,29796,-14.1
+DEG0T,DE,Ilm-Kreis,rural,106657,88279,-17.23
+DEG0U,DE,Saalfeld-Rudolstadt,intermediate,100105,74178,-25.9
+DEG0V,DE,Sonneberg,rural,54965,51307,-6.66
+DK011,DK,Byen København,urban,831424,941121,13.19
+DK012,DK,Københavns omegn,urban,582097,595141,2.24
+DK013,DK,Nordsjælland,intermediate,478218,507826,6.19
+DK014,DK,Bornholm,rural,39056,37807,-3.2
+DK021,DK,Østsjælland,intermediate,262819,281842,7.24
+DK022,DK,Vest- og Sydsjælland,rural,592083,597510,0.92
+DK031,DK,Fyn,intermediate,507349,522648,3.02
+DK032,DK,Sydjylland,intermediate,733123,732221,-0.12
+DK041,DK,Vestjylland,rural,428777,427653,-0.26
+DK042,DK,Østjylland,intermediate,945022,1046320,10.72
+DK050,DK,Nordjylland,intermediate,592768,597694,0.83
+EE001,EE,Põhja-Eesti,urban,647024,698041,7.88
+EE004,EE,Lääne-Eesti,rural,148255,125290,-15.49
+EE008,EE,Lõuna-Eesti,intermediate,321690,279493,-13.12
+EE009,EE,Kesk-Eesti,rural,122869,100659,-18.08
+EE00A,EE,Kirde-Eesti,urban,130157,73587,-43.46
+EL301,EL,Voreios Tomeas Athinon,urban,592492,477501,-19.41
+EL302,EL,Dytikos Tomeas Athinon,urban,462106,420352,-9.04
+EL303,EL,Kentrikos Tomeas Athinon,urban,977993,799202,-18.28
+EL304,EL,Notios Tomeas Athinon,urban,516991,460282,-10.97
+EL305,EL,Anatoliki Attiki,urban,536876,576962,7.47
+EL306,EL,Dytiki Attiki,urban,164369,183529,11.66
+EL307,EL,"Peiraias, Nisoi",urban,513445,452313,-11.91
+EL411,EL,"Lesvos, Limnos",rural,112519,92127,-18.12
+EL412,EL,"Ikaria, Samos",rural,43010,36286,-15.63
+EL413,EL,Chios,intermediate,52397,46032,-12.15
+EL421,EL,"Kalymnos, Karpathos, Kasos, Kos, Rodos",intermediate,211089,205612,-2.59
+EL422,EL,"Andros, Thira, Kea - Kythnos, Milos, Mykonos, Naxos, Paros,  Syros, Tinos",rural,115947,117147,1.03
+EL431,EL,Irakleio,intermediate,301599,289974,-3.85
+EL432,EL,Lasithi,rural,77131,74394,-3.55
+EL433,EL,Rethymni,rural,85716,89784,4.75
+EL434,EL,Chania,intermediate,156676,151892,-3.05
+EL511,EL,Evros,intermediate,136419,108919,-20.16
+EL512,EL,Xanthi,intermediate,107954,100176,-7.2
+EL513,EL,Rodopi,intermediate,106838,94945,-11.13
+EL514,EL,Drama,rural,89068,75319,-15.44
+EL515,EL,"Thasos, Kavala",rural,124917,105034,-15.92
+EL521,EL,Imathia,intermediate,129663,107689,-16.95
+EL522,EL,Thessaloniki,urban,1081843,985258,-8.93
+EL523,EL,Kilkis,rural,69859,59025,-15.51
+EL524,EL,Pella,rural,120515,96582,-19.86
+EL525,EL,Pieria,intermediate,115100,99697,-13.38
+EL526,EL,Serres,rural,154729,120347,-22.22
+EL527,EL,Chalkidiki,rural,100693,93841,-6.8
+EL531,EL,"Grevena, Kozani",intermediate,156827,123584,-21.2
+EL532,EL,Kastoria,intermediate,43829,32980,-24.75
+EL533,EL,Florina,rural,42920,34870,-18.76
+EL541,EL,"Arta, Preveza",rural,115006,90962,-20.91
+EL542,EL,Thesprotia,rural,40170,33430,-16.78
+EL543,EL,Ioannina,intermediate,168884,151530,-10.28
+EL611,EL,"Karditsa, Trikala",rural,222314,181250,-18.47
+EL612,EL,Larisa,intermediate,266074,229370,-13.79
+EL613,EL,"Magnisia, Sporades",intermediate,187652,164618,-12.27
+EL621,EL,Zakynthos,rural,40122,38029,-5.22
+EL622,EL,Kerkyra,rural,97697,82094,-15.97
+EL623,EL,"Ithaki, Kefallinia",rural,38451,34787,-9.53
+EL624,EL,Lefkada,rural,22153,20366,-8.07
+EL631,EL,Aitoloakarnania,rural,183720,146788,-20.1
+EL632,EL,Achaia,intermediate,299688,264477,-11.75
+EL633,EL,Ileia,rural,152546,128017,-16.08
+EL641,EL,Voiotia,rural,108188,99067,-8.43
+EL642,EL,Evvoia,rural,211851,189704,-10.45
+EL643,EL,Evrytania,rural,17533,13917,-20.62
+EL644,EL,Fthiotida,rural,132395,108042,-18.39
+EL645,EL,Fokida,rural,37205,33279,-10.55
+EL651,EL,"Argolida, Arkadia",rural,166074,139244,-16.16
+EL652,EL,Korinthia,intermediate,136716,125195,-8.43
+EL653,EL,"Lakonia, Messinia",rural,226376,196852,-13.04
+ES111,ES,A Coruña,intermediate,1135623,1063855,-6.32
+ES112,ES,Lugo,rural,326022,287719,-11.75
+ES113,ES,Ourense,rural,305279,267484,-12.38
+ES114,ES,Pontevedra,intermediate,947817,889156,-6.19
+ES120,ES,Asturias,intermediate,1015128,849611,-16.31
+ES130,ES,Cantabria,intermediate,593623,562288,-5.28
+ES211,ES,Araba/Álava,urban,341960,384883,12.55
+ES212,ES,Gipuzkoa,urban,733148,804689,9.76
+ES213,ES,Bizkaia,urban,1167233,1218394,4.38
+ES220,ES,Navarra,intermediate,683854,801206,17.16
+ES230,ES,La Rioja,intermediate,326803,342118,4.69
+ES241,ES,Huesca,intermediate,230088,236215,2.66
+ES242,ES,Teruel,rural,136091,129345,-4.96
+ES243,ES,Zaragoza,urban,998443,1039022,4.06
+ES300,ES,Madrid,urban,7113886,8995988,26.46
+ES411,ES,Ávila,rural,160737,138641,-13.75
+ES412,ES,Burgos,intermediate,362662,333680,-7.99
+ES413,ES,León,intermediate,448031,360480,-19.54
+ES414,ES,Palencia,intermediate,158702,133968,-15.59
+ES415,ES,Salamanca,intermediate,328446,288326,-12.22
+ES416,ES,Segovia,rural,158252,145832,-7.85
+ES417,ES,Soria,intermediate,90183,85118,-5.62
+ES418,ES,Valladolid,intermediate,528644,477205,-9.73
+ES419,ES,Zamora,rural,165564,124414,-24.85
+ES421,ES,Albacete,intermediate,390751,360003,-7.87
+ES422,ES,Ciudad Real,intermediate,494849,413380,-16.46
+ES423,ES,Cuenca,intermediate,199859,178108,-10.88
+ES424,ES,Guadalajara,intermediate,285840,318200,11.32
+ES425,ES,Toledo,intermediate,755080,783854,3.81
+ES431,ES,Badajoz,intermediate,665155,585937,-11.91
+ES432,ES,Cáceres,intermediate,388190,336635,-13.28
+ES511,ES,Barcelona,urban,5959940,7577040,27.13
+ES512,ES,Girona,intermediate,830429,1009239,21.53
+ES513,ES,Lleida,intermediate,458226,495832,8.21
+ES514,ES,Tarragona,intermediate,875529,963982,10.1
+ES521,ES,Alicante/Alacant,urban,2033567,2275446,11.89
+ES522,ES,Castellón/Castelló,intermediate,627620,641498,2.21
+ES523,ES,Valencia/València,urban,2763995,3025469,9.46
+ES531,ES,Eivissa y Formentera,intermediate,175955,226842,28.92
+ES532,ES,Mallorca,urban,971068,1247398,28.46
+ES533,ES,Menorca,intermediate,102821,124865,21.44
+ES611,ES,Almería,intermediate,770553,911025,18.23
+ES612,ES,Cádiz,urban,1261420,1182047,-6.29
+ES613,ES,Córdoba,intermediate,773163,704056,-8.94
+ES614,ES,Granada,intermediate,945797,956678,1.15
+ES615,ES,Huelva,intermediate,538789,540269,0.27
+ES616,ES,Jaén,intermediate,618143,527196,-14.71
+ES617,ES,Málaga,urban,1791183,2032325,13.46
+ES618,ES,Sevilla,urban,1977664,1935204,-2.15
+ES620,ES,Murcia,urban,1586989,1787063,12.61
+ES630,ES,Ceuta,urban,83567,83286,-0.34
+ES640,ES,Melilla,urban,87067,93036,6.86
+ES703,ES,El Hierro,rural,11992,23513,96.07
+ES704,ES,Fuerteventura,intermediate,129080,222890,72.68
+ES705,ES,Gran Canaria,urban,875588,852903,-2.59
+ES706,ES,La Gomera,rural,22561,35616,57.87
+ES707,ES,La Palma,intermediate,86298,104840,21.49
+ES708,ES,Lanzarote,intermediate,166879,230423,38.08
+ES709,ES,Tenerife,urban,966468,1131753,17.1
+FI196,FI,Satakunta,rural,211261,177603,-15.93
+FI198,FI,Keski-Suomi,intermediate,274112,258701,-5.62
+FI199,FI,Etelä-Pohjanmaa,rural,189930,161401,-15.02
+FI19A,FI,Pohjanmaa,rural,178749,174618,-2.31
+FI19B,FI,Pirkanmaa,intermediate,545406,558181,2.34
+FI1B1,FI,Helsinki-Uusimaa,urban,1782300,2019479,13.31
+FI1C1,FI,Varsinais-Suomi,intermediate,494819,494186,-0.13
+FI1C2,FI,Kanta-Häme,intermediate,169455,150033,-11.46
+FI1C5,FI,Etelä-Karjala,intermediate,125083,107454,-14.09
+FI1C6,FI,Päijät-Häme,intermediate,204633,182343,-10.89
+FI1C7,FI,Kymenlaakso,intermediate,157442,128351,-18.48
+FI1D5,FI,Keski-Pohjanmaa,intermediate,67724,62841,-7.21
+FI1D7,FI,Lappi,rural,176149,156121,-11.37
+FI1D8,FI,Kainuu,rural,69640,56235,-19.25
+FI1D9,FI,Pohjois-Pohjanmaa,intermediate,418331,409902,-2.01
+FI1DA,FI,Etelä-Savo,rural,129376,105159,-18.72
+FI1DB,FI,Pohjois-Savo,intermediate,248815,221570,-10.95
+FI1DC,FI,Pohjois-Karjala,rural,162091,139910,-13.68
+FI200,FI,Åland,rural,30654,34497,12.54
+FR101,FR,Paris,urban,2065560,2080600,0.73
+FR102,FR,Seine-et-Marne ,intermediate,1490900,1565678,5.02
+FR103,FR,Yvelines ,urban,1504566,1552512,3.19
+FR104,FR,Essonne,urban,1356114,1437957,6.04
+FR105,FR,Hauts-de-Seine ,urban,1668276,1756716,5.3
+FR106,FR,Seine-Saint-Denis ,urban,1731790,1920786,10.91
+FR107,FR,Val-de-Marne,urban,1434876,1557333,8.53
+FR108,FR,Val-d’Oise,urban,1297210,1401204,8.02
+FRB01,FR,Cher,rural,296293,266059,-10.2
+FRB02,FR,Eure-et-Loir,rural,433124,414472,-4.31
+FRB03,FR,Indre,rural,213863,193878,-9.34
+FRB04,FR,Indre-et-Loire,intermediate,622694,641702,3.05
+FRB05,FR,Loir-et-Cher,rural,327403,309428,-5.49
+FRB06,FR,Loiret,intermediate,694929,709758,2.13
+FRC11,FR,Côte-d’Or,intermediate,541659,543542,0.35
+FRC12,FR,Nièvre,rural,200187,167106,-16.53
+FRC13,FR,Saône-et-Loire,rural,548843,520880,-5.09
+FRC14,FR,Yonne,rural,330629,297672,-9.97
+FRC21,FR,Doubs,intermediate,546727,562490,2.88
+FRC22,FR,Jura,rural,256900,246505,-4.05
+FRC23,FR,Haute-Saône,rural,231817,213143,-8.06
+FRC24,FR,Territoire de Belfort,intermediate,140111,125369,-10.52
+FRD11,FR,Calvados ,intermediate,715481,703012,-1.74
+FRD12,FR,Manche ,rural,497928,470961,-5.42
+FRD13,FR,Orne,rural,272628,246568,-9.56
+FRD21,FR,Eure,rural,603418,580652,-3.77
+FRD22,FR,Seine-Maritime,intermediate,1261528,1215805,-3.62
+FRE11,FR,Nord,urban,2613782,2565352,-1.85
+FRE12,FR,Pas-de-Calais,intermediate,1451975,1352819,-6.83
+FRE21,FR,Aisne,rural,518585,475225,-8.36
+FRE22,FR,Oise,intermediate,827928,834161,0.75
+FRE23,FR,Somme,rural,562177,539021,-4.12
+FRF11,FR,Bas-Rhin,intermediate,1170953,1255789,7.25
+FRF12,FR,Haut-Rhin,intermediate,770773,746503,-3.15
+FRF21,FR,Ardennes,rural,262991,222153,-15.53
+FRF22,FR,Aube,intermediate,308733,309851,0.36
+FRF23,FR,Marne,intermediate,558750,538420,-3.64
+FRF24,FR,Haute-Marne,rural,165884,141584,-14.65
+FRF31,FR,Meurthe-et-Moselle ,intermediate,730103,718797,-1.55
+FRF32,FR,Meuse ,rural,178205,149748,-15.97
+FRF33,FR,Moselle,intermediate,1050255,1016585,-3.21
+FRF34,FR,Vosges,rural,353506,309028,-12.58
+FRG01,FR,Loire-Atlantique,urban,1510599,1734613,14.83
+FRG02,FR,Maine-et-Loire,intermediate,840296,863070,2.71
+FRG03,FR,Mayenne,rural,304181,294968,-3.03
+FRG04,FR,Sarthe,rural,565403,545376,-3.54
+FRG05,FR,Vendée,rural,724879,759281,4.75
+FRH01,FR,Côtes-d’Armor,rural,615539,609345,-1.01
+FRH02,FR,Finistère,rural,941086,929946,-1.18
+FRH03,FR,Ille-et-Vilaine,intermediate,1138869,1264731,11.05
+FRH04,FR,Morbihan,rural,793757,817369,2.97
+FRI11,FR,Dordogne,rural,420009,398796,-5.05
+FRI12,FR,Gironde,urban,1720563,1975168,14.8
+FRI13,FR,Landes,rural,442133,462716,4.66
+FRI14,FR,Lot-et-Garonne,rural,334995,318981,-4.78
+FRI15,FR,Pyrénées-Atlantiques,intermediate,717461,747536,4.19
+FRI21,FR,Corrèze,rural,241274,229434,-4.91
+FRI22,FR,Creuse,rural,115156,100096,-13.08
+FRI23,FR,Haute-Vienne,rural,372796,359510,-3.56
+FRI31,FR,Charente,rural,352677,339054,-3.86
+FRI32,FR,Charente-Maritime,rural,681647,696930,2.24
+FRI33,FR,Deux-Sèvres,rural,374841,365059,-2.61
+FRI34,FR,Vienne,rural,437291,447778,2.4
+FRJ11,FR,Aude,rural,381335,396010,3.85
+FRJ12,FR,Gard,intermediate,781438,791092,1.24
+FRJ13,FR,Hérault,intermediate,1253088,1440260,14.94
+FRJ14,FR,Lozère,rural,76408,75325,-1.42
+FRJ15,FR,Pyrénées-Orientales,intermediate,505300,520509,3.01
+FRJ21,FR,Ariège,rural,156586,155253,-0.85
+FRJ22,FR,Aveyron,rural,278691,274501,-1.5
+FRJ23,FR,Haute-Garonne,urban,1503240,1737911,15.61
+FRJ24,FR,Gers,rural,192442,191226,-0.63
+FRJ25,FR,Lot,rural,177067,176459,-0.34
+FRJ26,FR,Hautes-Pyrénées ,rural,232066,230233,-0.79
+FRJ27,FR,Tarn,rural,400745,400581,-0.04
+FRJ28,FR,Tarn-et-Garonne,rural,267166,280143,4.86
+FRK11,FR,Allier,rural,331210,306450,-7.48
+FRK12,FR,Cantal,rural,143842,134296,-6.64
+FRK13,FR,Haute-Loire,rural,229071,223683,-2.35
+FRK14,FR,Puy-de-Dôme,intermediate,664318,700798,5.49
+FRK21,FR,Ain,rural,692168,740003,6.91
+FRK22,FR,Ardèche,rural,336759,336759,0.0
+FRK23,FR,Drôme,intermediate,527156,550151,4.36
+FRK24,FR,Isère,intermediate,1310648,1355475,3.42
+FRK25,FR,Loire,intermediate,776330,781118,0.62
+FRK26,FR,Rhône,urban,1929521,2141821,11.0
+FRK27,FR,Savoie,intermediate,452843,476468,5.22
+FRK28,FR,Haute-Savoie,intermediate,876224,985603,12.48
+FRL01,FR,Alpes-de-Haute-Provence,rural,169564,173269,2.19
+FRL02,FR,Hautes-Alpes ,rural,145091,141825,-2.25
+FRL03,FR,Alpes-Maritimes,urban,1145511,1174761,2.55
+FRL04,FR,Bouches-du-Rhône,urban,2108964,2195394,4.1
+FRL05,FR,Var,intermediate,1139050,1208847,6.13
+FRL06,FR,Vaucluse,intermediate,576948,571490,-0.95
+FRM01,FR,Corse-du-Sud,intermediate,172854,187758,8.62
+FRM02,FR,Haute-Corse,rural,189399,210725,11.26
+FRY10,FR,Guadeloupe,intermediate,413791,341300,-17.52
+FRY20,FR,Martinique ,intermediate,359419,277550,-22.78
+FRY30,FR,Guyane,intermediate,297455,409527,37.68
+FRY40,FR,La Réunion,urban,904180,920281,1.78
+FRY50,FR,Mayotte ,urban,329208,549111,66.8
+HR021,HR,Bjelovarsko-bilogorska županija,rural,98267,68272,-30.52
+HR022,HR,Virovitičko-podravska županija,rural,67220,42141,-37.31
+HR023,HR,Požeško-slavonska županija,rural,60593,40081,-33.85
+HR024,HR,Brodsko-posavska županija,rural,125978,81121,-35.61
+HR025,HR,Osječko-baranjska županija,intermediate,249734,162936,-34.76
+HR026,HR,Vukovarsko-srijemska županija,rural,136797,81468,-40.45
+HR027,HR,Karlovačka županija,rural,109561,90511,-17.39
+HR028,HR,Sisačko-moslavačka županija,rural,134008,89242,-33.41
+HR031,HR,Primorsko-goranska županija,intermediate,265990,227907,-14.32
+HR032,HR,Ličko-senjska županija,rural,43199,36366,-15.82
+HR033,HR,Zadarska županija,rural,165767,160424,-3.22
+HR034,HR,Šibensko-kninska županija,rural,95899,87014,-9.26
+HR035,HR,Splitsko-dalmatinska županija,intermediate,430526,397947,-7.57
+HR036,HR,Istarska županija,rural,204709,220163,7.55
+HR037,HR,Dubrovačko-neretvanska županija,rural,116393,121910,4.74
+HR050,HR,Grad Zagreb,urban,777359,862142,10.91
+HR061,HR,Međimurska županija,rural,105003,89012,-15.23
+HR062,HR,Varaždinska županija,rural,158860,130071,-18.12
+HR063,HR,Koprivničko-križevačka županija,rural,99203,69386,-30.06
+HR064,HR,Krapinsko-zagorska županija,rural,119320,96314,-19.28
+HR065,HR,Zagrebačka županija,intermediate,309964,287559,-7.23
+HU110,HU,Budapest,urban,1685209,1555675,-7.69
+HU120,HU,Pest,intermediate,1336134,1344310,0.61
+HU211,HU,Fejér,intermediate,418562,392947,-6.12
+HU212,HU,Komárom-Esztergom,intermediate,299262,290662,-2.87
+HU213,HU,Veszprém,intermediate,333345,301272,-9.62
+HU221,HU,Győr-Moson-Sopron,intermediate,471647,480840,1.95
+HU222,HU,Vas,intermediate,245598,217269,-11.53
+HU223,HU,Zala,rural,257372,201686,-21.64
+HU231,HU,Baranya,intermediate,351158,290053,-17.4
+HU232,HU,Somogy,rural,290245,233576,-19.52
+HU233,HU,Tolna,rural,204567,164295,-19.69
+HU311,HU,Borsod-Abaúj-Zemplén,intermediate,610927,502797,-17.7
+HU312,HU,Heves,rural,282490,251031,-11.14
+HU313,HU,Nógrád,rural,178815,147984,-17.24
+HU321,HU,Hajdú-Bihar,intermediate,520129,447783,-13.91
+HU322,HU,Jász-Nagykun-Szolnok,intermediate,349726,297541,-14.92
+HU323,HU,Szabolcs-Szatmár-Bereg,rural,520550,440157,-15.44
+HU331,HU,Bács-Kiskun,intermediate,488547,419039,-14.23
+HU332,HU,Békés,intermediate,307113,230512,-24.94
+HU333,HU,Csongrád-Csanád,intermediate,388106,343742,-11.43
+IE041,IE,Border,rural,441940,499846,13.1
+IE042,IE,West,rural,516985,603149,16.67
+IE051,IE,Mid-West ,rural,540369,609816,12.85
+IE052,IE,South-East ,rural,485196,584846,20.54
+IE053,IE,South-West ,rural,780377,886325,13.58
+IE061,IE,Dublin,urban,1556256,1891510,21.54
+IE062,IE,Mid-East,intermediate,787285,999096,26.9
+IE063,IE,Midland,rural,331869,374597,12.87
+ITC11,IT,Torino,urban,2204276,2018332,-8.44
+ITC12,IT,Vercelli,rural,165909,147027,-11.38
+ITC13,IT,Biella,intermediate,168328,143321,-14.86
+ITC14,IT,Verbano-Cusio-Ossola,intermediate,153283,138186,-9.85
+ITC15,IT,Novara,intermediate,364141,349795,-3.94
+ITC16,IT,Cuneo,rural,581526,561659,-3.42
+ITC17,IT,Asti,rural,207203,185972,-10.25
+ITC18,IT,Alessandria,intermediate,407201,362756,-10.91
+ITC20,IT,Valle d’Aosta/Vallée d’Aoste,intermediate,122532,110344,-9.95
+ITC31,IT,Imperia,urban,209348,198680,-5.1
+ITC32,IT,Savona,intermediate,267064,236131,-11.58
+ITC33,IT,Genova,urban,818813,728081,-11.08
+ITC34,IT,La Spezia,urban,214920,210148,-2.22
+ITC41,IT,Varese,urban,882592,873731,-1.0
+ITC42,IT,Como,urban,598191,593784,-0.74
+ITC43,IT,Lecco,urban,333747,318947,-4.43
+ITC44,IT,Sondrio,intermediate,179101,168098,-6.14
+ITC46,IT,Bergamo,urban,1114779,1095221,-1.75
+ITC47,IT,Brescia,urban,1265884,1247738,-1.43
+ITC48,IT,Pavia,intermediate,541949,528875,-2.41
+ITC49,IT,Lodi,intermediate,230249,228776,-0.64
+ITC4A,IT,Cremona,intermediate,353923,338879,-4.25
+ITC4B,IT,Mantova,rural,407744,399446,-2.04
+ITC4C,IT,Milano,urban,3246455,3701717,14.02
+ITC4D,IT,Monza e della Brianza,urban,879302,908948,3.37
+ITF11,IT,L’Aquila,intermediate,286707,246848,-13.9
+ITF12,IT,Teramo,intermediate,300049,274578,-8.49
+ITF13,IT,Pescara,intermediate,311876,289195,-7.27
+ITF14,IT,Chieti,intermediate,370487,322003,-13.09
+ITF21,IT,Isernia,rural,78755,67273,-14.58
+ITF22,IT,Campobasso,rural,209059,178010,-14.85
+ITF31,IT,Caserta,urban,908451,861966,-5.12
+ITF32,IT,Benevento,rural,259809,227001,-12.63
+ITF33,IT,Napoli,urban,2963633,2649688,-10.59
+ITF34,IT,Avellino,intermediate,395071,331599,-16.07
+ITF35,IT,Salerno,intermediate,1055373,951384,-9.85
+ITF43,IT,Taranto,urban,550434,442182,-19.67
+ITF44,IT,Brindisi,urban,375567,304642,-18.88
+ITF45,IT,Lecce,urban,764491,642843,-15.91
+ITF46,IT,Foggia,urban,590264,479397,-18.78
+ITF47,IT,Bari,urban,1219545,1053478,-13.62
+ITF48,IT,Barletta-Andria-Trani,urban,377093,319896,-15.17
+ITF51,IT,Potenza,rural,340908,272710,-20.0
+ITF52,IT,Matera,intermediate,189096,164563,-12.97
+ITF61,IT,Cosenza,intermediate,669535,566469,-15.39
+ITF62,IT,Crotone,intermediate,161898,148230,-8.44
+ITF63,IT,Catanzaro,intermediate,339740,290535,-14.48
+ITF64,IT,Vibo Valentia,rural,150516,125968,-16.31
+ITF65,IT,Reggio Calabria,intermediate,512956,434411,-15.31
+ITG11,IT,Trapani,intermediate,411394,358987,-12.74
+ITG12,IT,Palermo,urban,1198738,1023053,-14.66
+ITG13,IT,Messina,intermediate,596147,476484,-20.07
+ITG14,IT,Agrigento,urban,408401,327165,-19.89
+ITG15,IT,Caltanissetta,urban,245421,187223,-23.71
+ITG16,IT,Enna,intermediate,152543,115917,-24.01
+ITG17,IT,Catania,urban,1070168,942141,-11.96
+ITG18,IT,Ragusa,intermediate,321300,314199,-2.21
+ITG19,IT,Siracusa,urban,383276,323427,-15.62
+ITG2D,IT,Sassari,intermediate,471957,413973,-12.29
+ITG2E,IT,Nuoro,rural,195330,152553,-21.9
+ITG2F,IT,Cagliari,urban,417532,359383,-13.93
+ITG2G,IT,Oristano,rural,148005,117460,-20.64
+ITG2H,IT,Sud Sardegna,rural,329557,254646,-22.73
+ITH10,IT,Bolzano-Bozen,intermediate,539679,621844,15.22
+ITH20,IT,Trento,intermediate,546573,570087,4.3
+ITH31,IT,Verona,intermediate,928622,949492,2.25
+ITH32,IT,Vicenza,intermediate,854163,804878,-5.77
+ITH33,IT,Belluno,rural,197707,175489,-11.24
+ITH34,IT,Treviso,intermediate,879255,876087,-0.36
+ITH35,IT,Venezia,urban,834306,803235,-3.72
+ITH36,IT,Padova,intermediate,932284,914909,-1.86
+ITH37,IT,Rovigo,rural,227134,185280,-18.43
+ITH41,IT,Pordenone,intermediate,310742,306169,-1.47
+ITH42,IT,Udine,intermediate,516323,463340,-10.26
+ITH43,IT,Gorizia,urban,138428,137346,-0.78
+ITH44,IT,Trieste,urban,227792,236634,3.88
+ITH51,IT,Piacenza,intermediate,286451,292221,2.01
+ITH52,IT,Parma,intermediate,455715,519640,14.03
+ITH53,IT,Reggio nell’Emilia,intermediate,530740,542320,2.18
+ITH54,IT,Modena,intermediate,708339,755553,6.67
+ITH55,IT,Bologna,intermediate,1020194,1153734,13.09
+ITH56,IT,Ferrara,intermediate,339612,308834,-9.06
+ITH57,IT,Ravenna,intermediate,387206,386142,-0.27
+ITH58,IT,Forlì-Cesena,intermediate,393367,396598,0.82
+ITH59,IT,Rimini,urban,340376,354342,4.1
+ITI11,IT,Massa-Carrara,intermediate,186783,158327,-15.23
+ITI12,IT,Lucca,intermediate,381390,337964,-11.39
+ITI13,IT,Pistoia,urban,289926,289106,-0.28
+ITI14,IT,Firenze,urban,988068,970078,-1.82
+ITI15,IT,Prato,urban,259658,278272,7.17
+ITI16,IT,Livorno,intermediate,325749,299377,-8.1
+ITI17,IT,Pisa,intermediate,418439,408641,-2.34
+ITI18,IT,Arezzo,intermediate,333240,308954,-7.29
+ITI19,IT,Siena,rural,259460,250531,-3.44
+ITI1A,IT,Grosseto,rural,215005,198002,-7.91
+ITI21,IT,Perugia,intermediate,636188,581194,-8.64
+ITI22,IT,Terni,intermediate,215286,191323,-11.13
+ITI31,IT,Pesaro e Urbino,intermediate,349558,324484,-7.17
+ITI32,IT,Ancona,intermediate,461503,424625,-7.99
+ITI33,IT,Macerata,intermediate,302031,267187,-11.54
+ITI34,IT,Ascoli Piceno,intermediate,200499,177101,-11.67
+ITI35,IT,Fermo,intermediate,166957,151990,-8.96
+ITI41,IT,Viterbo,rural,307405,270972,-11.85
+ITI42,IT,Rieti,rural,149766,132177,-11.74
+ITI43,IT,Roma,urban,4222648,4259171,0.86
+ITI44,IT,Latina,intermediate,566698,545785,-3.69
+ITI45,IT,Frosinone,rural,462662,386591,-16.44
+LT011,LT,Vilniaus apskritis,urban,876727,834806,-4.78
+LT021,LT,Alytaus apskritis,intermediate,132919,103356,-22.24
+LT022,LT,Kauno apskritis,intermediate,587511,517266,-11.96
+LT023,LT,Klaipėdos apskritis,intermediate,343862,309573,-9.97
+LT024,LT,Marijampolės apskritis,rural,133359,97962,-26.54
+LT025,LT,Panevėžio apskritis,intermediate,207015,153165,-26.01
+LT026,LT,Šiaulių apskritis,intermediate,266736,221559,-16.94
+LT027,LT,Tauragės apskritis,rural,89946,62633,-30.37
+LT028,LT,Telšių apskritis,intermediate,129884,98728,-23.99
+LT029,LT,Utenos apskritis,intermediate,122703,86804,-29.26
+LU000,LU,Luxembourg,intermediate,681973,910320,33.48
+LV005,LV,Latgale,intermediate,239362,154128,-35.61
+LV009,LV,Zemgale,rural,221931,179320,-19.2
+LV00A,LV,Rīga,urban,850454,741410,-12.82
+LV00B,LV,Kurzeme,intermediate,274798,223993,-18.49
+LV00C,LV,Vidzeme,rural,274019,236704,-13.62
+MT001,MT,Malta,urban,532996,672302,26.14
+MT002,MT,Gozo and Comino/Għawdex u Kemmuna,urban,41254,49125,19.08
+NL112,NL,Delfzijl en omgeving,intermediate,44795,40644,-9.27
+NL114,NL,Oost-Groningen,intermediate,139191,135501,-2.65
+NL115,NL,Overig Groningen,intermediate,418847,416906,-0.46
+NL126,NL,Zuidoost-Friesland,intermediate,191481,191415,-0.03
+NL127,NL,Noord-Friesland,intermediate,329973,327305,-0.81
+NL128,NL,Zuidwest-Friesland,intermediate,142769,139895,-2.01
+NL131,NL,Noord-Drenthe,intermediate,197110,203158,3.07
+NL132,NL,Zuidoost-Drenthe,intermediate,171586,162116,-5.52
+NL133,NL,Zuidwest-Drenthe,intermediate,137832,143770,4.31
+NL211,NL,Noord-Overijssel,intermediate,390259,426251,9.22
+NL212,NL,Zuidwest-Overijssel,intermediate,161926,169682,4.79
+NL213,NL,Twente,urban,643604,627486,-2.5
+NL221,NL,Veluwe,urban,726891,797582,9.73
+NL224,NL,Zuidwest-Gelderland,intermediate,257163,280367,9.02
+NL225,NL,Achterhoek,intermediate,407957,401697,-1.53
+NL226,NL,Arnhem/Nijmegen,urban,769347,809482,5.22
+NL230,NL,Flevoland,urban,456395,505261,10.71
+NL321,NL,Kop van Noord-Holland,urban,388727,387863,-0.22
+NL323,NL,IJmond,urban,202490,217789,7.56
+NL325,NL,Zaanstreek,urban,179249,194155,8.32
+NL327,NL,Het Gooi en Vechtstreek,urban,245683,271132,10.36
+NL328,NL,Alkmaar en omgeving,urban,257705,279205,8.34
+NL32A,NL,Agglomeratie Haarlem,urban,237347,267490,12.7
+NL32B,NL,Groot-Amsterdam,urban,1480814,1655482,11.8
+NL341,NL,Zeeuwsch-Vlaanderen,rural,106124,96857,-8.73
+NL342,NL,Overig Zeeland,intermediate,286845,285079,-0.62
+NL350,NL,Utrecht,urban,1409144,1549810,9.98
+NL361,NL,Agglomeratie ’s-Gravenhage,urban,923493,1041871,12.82
+NL362,NL,Delft en Westland,urban,246513,264901,7.46
+NL363,NL,Agglomeratie Leiden en Bollenstreek,urban,447601,485459,8.46
+NL364,NL,Zuidoost-Zuid-Holland,urban,382794,413895,8.12
+NL365,NL,Oost-Zuid-Holland,urban,351847,402073,14.27
+NL366,NL,Groot-Rijnmond,urban,1511151,1647868,9.05
+NL411,NL,West-Noord-Brabant,urban,653955,659124,0.79
+NL414,NL,Zuidoost-Noord-Brabant,urban,816292,888980,8.9
+NL415,NL,Midden-Noord-Brabant,urban,511970,545845,6.62
+NL416,NL,Noordoost-Noord-Brabant,urban,681831,723450,6.1
+NL421,NL,Noord-Limburg,intermediate,291388,285405,-2.05
+NL422,NL,Midden-Limburg,intermediate,243792,240339,-1.42
+NL423,NL,Zuid-Limburg,urban,600149,543082,-9.51
+PL213,PL,Miasto Kraków,urban,820714,820701,-0.0
+PL214,PL,Krakowski,rural,779872,785389,0.71
+PL217,PL,Tarnowski,rural,432967,388148,-10.35
+PL218,PL,Nowosądecki,rural,525972,498089,-5.3
+PL219,PL,Nowotarski,rural,327674,304939,-6.94
+PL21A,PL,Oświęcimski,intermediate,526485,440483,-16.34
+PL224,PL,Częstochowski,intermediate,483578,379327,-21.56
+PL225,PL,Bielski,intermediate,655457,578065,-11.81
+PL227,PL,Rybnicki,urban,596181,501628,-15.86
+PL228,PL,Bytomski,intermediate,408792,344447,-15.74
+PL229,PL,Gliwicki,urban,433066,355449,-17.92
+PL22A,PL,Katowicki,urban,690223,556407,-19.39
+PL22B,PL,Sosnowiecki,urban,639654,484755,-24.22
+PL22C,PL,Tyski,urban,394061,354669,-10.0
+PL411,PL,Pilski,rural,390783,333220,-14.73
+PL414,PL,Koniński,rural,634444,542942,-14.42
+PL415,PL,Miasto Poznań,urban,547129,460866,-15.77
+PL416,PL,Kaliski,rural,655365,561813,-14.27
+PL417,PL,Leszczyński,rural,556508,500544,-10.06
+PL418,PL,Poznański,intermediate,745322,802255,7.64
+PL424,PL,Miasto Szczecin,intermediate,392204,328590,-16.22
+PL426,PL,Koszaliński,intermediate,338731,287013,-15.27
+PL427,PL,Szczecinecko-pyrzycki,rural,383307,301682,-21.29
+PL428,PL,Szczeciński,intermediate,498686,442590,-11.25
+PL431,PL,Gorzowski,intermediate,368221,311404,-15.43
+PL432,PL,Zielonogórski,intermediate,600763,507698,-15.49
+PL514,PL,Miasto Wrocław,urban,690550,649450,-5.95
+PL515,PL,Jeleniogórski,rural,516630,407892,-21.05
+PL516,PL,Legnicko-głogowski,intermediate,426218,350679,-17.72
+PL517,PL,Wałbrzyski,intermediate,585084,449791,-23.12
+PL518,PL,Wrocławski,intermediate,653883,679667,3.94
+PL523,PL,Nyski,rural,338420,273210,-19.27
+PL524,PL,Opolski,intermediate,569457,487916,-14.32
+PL613,PL,Bydgosko-toruński,intermediate,759702,672845,-11.43
+PL616,PL,Grudziądzki,rural,365847,306859,-16.12
+PL617,PL,Inowrocławski,rural,338949,278167,-17.93
+PL618,PL,Świecki,rural,176716,151519,-14.26
+PL619,PL,Włocławski,rural,330914,260738,-21.21
+PL621,PL,Elbląski,intermediate,485421,399188,-17.76
+PL622,PL,Olsztyński,intermediate,574240,485530,-15.45
+PL623,PL,Ełcki,intermediate,260940,220291,-15.58
+PL633,PL,Trójmiejski,urban,763462,697767,-8.6
+PL634,PL,Gdański,intermediate,654454,725392,10.84
+PL636,PL,Słupski,intermediate,318117,276078,-13.21
+PL637,PL,Chojnicki,rural,218816,200248,-8.49
+PL638,PL,Starogardzki,intermediate,407795,357732,-12.28
+PL711,PL,Miasto Łódź,urban,657355,501727,-23.67
+PL712,PL,Łódzki,urban,395101,358071,-9.37
+PL713,PL,Piotrkowski,rural,552886,447641,-19.04
+PL714,PL,Sieradzki,rural,425063,347933,-18.15
+PL715,PL,Skierniewicki,rural,342726,270626,-21.04
+PL721,PL,Kielecki,intermediate,702437,564275,-19.67
+PL722,PL,Sandomiersko-jędrzejowski,rural,438894,342186,-22.03
+PL811,PL,Bialski,rural,277540,221174,-20.31
+PL812,PL,Chełmsko-zamojski,rural,557029,427565,-23.24
+PL814,PL,Lubelski,intermediate,699041,630326,-9.83
+PL815,PL,Puławski,rural,438247,343750,-21.56
+PL821,PL,Krośnieński,rural,441984,374993,-15.16
+PL822,PL,Przemyski,rural,355433,295444,-16.88
+PL823,PL,Rzeszowski,intermediate,637981,636892,-0.17
+PL824,PL,Tarnobrzeski,rural,565261,483408,-14.48
+PL841,PL,Białostocki,intermediate,500608,461909,-7.73
+PL842,PL,Łomżyński,rural,354758,281346,-20.69
+PL843,PL,Suwalski,rural,247349,204008,-17.52
+PL911,PL,Miasto Warszawa,urban,1927091,1847684,-4.12
+PL912,PL,Warszawski wschodni,intermediate,716090,739058,3.21
+PL913,PL,Warszawski zachodni,intermediate,749131,785723,4.88
+PL921,PL,Radomski,rural,573693,468328,-18.37
+PL922,PL,Ciechanowski,rural,326597,271356,-16.91
+PL923,PL,Płocki,rural,309758,251463,-18.82
+PL924,PL,Ostrołęcki,rural,367486,310510,-15.5
+PL925,PL,Siedlecki,rural,406830,350041,-13.96
+PL926,PL,Żyrardowski,rural,260976,224856,-13.84
+PT111,PT,Alto Minho,rural,234644,206665,-11.92
+PT112,PT,Cávado,intermediate,433039,456316,5.38
+PT119,PT,Ave,intermediate,423255,397270,-6.14
+PT11A,PT,Área Metropolitana do Porto,urban,1818216,1743921,-4.09
+PT11B,PT,Alto Tâmega e Barroso,rural,83446,62686,-24.88
+PT11C,PT,Tâmega e Sousa,intermediate,409078,345888,-15.45
+PT11D,PT,Douro,rural,183868,143270,-22.08
+PT11E,PT,Terras de Trás-os-Montes,rural,107296,87527,-18.42
+PT150,PT,Algarve,intermediate,492747,586711,19.07
+PT191,PT,Região de Aveiro,intermediate,392257,382604,-2.46
+PT192,PT,Região de Coimbra,rural,452559,396474,-12.39
+PT193,PT,Região de Leiria,rural,301763,280611,-7.01
+PT194,PT,Viseu Dão Lafões,rural,259589,224021,-13.7
+PT195,PT,Beira Baixa,rural,100733,78276,-22.29
+PT196,PT,Beiras e Serra da Estrela,rural,210657,160007,-24.04
+PT1A0,PT,Grande Lisboa,urban,2156612,2561127,18.76
+PT1B0,PT,Península de Setúbal,urban,848507,926498,9.19
+PT1C1,PT,Alentejo Litoral,rural,102218,108219,5.87
+PT1C2,PT,Baixo Alentejo,rural,115681,95494,-17.45
+PT1C3,PT,Alto Alentejo,rural,103566,81152,-21.64
+PT1C4,PT,Alentejo Central,rural,153430,128910,-15.98
+PT1D1,PT,Oeste,rural,395474,373521,-5.55
+PT1D2,PT,Médio Tejo,rural,218467,188652,-13.65
+PT1D3,PT,Lezíria do Tejo,rural,251374,219059,-12.86
+PT200,PT,Região Autónoma dos Açores,intermediate,241718,206281,-14.66
+PT300,PT,Região Autónoma da Madeira,urban,259440,220500,-15.01
+RO111,RO,Bihor,rural,556893,510103,-8.4
+RO112,RO,Bistriţa-Năsăud,rural,297211,318278,7.09
+RO113,RO,Cluj,intermediate,697375,682718,-2.1
+RO114,RO,Maramureş,rural,450926,405446,-10.09
+RO115,RO,Satu Mare,rural,330464,287113,-13.12
+RO116,RO,Sălaj,rural,211140,179455,-15.01
+RO121,RO,Alba,rural,325261,280775,-13.68
+RO122,RO,Braşov,intermediate,560277,550151,-1.81
+RO123,RO,Covasna,rural,199606,175935,-11.86
+RO124,RO,Harghita,rural,291871,267273,-8.43
+RO125,RO,Mureş,intermediate,519574,476235,-8.34
+RO126,RO,Sibiu,intermediate,394964,382970,-3.04
+RO211,RO,Bacău,intermediate,591999,529710,-10.52
+RO212,RO,Botoşani,rural,388291,344080,-11.39
+RO213,RO,Iaşi,intermediate,780271,721699,-7.51
+RO214,RO,Neamţ,rural,445751,397898,-10.74
+RO215,RO,Suceava,rural,645928,632887,-2.02
+RO216,RO,Vaslui,rural,365976,312255,-14.68
+RO221,RO,Brăila,intermediate,271655,204066,-24.88
+RO222,RO,Buzău,rural,395517,317261,-19.79
+RO223,RO,Constanţa,intermediate,656082,570783,-13.0
+RO224,RO,Galaţi,intermediate,489056,406862,-16.81
+RO225,RO,Tulcea,rural,187619,140586,-25.07
+RO226,RO,Vrancea,rural,331236,308514,-6.86
+RO311,RO,Argeş,intermediate,561990,475834,-15.33
+RO312,RO,Călăraşi,rural,278601,220189,-20.97
+RO313,RO,Dâmboviţa,rural,476524,405035,-15.0
+RO314,RO,Giurgiu,rural,261198,218196,-16.46
+RO315,RO,Ialomiţa,rural,248787,210123,-15.54
+RO316,RO,Prahova,intermediate,685562,569633,-16.91
+RO317,RO,Teleorman,rural,313033,224627,-28.24
+RO321,RO,Bucureşti,urban,1709191,1523420,-10.87
+RO322,RO,Ilfov,urban,604264,835186,38.22
+RO411,RO,Dolj,intermediate,595228,523759,-12.01
+RO412,RO,Gorj,rural,307702,246760,-19.81
+RO413,RO,Mehedinţi,rural,229220,176212,-23.13
+RO414,RO,Olt,rural,375641,287965,-23.34
+RO415,RO,Vâlcea,rural,340236,291588,-14.3
+RO421,RO,Arad,intermediate,410320,370666,-9.66
+RO422,RO,Caraş-Severin,rural,242232,198092,-18.22
+RO423,RO,Hunedoara,intermediate,351253,297012,-15.44
+RO424,RO,Timiş,intermediate,667225,671000,0.57
+SE110,SE,Stockholms län,urban,2473307,2762689,11.7
+SE121,SE,Uppsala län,intermediate,407913,479485,17.55
+SE122,SE,Södermanlands län,intermediate,301541,326152,8.16
+SE123,SE,Östergötlands län,intermediate,472447,514721,8.95
+SE124,SE,Örebro län,intermediate,308375,340803,10.52
+SE125,SE,Västmanlands län,intermediate,281158,303479,7.94
+SE211,SE,Jönköpings län,intermediate,370008,402577,8.8
+SE212,SE,Kronobergs län,intermediate,203352,224742,10.52
+SE213,SE,Kalmar län,rural,246352,253695,2.98
+SE214,SE,Gotlands län,rural,60971,65020,6.64
+SE221,SE,Blekinge län,intermediate,157221,160982,2.39
+SE224,SE,Skåne län,intermediate,1428628,1563622,9.45
+SE231,SE,Hallands län,intermediate,345074,394316,14.27
+SE232,SE,Västra Götalands län,urban,1772821,1918721,8.23
+SE311,SE,Värmlands län,intermediate,283384,282867,-0.18
+SE312,SE,Dalarnas län,rural,286546,292937,2.23
+SE313,SE,Gävleborgs län,intermediate,284558,286519,0.69
+SE321,SE,Västernorrlands län,intermediate,241459,229624,-4.9
+SE322,SE,Jämtlands län,rural,132838,135951,2.34
+SE331,SE,Västerbottens län,intermediate,281137,292887,4.18
+SE332,SE,Norrbottens län,intermediate,248621,225775,-9.19
+SI031,SI,Pomurska,rural,113171,95648,-15.48
+SI032,SI,Podravska,rural,331815,317242,-4.39
+SI033,SI,Koroška,rural,70359,64762,-7.95
+SI034,SI,Savinjska,rural,262813,259093,-1.42
+SI035,SI,Zasavska,rural,57083,51809,-9.24
+SI036,SI,Posavska,rural,75993,72414,-4.71
+SI037,SI,Jugovzhodna Slovenija,rural,148671,150397,1.16
+SI038,SI,Primorsko-notranjska,rural,53826,52275,-2.88
+SI041,SI,Osrednjeslovenska,intermediate,569476,600385,5.43
+SI042,SI,Gorenjska,intermediate,209921,205655,-2.03
+SI043,SI,Goriška,rural,118095,108947,-7.75
+SI044,SI,Obalno-kraška,intermediate,119627,120139,0.43
+SK010,SK,Bratislavský kraj,urban,754096,913998,21.2
+SK021,SK,Trnavský kraj,rural,579399,536031,-7.48
+SK022,SK,Trenčiansky kraj,intermediate,578824,486439,-15.96
+SK023,SK,Nitriansky kraj,rural,681238,554097,-18.66
+SK031,SK,Žilinský kraj,intermediate,702867,629153,-10.49
+SK032,SK,Banskobystrický kraj,rural,625745,504524,-19.37
+SK041,SK,Prešovský kraj,rural,830544,755752,-9.01
+SK042,SK,Košický kraj,intermediate,798264,711012,-10.93

@@ -10,6 +10,7 @@ One map a day about Europe, each built around a clear finding.
 - [Day 6, Vintage: half of Europe's people live on land Rome once ruled](#day-6-vintage)
 - [Day 7, 10 minute map: the EU's farthest point from the sea is 660 km inland, in Slovakia](#day-7-10-minute-map)
 - [Day 8, Utopia: only 3% of people in the EU already breathe the air of a cleaner future](#day-8-utopia)
+- [Day 9, Urban-rural: most of the EU is set to have fewer people in 2050 than it has today](#day-9-urban-rural)
 - [Data sources and licenses](#data-sources-and-licenses)
 - [How to recreate the maps](#how-to-recreate-the-maps)
 
@@ -333,22 +334,64 @@ Clean air is mostly where few people live: the north, the mountains and inland I
 
 ---
 
+## Day 9: Urban-rural
+
+![Most of the EU is set to have fewer people in 2050 than it has today](day09_urban_rural/day09_urban_rural.png)
+
+### What it shows
+
+Eurostat's newest regional projections (EUROPOP2025, published in October 2026) expect 72% of the EU's 1,165 NUTS 3 regions to have fewer people in 2050 than in 2025. Those regions cover 70% of the EU's land and are home to 57% of its residents. The EU as a whole loses only 1.5%, from 451.8 to 445.0 million.
+
+Where people live decides which way a region goes:
+
+| Region type | Regions | Change, 2025 to 2050 |
+| --- | ---: | ---: |
+| Predominantly urban | 261 | +3.8% |
+| Intermediate | 517 | −3.5% |
+| Predominantly rural | 387 | −8.7% |
+
+Urban regions do better than rural ones in 22 of the 23 countries that have both. Belgium is the exception, with both close to +7%.
+
+By residents in 2025, 25% live in regions set to lose more than 10% of their people, 13% in regions losing 5% to 10%, 35% in regions that change less than 5% either way, 11% in regions gaining 5% to 10%, and 16% in regions gaining more than 10%. Every region of Ireland is projected to grow more than 10%. The steepest falls are in Smolyan in Bulgaria (−44%), Kirde-Eesti in north-east Estonia (−43%) and Dobrich in Bulgaria (−41%). Every region is in [`projection_by_region.csv`](day09_urban_rural/projection_by_region.csv).
+
+### How it was made
+
+1. **Get the projection:** Eurostat's `proj_25rp5`, the baseline projection of the total population on 1 January 2025 and 2050, for every NUTS 3 region.
+2. **Get the regions:** Eurostat's NUTS 2024 boundaries, which also carry each region's urban-rural type.
+3. **Group the regions** in five bands by their change from 2025 to 2050, and count the residents in each band.
+4. **Compare region types:** add up 2025 and 2050 residents of urban, intermediate and rural regions.
+
+The urban-rural type comes from Eurostat's 1 km population grid. Squares outside urban clusters (groups of squares with at least 300 people per km² and 5,000 people in total) count as rural. A region is predominantly rural if more than 50% of its people live in rural squares, intermediate between 20% and 50%, and predominantly urban below 20%, with adjustments for regions with large cities and for very small regions.
+
+### Limitations
+
+- **A projection, not a forecast:** the baseline assumes current trends in births, deaths and migration continue. Eurostat's own tests move the share of shrinking regions from 51% (higher migration) to 85% (lower migration), and to 97% with no migration at all. In every test, most regions shrink.
+- **Starting point:** the projection starts from its own estimate for 2025 (451.8 million), slightly above Eurostat's count for 1 January 2025 (450.6 million).
+- **Whole regions:** each region gets one colour. A shrinking rural region can hold a growing town, and the urban-rural type describes the region as a whole.
+- **Different region sizes:** NUTS 3 regions range from small German districts to large Swedish and Finnish counties, so big, thinly populated regions take up much of the map. The bar shows the same result by residents.
+- **Coverage:** the Canaries, Madeira, the Azores and the French overseas regions are counted but not drawn.
+
+**Files:** [`day09_urban_rural.py`](day09_urban_rural/day09_urban_rural.py) does everything, and [`projection_by_region.csv`](day09_urban_rural/projection_by_region.csv) holds every region's type, residents and change.
+
+---
+
 ## Data sources and licenses
 
 | Dataset | Used for | Where it comes from | License |
 | --- | --- | --- | --- |
 | [GHS-UCDB R2024A V1.2](https://human-settlement.emergency.copernicus.eu/ghs_ucdb_2024.php) | Urban centres and population (Days 1, 2) | Downloaded from the JRC's open data site | CC BY 4.0 |
 | [GHS-POP R2023A](https://human-settlement.emergency.copernicus.eu/download.php) | Europe's total population (Day 1), people by location (Day 6) | Downloaded from the JRC's open data site | CC BY 4.0 |
-| [Natural Earth](https://www.naturalearthdata.com/) | Land, seas and country boundaries (Days 1 to 8) | GitHub mirror of Natural Earth | Public domain |
+| [Natural Earth](https://www.naturalearthdata.com/) | Land, seas and country boundaries (Days 1 to 9) | GitHub mirror of Natural Earth | Public domain |
 | [OSRM](https://project-osrm.org/) on [OpenStreetMap](https://www.openstreetmap.org/copyright) | Driving times and routes (Day 2) | OSRM's free demo server | Data: ODbL, © OpenStreetMap contributors |
 | [List of busiest ports in Europe](https://en.wikipedia.org/wiki/List_of_busiest_ports_in_Europe) | Top 10 ports and TEU (Day 2) | Wikipedia, read in November 2026 | CC BY-SA |
 | [Eurostat](https://ec.europa.eu/eurostat/data/database) `tour_occ_nin3`, `demo_r_pjanaggr3` | Nights spent and residents (Day 3) | Eurostat's statistics API | Free reuse with credit to Eurostat |
-| [GISCO NUTS 2024](https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units/territorial-units-statistics) | Regional boundaries (Day 3) | Eurostat's GISCO service | © EuroGeographics for the administrative boundaries. Free for non-commercial use |
+| [GISCO NUTS 2024](https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units/territorial-units-statistics) | Regional boundaries (Day 3), regions and their urban-rural type (Day 9) | Eurostat's GISCO service | © EuroGeographics for the administrative boundaries. Free for non-commercial use |
 | [Eurostat Census 2021 population grid](https://ec.europa.eu/eurostat/web/gisco/geodata/population-distribution/population-grids) | 1 km population grid (Days 4, 5, 7, 8) | Eurostat's GISCO service | © European Union, free reuse with credit |
 | [NASA eclipse paths](https://eclipse.gsfc.nasa.gov/solar.html) | Paths of the 2026 and 2027 total eclipses (Day 5) | NASA's eclipse site, by Fred Espenak (GSFC) | Free to use with credit to NASA |
 | [AWMC geodata](https://github.com/AWMC/geodata) | Roman Empire at its greatest extent, AD 117 (Day 6) | GitHub, Ancient World Mapping Center, University of North Carolina | ODbL |
 | [EEA interpolated air quality data, PM2.5 2024](https://sdi.eea.europa.eu/catalogue/srv/api/records/c3db03e4-82e9-4a40-acb1-a5bd15f11f8c) | Annual PM2.5 on a 1 km grid (Day 8) | European Environment Agency | CC BY 4.0, © EEA |
 | [GISCO NUTS 2021](https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units/territorial-units-statistics) | EU country borders (Day 8) | Eurostat's GISCO service | © EuroGeographics for the administrative boundaries |
+| [Eurostat EUROPOP2025](https://ec.europa.eu/eurostat/databrowser/view/proj_25rp5/default/table) `proj_25rp5` | Population projections by NUTS 3 region, 2025 and 2050 (Day 9) | Eurostat's statistics API | Free reuse with credit to Eurostat |
 
 **Citations**
 
@@ -370,6 +413,7 @@ python 2026/day05_sight/day05_sight.py
 python 2026/day06_vintage/day06_vintage.py
 python 2026/day07_ten_minute/day07_ten_minute.py
 python 2026/day08_utopia/day08_utopia.py
+python 2026/day09_urban_rural/day09_urban_rural.py
 ```
 
 - **Day 1** takes about a minute and downloads about 50 MB. Recalculating Europe's total with `compute_europe_population.py` is optional and downloads about 475 MB.
@@ -379,6 +423,7 @@ python 2026/day08_utopia/day08_utopia.py
 - **Day 6** downloads the 461 MB GHS-POP grid once, then takes about a minute.
 - **Day 7** uses the same census grid as Day 4 and Natural Earth's ocean layer (10 MB), and takes about a minute.
 - **Day 8** uses the same census grid as Day 4 and downloads the EEA's 78 MB air quality map once, then takes about a minute.
+- **Day 9** downloads Eurostat's projections and the NUTS 2024 regions (25 MB) once, then takes about ten seconds.
 
 ## License
 
