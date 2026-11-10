@@ -12,6 +12,7 @@ One map a day about Europe, each built around a clear finding.
 - [Day 8, Utopia: only 3% of people in the EU already breathe the air of a cleaner future](#day-8-utopia)
 - [Day 9, Urban-rural: most of the EU is set to have fewer people in 2050 than it has today](#day-9-urban-rural)
 - [Day 10, Prompting only: 5 AIs drew Europe from memory, and ChatGPT and Claude got 91% right](#day-10-prompting-only)
+- [Day 11, Senses, Sound: almost half of people in EU cities live with road noise louder than WHO advises](#day-11-senses-sound)
 - [Data sources and licenses](#data-sources-and-licenses)
 - [How to recreate the maps](#how-to-recreate-the-maps)
 
@@ -424,13 +425,53 @@ latitude, 15 to 60 points per country, and the properties "name" and
 
 ---
 
+## Day 11: Senses, Sound
+
+![Almost half of people in EU cities live with road noise louder than WHO advises](day11_sound/day11_sound.png)
+
+### What it shows
+
+EU law asks every city of over 100,000 people to map its noise every five years and count how many residents live in each 5 dB band. In the latest round, with data for 2021, 294 EU cities reported every road noise band. Of their 113 million residents, 48% live with road noise of 55 dB or more at home, as an average over day, evening and night (Lden).
+
+The WHO advises keeping road noise under 53 dB Lden. The reported bands start at 55 dB, so the number of people above the WHO's advice is higher than the chart shows.
+
+| Road noise at home (Lden) | Share of residents |
+| --- | ---: |
+| Under 55 dB | 52.1% |
+| 55 to 59 dB | 20.3% |
+| 60 to 64 dB | 15.2% |
+| 65 to 69 dB | 9.0% |
+| 70 to 74 dB | 3.0% |
+| 75 dB or more | 0.3% |
+
+In 106 of the 294 cities, most residents live with 55 dB or more. Those cities are blue on the map. Paris has the most people above the line, 5.5 million of its 7.1 million residents (77%), followed by Madrid (1.9 million), Bucharest (1.8 million), Marseille (1.3 million) and Vienna (1.3 million). Every city is in [`road_noise_by_city.csv`](day11_sound/road_noise_by_city.csv).
+
+### How it was made
+
+1. **Get the counts:** the EEA's summary of the noise data countries report under the Environmental Noise Directive, 2022 round, road noise in cities.
+2. **Keep complete cities:** 294 of the 405 EU cities reported every band from 55 dB up.
+3. **Place the cities:** Eurostat's GISCO geocoder, with hand fixes for the names it got wrong. The locations are saved in [`city_locations.csv`](day11_sound/city_locations.csv).
+4. **Colour the cities:** blue when at least half the residents live with 55 dB or more, grey otherwise, and a hollow circle when the city didn't report every band. Circles are sized by residents.
+
+### Limitations
+
+- **55 dB, not 53:** the WHO line is 53 dB, but the bands every country reports start at 55 dB. Reporting the 50 to 54 band is voluntary, and few cities do it.
+- **Missing cities:** 111 cities didn't report every band. That includes every city in Bulgaria, Greece, Hungary, Slovakia and Slovenia, 44 of Spain's 63, 19 of Romania's 25 and 15 of France's 49. Budapest, Sofia, Lisbon, Bratislava, Ljubljana, Athens, Barcelona, Lille, Toulouse, Sevilla and Palermo all have no data. Barcelona did map its noise, but the figures weren't in the EEA's data at its November 2024 cutoff. Greek cities come without a population figure, so they're drawn at the smallest size.
+- **Modelled, not measured:** the counts come from computer models fed with traffic and building data, not from microphones, and each home counts at its noisiest side.
+- **Countries model noise in their own way:** all use the common EU method (CNOSSOS-EU), but its inputs and settings vary. Country shares range from 69% in France to 41% in Germany and 31% in Poland, partly for this reason, so compare cities within the same country. Some values look off, like Torrejón de Ardoz (0.2%) and Gijón (3%), but they're kept as reported.
+- **Road noise only:** rail, aircraft and industry noise, also in the EEA's data, aren't added.
+
+**Files:** [`day11_sound.py`](day11_sound/day11_sound.py) does everything, [`road_noise_by_city.csv`](day11_sound/road_noise_by_city.csv) holds every city's residents by noise band, and [`city_locations.csv`](day11_sound/city_locations.csv) holds where each city is.
+
+---
+
 ## Data sources and licenses
 
 | Dataset | Used for | Where it comes from | License |
 | --- | --- | --- | --- |
 | [GHS-UCDB R2024A V1.2](https://human-settlement.emergency.copernicus.eu/ghs_ucdb_2024.php) | Urban centres and population (Days 1, 2) | Downloaded from the JRC's open data site | CC BY 4.0 |
 | [GHS-POP R2023A](https://human-settlement.emergency.copernicus.eu/download.php) | Europe's total population (Day 1), people by location (Day 6) | Downloaded from the JRC's open data site | CC BY 4.0 |
-| [Natural Earth](https://www.naturalearthdata.com/) | Land, seas and country boundaries (Days 1 to 10) | GitHub mirror of Natural Earth | Public domain |
+| [Natural Earth](https://www.naturalearthdata.com/) | Land, seas and country boundaries (Days 1 to 11) | GitHub mirror of Natural Earth | Public domain |
 | [OSRM](https://project-osrm.org/) on [OpenStreetMap](https://www.openstreetmap.org/copyright) | Driving times and routes (Day 2) | OSRM's free demo server | Data: ODbL, © OpenStreetMap contributors |
 | [List of busiest ports in Europe](https://en.wikipedia.org/wiki/List_of_busiest_ports_in_Europe) | Top 10 ports and TEU (Day 2) | Wikipedia, read in November 2026 | CC BY-SA |
 | [Eurostat](https://ec.europa.eu/eurostat/data/database) `tour_occ_nin3`, `demo_r_pjanaggr3` | Nights spent and residents (Day 3) | Eurostat's statistics API | Free reuse with credit to Eurostat |
@@ -442,11 +483,14 @@ latitude, 15 to 60 points per country, and the properties "name" and
 | [GISCO NUTS 2021](https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units/territorial-units-statistics) | EU country borders (Day 8) | Eurostat's GISCO service | © EuroGeographics for the administrative boundaries |
 | [Eurostat EUROPOP2025](https://ec.europa.eu/eurostat/databrowser/view/proj_25rp5/default/table) `proj_25rp5` | Population projections by NUTS 3 region, 2025 and 2050 (Day 9) | Eurostat's statistics API | Free reuse with credit to Eurostat |
 | Five AI chatbots | Europe drawn from memory (Day 10) | Answers from ChatGPT, Claude, Gemini, Mistral and Grok, in [`day10_prompting/answers/`](day10_prompting/answers/) | Generated for this map |
+| [EEA noise exposure data, END 2022 round](https://www.eea.europa.eu/data-and-maps/data/data-on-noise-exposure-7) | Residents of each city by road noise band (Day 11) | European Environment Agency | CC BY 4.0, © EEA |
+| [GISCO geocoder](https://gisco-services.ec.europa.eu/api) | City locations (Day 11) | Eurostat's GISCO service, built on OpenStreetMap | Data: ODbL, © OpenStreetMap contributors |
 
 **Citations**
 
 - Mari Rivero, I. et al. (2024). GHS-UCDB R2024A, GHS Urban Centre Database 2025. European Commission, JRC. doi: [10.2905/1a338be6-7eaf-480c-9664-3a8ade88cbcd](https://doi.org/10.2905/1a338be6-7eaf-480c-9664-3a8ade88cbcd)
 - Schiavina, M., Freire, S., Carioli, A., MacManus, K. (2023). GHS-POP R2023A, GHS population grid multitemporal (1975-2030). European Commission, JRC. doi: [10.2905/2FF68A52-5B5B-4A22-8F40-C41DA8332CFE](https://doi.org/10.2905/2FF68A52-5B5B-4A22-8F40-C41DA8332CFE)
+- World Health Organization (2018). Environmental Noise Guidelines for the European Region. WHO Regional Office for Europe. [who.int](https://www.who.int/europe/publications/i/item/9789289053563)
 
 The maps use the Gabarito, Shantell Sans and JetBrains Mono fonts, all under the SIL Open Font License.
 
@@ -465,6 +509,7 @@ python 2026/day07_ten_minute/day07_ten_minute.py
 python 2026/day08_utopia/day08_utopia.py
 python 2026/day09_urban_rural/day09_urban_rural.py
 python 2026/day10_prompting/day10_prompting.py
+python 2026/day11_sound/day11_sound.py
 ```
 
 - **Day 1** takes about a minute and downloads about 50 MB. Recalculating Europe's total with `compute_europe_population.py` is optional and downloads about 475 MB.
@@ -476,6 +521,7 @@ python 2026/day10_prompting/day10_prompting.py
 - **Day 8** uses the same census grid as Day 4 and downloads the EEA's 78 MB air quality map once, then takes about a minute.
 - **Day 9** downloads Eurostat's projections and the NUTS 2024 regions (25 MB) once, then takes about ten seconds.
 - **Day 10** downloads Natural Earth's 10m countries (5 MB) once and takes about a minute. The animation, `day10_animation.py`, also needs ffmpeg and takes about two minutes.
+- **Day 11** downloads the EEA's noise summary (0.6 MB) once and takes about twenty seconds. Delete `city_locations.csv` to geocode the cities again, which sends about 400 requests to GISCO.
 
 ## License
 
