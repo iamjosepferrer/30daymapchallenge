@@ -21,17 +21,15 @@ from style import C, DATA_DIR, Frame, _download, byline, countries, fade_defs, f
 PROJ_URL = ("https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/proj_25rp5"
             "?format=JSON&lang=EN&sex=T&age=TOTAL&projection=BSL&time=2025&time=2050&time=2100")
 NUTS3_URL = "https://gisco-services.ec.europa.eu/distribution/v2/nuts/geojson/NUTS_RG_01M_2024_3035_LEVL_3.geojson"
-NE = "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/"
 YEAR = "2050"
 BANDS = [  # upper bound of the change in %, colour, legend label, bar label
     (-10, "#5F91A8", "Falls more than 10%", "Fall 10%+"),
     (-5, "#B6D2D6", "Falls 5% to 10%", "Fall 5% to 10%"),
-    (5, "#D7D3D0", "Between −5% and 5%", "Between −5% and 5%"),
+    (5, "#FFFFFF", "Between −5% and 5%", "Between −5% and 5%"),
     (10, "#F2C6A1", "Grows 5% to 10%", "Grow 5% to 10%"),
     (np.inf, "#DF7F6F", "Grows more than 10%", "Grow 10%+"),
 ]
-DARK_BLUE = "#3E6E86"  # the first band's colour, darkened for text
-BORDER = "#8F877B"  # country borders: a soft warm grey that still shows on the light grey regions
+BORDER = "#3F3A34"  # country borders: a dark warm grey, thin, so it stands apart from the strong blue and the white
 
 
 def band(change):
@@ -84,24 +82,15 @@ for b, (_, colour, _, _) in enumerate(BANDS):
     regions = shown[shown["band"] == b].geometry.simplify(300).intersection(view).union_all()
     svg.append(f'<path d="{geom_path(regions, frame)}" fill="{colour}"/>')
 outlines = "".join(geom_path(g, frame) for g in shown.geometry.simplify(300).intersection(view))
-svg.append(f'<path d="{outlines}" fill="none" stroke="{C["page"]}" stroke-width=".5" stroke-linejoin="round"/>')
-# Country borders on land, in soft grey: the parts of each EU country's outline that touch another country
+svg.append(f'<path d="{outlines}" fill="none" stroke="#E4DCCE" stroke-width=".5" stroke-linejoin="round"/>')
+# Country outlines, coasts included, in soft grey. Each shared border is drawn once, from the merged outlines.
 eu_countries = shown.dissolve("CNTR_CODE").geometry.simplify(300)
-others = gpd.read_file(_download(NE + "ne_10m_admin_0_countries.geojson", DATA_DIR / "ne_10m_admin_0_countries.geojson")).to_crs(3035).clip(view.buffer(200000))
-others = others[~others.ISO_A2_EH.isin(["AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IE", "IT", "LV",
-                                        "LT", "LU", "MT", "NL", "PL", "PT", "RO", "SK", "SI", "ES", "SE"])
-                & ~others.ADMIN.str.contains("Cyprus|Dhekelia|Akrotiri|Aland")].geometry.buffer(0).union_all()  # parts of EU regions in Natural Earth
-coast = gpd.read_file(_download(NE + "ne_10m_land.geojson", DATA_DIR / "ne_10m_land.geojson")).to_crs(3035).clip(view).boundary.union_all().buffer(1500)
-codes = list(eu_countries.index)
-lines = []
-for i, code in enumerate(codes):
-    # each border is taken once, from the country that comes first alphabetically, so the two sides never overlap
-    neighbours = eu_countries.loc[codes[i + 1:]].buffer(1500).union_all().union(others.buffer(4000))
-    piece = eu_countries[code].boundary.intersection(neighbours).intersection(view).difference(coast)  # no outline for islands a strait away, such as Samos
-    piece = shapely.line_merge(piece) if piece.geom_type == "MultiLineString" else piece
-    lines += [g for g in getattr(piece, "geoms", [piece]) if g.geom_type == "LineString" and g.length > 3000]
+# islets under 50 km² keep their fill but get no outline, so archipelagos don't turn into grey smudges
+big_parts = [shapely.MultiPolygon([q for q in getattr(g, "geoms", [g]) if q.area > 50e6]) for g in eu_countries]
+outline = shapely.union_all([g.boundary for g in big_parts]).intersection(view)
+lines = [g for g in getattr(outline, "geoms", [outline]) if g.geom_type == "LineString"]
 border_d = "".join("M" + " L".join(f"{x:.1f} {y:.1f}" for x, y in (frame.xy(*c) for c in g.coords)) for g in lines)
-svg.append(f'<path d="{border_d}" fill="none" stroke="{BORDER}" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"/>')
+svg.append(f'<path d="{border_d}" fill="none" stroke="{BORDER}" stroke-width=".9" stroke-linejoin="round" stroke-linecap="round"/>')
 svg += [fade_defs(), f'<rect x="0" y="{MAP_TOP}" width="1080" height="24" fill="url(#fade-top)"/>',
         f'<rect x="0" y="{MAP_TOP + frame.ph - 30:.0f}" width="1080" height="30" fill="url(#fade-bottom)"/>', "</g>"]
 
@@ -132,7 +121,7 @@ for b, (_, colour, _, short) in enumerate(BANDS):
     width = BAR_W * shares.get(b, 0)
     svg.append(f'<rect x="{x:.1f}" y="{BAR_Y}" width="{width - GAP:.1f}" height="{BAR_H}" rx="3" fill="{colour}"/>')
     lx = x + (width - GAP) / 2  # labels centred under their segment, so the narrow ones don't collide
-    svg.append(text(lx, BAR_Y + BAR_H + 23, f"{shares.get(b, 0):.0%}", 22, 700, DARK_BLUE if b == 0 else None, "middle"))
+    svg.append(text(lx, BAR_Y + BAR_H + 23, f"{shares.get(b, 0):.0%}", 22, 700, None, "middle"))
     svg.append(text(lx, BAR_Y + BAR_H + 43, short, 15, 400, C["ink2"], "middle"))
     x += width
 
