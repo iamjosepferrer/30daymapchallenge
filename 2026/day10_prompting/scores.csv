@@ -1,0 +1,6 @@
+ai,model,right,wrong_place,missed,points,median_miss_km,countries
+ChatGPT,"GPT-6.1 Sol, highest reasoning",0.907,0.0524,0.0405,1516,1.1198,40
+Claude,"Opus 5.5, highest effort",0.9063,0.0507,0.043,1334,1.041,40
+Gemini,"3.1 Pro, thinking",0.7642,0.1445,0.0913,487,2.8962,40
+Mistral,"Medium 3.5, thinking",0.7496,0.1132,0.1372,948,4.8053,40
+Grok,"4.7, highest reasoning",0.5551,0.2239,0.2211,488,15.7452,40

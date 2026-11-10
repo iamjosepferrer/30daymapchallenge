@@ -11,10 +11,11 @@ One map a day about Europe, each built around a clear finding.
 - [Day 7, 10 minute map: the EU's farthest point from the sea is 660 km inland, in Slovakia](#day-7-10-minute-map)
 - [Day 8, Utopia: only 3% of people in the EU already breathe the air of a cleaner future](#day-8-utopia)
 - [Day 9, Urban-rural: most of the EU is set to have fewer people in 2050 than it has today](#day-9-urban-rural)
+- [Day 10, Prompting only: 5 AIs drew Europe from memory, and ChatGPT and Claude got 91% right](#day-10-prompting-only)
 - [Data sources and licenses](#data-sources-and-licenses)
 - [How to recreate the maps](#how-to-recreate-the-maps)
 
-**How these maps are made:** each map uses public data and is built in Python, then drawn as SVG and exported to PNG with a headless browser. I direct the analysis and the editing, and Claude helps build the code and maps. Day 10 is made entirely by prompting, as that day's theme requires.
+**How these maps are made:** each map uses public data and is built in Python, then drawn as SVG and exported to PNG with a headless browser. I direct the analysis and the editing, and Claude helps build the code and maps. For Day 10, as that day's theme requires, the map itself comes entirely from prompting: five AI chats drew it, and only the scoring and the final design layer are done in code.
 
 ---
 
@@ -375,13 +376,61 @@ The urban-rural type comes from Eurostat's 1 km population grid. Squares outside
 
 ---
 
+## Day 10: Prompting only
+
+![5 AIs drew Europe from memory. ChatGPT and Claude: 91%. Grok: 56%.](day10_prompting/day10_prompting.png)
+
+There is also an animated version, where each AI draws its Europe in turn: [MP4](day10_prompting/day10_prompting.mp4) or [GIF](day10_prompting/day10_prompting.gif).
+
+### What it shows
+
+Five AI chatbots got the same prompt, each in a new chat with web search off: draw 40 European countries as polygons, from memory. Their outlines were then measured against the real borders.
+
+| AI | Model and setting | Right country | Drawn where the country isn't | Missed | Median miss |
+| --- | --- | ---: | ---: | ---: | ---: |
+| ChatGPT | GPT-6.1 Sol, highest reasoning | 90.7% | 5.2% | 4.1% | 1.1 km |
+| Claude | Opus 5.5, highest effort | 90.6% | 5.1% | 4.3% | 1.0 km |
+| Gemini | 3.1 Pro, thinking | 76.4% | 14.5% | 9.1% | 2.9 km |
+| Mistral | Medium 3.5, thinking | 75.0% | 11.3% | 13.7% | 4.8 km |
+| Grok | 4.7, highest reasoning | 55.5% | 22.4% | 22.1% | 15.7 km |
+
+ChatGPT and Claude are a tie: 0.1 points apart, and both put half their points within about 1 km of the real outline. Their answers are still different: of more than 900 distinct coordinates each, only 52 are identical, mostly well-known border corners. The biggest slips are Mistral's Norway, whose first point sits at 4.9°W, off Scotland, so the country stretches across the North Sea, and Grok's Bulgaria, a thin strip along the Danube with only 12% of it in Bulgaria.
+
+### The prompt
+
+```
+From memory, with no search or tools, draw these countries as GeoJSON
+polygons: the 27 EU countries, the UK, Iceland, Norway, Switzerland,
+the Western Balkans, Ukraine, Belarus and Moldova. Use longitude and
+latitude, 15 to 60 points per country, and the properties "name" and
+"iso_a2". Reply only with the GeoJSON.
+```
+
+### How it was made
+
+1. **Prompting:** the same prompt in five new chats in November 2026, with each lab's top model on a standard paid plan, at its highest thinking setting, with web search off. The answers are saved exactly as they came, in [`answers/`](day10_prompting/answers/).
+2. **Scoring:** each AI country is compared with the real one, from Natural Earth, with Crimea as part of Ukraine. Land the AI put inside the right country counts as right, land it put outside counts as drawn where the country isn't, and real land it left out counts as missed. The shares are of all land on either map, between 24.6°W and 45°E and 34°N and 72°N, so far-off islands such as the Canaries count for no one.
+3. **Median miss:** how far each point the AI wrote sits from the real outline of its country.
+4. **Design:** the chart and the animation are drawn in code. That final design layer is the only step not done by prompting.
+
+### Limitations
+
+- **One run each:** asked again, every model draws a slightly different Europe, so the scores are a snapshot, not a benchmark.
+- **Settings:** the model names and settings are the ones each app showed in November 2026. Apps change models often.
+- **Scoring by area:** big countries weigh more than small ones, so a wrong Malta barely moves a score.
+- **Reference detail:** Natural Earth's 1:10m borders are themselves simplified, so differences of about 1 km, like the one between ChatGPT and Claude, are within the detail of the reference.
+
+**Files:** [`day10_prompting.py`](day10_prompting/day10_prompting.py) scores the answers and draws the chart, [`day10_animation.py`](day10_prompting/day10_animation.py) makes the animation, and [`scores.csv`](day10_prompting/scores.csv) holds the scores.
+
+---
+
 ## Data sources and licenses
 
 | Dataset | Used for | Where it comes from | License |
 | --- | --- | --- | --- |
 | [GHS-UCDB R2024A V1.2](https://human-settlement.emergency.copernicus.eu/ghs_ucdb_2024.php) | Urban centres and population (Days 1, 2) | Downloaded from the JRC's open data site | CC BY 4.0 |
 | [GHS-POP R2023A](https://human-settlement.emergency.copernicus.eu/download.php) | Europe's total population (Day 1), people by location (Day 6) | Downloaded from the JRC's open data site | CC BY 4.0 |
-| [Natural Earth](https://www.naturalearthdata.com/) | Land, seas and country boundaries (Days 1 to 9) | GitHub mirror of Natural Earth | Public domain |
+| [Natural Earth](https://www.naturalearthdata.com/) | Land, seas and country boundaries (Days 1 to 10) | GitHub mirror of Natural Earth | Public domain |
 | [OSRM](https://project-osrm.org/) on [OpenStreetMap](https://www.openstreetmap.org/copyright) | Driving times and routes (Day 2) | OSRM's free demo server | Data: ODbL, © OpenStreetMap contributors |
 | [List of busiest ports in Europe](https://en.wikipedia.org/wiki/List_of_busiest_ports_in_Europe) | Top 10 ports and TEU (Day 2) | Wikipedia, read in November 2026 | CC BY-SA |
 | [Eurostat](https://ec.europa.eu/eurostat/data/database) `tour_occ_nin3`, `demo_r_pjanaggr3` | Nights spent and residents (Day 3) | Eurostat's statistics API | Free reuse with credit to Eurostat |
@@ -392,13 +441,14 @@ The urban-rural type comes from Eurostat's 1 km population grid. Squares outside
 | [EEA interpolated air quality data, PM2.5 2024](https://sdi.eea.europa.eu/catalogue/srv/api/records/c3db03e4-82e9-4a40-acb1-a5bd15f11f8c) | Annual PM2.5 on a 1 km grid (Day 8) | European Environment Agency | CC BY 4.0, © EEA |
 | [GISCO NUTS 2021](https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units/territorial-units-statistics) | EU country borders (Day 8) | Eurostat's GISCO service | © EuroGeographics for the administrative boundaries |
 | [Eurostat EUROPOP2025](https://ec.europa.eu/eurostat/databrowser/view/proj_25rp5/default/table) `proj_25rp5` | Population projections by NUTS 3 region, 2025 and 2050 (Day 9) | Eurostat's statistics API | Free reuse with credit to Eurostat |
+| Five AI chatbots | Europe drawn from memory (Day 10) | Answers from ChatGPT, Claude, Gemini, Mistral and Grok, in [`day10_prompting/answers/`](day10_prompting/answers/) | Generated for this map |
 
 **Citations**
 
 - Mari Rivero, I. et al. (2024). GHS-UCDB R2024A, GHS Urban Centre Database 2025. European Commission, JRC. doi: [10.2905/1a338be6-7eaf-480c-9664-3a8ade88cbcd](https://doi.org/10.2905/1a338be6-7eaf-480c-9664-3a8ade88cbcd)
 - Schiavina, M., Freire, S., Carioli, A., MacManus, K. (2023). GHS-POP R2023A, GHS population grid multitemporal (1975-2030). European Commission, JRC. doi: [10.2905/2FF68A52-5B5B-4A22-8F40-C41DA8332CFE](https://doi.org/10.2905/2FF68A52-5B5B-4A22-8F40-C41DA8332CFE)
 
-The maps use the Gabarito and Shantell Sans fonts, both under the SIL Open Font License.
+The maps use the Gabarito, Shantell Sans and JetBrains Mono fonts, all under the SIL Open Font License.
 
 ## How to recreate the maps
 
@@ -414,6 +464,7 @@ python 2026/day06_vintage/day06_vintage.py
 python 2026/day07_ten_minute/day07_ten_minute.py
 python 2026/day08_utopia/day08_utopia.py
 python 2026/day09_urban_rural/day09_urban_rural.py
+python 2026/day10_prompting/day10_prompting.py
 ```
 
 - **Day 1** takes about a minute and downloads about 50 MB. Recalculating Europe's total with `compute_europe_population.py` is optional and downloads about 475 MB.
@@ -424,6 +475,7 @@ python 2026/day09_urban_rural/day09_urban_rural.py
 - **Day 7** uses the same census grid as Day 4 and Natural Earth's ocean layer (10 MB), and takes about a minute.
 - **Day 8** uses the same census grid as Day 4 and downloads the EEA's 78 MB air quality map once, then takes about a minute.
 - **Day 9** downloads Eurostat's projections and the NUTS 2024 regions (25 MB) once, then takes about ten seconds.
+- **Day 10** downloads Natural Earth's 10m countries (5 MB) once and takes about a minute. The animation, `day10_animation.py`, also needs ffmpeg and takes about two minutes.
 
 ## License
 
