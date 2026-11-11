@@ -13,6 +13,7 @@ One map a day about Europe, each built around a clear finding.
 - [Day 9, Urban-rural: most of the EU is set to have fewer people in 2050 than it has today](#day-9-urban-rural)
 - [Day 10, Prompting only: 5 AIs drew Europe from memory, and ChatGPT and Claude got 91% right](#day-10-prompting-only)
 - [Day 11, Senses, Sound: almost half of people in EU cities live with road noise louder than WHO advises](#day-11-senses-sound)
+- [Day 12, Power: the Netherlands has the most solar panels per person in the EU](#day-12-power)
 - [Data sources and licenses](#data-sources-and-licenses)
 - [How to recreate the maps](#how-to-recreate-the-maps)
 
@@ -465,13 +466,54 @@ In 106 of the 294 cities, most residents live with 55 dB or more. Those cities a
 
 ---
 
+## Day 12: Power
+
+![The Netherlands has the most solar panels per person in the EU](day12_power/day12_power.png)
+
+### What it shows
+
+At the end of 2024, the EU had 307 GW of solar panels, about 681 watts for each resident. The Netherlands had the most per person, 1,373 watts, or about three panels for every resident. Spain had 729 watts per person, about half the Dutch figure. The same panel makes 49% more electricity a year in Spain.
+
+| Country | Watts of solar panels per person | Yearly output of 1 kW of panels |
+| --- | ---: | ---: |
+| Netherlands | 1,373 | 1,036 kWh |
+| Germany | 1,091 | 1,052 kWh |
+| Austria | 967 | 1,117 kWh |
+| Greece | 851 | 1,448 kWh |
+| Spain | 729 | 1,544 kWh |
+| Italy | 601 | 1,371 kWh |
+| Portugal | 525 | 1,535 kWh |
+| Malta | 415 | 1,649 kWh |
+| Slovakia | 134 | 1,131 kWh |
+
+By installed capacity, Germany holds 30% of the EU's solar panels, Spain and Italy 12% each, France and the Netherlands 8% each, Poland 7%, and the other 21 countries 24% together. Every country is in [`solar_per_person.csv`](day12_power/solar_per_person.csv).
+
+### How it was made
+
+1. **Get the capacity:** Eurostat's installed solar photovoltaic capacity for each country at the end of 2024.
+2. **Divide by residents:** Eurostat's population on 1 January 2025.
+3. **Measure the sunshine:** the European Commission's PVGIS tool gives the yearly output of 1 kW of panels at the best angle, with 14% system losses, for every half degree of land. Each country gets the average of the points inside it. Malta and Luxembourg are too small for that, so they get their four nearest points. The grid is saved in [`sun_grid.csv`](day12_power/sun_grid.csv).
+4. **Draw it:** the sunshine as a warm background on EU land, and a circle per country sized by watts per person, nudged apart so none overlap.
+
+### Limitations
+
+- **Capacity, not electricity:** the map counts panels, not the power they made. A Spanish panel makes more than a Dutch one, so by electricity generated the gap between the two countries is smaller.
+- **Two ways to count:** most countries report the inverter output of their panels. Austria and Finland report the panels' rated power, which reads about 10% to 20% higher, judging by the countries that report both.
+- **End of 2024:** this is Eurostat's newest year. Most countries, the Netherlands among them, have added more panels since.
+- **Sunshine where the land is:** the sunshine is averaged over each country's land, not over the places where panels actually are.
+- **"About three panels":** the note assumes a typical modern panel of about 430 W.
+
+**Files:** [`day12_power.py`](day12_power/day12_power.py) does everything, [`solar_per_person.csv`](day12_power/solar_per_person.csv) holds every country's capacity, residents, watts per person and sunshine, and [`sun_grid.csv`](day12_power/sun_grid.csv) holds the PVGIS grid.
+
+---
+
 ## Data sources and licenses
 
 | Dataset | Used for | Where it comes from | License |
 | --- | --- | --- | --- |
 | [GHS-UCDB R2024A V1.2](https://human-settlement.emergency.copernicus.eu/ghs_ucdb_2024.php) | Urban centres and population (Days 1, 2) | Downloaded from the JRC's open data site | CC BY 4.0 |
 | [GHS-POP R2023A](https://human-settlement.emergency.copernicus.eu/download.php) | Europe's total population (Day 1), people by location (Day 6) | Downloaded from the JRC's open data site | CC BY 4.0 |
-| [Natural Earth](https://www.naturalearthdata.com/) | Land, seas and country boundaries (Days 1 to 11) | GitHub mirror of Natural Earth | Public domain |
+| [Natural Earth](https://www.naturalearthdata.com/) | Land, seas and country boundaries (Days 1 to 12) | GitHub mirror of Natural Earth | Public domain |
 | [OSRM](https://project-osrm.org/) on [OpenStreetMap](https://www.openstreetmap.org/copyright) | Driving times and routes (Day 2) | OSRM's free demo server | Data: ODbL, © OpenStreetMap contributors |
 | [List of busiest ports in Europe](https://en.wikipedia.org/wiki/List_of_busiest_ports_in_Europe) | Top 10 ports and TEU (Day 2) | Wikipedia, read in November 2026 | CC BY-SA |
 | [Eurostat](https://ec.europa.eu/eurostat/data/database) `tour_occ_nin3`, `demo_r_pjanaggr3` | Nights spent and residents (Day 3) | Eurostat's statistics API | Free reuse with credit to Eurostat |
@@ -485,6 +527,9 @@ In 106 of the 294 cities, most residents live with 55 dB or more. Those cities a
 | Five AI chatbots | Europe drawn from memory (Day 10) | Answers from ChatGPT, Claude, Gemini, Mistral and Grok, in [`day10_prompting/answers/`](day10_prompting/answers/) | Generated for this map |
 | [EEA noise exposure data, END 2022 round](https://www.eea.europa.eu/data-and-maps/data/data-on-noise-exposure-7) | Residents of each city by road noise band (Day 11) | European Environment Agency | CC BY 4.0, © EEA |
 | [GISCO geocoder](https://gisco-services.ec.europa.eu/api) | City locations (Day 11) | Eurostat's GISCO service, built on OpenStreetMap | Data: ODbL, © OpenStreetMap contributors |
+| [Eurostat `nrg_inf_epcrw`](https://ec.europa.eu/eurostat/databrowser/view/nrg_inf_epcrw/default/table) | Solar photovoltaic capacity by country, 2024 (Day 12) | Eurostat's statistics API | Free reuse with credit to Eurostat |
+| [Eurostat `demo_pjan`](https://ec.europa.eu/eurostat/databrowser/view/demo_pjan/default/table) | Population on 1 January 2025 (Day 12) | Eurostat's statistics API | Free reuse with credit to Eurostat |
+| [PVGIS](https://joint-research-centre.ec.europa.eu/photovoltaic-geographical-information-system-pvgis_en) | Yearly output of 1 kW of solar panels (Day 12) | The European Commission's PVGIS API | Free reuse with credit, © European Union |
 
 **Citations**
 
@@ -510,6 +555,7 @@ python 2026/day08_utopia/day08_utopia.py
 python 2026/day09_urban_rural/day09_urban_rural.py
 python 2026/day10_prompting/day10_prompting.py
 python 2026/day11_sound/day11_sound.py
+python 2026/day12_power/day12_power.py
 ```
 
 - **Day 1** takes about a minute and downloads about 50 MB. Recalculating Europe's total with `compute_europe_population.py` is optional and downloads about 475 MB.
@@ -522,6 +568,7 @@ python 2026/day11_sound/day11_sound.py
 - **Day 9** downloads Eurostat's projections and the NUTS 2024 regions (25 MB) once, then takes about ten seconds.
 - **Day 10** downloads Natural Earth's 10m countries (5 MB) once and takes about a minute. The animation, `day10_animation.py`, also needs ffmpeg and takes about two minutes.
 - **Day 11** downloads the EEA's noise summary (0.6 MB) once and takes about twenty seconds. Delete `city_locations.csv` to geocode the cities again, which sends about 400 requests to GISCO.
+- **Day 12** downloads Eurostat's figures once and takes about twenty seconds. Delete `sun_grid.csv` to fetch the sunshine grid from PVGIS again, which sends about 4,500 requests and takes several minutes.
 
 ## License
 
