@@ -1,0 +1,36 @@
+origin,country,sent,first_choice,students_to_first_choice,share
+FR,France,43317,Spain,7908,0.183
+DE,Germany,41829,Spain,7694,0.184
+ES,Spain,39181,Italy,10143,0.259
+IT,Italy,37651,Spain,12464,0.331
+NL,Netherlands,14979,Spain,3693,0.247
+TR,Turkey,11087,Poland,2893,0.261
+PL,Poland,10732,Spain,2207,0.206
+PT,Portugal,9455,Spain,1797,0.19
+BE,Belgium,7920,Spain,1438,0.182
+CZ,Czechia,6867,Spain,973,0.142
+AT,Austria,6020,Spain,924,0.153
+EL,Greece,4992,Spain,793,0.159
+SE,Sweden,4731,France,782,0.165
+RO,Romania,4398,Italy,656,0.149
+FI,Finland,4195,Germany,574,0.137
+IE,Ireland,4069,Spain,866,0.213
+HU,Hungary,3862,Spain,589,0.153
+DK,Denmark,3825,Norway,470,0.123
+NO,Norway,3092,Italy,440,0.142
+LT,Lithuania,2627,Spain,303,0.115
+SK,Slovakia,2202,Czechia,446,0.203
+HR,Croatia,1663,Spain,385,0.232
+SI,Slovenia,1628,Spain,227,0.139
+BG,Bulgaria,1382,Malta,156,0.113
+LV,Latvia,1361,Italy,152,0.112
+UK,United Kingdom,963,Spain,313,0.325
+EE,Estonia,767,Spain,96,0.125
+AL,Albania,551,Italy,112,0.203
+LU,Luxembourg,537,Germany,193,0.359
+CY,Cyprus,476,Greece,247,0.519
+MT,Malta,355,Ireland,61,0.172
+RS,Republic of Serbia,349,Germany,47,0.135
+IS,Iceland,269,Denmark,53,0.197
+MK,North Macedonia,267,Turkey,84,0.315
+ME,Montenegro,152,Spain,22,0.145
