@@ -15,6 +15,7 @@ One map a day about Europe, each built around a clear finding.
 - [Day 11, Senses, Sound: almost half of people in EU cities live with road noise louder than WHO advises](#day-11-senses-sound)
 - [Day 12, Power: the Netherlands has the most solar panels per person in the EU](#day-12-power)
 - [Day 13, Interactions: the 10 biggest Erasmus flows run between four countries](#day-13-interactions)
+- [Day 14, Borgesian map: Europe's rivers, by the sea they end in](#day-14-borgesian-map)
 - [Data sources and licenses](#data-sources-and-licenses)
 - [How to recreate the maps](#how-to-recreate-the-maps)
 
@@ -554,13 +555,53 @@ The second image shows the same data as a chord diagram, for the eight biggest h
 
 ---
 
+## Day 14: Borgesian map
+
+![Europe's rivers, by the sea they end in](day14_borgesian/day14_borgesian.png)
+
+### What it shows
+
+Borges imagined a map so detailed it became the territory. This one draws no borders and no coastlines, only rivers and streams: about 224,000 stretches of European river, each draining at least 50 km². The shape of the continent appears from the water alone, and each river takes the colour of the sea it ends in.
+
+The colours split Europe into its great drainage basins. About a third of the EU's land drains into the Baltic Sea:
+
+| Sea | Share of EU land |
+| --- | ---: |
+| Baltic Sea | 31.4% |
+| Atlantic Ocean | 20.8% |
+| Mediterranean | 19.0% |
+| Black Sea | 16.1% |
+| North Sea | 11.3% |
+| Caspian or inland | 0.8% |
+| Arctic Ocean | 0.7% |
+
+The divides show up as sharp colour edges. In the Black Forest, for instance, rain can end up in either the North Sea, through the Rhine, or the Black Sea, through the Danube. The shares are in [`eu_land_by_sea.csv`](day14_borgesian/eu_land_by_sea.csv).
+
+### How it was made
+
+1. **Get the rivers:** WWF's HydroRIVERS for Europe and the Middle East, which links every stretch to the one downstream and to the outlet of its river system.
+2. **Find each river's sea:** the sea or gulf in Natural Earth nearest each river system's mouth, grouped into seven seas. Rivers that end inland, like the Volga in the Caspian, form their own group.
+3. **Add up EU land:** each stretch's own catchment, for the stretches inside the EU, summed by sea.
+4. **Draw it:** stretches draining at least 50 km², wider the more land they drain, rendered as an image so that over 240,000 lines stay light.
+
+### Limitations
+
+- **Not every stream:** only stretches draining at least 50 km² are drawn and counted. Smaller streams would add detail, not change the colours.
+- **Seas are grouped:** the Kattegat counts as the Baltic, the Skagerrak as the North Sea and the Bay of Biscay as the Atlantic, following Natural Earth's names.
+- **Asia drawn, not counted:** rivers in Asian Turkey and south of the Caucasus appear on the map but are left out of the count. The shares cover EU land only.
+- **Modelled rivers:** HydroRIVERS is derived from elevation data, so small streams in very flat land, such as the Dutch polders, follow the terrain rather than the real ditches and canals.
+
+**Files:** [`day14_borgesian.py`](day14_borgesian/day14_borgesian.py) does everything, and [`eu_land_by_sea.csv`](day14_borgesian/eu_land_by_sea.csv) holds the share of EU land that drains into each sea.
+
+---
+
 ## Data sources and licenses
 
 | Dataset | Used for | Where it comes from | License |
 | --- | --- | --- | --- |
 | [GHS-UCDB R2024A V1.2](https://human-settlement.emergency.copernicus.eu/ghs_ucdb_2024.php) | Urban centres and population (Days 1, 2) | Downloaded from the JRC's open data site | CC BY 4.0 |
 | [GHS-POP R2023A](https://human-settlement.emergency.copernicus.eu/download.php) | Europe's total population (Day 1), people by location (Day 6) | Downloaded from the JRC's open data site | CC BY 4.0 |
-| [Natural Earth](https://www.naturalearthdata.com/) | Land, seas and country boundaries (Days 1 to 13) | GitHub mirror of Natural Earth | Public domain |
+| [Natural Earth](https://www.naturalearthdata.com/) | Land, seas and country boundaries (Days 1 to 14) | GitHub mirror of Natural Earth | Public domain |
 | [OSRM](https://project-osrm.org/) on [OpenStreetMap](https://www.openstreetmap.org/copyright) | Driving times and routes (Day 2) | OSRM's free demo server | Data: ODbL, © OpenStreetMap contributors |
 | [List of busiest ports in Europe](https://en.wikipedia.org/wiki/List_of_busiest_ports_in_Europe) | Top 10 ports and TEU (Day 2) | Wikipedia, read in November 2026 | CC BY-SA |
 | [Eurostat](https://ec.europa.eu/eurostat/data/database) `tour_occ_nin3`, `demo_r_pjanaggr3` | Nights spent and residents (Day 3) | Eurostat's statistics API | Free reuse with credit to Eurostat |
@@ -578,6 +619,8 @@ The second image shows the same data as a chord diagram, for the eight biggest h
 | [Eurostat `demo_pjan`](https://ec.europa.eu/eurostat/databrowser/view/demo_pjan/default/table) | Population on 1 January 2025 (Day 12) | Eurostat's statistics API | Free reuse with credit to Eurostat |
 | [PVGIS](https://joint-research-centre.ec.europa.eu/photovoltaic-geographical-information-system-pvgis_en) | Yearly output of 1 kW of solar panels (Day 12) | The European Commission's PVGIS API | Free reuse with credit, © European Union |
 | [Erasmus+ student mobility, 2014 to 2023](https://zenodo.org/records/16737523) | Students by home and host country (Day 13) | Zenodo, University of Helsinki, from the European Commission's Erasmus+ data | CC BY 4.0 |
+| [HydroRIVERS v1.0](https://www.hydrosheds.org/products/hydrorivers) | Rivers and their drainage areas (Day 14) | WWF HydroSHEDS | Free for scientific, educational and commercial use, with credit |
+| [Natural Earth marine areas](https://www.naturalearthdata.com/downloads/10m-physical-vectors/10m-physical-labels/) | Names and shapes of seas (Day 14) | Natural Earth | Public domain |
 
 **Citations**
 
@@ -585,6 +628,7 @@ The second image shows the same data as a chord diagram, for the eight biggest h
 - Schiavina, M., Freire, S., Carioli, A., MacManus, K. (2023). GHS-POP R2023A, GHS population grid multitemporal (1975-2030). European Commission, JRC. doi: [10.2905/2FF68A52-5B5B-4A22-8F40-C41DA8332CFE](https://doi.org/10.2905/2FF68A52-5B5B-4A22-8F40-C41DA8332CFE)
 - World Health Organization (2018). Environmental Noise Guidelines for the European Region. WHO Regional Office for Europe. [who.int](https://www.who.int/europe/publications/i/item/9789289053563)
 - Väisänen, T., Malekzadeh, M., Inkeröinen, O., Järv, O. (2025). Mobility of Erasmus+ students in Europe: geolocated individual and aggregate mobility flows from 2014 to 2023 (v1.1). Zenodo. doi: [10.5281/zenodo.16737523](https://doi.org/10.5281/zenodo.16737523). Data descriptor in Scientific Data, doi: [10.1038/s41597-025-04789-0](https://doi.org/10.1038/s41597-025-04789-0)
+- Lehner, B., Grill, G. (2013). Global river hydrography and network routing: baseline data and new approaches to study the world's large river systems. Hydrological Processes, 27(15), 2171 to 2186. doi: [10.1002/hyp.9740](https://doi.org/10.1002/hyp.9740)
 
 The maps use the Gabarito, Shantell Sans and JetBrains Mono fonts, all under the SIL Open Font License.
 
@@ -606,6 +650,7 @@ python 2026/day10_prompting/day10_prompting.py
 python 2026/day11_sound/day11_sound.py
 python 2026/day12_power/day12_power.py
 python 2026/day13_interactions/day13_interactions.py
+python 2026/day14_borgesian/day14_borgesian.py
 ```
 
 - **Day 1** takes about a minute and downloads about 50 MB. Recalculating Europe's total with `compute_europe_population.py` is optional and downloads about 475 MB.
@@ -620,6 +665,7 @@ python 2026/day13_interactions/day13_interactions.py
 - **Day 11** downloads the EEA's noise summary (0.6 MB) once and takes about twenty seconds. Delete `city_locations.csv` to geocode the cities again, which sends about 400 requests to GISCO.
 - **Day 12** downloads Eurostat's figures once and takes about twenty seconds. Delete `sun_grid.csv` to fetch the sunshine grid from PVGIS again, which sends about 4,500 requests and takes several minutes.
 - **Day 13** downloads the Erasmus+ flows (18 MB) once from Zenodo and takes about twenty seconds. It makes two images.
+- **Day 14** downloads HydroRIVERS for Europe (68 MB) once and takes about twenty seconds.
 
 ## License
 
