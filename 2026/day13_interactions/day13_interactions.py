@@ -163,16 +163,6 @@ for n, students in enumerate((4000, 12000)):
     svg.append(f'<path d="M{LX} {yy} L{LX + 46} {yy}" stroke="{C["ink2"]}" stroke-width="{arrow_width(students):.1f}" stroke-opacity=".72"/>')
     svg.append(text(LX + 58, yy + 5, f"{students:,}", 15, 400, C["ink2"]))
 
-# Note on the biggest flow, Italy to Spain, over the Atlantic north of Spain
-note_x, note_y = 34, MAP_TOP + 364
-svg.append(f'<text class="note" x="{note_x}" y="{note_y}" font-size="22" fill="{C["ink"]}"><tspan x="{note_x}">A third of Italy\'s Erasmus</tspan>'
-           f'<tspan x="{note_x}" dy="27">students go to Spain</tspan></text>')
-ax, ay = along("IT", "ES", 0.95)
-ax, ay = ax - 30, ay  # just west of where the arrow lands in Spain
-sx, sy = note_x + 120, note_y + 40
-svg.append(f'<path d="M{sx} {sy} C {sx} {sy + 70}, {ax - 70} {ay - 10}, {ax:.1f} {ay:.1f}" fill="none" stroke="{C["ink"]}" stroke-width="2" stroke-linecap="round"/>')
-svg.append(f'<path d="M{ax - 12:.1f} {ay - 7:.1f} L{ax:.1f} {ay:.1f} L{ax - 11:.1f} {ay + 8:.1f}" fill="none" stroke="{C["ink"]}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>')
-
 # Columns under the map: where the students went
 dest_top = list(received.index[:6])
 columns = [(received[c] / total, NAMES[c], PALETTE.get(c, REST)) for c in dest_top]
