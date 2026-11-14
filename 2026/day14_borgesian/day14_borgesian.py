@@ -1,7 +1,8 @@
-"""Day 14, Borgesian map: Europe's rivers, by the sea they end in.
+"""Day 14, Borgesian map: European rivers by the sea they end in.
 
 No borders and no coastlines: the map is only rivers and streams, from WWF's HydroRIVERS, each in the colour of the
-sea its river reaches. The bar under the map shows how much of the EU's land drains into each sea.
+sea its river reaches. The bar under the map shows how much of Europe's land area drains into each sea. Europe runs
+from the Atlantic to the Urals.
 """
 import base64
 import io
@@ -35,17 +36,14 @@ SEAS = {  # each named sea or gulf in Natural Earth, grouped into the sea a rive
 }
 GROUP = {name: sea for sea, names in SEAS.items() for name in names}
 COLOURS = {"Atlantic Ocean": "#2E5A93", "North Sea": "#3E8A86", "Baltic Sea": "#7A5C9E", "Mediterranean": "#C4553A",
-           "Black Sea": "#D9A21B", "Arctic Ocean": "#8FB0CF", "Caspian or inland": "#A69C8A"}
-EU = ["Austria", "Belgium", "Bulgaria", "Croatia", "Cyprus", "Czechia", "Denmark", "Estonia", "Finland", "France", "Germany", "Greece",
-      "Hungary", "Ireland", "Italy", "Latvia", "Lithuania", "Luxembourg", "Malta", "Netherlands", "Poland", "Portugal", "Romania",
-      "Slovakia", "Slovenia", "Spain", "Sweden"]
-ASIA = ["Syria", "Iraq", "Iran", "Georgia", "Armenia", "Azerbaijan", "Lebanon", "Israel", "Jordan", "Kazakhstan"]
-
-# The view, in EPSG:3035: Iceland to Cyprus, Crete to the North Cape
-MAP_TOP, MAP_H = 218, 944
-Y0, Y1 = 1400000, 5360000
-K = MAP_H / (Y1 - Y0)  # canvas pixels per metre
-X0, X1 = 4550000 - 540 / K, 4550000 + 540 / K
+           "Black Sea": "#D9A21B", "Arctic Ocean": "#8FB0CF", "Caspian or inland": "#8C6D4F"}
+NAME = {"Atlantic Ocean": "Atlantic", "Arctic Ocean": "Arctic", "Caspian or inland": "Caspian and inland"}
+# The view, in EPSG:3035: Iceland to the Urals, Crete to the North Cape
+MAP_TOP, MAP_H = 218, 935
+X0, X1 = 2550000, 7600000
+K = 1080 / (X1 - X0)  # canvas pixels per metre
+Y0 = 1400000
+Y1 = Y0 + MAP_H / K
 SS = 4  # drawing pixels per canvas pixel, shrunk to 2 at the end for smooth lines
 
 
@@ -88,26 +86,29 @@ mouths.loc[(mouths.ENDORHEIC == 1) | (mouths.sea == "Caspian Sea"), "sea"] = "Ca
 rivers["sea"] = rivers.MAIN_RIV.map(mouths.sea)
 assert rivers.sea.notna().all()
 
-# 3. The share of EU land that drains into each sea: each stretch's own catchment, where the stretch lies in the EU
-world = countries()
-eu_land = world[world.ADMIN.isin(EU)].to_crs(3035).geometry.buffer(0).union_all()
+# 3. European land: Natural Earth's Europe up to the Urals (60°E), plus Cyprus and Turkey's European part, Thrace
+ne = gpd.read_file(DATA_DIR / "ne_50m_admin_0_countries.geojson", columns=["ADMIN", "CONTINENT"])
+turkey = ne[ne.ADMIN == "Turkey"].geometry.iloc[0]
+thrace = max((g for g in turkey.geoms if g.centroid.x < 29.1), key=lambda g: g.area)
+europe = shapely.union_all([ne[ne.CONTINENT == "Europe"].geometry.buffer(0).union_all().intersection(shapely.box(-32, 30, 60, 82)),
+                            ne[ne.ADMIN == "Cyprus"].geometry.iloc[0], thrace])
+europe = gpd.GeoSeries([europe], crs=4326).to_crs(3035).iloc[0]
 middle = rivers.geometry.interpolate(0.5, normalized=True)
-in_eu = shapely.contains_xy(eu_land, middle.x.values, middle.y.values)
-share = rivers[in_eu].groupby("sea").CATCH_SKM.sum()
-share = share / share.sum()
-print(share.round(3).sort_values(ascending=False).to_string())
-assert share.idxmax() == "Baltic Sea" and 0.28 < share["Baltic Sea"] < 0.35  # "about a third"
+rivers["europe"] = shapely.contains_xy(europe, middle.x.values, middle.y.values)
 
-# 4. The rivers drawn: stretches draining at least 50 km² in view; those in Asia are drawn but not counted
+# 4. The share of Europe's land area that drains into each sea: each stretch's own catchment, added up by sea
+share = rivers[rivers.europe].groupby("sea").CATCH_SKM.sum()
+area = share.sum()
+share = share / area
+print(share.round(3).sort_values(ascending=False).to_string(), f"\n{area:,.0f} km² of European land")
+assert share.idxmax() == "Black Sea" and 0.2 < share["Black Sea"] < 0.25  # "more than any other sea, about a fifth"
+
+# The rivers drawn: European stretches draining at least 50 km²
 view = shapely.box(X0 - 50000, Y0 - 50000, X1 + 50000, Y1 + 50000)
-shown = rivers[(rivers.UPLAND_SKM >= 50) & rivers.intersects(view)].copy()
-shown["width"] = 0.22 + 0.5 * np.log10(shown.UPLAND_SKM / 50)  # wider the more land a stretch drains
-turkey = world[world.ADMIN == "Turkey"].geometry.iloc[0]
-anatolia = max(getattr(turkey, "geoms", [turkey]), key=lambda g: g.area)  # Thrace, the European part, is the smaller piece
-asia = gpd.GeoSeries([anatolia, *world[world.ADMIN.isin(ASIA)].geometry], crs=4326).to_crs(3035).buffer(0).union_all()
-middle = shown.geometry.interpolate(0.5, normalized=True)
-counted = int((~shapely.contains_xy(asia, middle.x.values, middle.y.values)).sum())
-print(f"{len(shown):,} stretches drawn, {counted:,} of them in Europe")
+shown = rivers[rivers.europe & (rivers.UPLAND_SKM >= 50) & rivers.intersects(view)].copy()
+shown["width"] = 0.2 + 0.45 * np.log10(shown.UPLAND_SKM / 50)  # wider the more land a stretch drains
+km = shown.length.sum() / 1000
+print(f"{len(shown):,} stretches drawn, {km:,.0f} km")
 
 canvas = Canvas()
 for sea, colour in COLOURS.items():
@@ -116,32 +117,28 @@ for sea, colour in COLOURS.items():
 svg = [canvas.svg()]
 
 # 5. Headline, dek and byline
-svg.append(text(60, 78, "Europe's rivers, by the sea they end in", 46, 800))
-svg.append(text(60, 116, f"{counted / 1000:.0f}k stretches of European river and stream, each draining at least 50 km².", 24, 400, C["ink2"]))
-svg.append(text(60, 145, "About a third of the EU's land drains into the Baltic Sea.", 24, 400, C["ink2"]))
+svg.append(text(60, 78, "European rivers by the sea they end in", 46, 800))
+svg.append(text(60, 116, f"{km / 1e6:.1f} million km of rivers and streams, each draining at least 50 km².", 24, 400, C["ink2"]))
+svg.append(text(60, 145, f"{share['Black Sea']:.0%} of Europe's land drains into the Black Sea, more than into any other sea.", 24, 400, C["ink2"]))
 svg.append(byline(178))
 svg.append(text(60, 204, "30DayMapChallenge, day 14: Borgesian map", 18, 600, C["ink2"]))
 
-# 6. A small bar under the map: the share of EU land that drains into each sea, which doubles as the colour legend
+# 6. A small bar under the map: the share of Europe's land that drains into each sea, which doubles as the colour legend
 LY = MAP_TOP + MAP_H + 16
-svg.append(text(60, LY, "Share of EU land that drains into each sea", 17, 700))
+svg.append(text(60, LY, "How much of Europe's land area drains into each sea", 17, 700))
 BAR_Y, BAR_H, GAP = LY + 10, 14, 2
 order = sorted(COLOURS, key=lambda sea: -share.get(sea, 0))
-small = [sea for sea in order if share.get(sea, 0) < 0.05]
 x = 60
 for sea in order:
     width = 960 * share.get(sea, 0)
     svg.append(f'<rect x="{x:.1f}" y="{BAR_Y}" width="{max(width - GAP, 1):.1f}" height="{BAR_H}" rx="2" fill="{COLOURS[sea]}"/>')
-    if sea not in small:
-        svg.append(text(x, BAR_Y + BAR_H + 19, f"{share[sea]:.0%}", 16, 700, C["ink"]))
-        svg.append(text(x, BAR_Y + BAR_H + 37, sea.replace(" Ocean", ""), 15, 400, C["ink2"]))
+    lx, anchor = (x + width - GAP, "end") if sea == order[-1] else (x, "start")  # the last label ends at the bar's end
+    svg.append(text(lx, BAR_Y + BAR_H + 19, f"{share[sea]:.0%}", 16, 700, C["ink"], anchor))
+    svg.append(text(lx, BAR_Y + BAR_H + 37, NAME.get(sea, sea), 14, 400, C["ink2"], anchor))
     x += width
-rest = sum(share.get(sea, 0) for sea in small)
-svg.append(text(1020, LY, f"Arctic and Caspian, {rest:.0%} together", 15, 400, C["ink2"], "end"))
-svg.append(f'<path d="M1016 {LY + 5} L1016 {BAR_Y - 2}" stroke="{C["ink2"]}" stroke-width="1"/>')
-svg += footer([("Method:", "each river takes the colour of the sea nearest its mouth, and gets wider the more land it drains."),
+svg += footer([("Method:", "rivers are modelled from elevation data. Each has the colour of its sea and gets wider the more land it drains."),
                ("Source:", "Lehner and Grill (2013), HydroRIVERS, WWF HydroSHEDS. Seas from Natural Earth."),
-               ("Comments:", "rivers in Asian Turkey are drawn but not counted. The shares are of EU land only.")],
+               ("Comments:", "Europe runs east to the Urals. Brown marks rivers that end in the Caspian Sea, like the Volga, or inland.")],
               x=60, y=BAR_Y + BAR_H + 68, width=960, size=17, line_height=20)
 save_png(page("".join(svg)), HERE / "day14_borgesian.png")
-share.rename("share_of_eu_land").round(4).sort_values(ascending=False).to_csv(HERE / "eu_land_by_sea.csv", index_label="sea")
+share.rename("share_of_european_land").round(4).sort_values(ascending=False).to_csv(HERE / "europe_land_by_sea.csv", index_label="sea")

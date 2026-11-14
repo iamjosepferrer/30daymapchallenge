@@ -15,7 +15,7 @@ One map a day about Europe, each built around a clear finding.
 - [Day 11, Senses, Sound: almost half of people in EU cities live with road noise louder than WHO advises](#day-11-senses-sound)
 - [Day 12, Power: the Netherlands has the most solar panels per person in the EU](#day-12-power)
 - [Day 13, Interactions: the 10 biggest Erasmus flows run between four countries](#day-13-interactions)
-- [Day 14, Borgesian map: Europe's rivers, by the sea they end in](#day-14-borgesian-map)
+- [Day 14, Borgesian map: European rivers by the sea they end in](#day-14-borgesian-map)
 - [Data sources and licenses](#data-sources-and-licenses)
 - [How to recreate the maps](#how-to-recreate-the-maps)
 
@@ -557,41 +557,42 @@ The second image shows the same data as a chord diagram, for the eight biggest h
 
 ## Day 14: Borgesian map
 
-![Europe's rivers, by the sea they end in](day14_borgesian/day14_borgesian.png)
+![European rivers by the sea they end in](day14_borgesian/day14_borgesian.png)
 
 ### What it shows
 
-Borges imagined a map so detailed it became the territory. This one draws no borders and no coastlines, only rivers and streams: about 224,000 stretches of European river, each draining at least 50 km². The shape of the continent appears from the water alone, and each river takes the colour of the sea it ends in.
+Borges imagined a map so detailed it became the territory. This one draws no borders and no coastlines, only rivers and streams: about 1.2 million km of them across Europe, each draining at least 50 km². The shape of the continent appears from the water alone, and each river takes the colour of the sea it ends in.
 
-The colours split Europe into its great drainage basins. About a third of the EU's land drains into the Baltic Sea:
+The colours split Europe, from the Atlantic to the Urals, into its great drainage basins. 22% of its land drains into the Black Sea, more than into any other sea:
 
-| Sea | Share of EU land |
+| Sea | Share of Europe's land area |
 | --- | ---: |
-| Baltic Sea | 31.4% |
-| Atlantic Ocean | 20.8% |
-| Mediterranean | 19.0% |
-| Black Sea | 16.1% |
-| North Sea | 11.3% |
-| Caspian or inland | 0.8% |
-| Arctic Ocean | 0.7% |
+| Black Sea | 21.9% |
+| Caspian Sea and inland | 18.7% |
+| Baltic Sea | 17.8% |
+| Arctic Ocean | 12.8% |
+| Atlantic Ocean | 12.5% |
+| Mediterranean | 9.0% |
+| North Sea | 7.4% |
 
-The divides show up as sharp colour edges. In the Black Forest, for instance, rain can end up in either the North Sea, through the Rhine, or the Black Sea, through the Danube. The shares are in [`eu_land_by_sea.csv`](day14_borgesian/eu_land_by_sea.csv).
+Russia explains most of the top of the table. The Volga alone drains about 1.4 million km² into the Caspian Sea, and the Dnieper and the Don join the Danube in the Black Sea. The divides show up as sharp colour edges: in the Black Forest, rain can end up in either the North Sea, through the Rhine, or the Black Sea, through the Danube. The shares are in [`europe_land_by_sea.csv`](day14_borgesian/europe_land_by_sea.csv).
 
 ### How it was made
 
 1. **Get the rivers:** WWF's HydroRIVERS for Europe and the Middle East, which links every stretch to the one downstream and to the outlet of its river system.
-2. **Find each river's sea:** the sea or gulf in Natural Earth nearest each river system's mouth, grouped into seven seas. Rivers that end inland, like the Volga in the Caspian, form their own group.
-3. **Add up EU land:** each stretch's own catchment, for the stretches inside the EU, summed by sea.
-4. **Draw it:** stretches draining at least 50 km², wider the more land they drain, rendered as an image so that over 240,000 lines stay light.
+2. **Find each river's sea:** the sea or gulf in Natural Earth nearest each river system's mouth, grouped into seven seas. Rivers that end in the Caspian Sea, led by the Volga, share a colour, brown, with rivers that never reach the sea, mostly in the dry steppe north of the Caspian.
+3. **Keep European land:** Natural Earth's Europe up to the Urals (60°E), plus Cyprus and Turkey's European part. Only stretches whose middle lies there are drawn and counted.
+4. **Add up the land:** each stretch's own catchment, summed by sea.
+5. **Draw it:** stretches draining at least 50 km², wider the more land they drain, rendered as an image so that over 240,000 lines stay light.
 
 ### Limitations
 
-- **Not every stream:** only stretches draining at least 50 km² are drawn and counted. Smaller streams would add detail, not change the colours.
+- **Not every stream is drawn:** only stretches draining at least 50 km² are on the map. The shares use every stretch in HydroRIVERS.
+- **Where Europe ends:** the eastern edge follows Natural Earth's countries and the 60°E meridian, a straight line close to the Urals. Rivers on the Asian side of Russia, Kazakhstan, Turkey and the Caucasus are left out.
 - **Seas are grouped:** the Kattegat counts as the Baltic, the Skagerrak as the North Sea and the Bay of Biscay as the Atlantic, following Natural Earth's names.
-- **Asia drawn, not counted:** rivers in Asian Turkey and south of the Caucasus appear on the map but are left out of the count. The shares cover EU land only.
-- **Modelled rivers:** HydroRIVERS is derived from elevation data, so small streams in very flat land, such as the Dutch polders, follow the terrain rather than the real ditches and canals.
+- **Modelled rivers:** HydroRIVERS traces where water flows from a satellite elevation model, about 500 m per pixel. The big rivers match the real ones. Small streams are close to reality but not exact: in very flat land, such as the Dutch polders, they follow the terrain rather than the real ditches and canals, and in dry regions some only flow part of the year.
 
-**Files:** [`day14_borgesian.py`](day14_borgesian/day14_borgesian.py) does everything, and [`eu_land_by_sea.csv`](day14_borgesian/eu_land_by_sea.csv) holds the share of EU land that drains into each sea.
+**Files:** [`day14_borgesian.py`](day14_borgesian/day14_borgesian.py) does everything, and [`europe_land_by_sea.csv`](day14_borgesian/europe_land_by_sea.csv) holds the share of Europe's land that drains into each sea.
 
 ---
 
