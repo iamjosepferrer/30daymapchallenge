@@ -16,6 +16,7 @@ One map a day about Europe, each built around a clear finding.
 - [Day 12, Power: the Netherlands has the most solar panels per person in the EU](#day-12-power)
 - [Day 13, Interactions: the 10 biggest Erasmus flows run between four countries](#day-13-interactions)
 - [Day 14, Borgesian map: European rivers by the sea they end in](#day-14-borgesian-map)
+- [Day 15, Inside out: The EU has more sea than land](#day-15-inside-out)
 - [Data sources and licenses](#data-sources-and-licenses)
 - [How to recreate the maps](#how-to-recreate-the-maps)
 
@@ -596,13 +597,51 @@ Russia explains most of the top of the table. The Volga alone drains about 1.4 m
 
 ---
 
+## Day 15: Inside out
+
+![The EU has more sea than land](day15_inside_out/day15_inside_out.png)
+
+### What it shows
+
+Europe inside out: the land is left blank and the sea becomes the map. Every EU country with a coast has an exclusive economic zone, up to 200 nautical miles (370 km) offshore, where it alone can fish, drill and build wind farms. Added up, the EU's waters cover 6.0 million km², 47% more than its 4.1 million km² of land.
+
+The countries with the most sea for each km² of land:
+
+| Country | Sea for each km² of land |
+| --- | ---: |
+| Malta | 169 km² |
+| Portugal | 19 km² |
+| Cyprus | 11 km² |
+| Ireland | 6.2 km² |
+| Greece | 3.7 km² |
+| Denmark | 2.5 km² |
+
+Portugal has the biggest waters in the EU, 1.7 million km², thanks to the Azores and Madeira. That is more than Spain or France, which have about 1.0 million km² each. Austria, Czechia, Hungary, Luxembourg and Slovakia have no coast. All 27 countries are in [`sea_and_land.csv`](day15_inside_out/sea_and_land.csv).
+
+### How it was made
+
+1. **Get the waters:** 34 zones from Marine Regions' exclusive economic zones, version 12, including France's overseas regions. Zones two countries share are counted for the one listed first.
+2. **Get the land:** Eurostat's land area for each country in 2024, from the `reg_area3` table, which includes the outermost regions.
+3. **Compare them:** each country's waters divided by its land, in four bands.
+4. **Draw it:** the waters around Europe in EPSG:3035, and France's overseas regions in boxes at the same scale.
+
+### Limitations
+
+- **Only the EU itself:** the Canaries, the Azores, Madeira and France's five overseas regions are part of the EU and are counted. Greenland, French Polynesia, New Caledonia and the Dutch Caribbean islands belong to EU countries but are outside the EU, so their waters are left out.
+- **Disputed borders:** some sea borders are disputed, for instance between Greece, Cyprus and Turkey, and around Mayotte, which the Comoros also claim. The map follows Marine Regions.
+- **Claimed or declared:** Marine Regions draws the zone each country can claim. In the Mediterranean, some countries have not declared all of theirs as a full exclusive economic zone.
+
+**Files:** [`day15_inside_out.py`](day15_inside_out/day15_inside_out.py) does everything, and [`sea_and_land.csv`](day15_inside_out/sea_and_land.csv) holds each country's land, waters and the ratio between them.
+
+---
+
 ## Data sources and licenses
 
 | Dataset | Used for | Where it comes from | License |
 | --- | --- | --- | --- |
 | [GHS-UCDB R2024A V1.2](https://human-settlement.emergency.copernicus.eu/ghs_ucdb_2024.php) | Urban centres and population (Days 1, 2) | Downloaded from the JRC's open data site | CC BY 4.0 |
 | [GHS-POP R2023A](https://human-settlement.emergency.copernicus.eu/download.php) | Europe's total population (Day 1), people by location (Day 6) | Downloaded from the JRC's open data site | CC BY 4.0 |
-| [Natural Earth](https://www.naturalearthdata.com/) | Land, seas and country boundaries (Days 1 to 14) | GitHub mirror of Natural Earth | Public domain |
+| [Natural Earth](https://www.naturalearthdata.com/) | Land, seas and country boundaries (Days 1 to 15) | GitHub mirror of Natural Earth | Public domain |
 | [OSRM](https://project-osrm.org/) on [OpenStreetMap](https://www.openstreetmap.org/copyright) | Driving times and routes (Day 2) | OSRM's free demo server | Data: ODbL, © OpenStreetMap contributors |
 | [List of busiest ports in Europe](https://en.wikipedia.org/wiki/List_of_busiest_ports_in_Europe) | Top 10 ports and TEU (Day 2) | Wikipedia, read in November 2026 | CC BY-SA |
 | [Eurostat](https://ec.europa.eu/eurostat/data/database) `tour_occ_nin3`, `demo_r_pjanaggr3` | Nights spent and residents (Day 3) | Eurostat's statistics API | Free reuse with credit to Eurostat |
@@ -622,6 +661,8 @@ Russia explains most of the top of the table. The Volga alone drains about 1.4 m
 | [Erasmus+ student mobility, 2014 to 2023](https://zenodo.org/records/16737523) | Students by home and host country (Day 13) | Zenodo, University of Helsinki, from the European Commission's Erasmus+ data | CC BY 4.0 |
 | [HydroRIVERS v1.0](https://www.hydrosheds.org/products/hydrorivers) | Rivers and their drainage areas (Day 14) | WWF HydroSHEDS | Free for scientific, educational and commercial use, with credit |
 | [Natural Earth marine areas](https://www.naturalearthdata.com/downloads/10m-physical-vectors/10m-physical-labels/) | Names and shapes of seas (Day 14) | Natural Earth | Public domain |
+| [Marine Regions, Maritime Boundaries v12](https://www.marineregions.org/eez.php) | Exclusive economic zones (Day 15) | Flanders Marine Institute's web service | CC BY 4.0 |
+| [Eurostat `reg_area3`](https://ec.europa.eu/eurostat/databrowser/view/reg_area3/default/table) | Land area by country, 2024 (Day 15) | Eurostat's statistics API | Free reuse with credit to Eurostat |
 
 **Citations**
 
@@ -630,6 +671,7 @@ Russia explains most of the top of the table. The Volga alone drains about 1.4 m
 - World Health Organization (2018). Environmental Noise Guidelines for the European Region. WHO Regional Office for Europe. [who.int](https://www.who.int/europe/publications/i/item/9789289053563)
 - Väisänen, T., Malekzadeh, M., Inkeröinen, O., Järv, O. (2025). Mobility of Erasmus+ students in Europe: geolocated individual and aggregate mobility flows from 2014 to 2023 (v1.1). Zenodo. doi: [10.5281/zenodo.16737523](https://doi.org/10.5281/zenodo.16737523). Data descriptor in Scientific Data, doi: [10.1038/s41597-025-04789-0](https://doi.org/10.1038/s41597-025-04789-0)
 - Lehner, B., Grill, G. (2013). Global river hydrography and network routing: baseline data and new approaches to study the world's large river systems. Hydrological Processes, 27(15), 2171 to 2186. doi: [10.1002/hyp.9740](https://doi.org/10.1002/hyp.9740)
+- Flanders Marine Institute (2023). Maritime Boundaries Geodatabase: Maritime Boundaries and Exclusive Economic Zones (200NM), version 12. Available at marineregions.org. doi: [10.14284/628](https://doi.org/10.14284/628)
 
 The maps use the Gabarito, Shantell Sans and JetBrains Mono fonts, all under the SIL Open Font License.
 
@@ -652,6 +694,7 @@ python 2026/day11_sound/day11_sound.py
 python 2026/day12_power/day12_power.py
 python 2026/day13_interactions/day13_interactions.py
 python 2026/day14_borgesian/day14_borgesian.py
+python 2026/day15_inside_out/day15_inside_out.py
 ```
 
 - **Day 1** takes about a minute and downloads about 50 MB. Recalculating Europe's total with `compute_europe_population.py` is optional and downloads about 475 MB.
@@ -667,6 +710,7 @@ python 2026/day14_borgesian/day14_borgesian.py
 - **Day 12** downloads Eurostat's figures once and takes about twenty seconds. Delete `sun_grid.csv` to fetch the sunshine grid from PVGIS again, which sends about 4,500 requests and takes several minutes.
 - **Day 13** downloads the Erasmus+ flows (18 MB) once from Zenodo and takes about twenty seconds. It makes two images.
 - **Day 14** downloads HydroRIVERS for Europe (68 MB) once and takes about twenty seconds.
+- **Day 15** downloads 34 sea zones from Marine Regions (31 MB) once, which takes about a minute.
 
 ## License
 
