@@ -17,6 +17,7 @@ One map a day about Europe, each built around a clear finding.
 - [Day 13, Interactions: the 10 biggest Erasmus flows run between four countries](#day-13-interactions)
 - [Day 14, Borgesian map: European rivers by the sea they end in](#day-14-borgesian-map)
 - [Day 15, Inside out: The EU has more sea than land](#day-15-inside-out)
+- [Day 16, Collaborative map: More than 8 in 10 EU regions gained people through migration in 2024](#day-16-collaborative-map)
 - [Data sources and licenses](#data-sources-and-licenses)
 - [How to recreate the maps](#how-to-recreate-the-maps)
 
@@ -635,17 +636,79 @@ Portugal has the biggest waters in the EU, 1.7 million km², thanks to the Azore
 
 ---
 
+## Day 16: Collaborative map
+
+![More than 8 in 10 EU regions gained people through migration in 2024](day16_collaborative/day16_collaborative.png)
+
+### What it shows
+
+The topic was picked together with friends: where do people move? This map shows where they actually went in 2024. Each of the EU's 1,165 NUTS 3 regions is coloured by its net migration, the people who moved in minus the people who moved out, from abroad or from elsewhere in the same country, as a share of its residents.
+
+85% of regions gained people this way, home to 84% of the EU's residents. In total the EU gained 2.5 million people, which is its net migration from outside the EU, since moves between regions and between EU countries cancel out. Spain and Portugal are almost entirely dark blue, while the losses cluster in eastern Poland, Lithuania, northeast Hungary, parts of Greece and northeast France.
+
+The bars compare the regions of the 27 capitals:
+
+| Capital region | Net migration in 2024, % of residents |
+| --- | ---: |
+| Lisbon | +2.4% |
+| Dublin | +2.0% |
+| Valletta (all of Malta) | +1.9% |
+| Madrid | +1.5% |
+| Nicosia (all of Cyprus) | +1.4% |
+| Vilnius | +1.3% |
+| Luxembourg (the whole country) | +1.2% |
+| Helsinki | +1.1% |
+| Vienna | +1.0% |
+| Prague | +0.9% |
+| Zagreb | +0.9% |
+| Sofia | +0.9% |
+| Ljubljana | +0.7% |
+| Berlin | +0.7% |
+| Bratislava | +0.5% |
+| Warsaw | +0.5% |
+| Budapest | +0.4% |
+| Rome | +0.4% |
+| Stockholm (the whole county) | +0.3% |
+| Copenhagen | +0.3% |
+| Tallinn | +0.3% |
+| Amsterdam | +0.3% |
+| Brussels | +0.1% |
+| Athens | 0.0% |
+| Riga | 0.0% |
+| Bucharest | -0.3% |
+| Paris (the city alone) | -1.3% |
+
+Every region is in [`net_migration_by_region.csv`](day16_collaborative/net_migration_by_region.csv).
+
+### How it was made
+
+1. **Get the data:** Eurostat's `demo_r_gind3` table for 2024: the crude rate of net migration plus statistical adjustment, net migration, and residents on 1 January, for every NUTS 3 region.
+2. **Get the regions:** GISCO's NUTS 2024 boundaries. All 1,165 EU regions have a value.
+3. **Find the capitals:** the region that contains each capital's coordinates.
+4. **Draw it:** the rate per 1,000 residents divided by 10, so 10 per 1,000 shows as 1%, in five bands.
+
+### Limitations
+
+- **Statistical adjustment:** Eurostat works out net migration as population change minus births and deaths, so corrections to the population count end up in it. 2024 has no extreme outliers. 2023 has some, from census revisions, which is why this map uses 2024.
+- **Asylum reception centres:** some of the biggest values come from towns with reception centres, such as Lesvos (+6.7%) or Suhl (-3.5%). They are real moves, but they follow where asylum seekers are first housed.
+- **Different region sizes:** NUTS 3 regions range from cities, such as Paris, to whole counties, such as Stockholm, so the capital regions are not strictly comparable.
+- **Off the map:** the Canaries, Madeira, the Azores and France's overseas regions are counted but not drawn.
+
+**Files:** [`day16_collaborative.py`](day16_collaborative/day16_collaborative.py) does everything, and [`net_migration_by_region.csv`](day16_collaborative/net_migration_by_region.csv) holds every region's residents, net migration and rate.
+
+---
+
 ## Data sources and licenses
 
 | Dataset | Used for | Where it comes from | License |
 | --- | --- | --- | --- |
 | [GHS-UCDB R2024A V1.2](https://human-settlement.emergency.copernicus.eu/ghs_ucdb_2024.php) | Urban centres and population (Days 1, 2) | Downloaded from the JRC's open data site | CC BY 4.0 |
 | [GHS-POP R2023A](https://human-settlement.emergency.copernicus.eu/download.php) | Europe's total population (Day 1), people by location (Day 6) | Downloaded from the JRC's open data site | CC BY 4.0 |
-| [Natural Earth](https://www.naturalearthdata.com/) | Land, seas and country boundaries (Days 1 to 15) | GitHub mirror of Natural Earth | Public domain |
+| [Natural Earth](https://www.naturalearthdata.com/) | Land, seas and country boundaries (Days 1 to 16) | GitHub mirror of Natural Earth | Public domain |
 | [OSRM](https://project-osrm.org/) on [OpenStreetMap](https://www.openstreetmap.org/copyright) | Driving times and routes (Day 2) | OSRM's free demo server | Data: ODbL, © OpenStreetMap contributors |
 | [List of busiest ports in Europe](https://en.wikipedia.org/wiki/List_of_busiest_ports_in_Europe) | Top 10 ports and TEU (Day 2) | Wikipedia, read in November 2026 | CC BY-SA |
 | [Eurostat](https://ec.europa.eu/eurostat/data/database) `tour_occ_nin3`, `demo_r_pjanaggr3` | Nights spent and residents (Day 3) | Eurostat's statistics API | Free reuse with credit to Eurostat |
-| [GISCO NUTS 2024](https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units/territorial-units-statistics) | Regional boundaries (Day 3), regions and their urban-rural type (Day 9) | Eurostat's GISCO service | © EuroGeographics for the administrative boundaries. Free for non-commercial use |
+| [GISCO NUTS 2024](https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units/territorial-units-statistics) | Regional boundaries (Days 3, 16), regions and their urban-rural type (Day 9) | Eurostat's GISCO service | © EuroGeographics for the administrative boundaries. Free for non-commercial use |
 | [Eurostat Census 2021 population grid](https://ec.europa.eu/eurostat/web/gisco/geodata/population-distribution/population-grids) | 1 km population grid (Days 4, 5, 7, 8) | Eurostat's GISCO service | © European Union, free reuse with credit |
 | [NASA eclipse paths](https://eclipse.gsfc.nasa.gov/solar.html) | Paths of the 2026 and 2027 total eclipses (Day 5) | NASA's eclipse site, by Fred Espenak (GSFC) | Free to use with credit to NASA |
 | [AWMC geodata](https://github.com/AWMC/geodata) | Roman Empire at its greatest extent, AD 117 (Day 6) | GitHub, Ancient World Mapping Center, University of North Carolina | ODbL |
@@ -663,6 +726,7 @@ Portugal has the biggest waters in the EU, 1.7 million km², thanks to the Azore
 | [Natural Earth marine areas](https://www.naturalearthdata.com/downloads/10m-physical-vectors/10m-physical-labels/) | Names and shapes of seas (Day 14) | Natural Earth | Public domain |
 | [Marine Regions, Maritime Boundaries v12](https://www.marineregions.org/eez.php) | Exclusive economic zones (Day 15) | Flanders Marine Institute's web service | CC BY 4.0 |
 | [Eurostat `reg_area3`](https://ec.europa.eu/eurostat/databrowser/view/reg_area3/default/table) | Land area by country, 2024 (Day 15) | Eurostat's statistics API | Free reuse with credit to Eurostat |
+| [Eurostat `demo_r_gind3`](https://ec.europa.eu/eurostat/databrowser/view/demo_r_gind3/default/table) | Net migration and residents by NUTS 3 region, 2024 (Day 16) | Eurostat's statistics API | Free reuse with credit to Eurostat |
 
 **Citations**
 
@@ -695,6 +759,7 @@ python 2026/day12_power/day12_power.py
 python 2026/day13_interactions/day13_interactions.py
 python 2026/day14_borgesian/day14_borgesian.py
 python 2026/day15_inside_out/day15_inside_out.py
+python 2026/day16_collaborative/day16_collaborative.py
 ```
 
 - **Day 1** takes about a minute and downloads about 50 MB. Recalculating Europe's total with `compute_europe_population.py` is optional and downloads about 475 MB.
