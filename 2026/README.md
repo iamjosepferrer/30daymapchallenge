@@ -18,6 +18,7 @@ One map a day about Europe, each built around a clear finding.
 - [Day 14, Borgesian map: European rivers by the sea they end in](#day-14-borgesian-map)
 - [Day 15, Inside out: The EU has more sea than land](#day-15-inside-out)
 - [Day 16, Collaborative map: More than 8 in 10 EU regions gained people through migration in 2024](#day-16-collaborative-map)
+- [Day 17, Light & dark: On the shortest day, the sun rises 51 minutes later in Madrid than in Warsaw](#day-17-light--dark)
 - [Data sources and licenses](#data-sources-and-licenses)
 - [How to recreate the maps](#how-to-recreate-the-maps)
 
@@ -698,13 +699,53 @@ Every region is in [`net_migration_by_region.csv`](day16_collaborative/net_migra
 
 ---
 
+## Day 17: Light & dark
+
+![On the shortest day, the sun rises 51 minutes later in Madrid than in Warsaw](day17_light_dark/day17_light_dark.png)
+
+### What it shows
+
+The clock time of sunrise on 21 December 2026, the shortest day of the year, in 52 countries and territories from Iceland to Turkey.
+
+Two things decide when the morning gets light. Latitude sets how long the day is, so the north is darker. The clock sets the hour: a place at the western end of its time zone sees the sun later than one at the eastern end. Spain and France keep Central European Time, the same clock as Poland, so the sun rises at 8:34 in Madrid and at 7:43 in Warsaw, which lies 1,300 km further north.
+
+| City | Sunrise | Sunset |
+| --- | ---: | ---: |
+| Helsinki | 9:24 | 15:13 |
+| Brest | 9:07 | 17:25 |
+| Vigo | 9:00 | 18:06 |
+| Madrid | 8:34 | 17:51 |
+| Berlin | 8:15 | 15:54 |
+| Lisbon | 7:51 | 17:18 |
+| Warsaw | 7:43 | 15:25 |
+
+Vigo and Lisbon sit almost on the same meridian. Portugal keeps the UK's clock and Spain keeps Germany's, so sunrise in Vigo comes 69 minutes after Lisbon's. Belarus and Turkey stay three hours ahead of UTC all year, which gives Minsk a 9:26 sunrise. North of 67.4°N the sun doesn't rise at all.
+
+### How it was made
+
+1. **Work out the sun:** the equations behind NOAA's solar calculator give the sun's declination and the equation of time for that morning. The sun counts as risen when its top edge clears a flat horizon, 90.833° from overhead, which allows for refraction.
+2. **Turn it into clock time:** for every pixel of land, solar noon comes from its longitude, sunrise from its latitude, and the hour from its country's winter clock, typed in by hand in `WINTER_CLOCK`.
+3. **Draw it:** half-hour bands from "before 7:30" to "after 10:00", with country borders on top. The bars under the map show sunrise to sunset for seven cities.
+
+### Limitations
+
+- **A flat horizon:** mountains and buildings delay the real sunrise. For the 21 labelled cities with a sunrise, the times are within a minute of the ones from the `astral` Python library, so published tables can differ by a minute.
+- **One clock per country:** every coloured country keeps a single time on the area shown. Russia spans several time zones and isn't coloured, and neither are North Africa, the Middle East and the Caucasus.
+- **Crimea:** Natural Earth draws it with Russia. The script moves it to Ukraine, on Kyiv's clock, following its status in international law.
+- **Sunrise only:** the sky brightens during twilight before the sun appears, for longer in the north.
+- **One day:** the latest sunrise of the year comes in early January, a few minutes after these times.
+
+**Files:** [`day17_light_dark.py`](day17_light_dark/day17_light_dark.py) does everything. It needs no data beyond the Natural Earth borders.
+
+---
+
 ## Data sources and licenses
 
 | Dataset | Used for | Where it comes from | License |
 | --- | --- | --- | --- |
 | [GHS-UCDB R2024A V1.2](https://human-settlement.emergency.copernicus.eu/ghs_ucdb_2024.php) | Urban centres and population (Days 1, 2) | Downloaded from the JRC's open data site | CC BY 4.0 |
 | [GHS-POP R2023A](https://human-settlement.emergency.copernicus.eu/download.php) | Europe's total population (Day 1), people by location (Day 6) | Downloaded from the JRC's open data site | CC BY 4.0 |
-| [Natural Earth](https://www.naturalearthdata.com/) | Land, seas and country boundaries (Days 1 to 16) | GitHub mirror of Natural Earth | Public domain |
+| [Natural Earth](https://www.naturalearthdata.com/) | Land, seas and country boundaries (Days 1 to 17) | GitHub mirror of Natural Earth | Public domain |
 | [OSRM](https://project-osrm.org/) on [OpenStreetMap](https://www.openstreetmap.org/copyright) | Driving times and routes (Day 2) | OSRM's free demo server | Data: ODbL, © OpenStreetMap contributors |
 | [List of busiest ports in Europe](https://en.wikipedia.org/wiki/List_of_busiest_ports_in_Europe) | Top 10 ports and TEU (Day 2) | Wikipedia, read in November 2026 | CC BY-SA |
 | [Eurostat](https://ec.europa.eu/eurostat/data/database) `tour_occ_nin3`, `demo_r_pjanaggr3` | Nights spent and residents (Day 3) | Eurostat's statistics API | Free reuse with credit to Eurostat |
@@ -727,6 +768,7 @@ Every region is in [`net_migration_by_region.csv`](day16_collaborative/net_migra
 | [Marine Regions, Maritime Boundaries v12](https://www.marineregions.org/eez.php) | Exclusive economic zones (Day 15) | Flanders Marine Institute's web service | CC BY 4.0 |
 | [Eurostat `reg_area3`](https://ec.europa.eu/eurostat/databrowser/view/reg_area3/default/table) | Land area by country, 2024 (Day 15) | Eurostat's statistics API | Free reuse with credit to Eurostat |
 | [Eurostat `demo_r_gind3`](https://ec.europa.eu/eurostat/databrowser/view/demo_r_gind3/default/table) | Net migration and residents by NUTS 3 region, 2024 (Day 16) | Eurostat's statistics API | Free reuse with credit to Eurostat |
+| [NOAA solar calculator](https://gml.noaa.gov/grad/solcalc/calcdetails.html) | Equations for the sun's position, sunrise and sunset (Day 17) | NOAA Global Monitoring Laboratory | Public domain |
 
 **Citations**
 
@@ -760,6 +802,7 @@ python 2026/day13_interactions/day13_interactions.py
 python 2026/day14_borgesian/day14_borgesian.py
 python 2026/day15_inside_out/day15_inside_out.py
 python 2026/day16_collaborative/day16_collaborative.py
+python 2026/day17_light_dark/day17_light_dark.py
 ```
 
 - **Day 1** takes about a minute and downloads about 50 MB. Recalculating Europe's total with `compute_europe_population.py` is optional and downloads about 475 MB.
