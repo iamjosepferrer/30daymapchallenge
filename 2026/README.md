@@ -19,6 +19,7 @@ One map a day about Europe, each built around a clear finding.
 - [Day 15, Inside out: The EU has more sea than land](#day-15-inside-out)
 - [Day 16, Collaborative map: More than 8 in 10 EU regions gained people through migration in 2024](#day-16-collaborative-map)
 - [Day 17, Light & dark: On the shortest day, the sun rises 51 minutes later in Madrid than in Warsaw](#day-17-light--dark)
+- [Day 18, NULL: The countries that scored zero points at Eurovision](#day-18-null)
 - [Data sources and licenses](#data-sources-and-licenses)
 - [How to recreate the maps](#how-to-recreate-the-maps)
 
@@ -739,13 +740,53 @@ Vigo and Lisbon sit almost on the same meridian. Portugal keeps the UK's clock a
 
 ---
 
+## Day 18: NULL
+
+![The countries that scored zero points at Eurovision](day18_null/day18_null.png)
+
+### What it shows
+
+NULL, read as "nul points": every song that finished a Eurovision show on zero points. There are 41, from 21 countries, between the first contest in 1956 and the 2026 one.
+
+Norway, Austria and Switzerland did it four times each. Spain, Finland and Germany follow with three. Twenty of the 41 came in the first 15 contests, up to 1970. Each jury had only a few points to hand out then, and four countries finished on zero in the same night every year from 1962 to 1965.
+
+| Times | Countries |
+| ---: | --- |
+| 4 | Austria, Norway, Switzerland |
+| 3 | Finland, Germany, Spain |
+| 2 | Belgium, Netherlands, Portugal, Turkey, United Kingdom |
+| 1 | Czechia, Iceland, Italy, Lithuania, Luxembourg, Monaco, Romania, San Marino, Sweden, Yugoslavia |
+
+Since 2016 the jury and the public each give a score and the two are added, so a zero in total needs a zero from both. It has happened once in a final: the United Kingdom in 2021. The last two zeros came in the second semi-final of 2023, which the public decided alone: Romania and San Marino.
+
+Every entry is in [`nul_points.csv`](day18_null/nul_points.csv).
+
+### How it was made
+
+1. **Type in the list:** from Wikipedia's "Voting at the Eurovision Song Contest", which lists the zero-point entries up to 2015 and the entries with a zero from the jury or the public since 2016.
+2. **Check it:** against Aussievision's lists of nul-point entries, which give the same 38 entries up to 2015, and against the results tables of the 2023 to 2026 contests on Wikipedia.
+3. **Draw it:** countries coloured by their number of zeros, and one ball per entry on a timeline, stacked by year, with the country's code inside.
+
+### Limitations
+
+- **What counts:** zero points in total at the end of a show, final or semi-final. Entries with a zero from only the jury or only the public since 2016 are left out, because their total was above zero. That covers the United Kingdom in 2024, 2025 and 2026, for example.
+- **Semi-finals count:** Switzerland's fourth zero (2004), Czechia's (2009) and the two of 2023 came in semi-finals. Guinness World Records counts finals only and gives the record to Norway and Austria, with four each.
+- **Changing rules:** the scoring system changed several times, so a zero in 1962 and a zero in 2021 aren't equally hard to get. Today's 12-point scale started in 1975.
+- **1956:** only the winner of the first contest was announced, so its other scores aren't known.
+- **Countries as they are now:** Germany's three zeros were West Germany's until 1990. Yugoslavia no longer exists and isn't painted on the map, and Monaco and San Marino are drawn as dots.
+- **A hand-typed list:** the script checks the totals (41 entries, 21 countries, four final zeros for Norway and Austria) but the list itself is typed in.
+
+**Files:** [`day18_null.py`](day18_null/day18_null.py) holds the list and draws everything, and [`nul_points.csv`](day18_null/nul_points.csv) is the list as a table.
+
+---
+
 ## Data sources and licenses
 
 | Dataset | Used for | Where it comes from | License |
 | --- | --- | --- | --- |
 | [GHS-UCDB R2024A V1.2](https://human-settlement.emergency.copernicus.eu/ghs_ucdb_2024.php) | Urban centres and population (Days 1, 2) | Downloaded from the JRC's open data site | CC BY 4.0 |
 | [GHS-POP R2023A](https://human-settlement.emergency.copernicus.eu/download.php) | Europe's total population (Day 1), people by location (Day 6) | Downloaded from the JRC's open data site | CC BY 4.0 |
-| [Natural Earth](https://www.naturalearthdata.com/) | Land, seas and country boundaries (Days 1 to 17) | GitHub mirror of Natural Earth | Public domain |
+| [Natural Earth](https://www.naturalearthdata.com/) | Land, seas and country boundaries (Days 1 to 18) | GitHub mirror of Natural Earth | Public domain |
 | [OSRM](https://project-osrm.org/) on [OpenStreetMap](https://www.openstreetmap.org/copyright) | Driving times and routes (Day 2) | OSRM's free demo server | Data: ODbL, © OpenStreetMap contributors |
 | [List of busiest ports in Europe](https://en.wikipedia.org/wiki/List_of_busiest_ports_in_Europe) | Top 10 ports and TEU (Day 2) | Wikipedia, read in November 2026 | CC BY-SA |
 | [Eurostat](https://ec.europa.eu/eurostat/data/database) `tour_occ_nin3`, `demo_r_pjanaggr3` | Nights spent and residents (Day 3) | Eurostat's statistics API | Free reuse with credit to Eurostat |
@@ -769,6 +810,8 @@ Vigo and Lisbon sit almost on the same meridian. Portugal keeps the UK's clock a
 | [Eurostat `reg_area3`](https://ec.europa.eu/eurostat/databrowser/view/reg_area3/default/table) | Land area by country, 2024 (Day 15) | Eurostat's statistics API | Free reuse with credit to Eurostat |
 | [Eurostat `demo_r_gind3`](https://ec.europa.eu/eurostat/databrowser/view/demo_r_gind3/default/table) | Net migration and residents by NUTS 3 region, 2024 (Day 16) | Eurostat's statistics API | Free reuse with credit to Eurostat |
 | [NOAA solar calculator](https://gml.noaa.gov/grad/solcalc/calcdetails.html) | Equations for the sun's position, sunrise and sunset (Day 17) | NOAA Global Monitoring Laboratory | Public domain |
+| [Voting at the Eurovision Song Contest](https://en.wikipedia.org/wiki/Voting_at_the_Eurovision_Song_Contest) | Entries that scored zero points, and yearly results (Day 18) | Wikipedia | CC BY-SA 4.0 |
+| [Aussievision](https://aussievision.net/post/nul-point-entries-in-the-eurovision-song-contest) | A second list of nul-point entries, used as a check (Day 18) | Aussievision | Facts only, cited |
 
 **Citations**
 
@@ -803,6 +846,7 @@ python 2026/day14_borgesian/day14_borgesian.py
 python 2026/day15_inside_out/day15_inside_out.py
 python 2026/day16_collaborative/day16_collaborative.py
 python 2026/day17_light_dark/day17_light_dark.py
+python 2026/day18_null/day18_null.py
 ```
 
 - **Day 1** takes about a minute and downloads about 50 MB. Recalculating Europe's total with `compute_europe_population.py` is optional and downloads about 475 MB.
