@@ -21,6 +21,7 @@ One map a day about Europe, each built around a clear finding.
 - [Day 17, Light & dark: On the shortest day, the sun rises 51 minutes later in Madrid than in Warsaw](#day-17-light--dark)
 - [Day 18, NULL: The countries that scored zero points at Eurovision](#day-18-null)
 - [Day 19, Smell: Where the EU's 255 protected cheeses are made](#day-19-smell)
+- [Day 20, Hexagons: The EU in 6,656 hexagons that each hold at most 250,000 people](#day-20-hexagons)
 - [Data sources and licenses](#data-sources-and-licenses)
 - [How to recreate the maps](#how-to-recreate-the-maps)
 
@@ -840,18 +841,61 @@ Istarski ovčji sir is registered by Croatia and Slovenia together. It counts on
 
 ---
 
+## Day 20: Hexagons
+
+![The EU in 6,656 hexagons that each hold at most 250,000 people](day20_hexagons/day20_hexagons.png)
+
+### What it shows
+
+The EU cut into hexagons of five sizes, so that none holds more than 250,000 people. The hexagons come from H3, the grid Uber built to split the world into hexagons that nest inside each other.
+
+The rule is simple. Start with big hexagons of about 10,000 km². Whenever one holds more than 250,000 residents, split it into its seven smaller hexagons, and repeat down to the fifth size, about 5 km². Empty country keeps its big hexagons and cities break down into small ones, so the size of a hexagon tells you how crowded the place is.
+
+| Typical size | Hexagons | Share of the hexagons' area | Share of the people |
+| ---: | ---: | ---: | ---: |
+| 10,286 km² | 268 | 46% | 4% |
+| 1,718 km² | 1,647 | 43% | 34% |
+| 243 km² | 2,743 | 10% | 36% |
+| 34 km² | 1,457 | 0.8% | 19% |
+| 5 km² | 541 | 0.04% | 7% |
+
+The two smallest sizes cover 1% of the area and hold 26% of the people. A hexagon around Jokkmokk, in northern Sweden, holds about 20,000 people on 8,646 km². The one over central Paris holds 94,000 on 4.6 km², so the first is about 1,900 times as big.
+
+Every hexagon is in [`hexagons.csv`](day20_hexagons/hexagons.csv), with its H3 code, size, people and area.
+
+### How it was made
+
+1. **Get the population:** Eurostat's 2021 census grid, which gives the residents of every 1 km cell. Cells inside an EU country are kept, 442 million people in all.
+2. **Put the cells in hexagons:** each cell goes to the smallest H3 hexagon (resolution 7) that its centre falls in.
+3. **Choose each hexagon's size:** from the biggest size (resolution 3) down, a hexagon is kept if it holds 250,000 people or fewer. Otherwise its people are passed down to its seven children.
+4. **Draw it:** every hexagon whole, coloured by its size, with the smallest in orange.
+
+### Limitations
+
+- **A cap, not equal shares:** H3 hexagons come in fixed sizes, so they can't be stretched to hold the same number of people. Hexagons here hold from 0 to 250,000 people, and half of them hold under 48,000.
+- **Whole hexagons:** they are drawn in full, so hexagons on the coast reach over the sea and those on a border reach into the neighbour. The area shares count that sea and foreign land too. Only residents of EU countries are counted.
+- **Children don't trace their parent:** the seven children of an H3 hexagon cover almost the same ground as the parent, with a slightly different outline. A big hexagon's count comes from its family tree, so it can differ a little from the people living strictly inside the outline drawn. It is also why hexagons of different sizes leave small gaps and overlaps where they meet.
+- **Sizes vary:** H3 hexagons of one size aren't all equal. The biggest size runs from 7,700 to 14,900 km² across the EU, so the legend gives the typical (median) size.
+- **Not in the grid:** France's five overseas regions fall outside the census grid's extent, which leaves out about 2 million people. The Canaries, Madeira and the Azores are counted and not drawn.
+- **Small cells look like specks:** the smallest hexagons are a few pixels wide at this scale.
+- **A big download:** the script fetches a 590 MB file from Eurostat the first time it runs, and keeps only the 12 MB layer it needs.
+
+**Files:** [`day20_hexagons.py`](day20_hexagons/day20_hexagons.py) does everything, and [`hexagons.csv`](day20_hexagons/hexagons.csv) is the result, one row per hexagon. It needs the `h3` package, which this update adds to `requirements.txt`.
+
+---
+
 ## Data sources and licenses
 
 | Dataset | Used for | Where it comes from | License |
 | --- | --- | --- | --- |
 | [GHS-UCDB R2024A V1.2](https://human-settlement.emergency.copernicus.eu/ghs_ucdb_2024.php) | Urban centres and population (Days 1, 2) | Downloaded from the JRC's open data site | CC BY 4.0 |
 | [GHS-POP R2023A](https://human-settlement.emergency.copernicus.eu/download.php) | Europe's total population (Day 1), people by location (Day 6) | Downloaded from the JRC's open data site | CC BY 4.0 |
-| [Natural Earth](https://www.naturalearthdata.com/) | Land, seas and country boundaries (Days 1 to 19) | GitHub mirror of Natural Earth | Public domain |
+| [Natural Earth](https://www.naturalearthdata.com/) | Land, seas and country boundaries (Days 1 to 20) | GitHub mirror of Natural Earth | Public domain |
 | [OSRM](https://project-osrm.org/) on [OpenStreetMap](https://www.openstreetmap.org/copyright) | Driving times and routes (Day 2) | OSRM's free demo server | Data: ODbL, © OpenStreetMap contributors |
 | [List of busiest ports in Europe](https://en.wikipedia.org/wiki/List_of_busiest_ports_in_Europe) | Top 10 ports and TEU (Day 2) | Wikipedia, read in November 2026 | CC BY-SA |
 | [Eurostat](https://ec.europa.eu/eurostat/data/database) `tour_occ_nin3`, `demo_r_pjanaggr3` | Nights spent and residents (Day 3) | Eurostat's statistics API | Free reuse with credit to Eurostat |
 | [GISCO NUTS 2024](https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units/territorial-units-statistics) | Regional boundaries (Days 3, 16), regions and their urban-rural type (Day 9) | Eurostat's GISCO service | © EuroGeographics for the administrative boundaries. Free for non-commercial use |
-| [Eurostat Census 2021 population grid](https://ec.europa.eu/eurostat/web/gisco/geodata/population-distribution/population-grids) | 1 km population grid (Days 4, 5, 7, 8) | Eurostat's GISCO service | © European Union, free reuse with credit |
+| [Eurostat Census 2021 population grid](https://ec.europa.eu/eurostat/web/gisco/geodata/population-distribution/population-grids) | 1 km population grid (Days 4, 5, 7, 8, 20) | Eurostat's GISCO service | © European Union, free reuse with credit |
 | [NASA eclipse paths](https://eclipse.gsfc.nasa.gov/solar.html) | Paths of the 2026 and 2027 total eclipses (Day 5) | NASA's eclipse site, by Fred Espenak (GSFC) | Free to use with credit to NASA |
 | [AWMC geodata](https://github.com/AWMC/geodata) | Roman Empire at its greatest extent, AD 117 (Day 6) | GitHub, Ancient World Mapping Center, University of North Carolina | ODbL |
 | [EEA interpolated air quality data, PM2.5 2024](https://sdi.eea.europa.eu/catalogue/srv/api/records/c3db03e4-82e9-4a40-acb1-a5bd15f11f8c) | Annual PM2.5 on a 1 km grid (Day 8) | European Environment Agency | CC BY 4.0, © EEA |
@@ -873,6 +917,7 @@ Istarski ovčji sir is registered by Croatia and Slovenia together. It counts on
 | [Voting at the Eurovision Song Contest](https://en.wikipedia.org/wiki/Voting_at_the_Eurovision_Song_Contest) | Entries that scored zero points, and yearly results (Day 18) | Wikipedia | CC BY-SA 4.0 |
 | [Aussievision](https://aussievision.net/post/nul-point-entries-in-the-eurovision-song-contest) | A second list of nul-point entries, used as a check (Day 18) | Aussievision | Facts only, cited |
 | [eAmbrosia](https://ec.europa.eu/agriculture/eambrosia/geographical-indications-register/) | Registered cheese names with a protected origin or geography (Day 19) | The register's public API | © European Union, free reuse with credit |
+| [H3](https://h3geo.org/) | The hexagon grid (Day 20) | Uber, open source | Apache 2.0 |
 
 **Citations**
 
@@ -909,6 +954,7 @@ python 2026/day16_collaborative/day16_collaborative.py
 python 2026/day17_light_dark/day17_light_dark.py
 python 2026/day18_null/day18_null.py
 python 2026/day19_smell/day19_smell.py
+python 2026/day20_hexagons/day20_hexagons.py
 ```
 
 - **Day 1** takes about a minute and downloads about 50 MB. Recalculating Europe's total with `compute_europe_population.py` is optional and downloads about 475 MB.
