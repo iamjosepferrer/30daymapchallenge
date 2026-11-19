@@ -20,6 +20,7 @@ One map a day about Europe, each built around a clear finding.
 - [Day 16, Collaborative map: More than 8 in 10 EU regions gained people through migration in 2024](#day-16-collaborative-map)
 - [Day 17, Light & dark: On the shortest day, the sun rises 51 minutes later in Madrid than in Warsaw](#day-17-light--dark)
 - [Day 18, NULL: The countries that scored zero points at Eurovision](#day-18-null)
+- [Day 19, Smell: Where the EU's 255 protected cheeses are made](#day-19-smell)
 - [Data sources and licenses](#data-sources-and-licenses)
 - [How to recreate the maps](#how-to-recreate-the-maps)
 
@@ -780,13 +781,72 @@ Every entry is in [`nul_points.csv`](day18_null/nul_points.csv).
 
 ---
 
+## Day 19: Smell
+
+![Where the EU's 255 protected cheeses are made](day19_smell/day19_smell.png)
+
+### What it shows
+
+Smell, through cheese. The EU register of protected food names holds 255 cheeses made in EU countries: 197 with a protected designation of origin (PDO), where every step happens in the named area, and 58 with a protected geographical indication (PGI), where at least one step does. Each one is a dot, placed where it is made.
+
+France has 58, Italy 57, Spain 32 and Greece 25. Together that is two thirds of the list. The dots crowd the Alps, the Massif Central and Spain's north coast. Finland, Latvia and Luxembourg have none, and Estonia's only candidate, Sõir, is registered as another kind of dairy product (see Limitations). Belgium has one, Herve, a washed-rind cheese known for its smell.
+
+| Country | Cheeses | PDO | PGI |
+| --- | ---: | ---: | ---: |
+| France | 58 | 47 | 11 |
+| Italy | 57 | 54 | 3 |
+| Spain | 32 | 27 | 5 |
+| Greece | 25 | 23 | 2 |
+| Portugal | 12 | 11 | 1 |
+| Germany | 9 | 6 | 3 |
+| Slovakia | 9 | 1 | 8 |
+| Austria | 7 | 7 | 0 |
+| Netherlands | 7 | 4 | 3 |
+| Poland | 5 | 3 | 2 |
+| Slovenia | 4 | 4 | 0 |
+| Croatia | 4 | 2 | 2 |
+| Sweden | 4 | 2 | 2 |
+| Romania | 4 | 1 | 3 |
+| Denmark | 4 | 0 | 4 |
+| Czechia | 3 | 0 | 3 |
+| Lithuania | 3 | 0 | 3 |
+| Cyprus | 2 | 1 | 1 |
+| Hungary | 2 | 0 | 2 |
+| Belgium | 1 | 1 | 0 |
+| Bulgaria | 1 | 1 | 0 |
+| Ireland | 1 | 1 | 0 |
+| Malta | 1 | 1 | 0 |
+
+Istarski ovčji sir is registered by Croatia and Slovenia together. It counts once, for Croatia, which the register lists first. Every cheese is in [`protected_cheeses.csv`](day19_smell/protected_cheeses.csv).
+
+### How it was made
+
+1. **Get the list:** eAmbrosia, the European Commission's register of geographical indications, through its public API. Kept: registered names under customs code 0406 (cheese and curd) from EU countries.
+2. **Place each cheese:** by hand, near the centre of its production area, in [`cheese_places.csv`](day19_smell/cheese_places.csv). The register describes each area in words and has no coordinates.
+3. **Check the places:** every dot falls inside its own country. For the 96 cheeses that Wikidata also locates, the hand placement is a median of 30 km away.
+4. **Draw it:** dots that overlap are nudged apart, and 31 well-known cheeses are named.
+
+### Limitations
+
+- **Approximate places:** a dot stands for an area that can cover a valley or a whole country. Feta is made across mainland Greece and Lesvos and shows as one dot. Pecorino Romano sits in Sardinia, where most of it is made, although its area also covers Lazio and part of Tuscany.
+- **Nudged dots:** in crowded areas such as the Alps, dots are moved so they don't hide each other. Half of them move less than 5 km and the furthest about 40 km, always inside their own country. Two dots in the Cyclades sit on the sea beside islands too small to hold them.
+- **What the EU calls a cheese:** the filter is the customs code for cheese, 0406. Nine cheese-like products carry the plain dairy code 04 and are left out: two ricottas, three requeijões and Travia from Portugal, Cancoillotte, Obazda and Sõir. The regulations that registered Cancoillotte, Obazda and Sõir put them in class 1.4, other products of animal origin, not class 1.3, cheeses.
+- **Pending names:** seven more cheeses have applied and aren't registered yet, including two from Finland and two from Latvia.
+- **Protected names only:** the map counts names in the EU register. Countries with many cheeses and few registrations, such as the Netherlands or Germany, look emptier than their cheese counters.
+- **EU countries only:** names registered by non-EU countries, such as the UK's or Switzerland's, are left out.
+- **A changing list:** the map uses the register as it stood in November 2026. A fresh download can hold new or cancelled names, and the script stops if it finds a cheese without a place.
+
+**Files:** [`day19_smell.py`](day19_smell/day19_smell.py) does everything, [`cheese_places.csv`](day19_smell/cheese_places.csv) holds the hand-placed coordinates, and [`protected_cheeses.csv`](day19_smell/protected_cheeses.csv) is the result, one row per cheese.
+
+---
+
 ## Data sources and licenses
 
 | Dataset | Used for | Where it comes from | License |
 | --- | --- | --- | --- |
 | [GHS-UCDB R2024A V1.2](https://human-settlement.emergency.copernicus.eu/ghs_ucdb_2024.php) | Urban centres and population (Days 1, 2) | Downloaded from the JRC's open data site | CC BY 4.0 |
 | [GHS-POP R2023A](https://human-settlement.emergency.copernicus.eu/download.php) | Europe's total population (Day 1), people by location (Day 6) | Downloaded from the JRC's open data site | CC BY 4.0 |
-| [Natural Earth](https://www.naturalearthdata.com/) | Land, seas and country boundaries (Days 1 to 18) | GitHub mirror of Natural Earth | Public domain |
+| [Natural Earth](https://www.naturalearthdata.com/) | Land, seas and country boundaries (Days 1 to 19) | GitHub mirror of Natural Earth | Public domain |
 | [OSRM](https://project-osrm.org/) on [OpenStreetMap](https://www.openstreetmap.org/copyright) | Driving times and routes (Day 2) | OSRM's free demo server | Data: ODbL, © OpenStreetMap contributors |
 | [List of busiest ports in Europe](https://en.wikipedia.org/wiki/List_of_busiest_ports_in_Europe) | Top 10 ports and TEU (Day 2) | Wikipedia, read in November 2026 | CC BY-SA |
 | [Eurostat](https://ec.europa.eu/eurostat/data/database) `tour_occ_nin3`, `demo_r_pjanaggr3` | Nights spent and residents (Day 3) | Eurostat's statistics API | Free reuse with credit to Eurostat |
@@ -812,6 +872,7 @@ Every entry is in [`nul_points.csv`](day18_null/nul_points.csv).
 | [NOAA solar calculator](https://gml.noaa.gov/grad/solcalc/calcdetails.html) | Equations for the sun's position, sunrise and sunset (Day 17) | NOAA Global Monitoring Laboratory | Public domain |
 | [Voting at the Eurovision Song Contest](https://en.wikipedia.org/wiki/Voting_at_the_Eurovision_Song_Contest) | Entries that scored zero points, and yearly results (Day 18) | Wikipedia | CC BY-SA 4.0 |
 | [Aussievision](https://aussievision.net/post/nul-point-entries-in-the-eurovision-song-contest) | A second list of nul-point entries, used as a check (Day 18) | Aussievision | Facts only, cited |
+| [eAmbrosia](https://ec.europa.eu/agriculture/eambrosia/geographical-indications-register/) | Registered cheese names with a protected origin or geography (Day 19) | The register's public API | © European Union, free reuse with credit |
 
 **Citations**
 
@@ -847,6 +908,7 @@ python 2026/day15_inside_out/day15_inside_out.py
 python 2026/day16_collaborative/day16_collaborative.py
 python 2026/day17_light_dark/day17_light_dark.py
 python 2026/day18_null/day18_null.py
+python 2026/day19_smell/day19_smell.py
 ```
 
 - **Day 1** takes about a minute and downloads about 50 MB. Recalculating Europe's total with `compute_europe_population.py` is optional and downloads about 475 MB.

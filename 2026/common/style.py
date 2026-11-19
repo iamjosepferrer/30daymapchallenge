@@ -138,6 +138,19 @@ def text(x, y, words, size, weight=400, fill=None, anchor="start", halo=None):
     )
 
 
+def flush(words, size, weight=400, x=60):
+    """Where to start `words` so the ink of its first letter sits exactly on `x`.
+
+    Letters carry a little blank space on their left that grows with the font size and differs by letter (an F has
+    more than a W), so lines of different sizes that start at the same x don't look aligned. This takes it out.
+    """
+    for name, url in FONT_URLS.items():
+        _download(url, FONT_DIR / name)
+    font = ImageFont.truetype(str(FONT_DIR / "Gabarito.ttf"), 200)
+    font.set_variation_by_axes([weight])
+    return x - font.getbbox(words[0], anchor="ls")[0] * size / 200
+
+
 def fade_defs():
     """Gradients that fade the land into the card at the map edges."""
     stops = (
