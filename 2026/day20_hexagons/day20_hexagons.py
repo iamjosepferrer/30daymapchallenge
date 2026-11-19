@@ -29,10 +29,22 @@ from style import C, DATA_DIR, Frame, _download, byline, countries, fade_defs, f
 GRID_URL = "https://gisco-services.ec.europa.eu/census/2021/Eurostat_Census-GRID_2021_V2.2.zip"  # 590 MB
 GRID_TIFF = "ESTAT_OBS-VALUE-T_2021_V2.tiff"  # total residents in each 1 km cell
 NUTS_URL = "https://gisco-services.ec.europa.eu/distribution/v2/nuts/geojson/NUTS_RG_01M_2024_3035_LEVL_2.geojson"
+ROADS_URL = "https://naciscdn.org/naturalearth/10m/cultural/ne_10m_roads.zip"  # 9 MB
 EU = "AT BE BG CY CZ DE DK EE EL ES FI FR HR HU IE IT LT LU LV MT NL PL PT RO SE SI SK".split()
 LIMIT = 250_000  # a hexagon with more residents than this is split
 SIZES = [3, 4, 5, 6, 7]  # H3 resolutions, from the biggest hexagons to the smallest
-COLOURS = {3: "#F6F2EA", 4: "#C5D5E2", 5: "#7FA6CC", 6: "#2E5A93", 7: "#E0603F"}  # the smallest size in an accent colour
+COLOURS = {3: "#FFFFFF", 4: "#C5D5E2", 5: "#7FA6CC", 6: "#2E5A93", 7: "#E0603F"}  # the smallest size in an accent colour
+EDGE = "#DDD7CB"  # the biggest hexagons are white, so they get a light grey outline to tell one from the next
+SEE_THROUGH = 0.72  # how solid the hexagons are, so borders and roads show through them
+
+
+def blend(colour, under, share=SEE_THROUGH):
+    """The colour a see-through hexagon ends up with over the land, for the legend and the bars."""
+    mix = [round(int(colour[i:i + 2], 16) * share + int(under[i:i + 2], 16) * (1 - share)) for i in (1, 3, 5)]
+    return "#" + "".join(f"{v:02X}" for v in mix)
+
+
+SHOWN = {size: blend(colour, C["quiet_land"]) for size, colour in COLOURS.items()}
 
 # 1. Data: residents per 1 km cell, kept where the cell is in an EU country
 tiff = DATA_DIR / GRID_TIFF
@@ -77,9 +89,29 @@ print(f"{len(hexes):,} hexagons, {hexes.people.sum() / 1e6:.1f}M residents, medi
 MAP_TOP = 244
 frame = Frame(1680000, 6920000, 1330000, 5330000, 0, 1080, MAP_TOP)
 view = frame.box().buffer(150000).intersection(shapely.box(2500000, 0, 9e6, 9e6))  # Madeira and the Canaries fall outside
-land = countries().to_crs(3035).geometry.buffer(0).intersection(frame.box()).union_all()
+world = countries().to_crs(3035)
+world["geometry"] = world.geometry.buffer(0).intersection(frame.box())
+world = world[~world.is_empty]
+land = world.union_all()
+EU_NAMES = ["Austria", "Belgium", "Bulgaria", "Cyprus", "Czechia", "Germany", "Denmark", "Estonia", "Greece", "Spain", "Finland", "France",
+            "Croatia", "Hungary", "Ireland", "Italy", "Lithuania", "Luxembourg", "Latvia", "Malta", "Netherlands", "Poland", "Portugal",
+            "Romania", "Sweden", "Slovenia", "Slovakia"]
+borders = world[world.ADMIN.isin(EU_NAMES)].copy()
+assert len(borders) == 27
+borders["geometry"] = borders.geometry.intersection(shapely.box(2500000, 0, 9e6, 9e6))  # without Madeira and the Canaries, at the map's left edge
+# Below the hexagons: land, the borders of EU countries and the major highways (Natural Earth)
+roads = gpd.read_file(_download(ROADS_URL, DATA_DIR / "ne_10m_roads.zip"), bbox=(-12, 33, 36, 72))
+roads = roads[roads["type"] == "Major Highway"].to_crs(3035)
+roads = roads.geometry.intersection(borders.union_all()).simplify(1500)
+roads = roads[~roads.is_empty]
+line_path = lambda geoms: "".join("M" + " L".join(f"{px:.1f} {py:.1f}" for px, py in (frame.xy(*c) for c in part.coords))
+                                  for g in geoms for part in getattr(g, "geoms", [g]) if part.geom_type == "LineString")
 svg = [f'<clipPath id="map"><rect x="0" y="{MAP_TOP}" width="1080" height="{frame.ph:.0f}"/></clipPath>',
-       f'<g clip-path="url(#map)"><path d="{geom_path(land, frame)}" fill="{C["quiet_land"]}"/>']
+       f'<g clip-path="url(#map)"><path d="{geom_path(land, frame)}" fill="{C["quiet_land"]}"/>',
+       f'<path d="{line_path(roads)}" fill="none" stroke="#68502F" stroke-opacity=".75" stroke-width=".8" stroke-linejoin="round" stroke-linecap="round"/>',
+       f'<path d="{"".join(geom_path(g, frame) for g in borders.geometry.simplify(1500))}" fill="none" stroke="{C["ink"]}" stroke-opacity=".9" '
+       f'stroke-width="1.1" stroke-linejoin="round"/>',
+       f'<g opacity="{SEE_THROUGH}">']  # the hexagons are painted solid and made see-through together, so overlaps don't darken
 to3035 = Transformer.from_crs(4326, 3035, always_xy=True)
 
 
@@ -94,8 +126,8 @@ shown = hexes[[view.contains(s) for s in hexes["shape"]]]
 for size in SIZES:
     d = "".join("M" + " L".join(f"{px:.1f} {py:.1f}" for px, py in (frame.xy(*c) for c in s.exterior.coords[:-1])) + "Z"
                 for s in shown[shown["size"] == size]["shape"])
-    svg.append(f'<path d="{d}" fill="{COLOURS[size]}" stroke="{"#FFFFFF" if size < 6 else COLOURS[size]}" stroke-width="{0.7 if size < 6 else 0.5}" stroke-linejoin="round"/>')
-svg += [fade_defs(), f'<rect x="0" y="{MAP_TOP}" width="1080" height="24" fill="url(#fade-top)"/>',
+    svg.append(f'<path d="{d}" fill="{COLOURS[size]}" stroke="{EDGE if size == 3 else "#FFFFFF" if size < 6 else COLOURS[size]}" stroke-width="{0.7 if size < 6 else 0.5}" stroke-linejoin="round"/>')
+svg += ["</g>", fade_defs(), f'<rect x="0" y="{MAP_TOP}" width="1080" height="24" fill="url(#fade-top)"/>',
         f'<rect x="0" y="{MAP_TOP + frame.ph - 30:.0f}" width="1080" height="30" fill="url(#fade-bottom)"/>', "</g>"]
 
 # Legend over the Atlantic: the five sizes, drawn at the map's scale where they are big enough to see
@@ -106,7 +138,7 @@ for i, size in enumerate(SIZES):
     r = max(3.2, np.sqrt(by_size.typical[size] * 1e6 * 2 / (3 * np.sqrt(3))) * frame.k)  # corner radius of a regular hexagon
     r = min(r, 15)
     corners = " ".join(f"{LX + 15.4 + r * np.cos(np.pi / 3 * k):.1f},{yy + r * np.sin(np.pi / 3 * k):.1f}" for k in range(6))
-    svg.append(f'<polygon points="{corners}" fill="{COLOURS[size]}" stroke="#FFFFFF" stroke-width=".8"/>')
+    svg.append(f'<polygon points="{corners}" fill="{SHOWN[size]}" stroke="{blend(EDGE, C["quiet_land"]) if size == 3 else "#FFFFFF"}" stroke-width=".8"/>')
     area = by_size.typical[size]
     svg.append(text(LX + 40, yy - 1, f"{area:,.0f} km²" if area >= 10 else f"{area:.0f} km²", 15, 700))
     svg.append(text(LX + 40, yy + 15, f"{by_size['count'][size]:,} hexagons", 13, 400, C["ink2"]))
@@ -138,7 +170,7 @@ for j, (label, column) in enumerate((("Area", "area_share"), ("People", "people_
     svg.append(text(flush(label, 17, 600), by + 21, label, 17, 600, C["ink2"]))
     for size in SIZES:
         w = 880 * by_size[column][size]
-        svg.append(f'<rect x="{bx:.1f}" y="{by}" width="{max(w - 2, 0.5):.1f}" height="30" rx="2" fill="{COLOURS[size]}"/>')
+        svg.append(f'<rect x="{bx:.1f}" y="{by}" width="{max(w - 2, 0.5):.1f}" height="30" rx="2" fill="{SHOWN[size]}"/>')
         if w > 44:
             svg.append(text(bx + (w - 2) / 2, by + 21, f"{by_size[column][size]:.0%}", 16, 700, "#FFFFFF" if size >= 5 else C["ink"], "middle"))
         bx += w
@@ -153,7 +185,7 @@ for y, words, size, weight, colour in HEAD:  # every line starts with its first 
 svg.append(byline(234, "30DayMapChallenge #20: Hexagons").replace('x="60.0"', f'x="{flush("M", 20, 600):.1f}"'))
 svg += footer([
     ("Method:", f"residents in Eurostat's 1 km census grid, added up in H3 hexagons. A hexagon with more than {LIMIT:,} is split, down to the smallest size shown. Hexagons are drawn whole, so they reach over the sea and across borders."),
-    ("Source:", "Eurostat, Census 2021 population grid and NUTS 2024, © European Union. H3 by Uber. Base: Natural Earth."),
+    ("Source:", "Eurostat, Census 2021 population grid and NUTS 2024, © European Union. H3 by Uber. Borders and roads: Natural Earth."),
     ("Comments:", f"half of the hexagons hold under {round(hexes.people.median(), -3):,.0f} people. The Canaries, Madeira and the Azores count. France's five overseas regions aren't in the grid."),
 ], x=round(flush("M", 17, 700), 1), y=TOP + 122, width=960, size=17, line_height=20)
 save_png(page("".join(svg)), HERE / "day20_hexagons.png")

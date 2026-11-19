@@ -868,7 +868,7 @@ Every hexagon is in [`hexagons.csv`](day20_hexagons/hexagons.csv), with its H3 c
 1. **Get the population:** Eurostat's 2021 census grid, which gives the residents of every 1 km cell. Cells inside an EU country are kept, 442 million people in all.
 2. **Put the cells in hexagons:** each cell goes to the smallest H3 hexagon (resolution 7) that its centre falls in.
 3. **Choose each hexagon's size:** from the biggest size (resolution 3) down, a hexagon is kept if it holds 250,000 people or fewer. Otherwise its people are passed down to its seven children.
-4. **Draw it:** every hexagon whole, coloured by its size, with the smallest in orange.
+4. **Draw it:** every hexagon whole, coloured by its size, with the smallest in orange. The hexagons are 72% solid, so the borders of EU countries and the major highways (Natural Earth) show through them.
 
 ### Limitations
 
