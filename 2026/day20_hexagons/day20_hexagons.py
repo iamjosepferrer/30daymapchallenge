@@ -177,9 +177,9 @@ for j, (label, column) in enumerate((("Area", "area_share"), ("People", "people_
 
 # 5. Headline, dek, byline and footer
 small = by_size.loc[SIZES[-2:]]
-HEAD = [(84, f"The EU in {len(hexes):,} hexagons that each", 46, 800, C["ink"]), (134, f"hold at most {LIMIT:,} people", 46, 800, C["ink"]),
-        (174, f"A hexagon with more than {LIMIT:,} residents is split into seven smaller ones, so small hexagons", 22, 400, C["ink2"]),
-        (202, f"mark crowded places. The two smallest sizes cover {small.area_share.sum():.0%} of the area and hold {small.people_share.sum():.0%} of the people.", 22, 400, C["ink2"])]
+HEAD = [(84, "Small hexagons, big crowds: where", 46, 800, C["ink"]), (134, "the EU's people pack in", 46, 800, C["ink"]),
+        (174, f"A quarter of the EU's people live on {small.area_share.sum():.0%} of the map. Each hexagon holds at most {LIMIT:,} people,", 22, 400, C["ink2"]),
+        (202, "and one that holds more is split into seven smaller ones, so small hexagons mark crowded places.", 22, 400, C["ink2"])]
 for y, words, size, weight, colour in HEAD:  # every line starts with its first letter exactly on the left margin
     svg.append(text(flush(words, size, weight), y, words, size, weight, colour))
 svg.append(byline(234, "30DayMapChallenge #20: Hexagons").replace('x="60.0"', f'x="{flush("M", 20, 600):.1f}"'))

@@ -21,7 +21,7 @@ One map a day about Europe, each built around a clear finding.
 - [Day 17, Light & dark: On the shortest day, the sun rises 51 minutes later in Madrid than in Warsaw](#day-17-light--dark)
 - [Day 18, NULL: The countries that scored zero points at Eurovision](#day-18-null)
 - [Day 19, Smell: Where the EU's 255 protected cheeses are made](#day-19-smell)
-- [Day 20, Hexagons: The EU in 6,656 hexagons that each hold at most 250,000 people](#day-20-hexagons)
+- [Day 20, Hexagons: Small hexagons, big crowds: where the EU's people pack in](#day-20-hexagons)
 - [Data sources and licenses](#data-sources-and-licenses)
 - [How to recreate the maps](#how-to-recreate-the-maps)
 
@@ -843,7 +843,7 @@ Istarski ovčji sir is registered by Croatia and Slovenia together. It counts on
 
 ## Day 20: Hexagons
 
-![The EU in 6,656 hexagons that each hold at most 250,000 people](day20_hexagons/day20_hexagons.png)
+![Small hexagons, big crowds: where the EU's people pack in](day20_hexagons/day20_hexagons.png)
 
 ### What it shows
 
