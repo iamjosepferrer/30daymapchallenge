@@ -152,7 +152,7 @@ tx, ty = frame.xy(lapland["shape"].centroid.x, lapland["shape"].centroid.y)
 NOTE = [f"{round(lapland.people, -3):,.0f} people live", "in this hexagon. It", f"is {round(ratio, -2):,.0f} times the", "size of the one over", "central Paris"]
 nx, ny, step = 326, MAP_TOP + 46, 26
 svg.append(f'<text class="note" x="{nx}" y="{ny}" font-size="21" fill="{C["ink"]}">'
-           + "".join(f'<tspan x="{nx}"{f' dy="{step}"' if i else ""}>{line}</tspan>' for i, line in enumerate(NOTE)) + "</text>")
+           + "".join(f'<tspan x="{nx}"' + (f' dy="{step}"' if i else "") + f'>{line}</tspan>' for i, line in enumerate(NOTE)) + "</text>")
 # The note must stay over the sea: check each line's box against the land, in pixels
 note_box = shapely.union_all([shapely.box(nx - 2, ny + step * i - 18, nx + 11.2 * len(line), ny + step * i + 5) for i, line in enumerate(NOTE)])
 to_pixels = [frame.k, 0, 0, -frame.k, frame.xy(0, 0)[0], frame.xy(0, 0)[1]]

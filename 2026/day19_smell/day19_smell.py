@@ -164,7 +164,7 @@ herve = main[main.name == "Fromage de Herve"].iloc[0]
 NOTE = ["Herve is Belgium's only", "PDO cheese and it is", "famous for its smell"]
 nx, ny, step = 214, MAP_TOP + 241, 26
 svg.append(f'<text class="note" x="{nx}" y="{ny}" font-size="21" fill="{C["ink"]}">'
-           + "".join(f'<tspan x="{nx}"{f' dy="{step}"' if i else ""}>{line}</tspan>' for i, line in enumerate(NOTE)) + "</text>")
+           + "".join(f'<tspan x="{nx}"' + (f' dy="{step}"' if i else "") + f'>{line}</tspan>' for i, line in enumerate(NOTE)) + "</text>")
 # The note must not sit on the continent: check its box against every country but the United Kingdom, in pixels
 note_box = shapely.box(nx - 2, ny - 19, nx + 11.2 * max(map(len, NOTE)), ny + step * (len(NOTE) - 1) + 5)
 continent = shapely.affinity.affine_transform(world[~world.ADMIN.isin(["United Kingdom", "Isle of Man"])].union_all(), to_pixels)
