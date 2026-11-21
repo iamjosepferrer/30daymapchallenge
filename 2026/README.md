@@ -22,6 +22,7 @@ One map a day about Europe, each built around a clear finding.
 - [Day 18, NULL: The countries that scored zero points at Eurovision](#day-18-null)
 - [Day 19, Smell: Where the EU's 255 protected cheeses are made](#day-19-smell)
 - [Day 20, Hexagons: Small hexagons, big crowds: where the EU's people pack in](#day-20-hexagons)
+- [Day 21, OpenStreetMap: Every cycle path that volunteers have mapped in OpenStreetMap](#day-21-openstreetmap)
 - [Data sources and licenses](#data-sources-and-licenses)
 - [How to recreate the maps](#how-to-recreate-the-maps)
 
@@ -884,13 +885,53 @@ Every hexagon is in [`hexagons.csv`](day20_hexagons/hexagons.csv), with its H3 c
 
 ---
 
+## Day 21: OpenStreetMap
+
+![Every cycle path that volunteers have mapped in OpenStreetMap](day21_openstreetmap/day21_cycle_paths.png)
+
+### What it shows
+
+Nothing on this map but cycle paths, as volunteers have drawn them in OpenStreetMap: 402,897 km of paths for bicycles. Each pixel darkens with the length of path inside it, so cities and well-mapped countries stand out without any roads or labels.
+
+Germany has the most, 91,462 km. The Netherlands has so many for its size that it turns solid: about 1 km of path for every km² of the country.
+
+| Country | Km of cycle path | Km per 100 km² |
+| --- | ---: | ---: |
+| Netherlands | 37,923 | 102 |
+| Belgium | 12,323 | 40 |
+| Denmark | 12,539 | 29 |
+| Germany | 91,462 | 26 |
+| Luxembourg | 489 | 19 |
+| United Kingdom | 34,412 | 14 |
+
+Countries tag their paths in different ways. In the Netherlands, 96% of the length is tagged `highway=cycleway`. In Germany, 85% is a path, footway or similar way tagged `bicycle=designated`. Counting only the first kind would leave Germany with 13,602 km, so both kinds are counted here. Every country is in [`cycle_paths_by_country.csv`](day21_openstreetmap/cycle_paths_by_country.csv), with its length, its area on the map and the ratio between them.
+
+### How it was made
+
+1. **Get the paths:** Overture Maps keeps a copy of OpenStreetMap's roads and paths (release 2026-11-18.0) as Parquet files in a public bucket. DuckDB reads the segments with `class = 'cycleway'`, plus those with class `path`, `footway`, `pedestrian` or `bridleway` that are designated for bicycles. It works in 10° tiles so memory stays low.
+2. **Sum them in 1 km cells:** each path is cut into pieces of at most 200 m, and every piece adds its length, measured on the WGS84 ellipsoid, to the cell of the EU's 1 km grid (EPSG:3035) that holds its middle.
+3. **Give cells a country:** a cell goes to the Natural Earth country that holds its centre, or, on the coast, to the one within 1.5 km. Crimea counts for Ukraine.
+4. **Draw it:** the cells become pixels whose darkness grows with the square root of the length inside them, over plain land and borders. Every number on the chart counts only what the map shows.
+
+### Limitations
+
+- **What volunteers have mapped:** some countries are mapped in more detail than others, so part of the gap between them may come from the mapping.
+- **Paths of their own only:** a cycle lane or track recorded as a tag on a road (`cycleway=lane` or `cycleway=track`) isn't counted, and neither is a path where cycling is allowed but not designated (`bicycle=yes`).
+- **Country areas:** Natural Earth's country shapes include lakes such as the IJsselmeer, so the ratio is per km² of the country, not strictly of land. Countries cut by the edge of the map, such as Norway, Russia and Turkey, count only the part shown.
+- **Small countries left out of the bars:** the bars skip countries under 2,000 km², where a few paths move the ratio a lot. Liechtenstein would come second, with 45 km per 100 km².
+- **Paths at sea:** about 4,000 km, 1% of the total, fall in cells that Natural Earth's simple coastline puts more than 1.5 km out to sea. They count in the total and for no country.
+
+**Files:** [`extract_osm.py`](day21_openstreetmap/extract_osm.py) reads the paths from Overture and writes the two 1 km grids, [`cycleways_1km.parquet`](day21_openstreetmap/cycleways_1km.parquet) and [`shared_paths_1km.parquet`](day21_openstreetmap/shared_paths_1km.parquet). [`day21_cycleways.py`](day21_openstreetmap/day21_cycleways.py) draws the map from them and writes [`cycle_paths_by_country.csv`](day21_openstreetmap/cycle_paths_by_country.csv). The extract needs `duckdb` and `pyarrow`, which this update adds to `requirements.txt`.
+
+---
+
 ## Data sources and licenses
 
 | Dataset | Used for | Where it comes from | License |
 | --- | --- | --- | --- |
 | [GHS-UCDB R2024A V1.2](https://human-settlement.emergency.copernicus.eu/ghs_ucdb_2024.php) | Urban centres and population (Days 1, 2) | Downloaded from the JRC's open data site | CC BY 4.0 |
 | [GHS-POP R2023A](https://human-settlement.emergency.copernicus.eu/download.php) | Europe's total population (Day 1), people by location (Day 6) | Downloaded from the JRC's open data site | CC BY 4.0 |
-| [Natural Earth](https://www.naturalearthdata.com/) | Land, seas and country boundaries (Days 1 to 20) | GitHub mirror of Natural Earth | Public domain |
+| [Natural Earth](https://www.naturalearthdata.com/) | Land, seas and country boundaries (Days 1 to 21) | GitHub mirror of Natural Earth | Public domain |
 | [OSRM](https://project-osrm.org/) on [OpenStreetMap](https://www.openstreetmap.org/copyright) | Driving times and routes (Day 2) | OSRM's free demo server | Data: ODbL, © OpenStreetMap contributors |
 | [List of busiest ports in Europe](https://en.wikipedia.org/wiki/List_of_busiest_ports_in_Europe) | Top 10 ports and TEU (Day 2) | Wikipedia, read in November 2026 | CC BY-SA |
 | [Eurostat](https://ec.europa.eu/eurostat/data/database) `tour_occ_nin3`, `demo_r_pjanaggr3` | Nights spent and residents (Day 3) | Eurostat's statistics API | Free reuse with credit to Eurostat |
@@ -918,6 +959,7 @@ Every hexagon is in [`hexagons.csv`](day20_hexagons/hexagons.csv), with its H3 c
 | [Aussievision](https://aussievision.net/post/nul-point-entries-in-the-eurovision-song-contest) | A second list of nul-point entries, used as a check (Day 18) | Aussievision | Facts only, cited |
 | [eAmbrosia](https://ec.europa.eu/agriculture/eambrosia/geographical-indications-register/) | Registered cheese names with a protected origin or geography (Day 19) | The register's public API | © European Union, free reuse with credit |
 | [H3](https://h3geo.org/) | The hexagon grid (Day 20) | Uber, open source | Apache 2.0 |
+| [Overture Maps](https://overturemaps.org/) transportation theme, release 2026-11-18.0, built from [OpenStreetMap](https://www.openstreetmap.org/copyright) | Cycle paths (Day 21) | Overture's public bucket on Amazon S3, read with DuckDB | ODbL, © OpenStreetMap contributors |
 
 **Citations**
 
@@ -955,6 +997,7 @@ python 2026/day17_light_dark/day17_light_dark.py
 python 2026/day18_null/day18_null.py
 python 2026/day19_smell/day19_smell.py
 python 2026/day20_hexagons/day20_hexagons.py
+python 2026/day21_openstreetmap/day21_cycleways.py
 ```
 
 - **Day 1** takes about a minute and downloads about 50 MB. Recalculating Europe's total with `compute_europe_population.py` is optional and downloads about 475 MB.
@@ -971,6 +1014,7 @@ python 2026/day20_hexagons/day20_hexagons.py
 - **Day 13** downloads the Erasmus+ flows (18 MB) once from Zenodo and takes about twenty seconds. It makes two images.
 - **Day 14** downloads HydroRIVERS for Europe (68 MB) once and takes about twenty seconds.
 - **Day 15** downloads 34 sea zones from Marine Regions (31 MB) once, which takes about a minute.
+- **Day 21** draws the map from the two 1 km grids in its folder in a few seconds. To rebuild them from Overture, run `extract_osm.py` first: it takes about 15 minutes and keeps about 300 MB of tiles in `data/`.
 
 ## License
 
