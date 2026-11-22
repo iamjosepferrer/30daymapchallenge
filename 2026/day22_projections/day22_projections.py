@@ -115,7 +115,7 @@ for i, (fill, stroke, label) in enumerate(((C["quiet_land"], C["ctx"], "On a fla
     svg.append(text(LX + 26, yy, label, 15, 400, C["ink2"]))
 
 # One note, over the Norwegian Sea, pointing at Iceland
-NOTE = [f"Iceland looks {ice_looks:.1f} times", "as big as Portugal. It's", f"only about {ice_really - 1:.0%} bigger"]
+NOTE = ["Iceland looks almost", "4 times as big as", "Portugal, but they're", "about the same size"]  # 3.8 times, and 15% bigger
 print(NOTE)
 nx, ny, step = 262, MAP_TOP + 138, 23
 svg.append(f'<text class="note" x="{nx}" y="{ny}" font-size="19" fill="{C["ink"]}">'
@@ -156,7 +156,6 @@ svg += footer([
                 "tiles. Each solid shape is the country in an equal-area projection, at Web Mercator's scale at the equator."),
     ("Source:", "borders from Natural Earth. Parts outside the map, such as Svalbard and the Canary Islands, are left out. "
                 "Countries cut by its edge, such as Russia, get no solid shape."),
-    ("Comments:", "web maps that switch to a globe when you zoom out, like Google Maps on a computer, show sizes right."),
 ], x=round(flush("M", 17, 700), 1), y=BASE + 27, width=960, size=17, line_height=20)
 save_png(page("".join(svg)), HERE / "day22_web_mercator.png")
 out = table[table.fits].drop(columns=["geom", "fits"]).sort_values("true_km2", ascending=False)
