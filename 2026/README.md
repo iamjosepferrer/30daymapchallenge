@@ -23,6 +23,7 @@ One map a day about Europe, each built around a clear finding.
 - [Day 19, Smell: Where the EU's 255 protected cheeses are made](#day-19-smell)
 - [Day 20, Hexagons: Small hexagons, big crowds: where the EU's people pack in](#day-20-hexagons)
 - [Day 21, OpenStreetMap: Every cycle path that volunteers have mapped in OpenStreetMap](#day-21-openstreetmap)
+- [Day 22, Projections: Finland looks twice as big as Spain on a flat web map](#day-22-projections)
 - [Data sources and licenses](#data-sources-and-licenses)
 - [How to recreate the maps](#how-to-recreate-the-maps)
 
@@ -925,13 +926,55 @@ Countries tag their paths in different ways. In the Netherlands, 96% of the leng
 
 ---
 
+## Day 22: Projections
+
+![Finland looks twice as big as Spain on a flat web map](day22_projections/day22_web_mercator.png)
+
+### What it shows
+
+Flat web maps use Web Mercator. It keeps local shapes, so streets cross at the right angles, but it enlarges areas more the farther they are from the equator: 1.7 times at 40°N, 2.4 times at 50°N, 4 times at 60°N and 8.5 times at 70°N. Finland is drawn 5.4 times too big and Spain 1.7 times, so Finland looks twice as big as Spain. It's a third smaller.
+
+Each country appears twice: its outline as a flat web map draws it, and a solid shape at its true size. The farther north a country is, the more its solid shape shrinks inside the outline. Iceland looks 3.8 times as big as Portugal and is only about 15% bigger.
+
+| Country | True size, km² | Drawn on a flat web map |
+| --- | ---: | ---: |
+| Turkey | 780,476 | 1.7 times too big |
+| Ukraine | 599,018 | 2.3 times too big |
+| France | 547,133 | 2.1 times too big |
+| Spain | 499,601 | 1.7 times too big |
+| Sweden | 445,651 | 4.8 times too big |
+| Germany | 357,461 | 2.5 times too big |
+| Finland | 333,376 | 5.4 times too big |
+| Norway | 324,710 | 5.5 times too big |
+
+Turkey is the biggest country with a solid shape, and web maps draw it smaller than Ukraine, Sweden, Finland or Norway. All 53 countries with a solid shape are in [`true_vs_drawn.csv`](day22_projections/true_vs_drawn.csv).
+
+### How it was made
+
+1. **Countries:** Natural Earth's 1:50m borders, cut to the map (27°W to 59.5°E, 34.5°N to 71.5°N). Åland counts with Finland, northern Cyprus with Cyprus and Crimea with Ukraine.
+2. **Two areas for each country:** the true area, measured on the WGS84 ellipsoid, and the area Web Mercator (EPSG:3857) draws. Their ratio is how many times too big the country is drawn.
+3. **True-size shapes:** each country is drawn again in a Lambert azimuthal equal-area projection centred on it, at the scale Web Mercator has at the equator, and placed at the centre of its outline.
+4. **Checks:** the script stops if the headline or the note no longer matches the data.
+
+### Limitations
+
+- **"Too big" against the equator:** Web Mercator draws sizes right only at the equator, so that's the scale every country is compared with.
+- **Countries cut by the edge:** only countries whose main landmass fits on the map get a solid shape. Russia, Kazakhstan, Greenland and North Africa show only as outlines.
+- **Parts outside the map:** Svalbard, the Canary Islands, the Azores and Madeira are left out of every number. With the Azores and Madeira and official figures, Iceland is 12% bigger than Portugal.
+- **Natural Earth's borders:** they include lakes and a simplified coastline, so areas differ a little from official figures. Finland has 333,376 km² here and 338,455 km² officially.
+- **Globes:** web maps that switch to a globe when you zoom out, like Google Maps on a computer, show sizes right.
+
+**Files:** [`day22_projections.py`](day22_projections/day22_projections.py) builds the map and writes [`true_vs_drawn.csv`](day22_projections/true_vs_drawn.csv).
+
+---
+
 ## Data sources and licenses
 
 | Dataset | Used for | Where it comes from | License |
 | --- | --- | --- | --- |
 | [GHS-UCDB R2024A V1.2](https://human-settlement.emergency.copernicus.eu/ghs_ucdb_2024.php) | Urban centres and population (Days 1, 2) | Downloaded from the JRC's open data site | CC BY 4.0 |
 | [GHS-POP R2023A](https://human-settlement.emergency.copernicus.eu/download.php) | Europe's total population (Day 1), people by location (Day 6) | Downloaded from the JRC's open data site | CC BY 4.0 |
-| [Natural Earth](https://www.naturalearthdata.com/) | Land, seas and country boundaries (Days 1 to 21) | GitHub mirror of Natural Earth | Public domain |
+| [Natural Earth](https://www.naturalearthdata.com/) | Land, seas and country boundaries (Days 1 to 22) | GitHub mirror of Natural Earth | Public domain |
 | [OSRM](https://project-osrm.org/) on [OpenStreetMap](https://www.openstreetmap.org/copyright) | Driving times and routes (Day 2) | OSRM's free demo server | Data: ODbL, © OpenStreetMap contributors |
 | [List of busiest ports in Europe](https://en.wikipedia.org/wiki/List_of_busiest_ports_in_Europe) | Top 10 ports and TEU (Day 2) | Wikipedia, read in November 2026 | CC BY-SA |
 | [Eurostat](https://ec.europa.eu/eurostat/data/database) `tour_occ_nin3`, `demo_r_pjanaggr3` | Nights spent and residents (Day 3) | Eurostat's statistics API | Free reuse with credit to Eurostat |
@@ -998,6 +1041,7 @@ python 2026/day18_null/day18_null.py
 python 2026/day19_smell/day19_smell.py
 python 2026/day20_hexagons/day20_hexagons.py
 python 2026/day21_openstreetmap/day21_cycleways.py
+python 2026/day22_projections/day22_projections.py
 ```
 
 - **Day 1** takes about a minute and downloads about 50 MB. Recalculating Europe's total with `compute_europe_population.py` is optional and downloads about 475 MB.
