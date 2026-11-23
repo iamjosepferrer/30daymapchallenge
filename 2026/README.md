@@ -25,6 +25,7 @@ One map a day about Europe, each built around a clear finding.
 - [Day 21, OpenStreetMap: Every cycle path that volunteers have mapped in OpenStreetMap](#day-21-openstreetmap)
 - [Day 22, Projections: Finland looks twice as big as Spain on a flat web map](#day-22-projections)
 - [Day 23, Senses: Taste: Even Germany has three wineries for every brewery](#day-23-senses-taste)
+- [Day 24, Network: Europe drawn only by its power lines](#day-24-network)
 - [Data sources and licenses](#data-sources-and-licenses)
 - [How to recreate the maps](#how-to-recreate-the-maps)
 
@@ -1006,13 +1007,47 @@ Figures in brackets are wineries / breweries, for countries with at least 100 pl
 
 ---
 
+## Day 24: Network
+
+![Europe drawn only by its power lines](day24_network/day24_power_grid.png)
+
+### What it shows
+
+Every power line and cable of 110 kV or more that OpenStreetMap maps across the map: 886,935 km of them, drawn as light on a dark page. Land and borders aren't drawn, so the grid draws the continent by itself. The brighter and warmer the line, the higher its voltage.
+
+| Voltage | Km on the map |
+| --- | ---: |
+| 380 kV and more | 186,815 |
+| 220 to 330 kV | 195,750 |
+| 110 to 200 kV | 504,370 |
+
+The five orange dots on the Pyrenees are the only main lines (220 kV or more) between Spain and France: Arkale–Argia (220 kV) and Hernani–Argia (400 kV) by Irun, Biescas–Pragnères (220 kV), Vic–Baixas (400 kV), and the underground direct-current link Santa Llogaia–Baixas, opened in 2015. They're the five that Red Eléctrica, Spain's grid operator, lists as its high-voltage interconnections with France ([Interconexiones eléctricas](https://www.ree.es/sites/default/files/11_PUBLICACIONES/Documentos/06_Interconexiones_DIGITAL.pdf)). Red Eléctrica puts the exchange capacity with France at about 3 GW, and Iberia's capacity to trade with the rest of continental Europe at about 2%, against an EU target of 15% by 2030 ([Red Eléctrica](https://www.ree.es/en/ecological-transition/interconnections)).
+
+### How it was made
+
+1. **Get the lines:** DuckDB reads Overture's infrastructure theme (release 2026-11-18.0) in 10° tiles and keeps OpenStreetMap's `power=line` and `power=cable` ways of 110 kV or more, taking the highest voltage when a line carries several.
+2. **Measure and slim them:** each line is cut to the map, measured on the WGS84 ellipsoid, then simplified to 30 m so the data file stays small.
+3. **Find the crossings:** the ways of 220 kV or more are joined into continuous routes, and a route crosses from Spain to France where it runs at least 1 km on each side of Natural Earth's 1:10m border. The script stops if it doesn't find exactly Red Eléctrica's five, four AC and one DC.
+4. **Draw:** each voltage class is drawn at four times the size and shrunk for smooth edges, with a soft glow under the lines of 380 kV or more.
+
+### Limitations
+
+- **What volunteers have mapped:** OpenStreetMap's grid is close to complete in most of the EU, but voltages are missing on some lines (those can't be placed in a class and aren't drawn), and how much detail is mapped varies between countries.
+- **Routes, not circuits:** a pylon line carrying two circuits counts once.
+- **A smaller sixth line:** a 150 kV line also crosses from Spain to France in the Val d'Aran. It's below the 220 kV that Red Eléctrica counts as its main interconnections.
+- **Cut by the map:** lines outside the map, such as in eastern Russia or North Africa beyond its edge, aren't counted.
+
+**Files:** [`extract_grid.py`](day24_network/extract_grid.py) reads the lines from Overture and writes [`power_lines.parquet`](day24_network/power_lines.parquet). [`day24_network.py`](day24_network/day24_network.py) draws the map from it and writes [`power_lines_km_by_voltage.csv`](day24_network/power_lines_km_by_voltage.csv).
+
+---
+
 ## Data sources and licenses
 
 | Dataset | Used for | Where it comes from | License |
 | --- | --- | --- | --- |
 | [GHS-UCDB R2024A V1.2](https://human-settlement.emergency.copernicus.eu/ghs_ucdb_2024.php) | Urban centres and population (Days 1, 2) | Downloaded from the JRC's open data site | CC BY 4.0 |
 | [GHS-POP R2023A](https://human-settlement.emergency.copernicus.eu/download.php) | Europe's total population (Day 1), people by location (Day 6) | Downloaded from the JRC's open data site | CC BY 4.0 |
-| [Natural Earth](https://www.naturalearthdata.com/) | Land, seas and country boundaries (Days 1 to 23) | GitHub mirror of Natural Earth | Public domain |
+| [Natural Earth](https://www.naturalearthdata.com/) | Land, seas and country boundaries (Days 1 to 24) | GitHub mirror of Natural Earth | Public domain |
 | [OSRM](https://project-osrm.org/) on [OpenStreetMap](https://www.openstreetmap.org/copyright) | Driving times and routes (Day 2) | OSRM's free demo server | Data: ODbL, © OpenStreetMap contributors |
 | [List of busiest ports in Europe](https://en.wikipedia.org/wiki/List_of_busiest_ports_in_Europe) | Top 10 ports and TEU (Day 2) | Wikipedia, read in November 2026 | CC BY-SA |
 | [Eurostat](https://ec.europa.eu/eurostat/data/database) `tour_occ_nin3`, `demo_r_pjanaggr3` | Nights spent and residents (Day 3) | Eurostat's statistics API | Free reuse with credit to Eurostat |
@@ -1043,6 +1078,8 @@ Figures in brackets are wineries / breweries, for countries with at least 100 pl
 | [Overture Maps](https://overturemaps.org/) transportation theme, release 2026-11-18.0, built from [OpenStreetMap](https://www.openstreetmap.org/copyright) | Cycle paths (Day 21) | Overture's public bucket on Amazon S3, read with DuckDB | ODbL, © OpenStreetMap contributors |
 | [Overture Maps](https://overturemaps.org/) places theme, release 2026-11-18.0 | Wineries and breweries (Day 23) | Overture's public bucket on Amazon S3, read with DuckDB | CDLA Permissive 2.0 |
 | [Natural Earth rivers](https://www.naturalearthdata.com/downloads/10m-physical-vectors/10m-rivers-lake-centerlines/) | Rhine and Mosel (Day 23) | naciscdn.org | Public domain |
+| [Overture Maps](https://overturemaps.org/) infrastructure theme, release 2026-11-18.0, built from [OpenStreetMap](https://www.openstreetmap.org/copyright) | Power lines and cables (Day 24) | Overture's public bucket on Amazon S3, read with DuckDB | ODbL, © OpenStreetMap contributors |
+| [Red Eléctrica](https://www.ree.es/en/ecological-transition/interconnections) | Spain-France interconnections (Day 24) | Red Eléctrica's website and its Interconexiones eléctricas booklet | Facts quoted with attribution |
 
 **Citations**
 
@@ -1083,6 +1120,7 @@ python 2026/day20_hexagons/day20_hexagons.py
 python 2026/day21_openstreetmap/day21_cycleways.py
 python 2026/day22_projections/day22_projections.py
 python 2026/day23_taste/day23_taste.py
+python 2026/day24_network/day24_network.py
 ```
 
 - **Day 1** takes about a minute and downloads about 50 MB. Recalculating Europe's total with `compute_europe_population.py` is optional and downloads about 475 MB.
@@ -1101,6 +1139,7 @@ python 2026/day23_taste/day23_taste.py
 - **Day 15** downloads 34 sea zones from Marine Regions (31 MB) once, which takes about a minute.
 - **Day 21** draws the map from the two 1 km grids in its folder in a few seconds. To rebuild them from Overture, run `extract_osm.py` first: it takes about 15 minutes and keeps about 300 MB of tiles in `data/`.
 - **Day 23** draws the map from `wineries_breweries.parquet` in its folder. To rebuild it from Overture, run `extract_places.py` first: it takes a few minutes.
+- **Day 24** draws the map from `power_lines.parquet` in its folder. To rebuild it from Overture, run `extract_grid.py` first: it takes a few minutes.
 
 ## License
 
