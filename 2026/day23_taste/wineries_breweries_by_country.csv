@@ -1,0 +1,58 @@
+country,brewery,winery,total,wine_share
+France,3585,20221,23806,0.849
+Italy,1975,14975,16950,0.883
+Germany,2669,7944,10613,0.749
+Spain,1607,6662,8269,0.806
+Austria,415,3684,4099,0.899
+United Kingdom,2727,732,3459,0.212
+Switzerland,676,1347,2023,0.666
+Belgium,1412,542,1954,0.277
+Czechia,646,1202,1848,0.65
+Hungary,136,1354,1490,0.909
+Netherlands,1065,396,1461,0.271
+Turkey,650,527,1177,0.448
+Portugal,229,889,1118,0.795
+Greece,110,743,853,0.871
+Sweden,724,122,846,0.144
+Poland,353,434,787,0.551
+Croatia,86,634,720,0.881
+Denmark,430,216,646,0.334
+Romania,87,410,497,0.825
+Slovakia,106,380,486,0.782
+Slovenia,68,418,486,0.86
+Russia,302,142,444,0.32
+Norway,370,42,412,0.102
+Ukraine,252,138,390,0.354
+Republic of Serbia,65,280,345,0.812
+Bulgaria,52,223,275,0.811
+Finland,178,48,226,0.212
+Ireland,103,12,115,0.104
+North Macedonia,15,97,112,0.866
+Moldova,26,84,110,0.764
+Latvia,66,42,108,0.389
+Cyprus,11,73,84,0.869
+Bosnia and Herzegovina,29,51,80,0.638
+Estonia,49,22,71,0.31
+Montenegro,10,54,64,0.844
+Israel,7,52,59,0.881
+Lebanon,6,48,54,0.889
+Albania,6,43,49,0.878
+Lithuania,32,12,44,0.273
+Luxembourg,26,17,43,0.395
+Belarus,26,3,29,0.103
+Georgia,9,20,29,0.69
+Kosovo,4,22,26,0.846
+Iceland,25,1,26,0.038
+Northern Cyprus,10,9,19,0.474
+Tunisia,9,6,15,0.4
+Isle of Man,5,2,7,0.286
+Andorra,3,3,6,0.5
+Faroe Islands,6,0,6,0.0
+Liechtenstein,0,6,6,1.0
+Morocco,2,3,5,0.6
+Guernsey,1,4,5,0.8
+Jersey,1,2,3,0.667
+San Marino,1,1,2,0.5
+Algeria,1,0,1,0.0
+Aland,1,0,1,0.0
+Monaco,1,0,1,0.0

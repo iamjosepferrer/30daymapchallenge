@@ -24,6 +24,7 @@ One map a day about Europe, each built around a clear finding.
 - [Day 20, Hexagons: Small hexagons, big crowds: where the EU's people pack in](#day-20-hexagons)
 - [Day 21, OpenStreetMap: Every cycle path that volunteers have mapped in OpenStreetMap](#day-21-openstreetmap)
 - [Day 22, Projections: Finland looks twice as big as Spain on a flat web map](#day-22-projections)
+- [Day 23, Senses: Taste: Even Germany has three wineries for every brewery](#day-23-senses-taste)
 - [Data sources and licenses](#data-sources-and-licenses)
 - [How to recreate the maps](#how-to-recreate-the-maps)
 
@@ -968,13 +969,50 @@ Turkey is the biggest country with a solid shape, and web maps draw it smaller t
 
 ---
 
+## Day 23: Senses: Taste
+
+![Even Germany has three wineries for every brewery](day23_taste/day23_wine_beer.png)
+
+### What it shows
+
+Every winery and brewery listed in Overture Maps on this map: 65,789 wineries and 21,884 breweries. Blue means wineries outnumber breweries in that area, amber means breweries do, and the colour fades where there are few of either.
+
+Beer wins in the UK and Ireland, the Low Countries, the Nordics and the Baltics, in Ukraine, Belarus and Russia, and narrowly in Turkey. Wine wins nearly everywhere else, including Germany: it has 7,944 wineries and 2,669 breweries, three for every brewery. Half of them (53%) sit within 15 km of the Rhine or the Mosel, against 12% of its breweries, so wine shows up as a blue strip through amber Germany. Official counts point the same way and further: Germany had 14,150 wine-growing businesses in 2023 ([Deutsches Weininstitut](https://www.deutscheweine.de/fileadmin/DWI/News_Medien/Publikationen/Deutscher_Wein_Statistik/Statistik_2025.pdf)) and 1,415 breweries in 2025 ([Destatis](https://www.destatis.de/DE/Presse/Pressemitteilungen/Zahl-der-Woche/2026/PD26_32_p002.html)).
+
+| Where wine wins most | Wineries | Where beer wins most | Breweries |
+| --- | ---: | --- | ---: |
+| Hungary (1,354 / 136) | 91% | Norway (42 / 370) | 90% |
+| Austria (3,684 / 415) | 90% | Ireland (12 / 103) | 90% |
+| Italy (14,975 / 1,975) | 88% | Sweden (122 / 724) | 86% |
+| Croatia (634 / 86) | 88% | United Kingdom (732 / 2,727) | 79% |
+| Greece (743 / 110) | 87% | Finland (48 / 178) | 79% |
+
+Figures in brackets are wineries / breweries, for countries with at least 100 places. All 57 countries are in [`wineries_breweries_by_country.csv`](day23_taste/wineries_breweries_by_country.csv).
+
+### How it was made
+
+1. **Get the places:** DuckDB reads Overture's places (release 2026-11-18.0) in 10° tiles and keeps those whose main category is `winery` or `brewery`, leaving out places marked permanently closed.
+2. **Give each place a country:** the Natural Earth country it stands on, or the nearest one for places in the sea within 1 km of the coast. Crimea counts for Ukraine.
+3. **Smooth and colour:** both counts are smoothed with an 8 km Gaussian kernel, and each pixel takes the share of wineries among the two: amber below half, blue above. Pixels with few places fade out.
+4. **Checks:** the script stops if the headline, the subtitle or the note no longer match the data. The note uses Natural Earth's rivers.
+
+### Limitations
+
+- **Listings, not registers:** about half the places come from Meta and most of the rest from BrightQuery. Some wine shops and bars are listed as wineries or breweries, and small producers without a listing are missing. Filtering by Overture's confidence score barely moves the shares (Germany stays at 75% wineries), so every place is kept.
+- **A winery is not a vineyard:** the map counts businesses, not hectares or litres. A big brewery and a family wine cellar count once each.
+- **Countries cut by the map:** Russia, Turkey and others count only the part shown. 813 places stand in the sea, more than 1 km from Natural Earth's coastline, and count in the totals but for no country.
+
+**Files:** [`extract_places.py`](day23_taste/extract_places.py) reads the places from Overture and writes [`wineries_breweries.parquet`](day23_taste/wineries_breweries.parquet). [`day23_taste.py`](day23_taste/day23_taste.py) draws the map from it and writes [`wineries_breweries_by_country.csv`](day23_taste/wineries_breweries_by_country.csv).
+
+---
+
 ## Data sources and licenses
 
 | Dataset | Used for | Where it comes from | License |
 | --- | --- | --- | --- |
 | [GHS-UCDB R2024A V1.2](https://human-settlement.emergency.copernicus.eu/ghs_ucdb_2024.php) | Urban centres and population (Days 1, 2) | Downloaded from the JRC's open data site | CC BY 4.0 |
 | [GHS-POP R2023A](https://human-settlement.emergency.copernicus.eu/download.php) | Europe's total population (Day 1), people by location (Day 6) | Downloaded from the JRC's open data site | CC BY 4.0 |
-| [Natural Earth](https://www.naturalearthdata.com/) | Land, seas and country boundaries (Days 1 to 22) | GitHub mirror of Natural Earth | Public domain |
+| [Natural Earth](https://www.naturalearthdata.com/) | Land, seas and country boundaries (Days 1 to 23) | GitHub mirror of Natural Earth | Public domain |
 | [OSRM](https://project-osrm.org/) on [OpenStreetMap](https://www.openstreetmap.org/copyright) | Driving times and routes (Day 2) | OSRM's free demo server | Data: ODbL, © OpenStreetMap contributors |
 | [List of busiest ports in Europe](https://en.wikipedia.org/wiki/List_of_busiest_ports_in_Europe) | Top 10 ports and TEU (Day 2) | Wikipedia, read in November 2026 | CC BY-SA |
 | [Eurostat](https://ec.europa.eu/eurostat/data/database) `tour_occ_nin3`, `demo_r_pjanaggr3` | Nights spent and residents (Day 3) | Eurostat's statistics API | Free reuse with credit to Eurostat |
@@ -1003,6 +1041,8 @@ Turkey is the biggest country with a solid shape, and web maps draw it smaller t
 | [eAmbrosia](https://ec.europa.eu/agriculture/eambrosia/geographical-indications-register/) | Registered cheese names with a protected origin or geography (Day 19) | The register's public API | © European Union, free reuse with credit |
 | [H3](https://h3geo.org/) | The hexagon grid (Day 20) | Uber, open source | Apache 2.0 |
 | [Overture Maps](https://overturemaps.org/) transportation theme, release 2026-11-18.0, built from [OpenStreetMap](https://www.openstreetmap.org/copyright) | Cycle paths (Day 21) | Overture's public bucket on Amazon S3, read with DuckDB | ODbL, © OpenStreetMap contributors |
+| [Overture Maps](https://overturemaps.org/) places theme, release 2026-11-18.0 | Wineries and breweries (Day 23) | Overture's public bucket on Amazon S3, read with DuckDB | CDLA Permissive 2.0 |
+| [Natural Earth rivers](https://www.naturalearthdata.com/downloads/10m-physical-vectors/10m-rivers-lake-centerlines/) | Rhine and Mosel (Day 23) | naciscdn.org | Public domain |
 
 **Citations**
 
@@ -1042,6 +1082,7 @@ python 2026/day19_smell/day19_smell.py
 python 2026/day20_hexagons/day20_hexagons.py
 python 2026/day21_openstreetmap/day21_cycleways.py
 python 2026/day22_projections/day22_projections.py
+python 2026/day23_taste/day23_taste.py
 ```
 
 - **Day 1** takes about a minute and downloads about 50 MB. Recalculating Europe's total with `compute_europe_population.py` is optional and downloads about 475 MB.
@@ -1059,6 +1100,7 @@ python 2026/day22_projections/day22_projections.py
 - **Day 14** downloads HydroRIVERS for Europe (68 MB) once and takes about twenty seconds.
 - **Day 15** downloads 34 sea zones from Marine Regions (31 MB) once, which takes about a minute.
 - **Day 21** draws the map from the two 1 km grids in its folder in a few seconds. To rebuild them from Overture, run `extract_osm.py` first: it takes about 15 minutes and keeps about 300 MB of tiles in `data/`.
+- **Day 23** draws the map from `wineries_breweries.parquet` in its folder. To rebuild it from Overture, run `extract_places.py` first: it takes a few minutes.
 
 ## License
 
