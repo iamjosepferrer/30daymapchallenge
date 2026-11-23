@@ -26,6 +26,7 @@ One map a day about Europe, each built around a clear finding.
 - [Day 22, Projections: Finland looks twice as big as Spain on a flat web map](#day-22-projections)
 - [Day 23, Senses: Taste: Even Germany has three wineries for every brewery](#day-23-senses-taste)
 - [Day 24, Network: Europe drawn only by its power lines](#day-24-network)
+- [Day 25, Is this a map?: Europe's population in 132 lines](#day-25-is-this-a-map)
 - [Data sources and licenses](#data-sources-and-licenses)
 - [How to recreate the maps](#how-to-recreate-the-maps)
 
@@ -1041,13 +1042,42 @@ The five orange dots on the Pyrenees are the only main lines (220 kV or more) be
 
 ---
 
+## Day 25: Is this a map?
+
+![Europe's population in 132 lines](day25_is_this_a_map/day25_ridgelines.png)
+
+### What it shows
+
+Europe's 712 million people, drawn only as lines. Each line is a strip of land 35 km tall, running west to east. It stays flat where nobody lives and rises with the people in each 1 km column of the strip. Lines further south are drawn in front and hide what is behind them. Coastlines and borders aren't drawn: the shape of the continent comes from where people live.
+
+Moscow is the tallest peak, about four times the 100,000 people that the legend's sample peak shows. London, Paris, Istanbul's European side, Madrid and the Ruhr stand out too, and the north of Scandinavia and Russia stays almost flat.
+
+### How it was made
+
+1. **Population:** GHS-POP 2025 from the European Commission's JRC, the same file as Days 1 and 6, cut to Europe as those days define it: west of 60°E, with Cyprus and Turkey west of the Bosphorus.
+2. **Onto the EU's grid:** the 30-arcsecond cells are moved onto 1 km squares in EPSG:3035, adding up the people.
+3. **Strips:** the squares are added up in strips 35 km tall, so each line holds the people in each 1 km column of its strip, smoothed a little from west to east.
+4. **Draw:** every line uses the same vertical scale, from north to south, and each line hides the ones behind it. Lines are drawn only over land in Europe.
+5. **Check:** the script stops if the tallest peak isn't Moscow, which the note names.
+
+### Limitations
+
+- **A modelled estimate:** GHS-POP projects census counts to 2025 and spreads them across 1 km cells using built-up areas seen from satellites. It is not a census count.
+- **Strips hide detail:** everything within a 35 km strip falls on one line, so two cities at the same longitude and within 35 km of each other share one peak.
+- **Off the map:** islands far from the mainland, such as the Canaries, Madeira and the Azores, are left out, about 4 million people.
+- **Istanbul:** only its European side is in this Europe.
+
+**Files:** [`day25_ridgelines.py`](day25_is_this_a_map/day25_ridgelines.py) downloads GHS-POP if needed and draws the map.
+
+---
+
 ## Data sources and licenses
 
 | Dataset | Used for | Where it comes from | License |
 | --- | --- | --- | --- |
 | [GHS-UCDB R2024A V1.2](https://human-settlement.emergency.copernicus.eu/ghs_ucdb_2024.php) | Urban centres and population (Days 1, 2) | Downloaded from the JRC's open data site | CC BY 4.0 |
-| [GHS-POP R2023A](https://human-settlement.emergency.copernicus.eu/download.php) | Europe's total population (Day 1), people by location (Day 6) | Downloaded from the JRC's open data site | CC BY 4.0 |
-| [Natural Earth](https://www.naturalearthdata.com/) | Land, seas and country boundaries (Days 1 to 24) | GitHub mirror of Natural Earth | Public domain |
+| [GHS-POP R2023A](https://human-settlement.emergency.copernicus.eu/download.php) | Europe's total population (Day 1), people by location (Day 6), population ridgelines (Day 25) | Downloaded from the JRC's open data site | CC BY 4.0 |
+| [Natural Earth](https://www.naturalearthdata.com/) | Land, seas and country boundaries (Days 1 to 25) | GitHub mirror of Natural Earth | Public domain |
 | [OSRM](https://project-osrm.org/) on [OpenStreetMap](https://www.openstreetmap.org/copyright) | Driving times and routes (Day 2) | OSRM's free demo server | Data: ODbL, © OpenStreetMap contributors |
 | [List of busiest ports in Europe](https://en.wikipedia.org/wiki/List_of_busiest_ports_in_Europe) | Top 10 ports and TEU (Day 2) | Wikipedia, read in November 2026 | CC BY-SA |
 | [Eurostat](https://ec.europa.eu/eurostat/data/database) `tour_occ_nin3`, `demo_r_pjanaggr3` | Nights spent and residents (Day 3) | Eurostat's statistics API | Free reuse with credit to Eurostat |
@@ -1121,6 +1151,7 @@ python 2026/day21_openstreetmap/day21_cycleways.py
 python 2026/day22_projections/day22_projections.py
 python 2026/day23_taste/day23_taste.py
 python 2026/day24_network/day24_network.py
+python 2026/day25_is_this_a_map/day25_ridgelines.py
 ```
 
 - **Day 1** takes about a minute and downloads about 50 MB. Recalculating Europe's total with `compute_europe_population.py` is optional and downloads about 475 MB.
