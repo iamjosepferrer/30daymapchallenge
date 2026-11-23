@@ -994,7 +994,7 @@ Figures in brackets are wineries / breweries, for countries with at least 100 pl
 1. **Get the places:** DuckDB reads Overture's places (release 2026-11-18.0) in 10° tiles and keeps those whose main category is `winery` or `brewery`, leaving out places marked permanently closed.
 2. **Give each place a country:** the Natural Earth country it stands on, or the nearest one for places in the sea within 1 km of the coast. Crimea counts for Ukraine.
 3. **Smooth and colour:** both counts are smoothed with an 8 km Gaussian kernel, and each pixel takes the share of wineries among the two: amber below half, blue above. Pixels with few places fade out.
-4. **Checks:** the script stops if the headline, the subtitle or the note no longer match the data. The note uses Natural Earth's rivers.
+4. **Checks:** the script stops if the headline, the subtitle or the Rhine and Mosel figure above no longer match the data. That figure uses Natural Earth's rivers.
 
 ### Limitations
 

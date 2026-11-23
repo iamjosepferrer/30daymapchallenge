@@ -71,7 +71,7 @@ assert 2.85 < de.winery / de.brewery < 3.15  # the headline: three wineries for 
 four = by_country.sort_values("total", ascending=False).head(4)
 assert set(four.index) == {"France", "Italy", "Germany", "Spain"} and (four.wine_share > 0.5).all()  # the dek
 assert four.total.sum() / by_country.total.sum() > 2 / 3  # "two thirds of them"
-# The note: how many of Germany's wineries lie within 15 km of the Rhine or the Mosel (Natural Earth spells both several ways)
+# For the README: how many of Germany's wineries lie within 15 km of the Rhine or the Mosel (Natural Earth spells both several ways)
 rivers = gpd.read_file(_download(RIVERS_URL, DATA_DIR / "ne_10m_rivers_lake_centerlines.zip"))
 rhine_mosel = rivers[rivers.name.isin(["Rhine", "Rhein", "Rhin", "Mosel"])].to_crs(3035).union_all()
 german = places[(places.country == "Germany") & (places.kind == "winery")]
@@ -126,17 +126,6 @@ svg.append(text(LX + 1, LY + 46, "More breweries", 14, 600, C["ink2"]))
 svg.append(text(LX + 201, LY + 46, "More wineries", 14, 600, C["ink2"], "end"))
 svg.append(text(flush("F", 14, 400, LX), LY + 70, "Fainter where there are few of either", 14, 400, C["ink2"]))
 
-# One note, over the Bay of Biscay, pointing at the Rhine and the Mosel
-NOTE = ["Half of Germany's", "wineries sit within", "15 km of the Rhine", "or the Mosel"]
-nx, ny, step = 66, MAP_TOP + 555, 23
-svg.append(f'<text class="note" x="{nx}" y="{ny}" font-size="19" fill="{C["ink"]}">'
-           + "".join(f'<tspan x="{nx}" dy="{step if i else 0}">{line}</tspan>' for i, line in enumerate(NOTE)) + "</text>")
-tx, ty = frame.xy(*to3035.transform(7.45, 50.45))  # the Rhine north of Koblenz, where the Mosel joins it
-sx, sy, qx, qy = nx + 176, ny - 8, (nx + 176 + tx) / 2, ty - 30  # from just after the first line
-angle = np.arctan2(ty - qy, tx - qx)
-head = " ".join(f"L{tx + 12 * np.cos(angle + np.pi + t):.1f} {ty + 12 * np.sin(angle + np.pi + t):.1f} M{tx:.1f} {ty:.1f}" for t in (-0.5, 0.5))
-svg.append(f'<path d="M{sx} {sy} Q {qx:.1f} {qy:.1f}, {tx:.1f} {ty:.1f} {head}" fill="none" stroke="{C["ink"]}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>')
-
 # 3. Bars: the five countries where wine wins most and the five where beer wins most, among those with 100 places or more
 TOP = MAP_TOP + frame.ph + 24
 ranked = by_country[by_country.total >= 100]
@@ -167,7 +156,7 @@ for yy, words, size, weight, colour_ in HEAD:
 svg.append(byline(232, "30DayMapChallenge #23: Senses: Taste").replace('font-size="20"', 'font-size="18"').replace('x="60.0"', f'x="{flush("M", 18, 600):.1f}"'))
 svg += footer([
     ("Method:", "places whose main category is winery or brewery, smoothed over about 8 km. Bars: countries with 100+ places."),
-    ("Source:", "Overture Maps places (release 2026-11-18), mostly from Meta and BrightQuery listings. Borders and rivers: Natural Earth."),
+    ("Source:", "Overture Maps places (release 2026-11-18), mostly from Meta and BrightQuery listings. Borders: Natural Earth."),
     ("Comments:", "listings are not official registers: some wine shops and bars are listed as wineries and breweries."),
 ], x=round(flush("M", 17, 700), 1), y=BASE + 28, width=960, size=17, line_height=20)
 save_png(page("".join(svg)), HERE / "day23_wine_beer.png")
