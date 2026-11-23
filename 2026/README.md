@@ -24,7 +24,7 @@ One map a day about Europe, each built around a clear finding.
 - [Day 20, Hexagons: Small hexagons, big crowds: where the EU's people pack in](#day-20-hexagons)
 - [Day 21, OpenStreetMap: Every cycle path that volunteers have mapped in OpenStreetMap](#day-21-openstreetmap)
 - [Day 22, Projections: Finland looks twice as big as Spain on a flat web map](#day-22-projections)
-- [Day 23, Senses: Taste: Even Germany has three wineries for every brewery](#day-23-senses-taste)
+- [Day 23, Senses: Taste: Where wine ends and beer begins](#day-23-senses-taste)
 - [Day 24, Network: Europe drawn only by its power lines](#day-24-network)
 - [Day 25, Is this a map?: Europe's population in 132 lines](#day-25-is-this-a-map)
 - [Data sources and licenses](#data-sources-and-licenses)
@@ -973,11 +973,11 @@ Turkey is the biggest country with a solid shape, and web maps draw it smaller t
 
 ## Day 23: Senses: Taste
 
-![Even Germany has three wineries for every brewery](day23_taste/day23_wine_beer.png)
+![Where wine ends and beer begins](day23_taste/day23_wine_beer.png)
 
 ### What it shows
 
-Every winery and brewery listed in Overture Maps on this map: 65,789 wineries and 21,884 breweries. Blue means wineries outnumber breweries in that area, amber means breweries do, and the colour fades where there are few of either.
+Every winery and brewery listed in Overture Maps on this map: 65,653 wineries and 21,801 breweries. Blue means wineries outnumber breweries in that area, amber means breweries do, and the colour fades where there are few of either.
 
 Beer wins in the UK and Ireland, the Low Countries, the Nordics and the Baltics, in Ukraine, Belarus and Russia, and narrowly in Turkey. Wine wins nearly everywhere else, including Germany: it has 7,944 wineries and 2,669 breweries, three for every brewery. Half of them (53%) sit within 15 km of the Rhine or the Mosel, against 12% of its breweries, so wine shows up as a blue strip through amber Germany. Official counts point the same way and further: Germany had 14,150 wine-growing businesses in 2023 ([Deutsches Weininstitut](https://www.deutscheweine.de/fileadmin/DWI/News_Medien/Publikationen/Deutscher_Wein_Statistik/Statistik_2025.pdf)) and 1,415 breweries in 2025 ([Destatis](https://www.destatis.de/DE/Presse/Pressemitteilungen/Zahl-der-Woche/2026/PD26_32_p002.html)).
 
@@ -989,7 +989,7 @@ Beer wins in the UK and Ireland, the Low Countries, the Nordics and the Baltics,
 | Croatia (634 / 86) | 88% | United Kingdom (732 / 2,727) | 79% |
 | Greece (743 / 110) | 87% | Finland (48 / 178) | 79% |
 
-Figures in brackets are wineries / breweries, for countries with at least 100 places. All 57 countries are in [`wineries_breweries_by_country.csv`](day23_taste/wineries_breweries_by_country.csv).
+Figures in brackets are wineries / breweries, for countries with at least 100 places. All 56 countries are in [`wineries_breweries_by_country.csv`](day23_taste/wineries_breweries_by_country.csv).
 
 ### How it was made
 
@@ -1002,7 +1002,7 @@ Figures in brackets are wineries / breweries, for countries with at least 100 pl
 
 - **Listings, not registers:** about half the places come from Meta and most of the rest from BrightQuery. Some wine shops and bars are listed as wineries or breweries, and small producers without a listing are missing. Filtering by Overture's confidence score barely moves the shares (Germany stays at 75% wineries), so every place is kept.
 - **A winery is not a vineyard:** the map counts businesses, not hectares or litres. A big brewery and a family wine cellar count once each.
-- **Countries cut by the map:** Russia, Turkey and others count only the part shown. 813 places stand in the sea, more than 1 km from Natural Earth's coastline, and count in the totals but for no country.
+- **Countries cut by the map:** Russia, Turkey and others count only the part shown. 811 places stand in the sea, more than 1 km from Natural Earth's coastline, and count in the totals but for no country.
 
 **Files:** [`extract_places.py`](day23_taste/extract_places.py) reads the places from Overture and writes [`wineries_breweries.parquet`](day23_taste/wineries_breweries.parquet). [`day23_taste.py`](day23_taste/day23_taste.py) draws the map from it and writes [`wineries_breweries_by_country.csv`](day23_taste/wineries_breweries_by_country.csv).
 

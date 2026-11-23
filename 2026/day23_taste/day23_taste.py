@@ -44,8 +44,8 @@ raw = pd.read_parquet(HERE / "wineries_breweries.parquet")  # from extract_place
 to3035 = Transformer.from_crs(4326, 3035, always_xy=True)
 x, y = to3035.transform(raw.lon.values, raw.lat.values)
 places = gpd.GeoDataFrame(raw, geometry=gpd.points_from_xy(x, y), crs=3035)
-MAP_TOP = 250
-frame = Frame(2300000, 6900000, 1480000, 5140000, 0, 1080, MAP_TOP)
+MAP_TOP = 204
+frame = Frame(2380000, 6680000, 1480000, 5140000, 0, 1080, MAP_TOP)  # Day 21's frame, a little closer in
 places = places[places.within(frame.box())].reset_index(drop=True)  # every number on the chart counts what the map shows
 world = countries()
 world["geometry"] = world.geometry.buffer(0)
@@ -67,7 +67,10 @@ by_country["wine_share"] = by_country.winery / by_country.total
 wineries, breweries = int((places.kind == "winery").sum()), int((places.kind == "brewery").sum())
 de = by_country.loc["Germany"]
 print(f"{wineries:,} wineries, {breweries:,} breweries; Germany {int(de.winery):,} / {int(de.brewery):,} = {de.winery / de.brewery:.2f}")
-assert 2.85 < de.winery / de.brewery < 3.15  # the headline: three wineries for every brewery
+assert 2.85 < de.winery / de.brewery < 3.15  # the README: Germany has three wineries for every brewery
+beer = set(by_country[(by_country.total >= 100) & (by_country.wine_share < 0.5)].index)
+assert beer == {"United Kingdom", "Ireland", "Belgium", "Netherlands", "Norway", "Sweden", "Finland", "Denmark", "Latvia",
+                "Ukraine", "Russia", "Turkey"}  # the dek: where beer wins, among countries with 100+ places
 four = by_country.sort_values("total", ascending=False).head(4)
 assert set(four.index) == {"France", "Italy", "Germany", "Spain"} and (four.wine_share > 0.5).all()  # the dek
 assert four.total.sum() / by_country.total.sum() > 2 / 3  # "two thirds of them"
@@ -148,12 +151,12 @@ for col, top in enumerate(columns):
 BASE = TOP + 16 + 5 * 21
 
 # 4. Headline, dek, byline and footer
-HEAD = [(80, "Even Germany has three wineries", 46, 800, C["ink"]), (130, "for every brewery", 46, 800, C["ink"]),
-        (170, f"Overture Maps lists {wineries:,} wineries and {breweries:,} breweries here. Two thirds of them are in", 22, 400, C["ink2"]),
-        (198, "France, Italy, Germany and Spain, and all four have more wineries than breweries.", 22, 400, C["ink2"])]
+HEAD = [(80, "Where wine ends and beer begins", 46, 800, C["ink"]),
+        (124, f"Overture Maps lists {wineries:,} wineries and {breweries:,} breweries. Beer wins in the British Isles, the", 22, 400, C["ink2"]),
+        (152, "Low Countries, the Nordics, the Baltics, Ukraine, Russia and Turkey. Wine wins in the rest.", 22, 400, C["ink2"])]
 for yy, words, size, weight, colour_ in HEAD:
     svg.append(text(flush(words, size, weight), yy, words, size, weight, colour_))
-svg.append(byline(232, "30DayMapChallenge #23: Senses: Taste").replace('font-size="20"', 'font-size="18"').replace('x="60.0"', f'x="{flush("M", 18, 600):.1f}"'))
+svg.append(byline(186, "30DayMapChallenge #23: Senses: Taste").replace('font-size="20"', 'font-size="18"').replace('x="60.0"', f'x="{flush("M", 18, 600):.1f}"'))
 svg += footer([
     ("Method:", "places whose main category is winery or brewery, smoothed over about 8 km. Bars: countries with 100+ places."),
     ("Source:", "Overture Maps places (release 2026-11-18), mostly from Meta and BrightQuery listings. Borders: Natural Earth."),
