@@ -41,7 +41,7 @@ KEEP = 1000  # metres a route must run on each side of the border to count as cr
 # 1. Data: power lines and cables, in the map's frame
 raw = pd.read_parquet(HERE / "power_lines.parquet")  # from extract_grid.py: already cut to the map, km measured on the ellipsoid
 lines = gpd.GeoDataFrame(raw.drop(columns="wkb"), geometry=shapely.from_wkb(raw.wkb.values), crs=4326)
-MAP_TOP = 250
+MAP_TOP = 204
 frame = Frame(2300000, 6900000, 1480000, 5140000, 0, 1080, MAP_TOP)
 lines = lines.to_crs(3035)
 lines["cls"] = np.select([lines.kv >= 380, lines.kv >= 220], [0, 1], 2)
@@ -129,28 +129,34 @@ angle = np.arctan2(ty - qy, tx - qx)
 head = " ".join(f"L{tx + 11 * np.cos(angle + np.pi + t):.1f} {ty + 11 * np.sin(angle + np.pi + t):.1f} M{tx:.1f} {ty:.1f}" for t in (-0.5, 0.5))
 svg.append(f'<path d="M{sx} {sy} Q {qx:.1f} {qy:.1f}, {tx:.1f} {ty:.1f} {head}" fill="none" stroke="{C["ink"]}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>')
 
-# 4. Bars: kilometres of line by voltage
-TOP = MAP_TOP + frame.ph + 24
+# 4. One bar: each voltage class's share of the kilometres, largest first, with its label and length underneath
+TOP = MAP_TOP + frame.ph + 44
+share = (100 * km / km.sum()).round().astype(int)  # share of all the kilometres on the map
+assert share.sum() == 100
 svg.append(text(flush("K", 19, 700), TOP, "Kilometres of line on the map, by voltage", 19, 700))
-for i, (_, label, colour, width, bright) in enumerate(CLASSES):
-    yy = TOP + 16 + i * 22
+x, width, y = round(flush("K", 19, 700), 1), 960, TOP + 16
+for i in km.sort_values(ascending=False).index:  # the biggest share first
+    _, label, colour, _, bright = CLASSES[i]
     rgb = "#" + "".join(f"{round(c * bright):02X}" for c in colour)
-    svg.append(text(flush(label, 14, 600), yy + 12, label, 14, 600, C["ink"]))
-    bar = 560 * km[i] / km.max()
-    svg.append(f'<rect x="200" y="{yy}" width="{bar:.1f}" height="15" rx="2" fill="{rgb}"/>')
-    svg.append(text(200 + bar + 8, yy + 12, f"{km[i]:,.0f} km", 13, 700, C["ink"]))
-BASE = TOP + 16 + 3 * 22
+    w = width * km[i] / km.sum()
+    svg.append(f'<rect x="{x:.1f}" y="{y}" width="{w - 3:.1f}" height="34" rx="2" fill="{rgb}"/>')
+    ink = C["card"] if i == 0 else C["ink"]  # dark figures on the light yellow, light ones on the blues
+    svg.append(text(x + 10, y + 23, f"{share[i]}%", 18, 800, ink))
+    svg.append(text(x + 1, y + 56, label, 15, 600, C["ink"]))
+    svg.append(text(x + 1, y + 75, f"({km[i]:,.0f} km)", 15, 400, C["ink2"]))
+    x += w
+BASE = y + 75
 
 # 5. Headline, dek, byline and footer
-HEAD = [(80, "Europe drawn only by", 46, 800, C["ink"]), (130, "its power lines", 46, 800, C["ink"]),
-        (170, f"{km.sum():,.0f} km of power lines and cables of 110 kV or more, mapped in OpenStreetMap.", 22, 400, C["ink2"]),
-        (198, "Land and borders aren't drawn. The brighter the line, the higher its voltage.", 22, 400, C["ink2"])]
+HEAD = [(80, "Europe drawn only by its power lines", 46, 800, C["ink"]),
+        (124, f"{km.sum():,.0f} km of power lines and cables of 110 kV or more, mapped in OpenStreetMap.", 22, 400, C["ink2"]),
+        (152, "Land and borders aren't drawn. The brighter the line, the higher its voltage.", 22, 400, C["ink2"])]
 for yy, words, size, weight, colour in HEAD:
     svg.append(text(flush(words, size, weight), yy, words, size, weight, colour))
-svg.append(byline(232, "30DayMapChallenge #24: Network").replace('font-size="20"', 'font-size="18"').replace('x="60.0"', f'x="{flush("M", 18, 600):.1f}"'))
+svg.append(byline(186, "30DayMapChallenge #24: Network").replace('font-size="20"', 'font-size="18"').replace('x="60.0"', f'x="{flush("M", 18, 600):.1f}"'))
 svg += footer([
     ("Method:", "lengths follow each route on the WGS84 ellipsoid, so a line with two circuits counts once. Dots: the five lines of 220 kV or more that cross from Spain to France."),
     ("Source:", "© OpenStreetMap contributors, via Overture Maps (release 2026-11-18). Border for the crossings: Natural Earth."),
-], x=round(flush("M", 17, 700), 1), y=BASE + 34, width=960, size=17, line_height=20)
+], x=round(flush("M", 17, 700), 1), y=BASE + 48, width=960, size=17, line_height=20)
 save_png(page("".join(svg)), HERE / "day24_power_grid.png")
 pd.DataFrame({"voltage": [c[1] for c in CLASSES], "km": km.round().astype(int).values}).to_csv(HERE / "power_lines_km_by_voltage.csv", index=False)
