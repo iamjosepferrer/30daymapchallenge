@@ -28,6 +28,7 @@ One map a day about Europe, each built around a clear finding.
 - [Day 24, Network: Europe drawn only by its power lines](#day-24-network)
 - [Day 25, Is this a map?: Europe's population in 132 lines](#day-25-is-this-a-map)
 - [Day 26, Water: Rome gets more rain than London, on far fewer days](#day-26-water)
+- [Day 27, New tool: If GDP drew the map of Europe...](#day-27-new-tool)
 - [Data sources and licenses](#data-sources-and-licenses)
 - [How to recreate the maps](#how-to-recreate-the-maps)
 
@@ -1109,13 +1110,54 @@ All figures are yearly averages for 2011 to 2024, in [`rain_by_city.csv`](day26_
 
 ---
 
+## Day 27: New tool
+
+![If GDP drew the map of Europe...](day27_new_tool/day27_economy_by_gdp.png)
+
+### What it shows
+
+40 European countries redrawn by the size of their economies. They share 1,000 squares, and each square is 0.1% of their combined GDP in 2025, about €24.3 billion. Colour shows GDP per person: apricot below the €41K average of the 40, blue above it. The small map in the box shows the same countries by land.
+
+Germany alone produces more than the 29 smallest economies combined, and five countries make 62% of the total:
+
+| Country | GDP, 2025 | Share of the 40 |
+| --- | ---: | ---: |
+| Germany | €4.53T | 19% |
+| U.K. | €3.55T | 15% |
+| France | €2.99T | 12% |
+| Italy | €2.26T | 9% |
+| Spain | €1.69T | 7% |
+
+Ukraine is the largest of the 40 by land, with 10% of it, and gets 8 squares. Luxembourg has the highest GDP per person, €131K.
+
+### How it was made
+
+1. **The new tool:** [popgrid](https://github.com/databites-tech/popgrid), a Python package that redraws a map as a grid of equal squares and gives each region as many squares as its share of a number. Here the number is GDP.
+2. **Figures:** GDP and population for 2025 from the IMF's World Economic Outlook, converted from U.S. dollars at the ECB's 2025 average rate of $1.13 per euro. Land area from the World Bank. The snapshots are in [`data.csv`](day27_new_tool/data.csv) and [`imf_2025.csv`](day27_new_tool/imf_2025.csv).
+3. **Squares:** each country's share of the combined GDP, rounded to whole squares. popgrid 0.7.1 gave Bosnia no square and North Macedonia one too many, so the script moves that square.
+4. **Checks:** the script recomputes all 27 claims on the chart, such as the 62%, the 29 countries and each "Bigger than", and stops if one is no longer true.
+
+This is the same data and grid as [europe-economy-by-gdp](https://github.com/iamjosepferrer/dataviz/tree/main/europe-economy-by-gdp), redrawn in the style of this challenge.
+
+### Limitations
+
+- **Not all of Europe:** Russia and Türkiye are left out, because most of their land lies outside Europe, and so are the microstates, which the IMF doesn't all cover.
+- **Too small for a square:** Kosovo (€11B) and Montenegro (€8B) round to no square, so they aren't drawn.
+- **Nominal GDP:** amounts are at market exchange rates, so they don't account for prices being lower in some countries. Ireland's and Luxembourg's figures are inflated by multinationals that book profits there.
+- **A forecast year:** the IMF's 2025 figures are estimates that it revises.
+- **Shapes:** the squares keep each country roughly in place, but not its shape or its neighbours exactly.
+
+**Files:** [`day27_popgrid.py`](day27_new_tool/day27_popgrid.py) builds the grid and draws the chart.
+
+---
+
 ## Data sources and licenses
 
 | Dataset | Used for | Where it comes from | License |
 | --- | --- | --- | --- |
 | [GHS-UCDB R2024A V1.2](https://human-settlement.emergency.copernicus.eu/ghs_ucdb_2024.php) | Urban centres and population (Days 1, 2) | Downloaded from the JRC's open data site | CC BY 4.0 |
 | [GHS-POP R2023A](https://human-settlement.emergency.copernicus.eu/download.php) | Europe's total population (Day 1), people by location (Day 6), population ridgelines (Day 25) | Downloaded from the JRC's open data site | CC BY 4.0 |
-| [Natural Earth](https://www.naturalearthdata.com/) | Land, seas and country boundaries (Days 1 to 26) | GitHub mirror of Natural Earth | Public domain |
+| [Natural Earth](https://www.naturalearthdata.com/) | Land, seas and country boundaries (Days 1 to 27) | GitHub mirror of Natural Earth | Public domain |
 | [OSRM](https://project-osrm.org/) on [OpenStreetMap](https://www.openstreetmap.org/copyright) | Driving times and routes (Day 2) | OSRM's free demo server | Data: ODbL, © OpenStreetMap contributors |
 | [List of busiest ports in Europe](https://en.wikipedia.org/wiki/List_of_busiest_ports_in_Europe) | Top 10 ports and TEU (Day 2) | Wikipedia, read in November 2026 | CC BY-SA |
 | [Eurostat](https://ec.europa.eu/eurostat/data/database) `tour_occ_nin3`, `demo_r_pjanaggr3` | Nights spent and residents (Day 3) | Eurostat's statistics API | Free reuse with credit to Eurostat |
@@ -1149,6 +1191,9 @@ All figures are yearly averages for 2011 to 2024, in [`rain_by_city.csv`](day26_
 | [Overture Maps](https://overturemaps.org/) infrastructure theme, release 2026-11-18.0, built from [OpenStreetMap](https://www.openstreetmap.org/copyright) | Power lines and cables (Day 24) | Overture's public bucket on Amazon S3, read with DuckDB | ODbL, © OpenStreetMap contributors |
 | [Red Eléctrica](https://www.ree.es/en/ecological-transition/interconnections) | Spain-France interconnections (Day 24) | Red Eléctrica's website and its Interconexiones eléctricas booklet | Facts quoted with attribution |
 | [E-OBS 32.0e](https://surfobs.climate.copernicus.eu/dataaccess/access_eobs.php) | Daily rainfall, 2011 to 2024 (Day 26) | KNMI's public copy on Amazon S3 | Non-commercial research and education only, with acknowledgement and citation |
+| [IMF World Economic Outlook](https://www.imf.org/en/publications/weo) | GDP and population, 2025 (Day 27) | IMF DataMapper API | Free to use with attribution |
+| [European Central Bank](https://data.ecb.europa.eu/data/datasets/EXR/EXR.A.USD.EUR.SP00.A) | Dollar to euro rate, 2025 average (Day 27) | ECB Data Portal | Free to use with attribution |
+| [World Bank](https://data.worldbank.org/indicator/AG.LND.TOTL.K2) | Land area by country (Day 27) | World Bank API | CC BY 4.0 |
 
 **Citations**
 
@@ -1192,6 +1237,7 @@ python 2026/day23_taste/day23_taste.py
 python 2026/day24_network/day24_network.py
 python 2026/day25_is_this_a_map/day25_ridgelines.py
 python 2026/day26_water/day26_water.py
+python 2026/day27_new_tool/day27_popgrid.py
 ```
 
 - **Day 1** takes about a minute and downloads about 50 MB. Recalculating Europe's total with `compute_europe_population.py` is optional and downloads about 475 MB.
