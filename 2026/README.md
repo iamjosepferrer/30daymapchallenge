@@ -29,6 +29,7 @@ One map a day about Europe, each built around a clear finding.
 - [Day 25, Is this a map?: Europe's population in 132 lines](#day-25-is-this-a-map)
 - [Day 26, Water: Rome gets more rain than London, on far fewer days](#day-26-water)
 - [Day 27, New tool: If GDP drew the map of Europe...](#day-27-new-tool)
+- [Day 28, Senses: Feeling: 80 million people in Europe now get a month of nights above 20°C](#day-28-senses-feeling)
 - [Data sources and licenses](#data-sources-and-licenses)
 - [How to recreate the maps](#how-to-recreate-the-maps)
 
@@ -1151,13 +1152,49 @@ This is the same data and grid as [europe-economy-by-gdp](https://github.com/iam
 
 ---
 
+## Day 28: Senses: Feeling
+
+![80 million people in Europe now get a month of nights above 20°C](day28_feeling/day28_tropical_nights.png)
+
+### What it shows
+
+How many tropical nights Europe gets in a year: nights when the temperature never drops below 20°C, so a home without air conditioning stays warm until morning. The map shows the average for 2015 to 2024, from none in most of the north to more than 90 a year in Cyprus and parts of Spain.
+
+80 million people now live where there's at least a month of them a year. In 1985 to 1994, 32 million did. Both counts use the population of 2025, so the change comes from the nights alone:
+
+| Tropical nights a year | People, 1985 to 1994 | People, 2015 to 2024 |
+| --- | ---: | ---: |
+| 10 or more | 99 million | 144 million |
+| 30 or more | 32 million | 80 million |
+| 60 or more | 9 million | 24 million |
+
+In Barcelona's cell, they went from 26 a year to 75. The figures are in [`people_by_tropical_nights.csv`](day28_feeling/people_by_tropical_nights.csv).
+
+### How it was made
+
+1. **Temperatures:** E-OBS 32.0e daily minimum temperatures on a 0.1° grid (about 10 km), from KNMI's public copy on Amazon S3.
+2. **Tropical nights:** for each cell, the days whose minimum stays above 20°C, the standard climate index (TR), in each full year of 1985 to 1994 and of 2015 to 2024, then averaged per decade. A year counts for a cell only with data on 95% of its days, and a decade needs 8 of its 10 years.
+3. **People:** GHS-POP 2025 (the same file as Days 1, 6 and 25), added up onto the E-OBS cells. Europe is the same too: west of 60°E, plus Cyprus and Turkey west of the Bosphorus. Land outside it is drawn plain.
+4. **Checks:** the script stops if the 32 and 80 million or Barcelona's 26 and 75 no longer match the data.
+
+### Limitations
+
+- **Single cells:** E-OBS is built from weather stations, and the stations behind a cell change over the years, so one cell can rise or fall for reasons other than the weather (Genoa's falls from 31 to 17). Totals for the whole of Europe are much steadier, so the headline uses those.
+- **Cities run hotter:** a 10 km cell mixes a city with its surroundings, so it misses part of the city's own heat. Barcelona's Raval station [counted 88 tropical nights in summer 2025 alone](https://www.eldiario.es/catalunya/barcelona-bate-record-noches-torridas-verano-registra-87-dias-20-grados_1_12574345.amp.html).
+- **No data:** the land east of about 45°E isn't in E-OBS, so it's hatched. With some islands and coasts, about 14 million people (2%) aren't counted.
+- **Licence:** E-OBS is for non-commercial research and education only. We acknowledge the E-OBS dataset and the data providers in the ECA&D project (Cornes, R., G. van der Schrier, E.J.M. van den Besselaar, and P.D. Jones. 2018: An Ensemble Version of the E-OBS Temperature and Precipitation Datasets, J. Geophys. Res. Atmos., 123).
+
+**Files:** [`count_nights.py`](day28_feeling/count_nights.py) downloads E-OBS (two files, 1.9 GB) and writes [`tropical_nights.npz`](day28_feeling/tropical_nights.npz), the averages for each cell. [`day28_feeling.py`](day28_feeling/day28_feeling.py) draws the map from it.
+
+---
+
 ## Data sources and licenses
 
 | Dataset | Used for | Where it comes from | License |
 | --- | --- | --- | --- |
 | [GHS-UCDB R2024A V1.2](https://human-settlement.emergency.copernicus.eu/ghs_ucdb_2024.php) | Urban centres and population (Days 1, 2) | Downloaded from the JRC's open data site | CC BY 4.0 |
-| [GHS-POP R2023A](https://human-settlement.emergency.copernicus.eu/download.php) | Europe's total population (Day 1), people by location (Day 6), population ridgelines (Day 25) | Downloaded from the JRC's open data site | CC BY 4.0 |
-| [Natural Earth](https://www.naturalearthdata.com/) | Land, seas and country boundaries (Days 1 to 27) | GitHub mirror of Natural Earth | Public domain |
+| [GHS-POP R2023A](https://human-settlement.emergency.copernicus.eu/download.php) | Europe's total population (Day 1), people by location (Day 6), population ridgelines (Day 25), people with tropical nights (Day 28) | Downloaded from the JRC's open data site | CC BY 4.0 |
+| [Natural Earth](https://www.naturalearthdata.com/) | Land, seas and country boundaries (Days 1 to 28) | GitHub mirror of Natural Earth | Public domain |
 | [OSRM](https://project-osrm.org/) on [OpenStreetMap](https://www.openstreetmap.org/copyright) | Driving times and routes (Day 2) | OSRM's free demo server | Data: ODbL, © OpenStreetMap contributors |
 | [List of busiest ports in Europe](https://en.wikipedia.org/wiki/List_of_busiest_ports_in_Europe) | Top 10 ports and TEU (Day 2) | Wikipedia, read in November 2026 | CC BY-SA |
 | [Eurostat](https://ec.europa.eu/eurostat/data/database) `tour_occ_nin3`, `demo_r_pjanaggr3` | Nights spent and residents (Day 3) | Eurostat's statistics API | Free reuse with credit to Eurostat |
@@ -1190,7 +1227,7 @@ This is the same data and grid as [europe-economy-by-gdp](https://github.com/iam
 | [Natural Earth rivers](https://www.naturalearthdata.com/downloads/10m-physical-vectors/10m-rivers-lake-centerlines/) | Rhine and Mosel (Day 23) | naciscdn.org | Public domain |
 | [Overture Maps](https://overturemaps.org/) infrastructure theme, release 2026-11-18.0, built from [OpenStreetMap](https://www.openstreetmap.org/copyright) | Power lines and cables (Day 24) | Overture's public bucket on Amazon S3, read with DuckDB | ODbL, © OpenStreetMap contributors |
 | [Red Eléctrica](https://www.ree.es/en/ecological-transition/interconnections) | Spain-France interconnections (Day 24) | Red Eléctrica's website and its Interconexiones eléctricas booklet | Facts quoted with attribution |
-| [E-OBS 32.0e](https://surfobs.climate.copernicus.eu/dataaccess/access_eobs.php) | Daily rainfall, 2011 to 2024 (Day 26) | KNMI's public copy on Amazon S3 | Non-commercial research and education only, with acknowledgement and citation |
+| [E-OBS 32.0e](https://surfobs.climate.copernicus.eu/dataaccess/access_eobs.php) | Daily rainfall, 2011 to 2024 (Day 26); daily minimum temperatures, 1985 to 1994 and 2015 to 2024 (Day 28) | KNMI's public copy on Amazon S3 | Non-commercial research and education only, with acknowledgement and citation |
 | [IMF World Economic Outlook](https://www.imf.org/en/publications/weo) | GDP and population, 2025 (Day 27) | IMF DataMapper API | Free to use with attribution |
 | [European Central Bank](https://data.ecb.europa.eu/data/datasets/EXR/EXR.A.USD.EUR.SP00.A) | Dollar to euro rate, 2025 average (Day 27) | ECB Data Portal | Free to use with attribution |
 | [World Bank](https://data.worldbank.org/indicator/AG.LND.TOTL.K2) | Land area by country (Day 27) | World Bank API | CC BY 4.0 |
@@ -1238,6 +1275,7 @@ python 2026/day24_network/day24_network.py
 python 2026/day25_is_this_a_map/day25_ridgelines.py
 python 2026/day26_water/day26_water.py
 python 2026/day27_new_tool/day27_popgrid.py
+python 2026/day28_feeling/day28_feeling.py
 ```
 
 - **Day 1** takes about a minute and downloads about 50 MB. Recalculating Europe's total with `compute_europe_population.py` is optional and downloads about 475 MB.
@@ -1257,6 +1295,7 @@ python 2026/day27_new_tool/day27_popgrid.py
 - **Day 21** draws the map from the two 1 km grids in its folder in a few seconds. To rebuild them from Overture, run `extract_osm.py` first: it takes about 15 minutes and keeps about 300 MB of tiles in `data/`.
 - **Day 23** draws the map from `wineries_breweries.parquet` in its folder. To rebuild it from Overture, run `extract_places.py` first: it takes a few minutes.
 - **Day 24** draws the map from `power_lines.parquet` in its folder. To rebuild it from Overture, run `extract_grid.py` first: it takes a few minutes.
+- **Day 28** draws the map from `tropical_nights.npz` in its folder. To rebuild it, run `count_nights.py` first: it downloads 1.9 GB of E-OBS.
 
 ## License
 
