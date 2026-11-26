@@ -27,6 +27,7 @@ One map a day about Europe, each built around a clear finding.
 - [Day 23, Senses: Taste: Where wine ends and beer begins](#day-23-senses-taste)
 - [Day 24, Network: Europe drawn only by its power lines](#day-24-network)
 - [Day 25, Is this a map?: Europe's population in 132 lines](#day-25-is-this-a-map)
+- [Day 26, Water: Rome gets more rain than London, on far fewer days](#day-26-water)
 - [Data sources and licenses](#data-sources-and-licenses)
 - [How to recreate the maps](#how-to-recreate-the-maps)
 
@@ -1071,13 +1072,50 @@ Moscow is the tallest peak, about four times the 100,000 people that the legend'
 
 ---
 
+## Day 26: Water
+
+![Rome gets more rain than London, on far fewer days](day26_water/day26_rain.png)
+
+### What it shows
+
+How many days it rains in a year across Europe, from the Atlantic edge of Ireland, Scotland and western Norway, where it rains on more than 170 days, to most of Spain, Greece and Turkey, where it rains on fewer than 80. Bergen gets rain on 212 days a year.
+
+The number of rainy days says little about how much rain falls. Rome gets more rain than London, on far fewer days:
+
+| City | Rain in a year | Days with rain |
+| --- | ---: | ---: |
+| Genoa | 1,102 mm | 85 |
+| Amsterdam | 944 mm | 150 |
+| Rome | 741 mm | 80 |
+| London | 664 mm | 126 |
+| Paris | 628 mm | 114 |
+
+All figures are yearly averages for 2011 to 2024, in [`rain_by_city.csv`](day26_water/rain_by_city.csv).
+
+### How it was made
+
+1. **Rain:** E-OBS 32.0e, the European gridded record of daily rainfall built from weather stations, on a 0.1° grid (about 10 km), from KNMI's public copy on Amazon S3.
+2. **Rainy days and totals:** for each cell, the days with at least 1 mm of rain, the usual threshold for a rainy day, and the total rain, in each full year from 2011 to 2024, then averaged. A year counts for a cell only with data on 95% of its days, and a cell needs 12 of the 14 years.
+3. **Map:** each pixel of the map takes the class of the cell it falls in, drawn on Natural Earth's land.
+4. **Checks:** the script stops if Rome no longer gets more rain than London on fewer days, or if Bergen's count leaves the 200s.
+
+### Limitations
+
+- **A gridded record:** E-OBS spreads station measurements over the grid, so cells far from stations, in mountains or in the east, are less precise. City figures are for the 10 km cell over each city and can differ a little from the airport station figures that are often quoted.
+- **No data:** Iceland and the land east of about 45°E aren't in E-OBS, so they're hatched.
+- **Licence:** E-OBS is for non-commercial research and education only. We acknowledge the E-OBS dataset and the data providers in the ECA&D project (Cornes, R., G. van der Schrier, E.J.M. van den Besselaar, and P.D. Jones. 2018: An Ensemble Version of the E-OBS Temperature and Precipitation Datasets, J. Geophys. Res. Atmos., 123).
+
+**Files:** [`day26_water.py`](day26_water/day26_water.py) draws the map from [`rain_2011_2024.npz`](day26_water/rain_2011_2024.npz), the averages for each cell. Without that file, it downloads E-OBS (292 MB) and works them out again.
+
+---
+
 ## Data sources and licenses
 
 | Dataset | Used for | Where it comes from | License |
 | --- | --- | --- | --- |
 | [GHS-UCDB R2024A V1.2](https://human-settlement.emergency.copernicus.eu/ghs_ucdb_2024.php) | Urban centres and population (Days 1, 2) | Downloaded from the JRC's open data site | CC BY 4.0 |
 | [GHS-POP R2023A](https://human-settlement.emergency.copernicus.eu/download.php) | Europe's total population (Day 1), people by location (Day 6), population ridgelines (Day 25) | Downloaded from the JRC's open data site | CC BY 4.0 |
-| [Natural Earth](https://www.naturalearthdata.com/) | Land, seas and country boundaries (Days 1 to 25) | GitHub mirror of Natural Earth | Public domain |
+| [Natural Earth](https://www.naturalearthdata.com/) | Land, seas and country boundaries (Days 1 to 26) | GitHub mirror of Natural Earth | Public domain |
 | [OSRM](https://project-osrm.org/) on [OpenStreetMap](https://www.openstreetmap.org/copyright) | Driving times and routes (Day 2) | OSRM's free demo server | Data: ODbL, © OpenStreetMap contributors |
 | [List of busiest ports in Europe](https://en.wikipedia.org/wiki/List_of_busiest_ports_in_Europe) | Top 10 ports and TEU (Day 2) | Wikipedia, read in November 2026 | CC BY-SA |
 | [Eurostat](https://ec.europa.eu/eurostat/data/database) `tour_occ_nin3`, `demo_r_pjanaggr3` | Nights spent and residents (Day 3) | Eurostat's statistics API | Free reuse with credit to Eurostat |
@@ -1110,6 +1148,7 @@ Moscow is the tallest peak, about four times the 100,000 people that the legend'
 | [Natural Earth rivers](https://www.naturalearthdata.com/downloads/10m-physical-vectors/10m-rivers-lake-centerlines/) | Rhine and Mosel (Day 23) | naciscdn.org | Public domain |
 | [Overture Maps](https://overturemaps.org/) infrastructure theme, release 2026-11-18.0, built from [OpenStreetMap](https://www.openstreetmap.org/copyright) | Power lines and cables (Day 24) | Overture's public bucket on Amazon S3, read with DuckDB | ODbL, © OpenStreetMap contributors |
 | [Red Eléctrica](https://www.ree.es/en/ecological-transition/interconnections) | Spain-France interconnections (Day 24) | Red Eléctrica's website and its Interconexiones eléctricas booklet | Facts quoted with attribution |
+| [E-OBS 32.0e](https://surfobs.climate.copernicus.eu/dataaccess/access_eobs.php) | Daily rainfall, 2011 to 2024 (Day 26) | KNMI's public copy on Amazon S3 | Non-commercial research and education only, with acknowledgement and citation |
 
 **Citations**
 
@@ -1152,6 +1191,7 @@ python 2026/day22_projections/day22_projections.py
 python 2026/day23_taste/day23_taste.py
 python 2026/day24_network/day24_network.py
 python 2026/day25_is_this_a_map/day25_ridgelines.py
+python 2026/day26_water/day26_water.py
 ```
 
 - **Day 1** takes about a minute and downloads about 50 MB. Recalculating Europe's total with `compute_europe_population.py` is optional and downloads about 475 MB.
