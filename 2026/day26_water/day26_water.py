@@ -113,7 +113,7 @@ for name in ("Rome", "London"):
     svg.append(text(x + 8, y + 5, name, 15, 700, C["ink"], halo="#FFFFFF"))
 
 # Legend over the Atlantic, on the left margin
-LX, LY = 60, MAP_TOP + 300
+LX, LY = 60, MAP_TOP + 124  # over the Atlantic, between Iceland and Ireland
 svg.append(text(flush("D", 17, 700, LX), LY, "Days with rain in a year", 17, 700))
 labels = [f"under {BREAKS[0]}"] + [f"{a} to {b - 1}" for a, b in zip(BREAKS, BREAKS[1:])] + [f"{BREAKS[-1]} or more"]
 for k, (colour, label) in enumerate(zip(RAMP, labels)):
@@ -129,8 +129,10 @@ nx, ny, step = 222, MAP_TOP + 165, 23
 svg.append(f'<text class="note" x="{nx}" y="{ny}" font-size="19" fill="{C["ink"]}">'
            + "".join(f'<tspan x="{nx}" dy="{step if k else 0}">{line}</tspan>' for k, line in enumerate(NOTE)) + "</text>")
 tx, ty = frame.xy(*to3035.transform(5.0, 60.39))
-tx, ty = tx - 6, ty + 2
-sx, sy, qx, qy = nx + 175, ny + step - 6, (nx + 175 + tx) / 2, ny + step + 10
+tx, ty = tx - 7, ty + 1
+# from under the note, dipping a little, then rising into Bergen from the west
+sx, sy = nx + 128, ny + step + 11  # east of the Shetlands
+qx, qy = (sx + tx) / 2 - 6, max(sy, ty) + 20
 angle = np.arctan2(ty - qy, tx - qx)
 head = " ".join(f"L{tx + 11 * np.cos(angle + np.pi + t):.1f} {ty + 11 * np.sin(angle + np.pi + t):.1f} M{tx:.1f} {ty:.1f}" for t in (-0.5, 0.5))
 svg.append(f'<path d="M{sx} {sy} Q {qx:.1f} {qy:.1f}, {tx:.1f} {ty:.1f} {head}" fill="none" stroke="{C["ink"]}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>')
